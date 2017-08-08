@@ -1,0 +1,107 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/tabTransparent</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textStyle">bold</item>
+        <item name="actionMenuTextColor">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="TitleColor" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@style/MyTitleTextStyle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/black</item>
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@android:color/holo_blue_bright</item>
+        <item name="windowActionBar">false</item>
+        <item name="background">@color/background</item>
+    </style>
+
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="sliding_menu_text">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/sliding_text_size</item>
+    </style>
+
+    <style name="header_text">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/header_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="black_large">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/sliding_text_size</item>
+    </style>
+
+    <style name="black_small">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/small_text</item>
+    </style>
+
+    <style name="question_text">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="keyboard_btn">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/keyboard_btn</item>
+
+    </style>
+    <!--toggle text-->
+    <style  name= "edittext" parent="AppTheme">
+
+        <item name="android:textColor">@color/white</item>
+       <item name="android:textSize">@dimen/large</item>
+
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+
+
+
+
+
+
+</resources>

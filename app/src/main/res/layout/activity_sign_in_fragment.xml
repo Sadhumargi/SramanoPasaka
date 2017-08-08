@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:padding="@dimen/dimen_16"
+
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.SignInFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/signin"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:textColor="@color/white"
+
+ />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtinplayout1"
+        android:layout_below="@+id/tv_signin"
+        app:hintTextAppearance="@style/edittext"
+        android:textColorHint="@color/white"
+        android:textStyle="normal"
+
+        >
+
+    <android.support.design.widget.TextInputEditText
+
+        android:id="@+id/editTex_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Emailid"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/tv_signin"
+        android:textStyle="normal"
+        android:background="@drawable/edt_border"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:layout_margin="@dimen/text_margin"
+        android:paddingBottom="@dimen/dimen_10">
+
+
+    </android.support.design.widget.TextInputEditText>
+
+</android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtinplayout2"
+        android:layout_below="@+id/txtinplayout1"
+        app:hintTextAppearance="@style/edittext"
+        app:passwordToggleTint="#FFF"
+        android:textColorHint="@color/white"
+        android:textStyle="normal"
+        >
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/editText_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Password"
+        android:layout_margin="@dimen/text_margin"
+        android:inputType="textPassword"
+        android:textColorHint="@color/white"
+        android:layout_below="@+id/editTex_email"
+        android:textStyle="normal"
+        android:textColor="@color/white"
+        android:background="@drawable/edt_border"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:paddingBottom="@dimen/dimen_10">
+
+    </android.support.design.widget.TextInputEditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/large"
+        android:background="@drawable/border_shape"
+        android:textStyle="normal"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_below="@+id/txtinplayout2"
+        android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/tv_frgtpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button_login"
+                android:layout_margin="@dimen/text_margin"
+                android:gravity="center"
+                android:text="@string/Forgot_Password"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <Button
+        android:id="@+id/button_create_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_frgtpass"
+        android:layout_margin="@dimen/text_margin"
+        android:background="@drawable/bordr_shape_createaccount"
+        android:text="@string/create_new_profile"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

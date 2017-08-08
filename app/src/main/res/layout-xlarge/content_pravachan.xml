@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/background">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pr_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/city_spin"
+        android:layout_marginTop="5dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/city_spin"
+        android:layout_weight="1"
+        style="?android:attr/spinnerStyle"
+        android:layout_below="@+id/name_spin"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/reset"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_spin"
+
+        style="?android:attr/spinnerStyle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reset"
+        android:src="@drawable/reset"
+        android:text="रीसेट"
+        android:textSize="20dp"
+        android:background="@drawable/lst_border"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_alignEnd="@+id/name_spin"
+        android:layout_above="@+id/pr_recycler_view"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/emptyElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="NO DATA AVAILABLE!"
+        android:textColor="#525252"
+        android:textSize="19.0sp"
+        android:visibility="gone"
+        android:layout_below="@+id/pr_recycler_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txt_msg"
+        android:layout_below="@+id/pr_recycler_view"
+        android:visibility="gone" />
+
+</RelativeLayout>

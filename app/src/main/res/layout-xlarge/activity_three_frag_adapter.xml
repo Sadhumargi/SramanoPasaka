@@ -1,0 +1,42 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    card_view:cardCornerRadius="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/relativeLayout"
+        android:layout_margin="10dp"
+        android:background="#FFF0eF">
+
+        <ImageView
+            android:id="@+id/threefrag_image"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:id="@+id/threefrag_txt_date"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="fdsfdsfsdsfsfsdfds"
+            android:layout_marginLeft="0dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/threefrag_image" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

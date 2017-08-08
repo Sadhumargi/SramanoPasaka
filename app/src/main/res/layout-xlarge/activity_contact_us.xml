@@ -1,0 +1,228 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/view5">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolcontact"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/actionbar"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_below="@+id/view5">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relativ"
+            android:layout_below="@+id/view5"
+            android:layout_alignParentStart="true"
+            android:layout_margin="3dp"
+            android:background="@color/background">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="CAMPUS"
+                android:id="@+id/textView52"
+                android:layout_alignParentStart="true"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Sh. Akhil Bharatvarshiya Sadhumargi Jain Sangh"
+                android:id="@+id/textView53"
+                android:layout_below="@+id/textView52"
+                android:layout_alignStart="@+id/textView52" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="(USE THIS NAME FOR DD, Check &amp; M.O. etc.)"
+                android:id="@+id/textView54"
+                android:layout_below="@+id/textView53"
+                android:layout_alignStart="@+id/textView53"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Samta Bhavan,"
+                android:id="@+id/textView55"
+                android:layout_below="@+id/textView54"
+                android:layout_alignStart="@+id/textView54"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Acharya Shree Nanesh Marg,Nokha Road, Gangashahar,"
+                android:id="@+id/textView56"
+                android:layout_below="@+id/textView55"
+                android:layout_alignStart="@+id/textView55" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Bikaner - 334 401,"
+                android:id="@+id/textView58"
+                android:layout_below="@+id/textView56"
+                android:layout_alignStart="@+id/textView56" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Rajasthan, INDIA"
+                android:id="@+id/textView59"
+                android:layout_below="@+id/textView58"
+                android:layout_alignStart="@+id/textView58" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="PHONE"
+                android:id="@+id/textView60"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:layout_below="@+id/textView59"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="+91 0151 3292177, 2270261, 2270359"
+                android:id="@+id/textView61"
+                android:layout_below="@+id/textView60"
+                android:layout_alignStart="@+id/textView60" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="FAX"
+                android:id="@+id/textView62"
+                android:layout_below="@+id/textView61"
+                android:layout_alignStart="@+id/textView61"
+                android:textStyle="bold"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="+91 0151 2270359"
+                android:id="@+id/textView63"
+                android:layout_below="@+id/textView62"
+                android:layout_alignStart="@+id/textView62" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="E-MAIL"
+                android:id="@+id/textView64"
+                android:layout_below="@+id/textView63"
+                android:layout_alignStart="@+id/textView63"
+                android:textStyle="bold"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="absjsbkn@yahoo.co.in"
+                android:id="@+id/textView65"
+                android:layout_below="@+id/textView64"
+                android:layout_alignStart="@+id/textView64" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="PRESIDENT"
+                android:id="@+id/textView66"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/textView65"
+                android:layout_alignStart="@+id/textView59"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="HULAS MAL SANCHETI "
+                android:id="@+id/textView80"
+                android:layout_below="@+id/textView66" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Flat No. 205, B-Block, Arihant Heights, Bhairav Society,"
+                android:id="@+id/textView81"
+                android:layout_below="@+id/textView80"
+                android:layout_alignStart="@+id/textView80" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Panchpedhi Naka, Raipur (C.G.)"
+                android:id="@+id/textView82"
+                android:layout_below="@+id/textView81"
+                android:layout_alignStart="@+id/textView81" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="CELL "
+                android:id="@+id/textView83"
+                android:layout_below="@+id/textView82"
+                android:layout_alignStart="@+id/textView66" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Panchpedhi Naka, Raipur (C.G.)"
+        android:id="@+id/textView19"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="145dp" />
+
+
+</RelativeLayout>

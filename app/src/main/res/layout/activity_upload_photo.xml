@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.Profile"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@color/background"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:id="@+id/profiletool"
+           >
+            <android.support.v4.widget.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profilemg"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="260dp" />
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="15dp"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_10"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".20">
+
+        <android.support.v4.widget.CircleImageView
+            android:id="@+id/img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:src="@drawable/round"
+            android:padding="@dimen/dimen_10"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Basic_Details"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="@dimen/small"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".20">
+
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_10"
+            android:background="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            android:src="@drawable/round" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Upload_photo"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="@dimen/small"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".20">
+
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
+            android:id="@+id/img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/round"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_details"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="@dimen/small"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".20">
+
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
+            android:id="@+id/img4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/round"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Basic_Details"
+            android:textSize="@dimen/small"
+            android:padding="@dimen/dimen_5dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight=".20">
+
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
+            android:id="@+id/img5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/round"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"
+         />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Basic_Details"
+            android:padding="@dimen/dimen_5dp"
+            android:textSize="@dimen/small"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_70"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/infotxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/dimen_5dp"
+            android:text="@string/thank_you"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btn_nxt"
+            android:layout_width="@dimen/dimen_80"
+            android:layout_height="@dimen/dimen_30"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:background="@color/background"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:layout_below="@+id/infotxt"
+            android:layout_toStartOf="@+id/edit_profile" />
+
+        <Button
+            android:id="@+id/edit_profile"
+            android:layout_width="@dimen/dimen_80"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:background="@color/black"
+            android:text="@string/Skip"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:textColor="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/infotxt"
+            android:layout_alignBottom="@+id/btn_nxt" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:background="@color/white"
+        android:layout_weight="0.16">
+
+
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
+            android:id="@+id/photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/defaultprofilepic"
+            android:text="@string/thank_you"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="@dimen/dimen_120"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/photo"
+            android:layout_below="@+id/photo"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/border_shape"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dimen_5dp"
+            android:text="@string/Upload"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large"
+            android:textStyle="normal" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

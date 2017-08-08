@@ -1,0 +1,178 @@
+<resources>
+    <string name="app_name">साधुमार्गी </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">MainActivity</string>
+    <string name="welcome">स्वागत करता है आप सभी का !!!</string>
+    <string name="ic1">पत्रिका</string>
+    <string name="ic2">साहित्य</string>
+    <string name="ic3">गति विधि</string>
+    <string name="ic4"> विहार</string>
+    <string name="ic6">दान</string>
+    <string name="ic52">प्रवचन</string>
+    <string name="ic5"> प्रवचन</string>
+
+    <string name="ic7">पाठशाला</string>
+    <string name="ic8">हमसे संपर्क करें</string>
+    <string name="ic9">सदस्य</string>
+    <string name="ic10"> कार्यसमिति</string>
+
+    <string name="title_activity_sahitya">साहित्य</string>
+
+    <string name="title_activity_photo_gallery">गेलरी</string>
+    <string name="title_activity_vihar">विहार</string>
+    <string name="title_activity_pravachan">प्रवचन</string>
+    <string name="title_activity_donations">दान</string>
+    <string name="title_activity_pathsala">पाठशाला</string>
+    <string name="title_activity_members">सदस्य</string>
+    <string name="title_activity_kariya_karni">कार्यकारिणी</string>
+
+    <string name="name">नाम</string>
+    <string name="designation">पद</string>
+    <string name="region">क्षेत</string>
+    <string name="city">शहर</string>
+    <string name="phone">फोन</string>
+
+    <string name="sample_html">sample.html</string>
+    <string name="no_such_page">There is no such page&#8230;</string>
+
+    <string name="guruname">सिंगडापति का नाम :</string>
+    <string name="guruassist">चरित्र आत्माओ का नाम: </string>
+    <string name="address">प्रमाचार  :</string>
+    <string name="gurutravel">विहार(कहा से कहा तक) :</string>
+    <string name="gurulocation">ठहरने का स्थान :</string>
+    <string name="guruattender">विहार कर्मी  :</string>
+    <string name="guruchiefattender">सक्रिय व्यक्ति  : </string>
+    <string name="phoneno">फ़ोन नंबर  :</string>
+    <string name="distance">दूरी :</string>
+    <string name="gurualternatephone">वैकल्पिक फोन कोई  : </string>
+    <string name="date">तारीख</string>
+    <string name="typeofexams">पाठशाला के प्रकार</string>
+    <string name="typeofdonations">दान के प्रकार</string>
+    <string name="sangsahitya">संघ सहित्य</string>
+    <string name="ramsahitya">श्री राम उवाच </string>
+    <string name="naneshsahitya">नानेशवाणी</string>
+    <string name="donate_name">दान नाम  :</string>
+    <string name="donate_details">दान विवरण  :</string>
+    <string name="donate_amount">दान राशि  :</string>
+    <string name="make_donate">  दान कर  </string>
+    <string name="make_donate_name">दानी का नाम</string>
+    <string name="make_donate_phone">दानी का फोन</string>
+    <string name="sanghistory">साधुमार्गी संघ इतिहास</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_books_pages">BooksPages</string>
+    <string name="title_activity_vihar_list_adapter">ViharListAdapter</string>
+    <string name="title_activity_grid_view_adapter">GridViewAdapter</string>
+    <string name="title_activity_oldkarniadapter">oldkarniadapter</string>
+    <string name="title_activity_currentkarniadapter">currentkarniadapter</string>
+
+    <string name="English_Pref_Color_Key">eng_key_color</string>
+    <string name="Meaning_Pref_Color_Key">mean_key_color</string>
+    <string name="user_preference_text">Options</string>
+    <string name="english_word_color">English Word Color</string>
+    <string name="notification">Notification</string>
+    <string name="more_apps_description">Download more useful apps</string>
+    <string name="hindi_word_color">Hindi Word Color</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="long1">Long</string>
+    <string name="text_size">Text Size</string>
+
+
+    <string-array name="ic_names">
+
+        <item>पत्रिका</item>
+        <item>>साहित्य</item>
+        <item>गति विधि</item>
+        <item> विहार</item>
+        <item>दान</item>
+        <item>प्रवचन</item>
+
+        <item>पाठशाला</item>
+        <item>हमसे संपर्क करें</item>
+        <item>सदस्य</item>
+        <item>कार्यसमिति</item>
+
+    </string-array>
+
+    <string name="banner_home_footer">ca-app-pub-5437421632937651/4782080523</string>
+    <string name="interstitial_full_screen">ca-app-pub-5437421632937651/3165746520</string>
+    <string name="donate">उपहार</string>
+    <string name="title_staff">अमला</string>
+    <string name="title_students">छात्रों</string>
+    <string name="title_exams">परीक्षा</string>
+    <string name="txt_exam_centers">परीक्षा केंद्र</string>
+    <string name="title_shivir">शिविर</string>
+    <string name="edition_date">Edition</string>
+    <string name="lbl_start_date">Start Date</string>
+    <string name="lbl_end_date">End Date</string>
+    <string name="date_format">DD-MM-YYYY</string>
+
+    <string name="School_list">पाठशाला लिस्ट</string>
+    <string name="Registration">रेजिस्ट्रेशन</string>
+    <string name="Rules">रूल्स</string>
+
+    <string name="Pathsala_Details">डीटेल्स</string>
+    <string name="Pathsala_Syllabus">सिलबस</string>
+    <string name="Pathsala_Activities">आक्टिविटीस</string>
+
+    <string name="Upcomming_Shivir">आगामी शिविर</string>
+    <string name="Past_Shivir">अतीत शिविर</string>
+    <string name="Shivir_Registration">शिविर रेजिस्ट्रेशन</string>
+
+    <string name="Upcomming_Exam">आगामी परीक्षा</string>
+    <string name="PastExam_Result">अतीत परीक्षा </string>
+    <string name="Exam_Registration">रेजिस्ट्रेशन</string>
+
+    <string name="Sign_in">Sign in </string>
+    <string name="Create_Account">CreateAccount</string>
+
+    <string name="Mr">Mr.</string>
+    <string name="Ms">Ms.</string>
+    <string name="Mrs">Mrs.</string>
+
+    <string name="Emailid">*Mobile No./Email id</string>
+    <string name="Password">*Password</string>
+
+
+    <string name="login">LOGIN</string>
+    <string name="create_new_profile">CREATE NEW PROFILE</string>
+    <string name="Forgot_Password">Forgot Password ??</string>
+    <string name="signin">SIGN IN</string>
+
+    <string name="firstname">*First Name</string>
+    <string name="middlename">*Middle Name</string>
+    <string name="lastname">*Last Name</string>
+    <string name="birthdate">*Birth Date</string>
+    <string name="mobile_number">*Mobile No </string>
+    <string name="email_id">*Email id</string>
+    <string name="select_country">*Select Country</string>
+    <string name="select_state">*Select State</string>
+    <string name="selectcity">*Select City</string>
+    <string name="pincode">*Pin Code</string>
+    <string name="Retype_password">*Retype Password</string>
+    <string name="terms_conditions">I agree to the Tems and Conditions</string>
+    <string name="create_profile">CREATE PROFILE</string>
+
+    <string name="my_Profile">My Profile</string>
+    <string name="thank_you">Thank you for Registration</string>
+    <string name="next">"Next"</string>
+    <string name="Basic_Details">"Basic Details"</string>
+    <string name="Password.">"Password"</string>
+    <string name="Logout">"Logout"</string>
+    <string name="Editprofile">"Edit Profile"</string>
+    <string name="Skip">"Skip"</string>
+    <string name="Upload">"UPLOAD"</string>
+    <string name="Upload_photo">"Upload Photo"</string>
+    <string name="contact_details">"Contact Details"</string>
+    <string name="Education">"Education"</string>
+    <string name="Business">"Business"</string>
+
+
+
+</resources>

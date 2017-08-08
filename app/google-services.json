@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "995082858127",
+    "firebase_url": "https://sramanopasaka-d4961.firebaseio.com",
+    "project_id": "sramanopasaka-d4961",
+    "storage_bucket": "sramanopasaka-d4961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995082858127:android:ff9b2c89f578186d",
+        "android_client_info": {
+          "package_name": "com.sramanopasaka.sipanionline.sadhumargi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995082858127-23ajuatn032g9jlvrldgo63h7dqu5lu5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sramanopasaka.sipanionline.sadhumargi",
+            "certificate_hash": "7c46e7a0709c983045ca97a447d4e7cdb70fbb69"
+          }
+        },
+        {
+          "client_id": "995082858127-3tjau6nne22j56lncb55d31nsskq0qdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEBfAisaaSvif5sUvwmZAKqdSHKEkL2O8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995082858127-3tjau6nne22j56lncb55d31nsskq0qdf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

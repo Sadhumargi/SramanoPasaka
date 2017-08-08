@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="statusbarcolor">#531309</color>
+
+    <color name="sliding_menu">#999292</color>
+    <color name="main_bg">#F1E9DD</color>
+    <color name="dark_text_color">#2D1C03</color>
+    <color name="light_text_color">#F1E9DD</color>
+    <color name="selected_slider_item_color">#AE936A</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background_color">#f1e9dd</color>
+    <color name="orange">#fbf7f6</color>
+    <color name="tabTransparent">#10ffffff</color>
+    <color name="black">#040303</color>
+    <color name="actionbar">#f5ecc9</color>
+    <color name="background">#da5617</color>
+    <color name="legacy_pressed_highlight"> #fffeaa0c</color>
+    <color name="backgroundorange">#ffff8800</color>
+    <color name="Pathsala_background">#e1e1e1</color>
+
+</resources>
