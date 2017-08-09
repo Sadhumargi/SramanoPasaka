@@ -257,7 +257,7 @@
 
         <activity android:name=".BasicDetailsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/MyMaterialTheme.Base"
             />
     </application>
 
