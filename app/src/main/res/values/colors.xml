@@ -20,5 +20,6 @@
     <color name="legacy_pressed_highlight"> #fffeaa0c</color>
     <color name="backgroundorange">#ffff8800</color>
     <color name="Pathsala_background">#e1e1e1</color>
+    <color name="Basic_details">#a1a6aa</color>
 
 </resources>

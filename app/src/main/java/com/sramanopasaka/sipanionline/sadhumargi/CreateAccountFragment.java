@@ -181,8 +181,8 @@ public class CreateAccountFragment extends Fragment implements StateChangeListne
                     password.requestFocus();
                 } else {
                     Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                   /* Intent i = new Intent(getActivity(), Profile.class);
-                    startActivity(i);*/
+                    Intent i = new Intent(getActivity(), Profile.class);
+                    startActivity(i);
                 }
 
                /* Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();

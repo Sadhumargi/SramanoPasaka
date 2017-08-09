@@ -131,6 +131,7 @@
             android:background="@drawable/edt_border"
             android:drawableEnd="@android:drawable/ic_menu_my_calendar"
             android:hint="@string/birthdate"
+            android:inputType="date"
             android:paddingBottom="@dimen/dimen_10"
             android:textColor="@color/white"
             android:textColorHint="@color/white"

@@ -22,7 +22,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:id="@+id/profiletool"
            >
-            <android.support.v4.widget.CircleImageView
+            <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/profilemg"
@@ -50,7 +50,7 @@
         android:layout_gravity="center_vertical"
         android:layout_weight=".20">
 
-        <android.support.v4.widget.CircleImageView
+        <com.sramanopasaka.sipanionline.sadhumargi.RoundedImageView
             android:id="@+id/img1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

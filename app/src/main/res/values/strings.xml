@@ -173,6 +173,20 @@
     <string name="Education">"Education"</string>
     <string name="Business">"Business"</string>
 
+    <string name="Family_head">"Family Head ??"</string>
+    <string name="Update_details">Update Details</string>
+    <string name="Name">"*Name"</string>
+    <string name="Mother_Name">"*Mother Name"</string>
+    <string name="Address">"*Address"</string>
+    <string name="Addressline2">"*Address line2"</string>
+    <string name="Age">*Age</string>
+    <string name="Gender">*Gender</string>
+    <string name="Bloodgrp">Blood Group</string>
+    <string name="Maritalstatus">Marital Status</string>
+    <string name="Whatsupno">Whatsup No.</string>
+    <string name="Alternativeno.">Alternatice No.</string>
+    <string name="Details">Details</string>
+
 
 
 </resources>
