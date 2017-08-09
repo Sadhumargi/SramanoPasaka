@@ -162,11 +162,16 @@
     <string name="my_Profile">My Profile</string>
     <string name="thank_you">Thank you for Registration</string>
     <string name="next">"Next"</string>
-    <string name="Basic_Details">"Basic Detail"</string>
+    <string name="Basic_Details">"Basic Details"</string>
     <string name="Password.">"Password"</string>
     <string name="Logout">"Logout"</string>
     <string name="Editprofile">"Edit Profile"</string>
-
+    <string name="Skip">"Skip"</string>
+    <string name="Upload">"UPLOAD"</string>
+    <string name="Upload_photo">"Upload Photo"</string>
+    <string name="contact_details">"Contact Details"</string>
+    <string name="Education">"Education"</string>
+    <string name="Business">"Business"</string>
 
 
 
