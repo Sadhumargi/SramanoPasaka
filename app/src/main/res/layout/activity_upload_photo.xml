@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Pathsala_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.Profile"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity"
     android:orientation="vertical"
     android:weightSum="1">
 

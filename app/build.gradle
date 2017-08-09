@@ -99,6 +99,14 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     //Country picker
     compile 'com.github.mukeshsolanki:country-picker-android:1.1.9'
+
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+
+    //orm database
+    compile 'com.j256.ormlite:ormlite-android:4.48'
 }
 
 

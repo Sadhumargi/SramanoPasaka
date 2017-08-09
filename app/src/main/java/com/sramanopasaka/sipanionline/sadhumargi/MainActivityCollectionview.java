@@ -1,12 +1,10 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -19,19 +17,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 
 public class MainActivityCollectionview extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener{
 
@@ -40,6 +38,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
     public String [] iconlist={"स्रामनोपसक","साहित्य","प्रवचन","विहार","पाठशाला","दान","सदस्य","गति विधि","कार्यसमिति"};
     public static int [] iconImages={R.drawable.circle1,R.drawable.circle2,R.drawable.circle3,R.drawable.circle4,R.drawable.pathsala,R.drawable.circle6,R.drawable.circle7,R.drawable.circle8,R.drawable.circle9,};
     private AdView mAdView;
+    private NavigationView navigationView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +77,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         actionbar.setTitle(Html.fromHtml("<font color='#000000'>साधुमार्गी</font>"));
 
         // Set the ActionBar title font size
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         checkConnection();
 
@@ -135,6 +134,17 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
 
         // register connection status listener
         MyApplication.getInstance().setConnectivityListener(MainActivityCollectionview.this);
+
+
+
+        Menu menu = navigationView.getMenu();
+        MenuItem loginItem = menu.findItem(R.id.nav_8);
+        if(OfflineData.getLoginData()!=null){
+            loginItem.setTitle("सामान्य विवरण");
+        }else{
+            loginItem.setTitle("सदस्य लॉगिन / रजिस्ट्रेशन");
+        }
+
     }
 
     @Override
@@ -247,18 +257,22 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
 
         }else if (id == R.id.nav_8) {
 
-                if(isConnected)
-                {
-                    Intent i= new Intent(MainActivityCollectionview.this,Signin.class);
+            Menu menu = navigationView.getMenu();
+            MenuItem logoutItem = menu.findItem(R.id.nav_8);
+            if(logoutItem.getTitle().toString().equalsIgnoreCase("सदस्य लॉगिन / रजिस्ट्रेशन")) {
+
+                if (isConnected) {
+                    Intent i = new Intent(MainActivityCollectionview.this, SigninActivity.class);
                     startActivity(i);
-                }
-                else
-                {
+                } else {
                     //Toast.makeText(getBaseContext(),"No Internet",Toast.LENGTH_SHORT).show();
                     showSnack(isConnected);
                 }
 
-
+            }else{
+                Intent i = new Intent(MainActivityCollectionview.this, ProfileActivity.class);
+                startActivity(i);
+            }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

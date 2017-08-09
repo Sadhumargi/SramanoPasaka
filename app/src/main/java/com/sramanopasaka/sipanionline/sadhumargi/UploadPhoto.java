@@ -27,6 +27,6 @@ public class UploadPhoto extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>My Profile</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>My ProfileActivity</font>"));
     }
 }

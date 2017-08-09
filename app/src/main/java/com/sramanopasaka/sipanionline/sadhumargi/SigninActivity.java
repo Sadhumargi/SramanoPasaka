@@ -1,7 +1,5 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ActionBar;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -16,14 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.SignInFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sramanopasaka.sipanionline.sadhumargi.R.color.actionbar;
-
-public class Signin extends AppCompatActivity implements TabselectionListner {
+public class SigninActivity extends AppCompatActivity implements TabselectionListner {
     
     Toolbar toolbar;
     ViewPager viewPager;
