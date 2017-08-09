@@ -9,4 +9,6 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 public interface StateChangeListner {
 
     void onStateSelected(String state);
+
+    void onCitySelected(String city);
 }

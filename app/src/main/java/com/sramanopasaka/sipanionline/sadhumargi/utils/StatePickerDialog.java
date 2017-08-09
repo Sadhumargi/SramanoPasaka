@@ -52,11 +52,12 @@ private StateChangeListner stateChangeListner = null;
     private List<Country> mFilteredCountries;
     private List<State> stateList = null;
     private Context context = null;
-
-    public StatePickerDialog(Context context,StateChangeListner stateChangeListner) {
+private boolean isCity = false;
+    public StatePickerDialog(Context context,StateChangeListner stateChangeListner,boolean isCity) {
         super(context);
         this.context = context;
         this.stateChangeListner = stateChangeListner;
+        this.isCity = isCity;
     }
 
     @Override
@@ -79,8 +80,9 @@ private StateChangeListner stateChangeListner = null;
     }
 
     private void setupData() {
-
         InputStream is = context.getResources().openRawResource(R.raw.state);
+        if(isCity)
+             is = context.getResources().openRawResource(R.raw.city);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];
         try {
@@ -182,6 +184,9 @@ private StateChangeListner stateChangeListner = null;
 
     @Override
     public void onItemSelected(State country) {
+        if(isCity)
+            stateChangeListner.onCitySelected(country.getName());
+        else
         stateChangeListner.onStateSelected(country.getName());
         dismiss();
     }

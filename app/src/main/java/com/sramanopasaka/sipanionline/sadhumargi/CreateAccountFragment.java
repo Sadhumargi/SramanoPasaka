@@ -181,7 +181,7 @@ public class CreateAccountFragment extends Fragment implements StateChangeListne
                     password.requestFocus();
                 } else {
                     Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(getActivity(), Profile.class);
+                    Intent i = new Intent(getActivity(), ProfileActivity.class);
                     startActivity(i);
                 }
 
@@ -207,7 +207,15 @@ public class CreateAccountFragment extends Fragment implements StateChangeListne
         sState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(),CreateAccountFragment.this);
+                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(),CreateAccountFragment.this,false);
+                statePickerDialog.show();
+            }
+        });
+
+        sCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(),CreateAccountFragment.this,true);
                 statePickerDialog.show();
             }
         });
@@ -232,6 +240,11 @@ public class CreateAccountFragment extends Fragment implements StateChangeListne
     @Override
     public void onStateSelected(String state) {
         sState.setText(state);
+    }
+
+    @Override
+    public void onCitySelected(String city) {
+        sCity.setText(city);
     }
 
 
