@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 
-public class BasicDetails extends AppCompatActivity {
+public class BasicDetailsActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
