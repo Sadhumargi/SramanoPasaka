@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 
@@ -76,6 +77,60 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void doRegister(JsonObject jsonObject) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getClient(AppConstants.BASE_URL).create(EndPointApi.class);
+
+        valYouAPI.doRegister(jsonObject).enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+               /* LoginResponse response1 = new LoginResponse();
+                if (response.body() != null) {
+                    response1.setLoginModel(response.body());
+
+                    response1.setStatus(true);
+
+                } else {
+                    response1.setStatus(false);
+                    if (!TextUtils.isEmpty(response.errorBody().toString())) {
+                        try {
+                            JSONObject jObjError = new JSONObject(convertStreamToString(response.errorBody().byteStream()));
+                            response1.setMessage(jObjError.getString("message"));
+                        } catch (Exception e) {
+                            response1.setMessage("Invalid Username or Password");
+                        }
+                    } else {
+                        response1.setMessage("Invalid Username or Password");
+
+                    }
+
+
+                }*/
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

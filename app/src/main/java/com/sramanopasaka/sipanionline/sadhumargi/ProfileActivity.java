@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -67,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, BasicDetails.class);
+                Intent i = new Intent(ProfileActivity.this, BasicDetailsActivity.class);
                 startActivity(i);
 
             }
@@ -101,12 +102,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void fillDataToUi() {
-        LoginResponse loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null && loginResponse.getData() != null) {
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null ) {
 
 
-            userNameTxt.setText(loginResponse.getData().getFirstName());
-            locationTxt.setText(loginResponse.getData().getCity());
+            userNameTxt.setText(loginResponse.getFirstName());
+            locationTxt.setText(loginResponse.getCity());
         }
     }
 }

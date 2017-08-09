@@ -1,30 +1,81 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class LoginModel{
-	private String country;
-	private String guardianName;
-	private String address;
-	private String gender;
-	private String city;
-	private String appToken;
-	private String motherName;
-	private String districtN;
-	private String mobile;
-	private String profilePic;
-	private String lastName;
-	private String middleName;
-	private String marriageDate;
-	private String birthDay;
-	private String maritalStatus;
-	private String password;
-	private String emailAddress;
-	private String guardianType;
-	private String district;
-	private String bloodGroup;
+	@SerializedName("id")
+	@Expose
 	private String id;
-	private String state;
+	@SerializedName("first_name")
+	@Expose
 	private String firstName;
+	@SerializedName("middle_name")
+	@Expose
+	private String middleName;
+	@SerializedName("last_name")
+	@Expose
+	private String lastName;
+	@SerializedName("guardian_type")
+	@Expose
+	private String guardianType;
+	@SerializedName("guardian_name")
+	@Expose
+	private String guardianName;
+	@SerializedName("mother_name")
+	@Expose
+	private String motherName;
+	@SerializedName("address")
+	@Expose
+	private String address;
+	@SerializedName("city")
+	@Expose
+	private String city;
+	@SerializedName("state")
+	@Expose
+	private String state;
+	@SerializedName("district")
+	@Expose
+	private Object district;
+	@SerializedName("district_n")
+	@Expose
+	private Object districtN;
+	@SerializedName("country")
+	@Expose
+	private String country;
+	@SerializedName("mobile")
+	@Expose
+	private String mobile;
+	@SerializedName("gender")
+	@Expose
+	private String gender;
+	@SerializedName("birth_day")
+	@Expose
+	private String birthDay;
+	@SerializedName("blood_group")
+	@Expose
+	private String bloodGroup;
+	@SerializedName("marital_status")
+	@Expose
+	private String maritalStatus;
+	@SerializedName("marriage_date")
+	@Expose
+	private String marriageDate;
+	@SerializedName("profile_pic")
+	@Expose
+	private String profilePic;
+	@SerializedName("email_address")
+	@Expose
+	private String emailAddress;
+	@SerializedName("is_head_of_family")
+	@Expose
 	private String isHeadOfFamily;
+	@SerializedName("password")
+	@Expose
+	private String password;
+	@SerializedName("app_token")
+	@Expose
+	private String appToken;
 
 	public void setCountry(String country){
 		this.country = country;

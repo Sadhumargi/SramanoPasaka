@@ -145,7 +145,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
                 if (loginResponse != null) {
                     if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
 
-                        OfflineData.saveLoginResponse(loginResponse);
+                        OfflineData.saveLoginResponse(loginResponse.getData());
                         Toast.makeText(getActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), ProfileActivity.class);
                         startActivity(i);
