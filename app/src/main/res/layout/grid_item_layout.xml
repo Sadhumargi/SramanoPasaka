@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/grid_item_image"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="@dimen/dimen_100"
+        android:scaleType="fitCenter"
+        android:layout_gravity="left"
+        android:layout_weight="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="@dimen/dimen_120"
+        android:layout_height="@dimen/dimen_120"
+        android:scaleType="fitCenter"
+        android:layout_gravity="left"
+        android:layout_weight="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:id="@+id/grid_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_alignTop="@+id/grid_item_image"
+        android:layout_toEndOf="@+id/grid_item_image"
+        android:text="fafdsfsfsd"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Small Text"
+        android:id="@+id/grid_item_city"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_alignStart="@+id/grid_item_name"
+        android:layout_below="@+id/grid_item_name"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

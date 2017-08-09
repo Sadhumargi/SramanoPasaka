@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolviharhead"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_50"
+    android:background="@color/actionbar"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_50"
+        >
+
+       <!-- <Spinner
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/city_spin"
+            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            android:spinnerMode="dropdown"
+            style="?android:attr/spinnerStyle"
+            android:popupBackground="#FF4500"
+            />
+
+        <Spinner
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_spin"
+            android:layout_weight="1"
+            android:layout_marginRight="2dp"
+            style="?android:attr/spinnerStyle"
+            android:popupBackground="#FF4500"
+            />-->
+
+        <RelativeLayout
+            android:id="@+id/searchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+
+
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:id="@+id/toolvihar"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/actionbar"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+
+                />
+
+            <EditText
+                android:id="@+id/searchText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="45dp"
+                android:background="@drawable/edit_box_inner_color"
+                android:drawableRight="@drawable/search_bar"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/but_share"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/notify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/searchLayout"
+            android:background="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

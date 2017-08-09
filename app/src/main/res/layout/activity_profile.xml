@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.Profile"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="@color/background"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:id="@+id/profiletool"
+          >
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_90"
+        android:layout_marginTop="15dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50"
+            android:padding="@dimen/dimen_10"
+            android:text="@string/thank_you"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="normal"
+            android:id="@+id/textView40"
+            android:layout_toStartOf="@+id/button4"
+            android:layout_alignParentEnd="true" />
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/background"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:layout_below="@+id/textView40"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_100"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_22"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/imageView4"
+            android:text="User Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_22"
+            android:text="City"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="normal"
+            android:layout_below="@+id/textView41"
+            android:layout_alignStart="@+id/textView41"
+            android:layout_alignEnd="@+id/textView41" />
+
+
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/dimen_80"
+            android:layout_height="@dimen/dimen_90"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/profilemg"
+            android:text="@string/thank_you"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Editprofile"
+            android:background="@color/cast_expanded_controller_ad_label_background_color"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textView1" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:padding="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:text="@string/Basic_Details"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/textView2"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_alignParentEnd="true"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/rightarrow"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:padding="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:text="@string/Password."
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/textView3"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_alignParentEnd="true"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/rightarrow"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:padding="@dimen/dimen_10"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:text="@string/Logout"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/textView4"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_alignParentEnd="true"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/logout"/>
+
+</LinearLayout>

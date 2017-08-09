@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.Pathsalalist">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/view5">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolpathsala"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/background">
+
+
+
+        <!--<EditText
+            android:id="@+id/edit_srch_patasala"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dimen_5dp"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:background="@drawable/edit_box_bg"
+            android:drawableLeft="@drawable/search_bar"
+            android:ems="10"
+            android:hint=" Search"
+            android:padding="@dimen/dimen_10"
+            android:layout_above="@+id/recyclerview"></EditText>-->
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+      <!-- <searchable xmlns:android="http://schemas.android.com/apk/res/android"
+            android:label="@string/app_name" /> -->
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="504dp"
+        android:layout_alignParentStart="true"
+        android:background="@color/Pathsala_background"
+        android:layout_below="@+id/view5">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <!-- <android.support.v7.widget.SearchView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:paddingLeft="70dp"
+             android:id="@+id/search"
+             android:iconifiedByDefault="true"
+             >
+         </android.support.v7.widget.SearchView>-->
+
+
+
+
+
+</RelativeLayout>

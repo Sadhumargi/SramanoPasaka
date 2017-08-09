@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Pathsala_background"
+    android:paddingTop="5dp"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.RegistrationStudentFragment"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/l2"
+        android:padding="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Name:"
+            android:textSize="@dimen/medium"
+            android:padding="3dp"
+            android:id="@+id/tv_name"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Name"
+            android:layout_below="@+id/tv_name"
+            android:textSize="@dimen/medium"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:id="@+id/et_name"
+            android:background="@drawable/border"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Email ID:"
+            android:id="@+id/tv_email"
+            android:textSize="@dimen/medium"
+            android:layout_below="@+id/et_name"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Email Id"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/et_emailid"
+            android:background="@drawable/border"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Contact No:"
+            android:textSize="@dimen/medium"
+            android:textStyle="normal"
+            android:id="@+id/tv_contactno.l"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Contact number"
+            android:textSize="@dimen/medium"
+            android:textStyle="normal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/et_contactno."
+            android:background="@drawable/border"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Pathshala Name:"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/tv_pathshalaname"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Pathshala Name"
+            android:textSize="@dimen/medium"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:id="@+id/et_pathshalaname"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Location:"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:padding="3dp"
+            android:id="@+id/tv_location"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Location"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/et_location"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Owner Name:"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/tv_ownername"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Owner Name "
+            android:textSize="@dimen/medium"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:id="@+id/et_ownername"
+            android:background="@drawable/border"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Teachers Name:"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/tv_teachersname"
+            android:textColor="@color/black"
+            android:padding="3dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Enter Location "
+            android:textSize="@dimen/medium"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:id="@+id/et_teachersname"
+            android:background="@drawable/border"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Total Student:"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:id="@+id/tv_totalstudent"
+            android:textColor="@color/black"
+            android:layout_weight="0.19"
+            android:padding="3dp"/>
+
+        <EditText
+            android:id="@+id/et_students"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="normal"
+            android:textSize="@dimen/medium"
+            android:hint="Enter Students "
+            android:background="@drawable/border"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@+id/l2"
+        android:background="@color/background"
+        android:text="SUBMIT"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>
