@@ -65,35 +65,34 @@
         android:background="@color/white">
 
 
-            <TextView
-                android:id="@+id/userNameTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Name"
-                android:padding="@dimen/dimen_5dp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/large"
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@+id/imageView4"
-                android:layout_alignParentTop="true" />
+        <TextView
+            android:id="@+id/userNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:padding="@dimen/dimen_5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_alignParentTop="true" />
 
 
-            <TextView
-                android:id="@+id/locationTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="0dp"
-                android:drawableStart="@drawable/lacator"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:textColor="@color/black"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
-                android:layout_toEndOf="@+id/imageView4"
-                android:layout_toStartOf="@+id/edit_profile"
-                android:layout_below="@+id/userNameTxt" />
+        <TextView
+            android:id="@+id/locationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:drawableStart="@drawable/lacator"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large"
+            android:textStyle="normal"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/edit_profile"
+            android:layout_below="@+id/userNameTxt" />
 
 
         <ImageView
@@ -124,6 +123,17 @@
 
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
@@ -135,7 +145,141 @@
         android:textStyle="normal"
         android:id="@+id/basic_details"
         android:background="@color/white"
-        android:drawableRight="@drawable/rightarrow"/>
+        android:drawableRight="@drawable/rightarrow"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/contact_details"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/contact_details"
+        android:background="@color/white"
+        android:drawableRight="@drawable/rightarrow"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/postal_address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/postal_address"
+                android:background="@color/white"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"
+                android:drawableRight="@drawable/rightarrow"
+                />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/Education"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/education"
+        android:background="@color/white"
+        android:drawableRight="@drawable/rightarrow"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:padding="@dimen/dimen_10"
+        android:text="@string/Business"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"
+        android:textStyle="normal"
+        android:id="@+id/business"
+        android:background="@color/white"
+        android:drawableRight="@drawable/rightarrow"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/Achievements"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/acchivments"
+                android:background="@color/white"
+                android:drawableRight="@drawable/rightarrow"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/Vidhesi_yatra"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/Vidhesiyatra"
+                android:background="@color/white"
+                android:drawableRight="@drawable/rightarrow"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/sadasya"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/sadasya"
+                android:background="@color/white"
+                android:drawableRight="@drawable/rightarrow"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/Dharmik"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/dharmik"
+                android:background="@color/white"
+                android:drawableRight="@drawable/rightarrow"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/Sangh"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large"
+                android:textStyle="normal"
+                android:id="@+id/sangh"
+                android:background="@color/white"
+                android:drawableRight="@drawable/rightarrow"
+                android:layout_gravity="center|left"
+                android:gravity="center|left"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -148,7 +292,9 @@
         android:textStyle="normal"
         android:id="@+id/password"
         android:background="@color/white"
-        android:drawableRight="@drawable/rightarrow"/>
+        android:drawableRight="@drawable/rightarrow"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -161,6 +307,12 @@
         android:textStyle="normal"
         android:id="@+id/logout"
         android:background="@color/white"
-        android:drawableRight="@drawable/logout"/>
+        android:drawableRight="@drawable/logout"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

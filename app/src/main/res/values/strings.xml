@@ -162,16 +162,16 @@
     <string name="my_Profile">My Profile</string>
     <string name="thank_you">Thank you for Registration</string>
     <string name="next">"Next"</string>
-    <string name="Basic_Details">"Basic Details"</string>
-    <string name="Password.">"Password"</string>
-    <string name="Logout">"Logout"</string>
+    <string name="Basic_Details">"सामान्य विवरण"</string>
+    <string name="Password.">"पासवर्ड"</string>
+    <string name="Logout">लोग आउट</string>
     <string name="Editprofile">"Edit Profile"</string>
     <string name="Skip">"Skip"</string>
     <string name="Upload">"UPLOAD"</string>
-    <string name="Upload_photo">"Upload Photo"</string>
-    <string name="contact_details">"Contact Details"</string>
-    <string name="Education">"Education"</string>
-    <string name="Business">"Business"</string>
+    <string name="Upload_photo">उपलोआड फोटो</string>
+    <string name="contact_details">"संपर्क विवरण"</string>
+    <string name="Education">"शिक्षा"</string>
+    <string name="Business">"व्यवसाय, नौकरी, विशेष दक्षता विवरण"</string>
 
     <string name="Family_head">"Family Head ??"</string>
     <string name="Update_details">Update Details</string>
@@ -186,7 +186,12 @@
     <string name="Whatsupno">Whatsup No.</string>
     <string name="Alternativeno.">Alternatice No.</string>
     <string name="Details">Details</string>
-
+    <string name="Sangh">"संघ"</string>
+    <string name="Achievements">उपलब्धियां</string>
+    <string name="Vidhesi_yatra">विदेश यात्रा</string>
+    <string name="Dharmik">धार्मिक </string>
+    <string name="sadasya">सदस्य</string>
+    <string name="postal_address">पत्र व्यवहार पता</string>
 
 
 </resources>

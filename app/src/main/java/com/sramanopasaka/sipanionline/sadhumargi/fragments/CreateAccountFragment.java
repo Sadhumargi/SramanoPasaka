@@ -239,7 +239,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         sState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this);
+                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this,false);
                 statePickerDialog.show();
             }
         });
@@ -266,6 +266,11 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
     public void onStateSelected(String state) {
         sState.setText(state);
         sState.setError(null);
+    }
+
+    @Override
+    public void onCitySelected(String city) {
+
     }
 
     @Override
