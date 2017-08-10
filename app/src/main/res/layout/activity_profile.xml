@@ -220,7 +220,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/large"
                 android:textStyle="normal"
-                android:id="@+id/acchivments"
+                android:id="@+id/achievments"
                 android:background="@color/white"
                 android:drawableRight="@drawable/rightarrow"
                 android:layout_gravity="center|left"

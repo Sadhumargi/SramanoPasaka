@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:id="@+id/postaladdresstool"
+            >
+
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_below="@+id/txt_heading"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:gravity="center"
+        android:text="@string/postaladdress_subtext"
+        android:textColor="@color/white"
+        android:background="@color/wallet_holo_blue_light"
+        android:textSize="@dimen/dimen_16" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:padding="@dimen/dimen_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/address1"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:hint="@string/Address"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/address2"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:hint="  पता"
+            android:textSize="@dimen/large"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:textColor="@color/black"
+            android:hint="@string/post"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/district"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:hint="@string/districh"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/city"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:hint="@string/City"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:textColor="@color/black"
+            android:hint="@string/Pin"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/state"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:hint="@string/state"
+            android:textColor="@color/black"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/country"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:hint="@string/country"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addresstype"
+            android:layout_below="@+id/radiogrp"
+            android:layout_margin="@dimen/fab_margin"
+            android:paddingBottom="@dimen/dimen_10"
+            android:textStyle="normal"
+            android:textSize="@dimen/large"
+            android:textColor="@color/black"
+            android:hint="@string/addresstype"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:textCursorDrawable="@drawable/cursor_basicdetails"
+            android:background="@drawable/border_basicdetails"/>
+
+    <Button
+        android:id="@+id/btn_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/dimen_16"
+        android:layout_marginLeft="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/border_shape"
+        android:foregroundGravity="center_horizontal|center_vertical"
+        android:text="@string/add_to_profile"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_10" />
+
+
+</LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

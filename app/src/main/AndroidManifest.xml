@@ -209,7 +209,6 @@
             android:name=".Pathsalalist"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".PatasalaName"
             android:screenOrientation="portrait"
@@ -222,7 +221,6 @@
             android:name=".Pathsala_Rules"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Upcoming_Shivir"
             android:screenOrientation="portrait"
@@ -235,30 +233,29 @@
             android:name=".Shivir_Registration"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".SigninActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme.Base"
-            />
-
-        <activity android:name=".ProfileActivity"
+            android:theme="@style/MyMaterialTheme.Base" />
+        <activity
+            android:name=".ProfileActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme.Base"
-            />
-        <activity android:name=".UploadPhoto"
+            android:theme="@style/MyMaterialTheme.Base" />
+        <activity
+            android:name=".UploadPhoto"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".Password"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Password"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-
-        <activity android:name=".BasicDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BasicDetailsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme.Base"
-            />
+            android:theme="@style/MyMaterialTheme.Base" />
+        <activity android:name=".ContactDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base" ></activity>
     </application>
 
 </manifest>

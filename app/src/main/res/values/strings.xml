@@ -171,13 +171,13 @@
     <string name="Upload_photo">उपलोआड फोटो</string>
     <string name="contact_details">"संपर्क विवरण"</string>
     <string name="Education">"शिक्षा"</string>
-    <string name="Business">"व्यवसाय, नौकरी, विशेष दक्षता विवरण"</string>
+    <string name="Business">व्यवसाय</string>
 
     <string name="Family_head">"Family Head ??"</string>
     <string name="Update_details">Update Details</string>
     <string name="Name">"*Name"</string>
     <string name="Mother_Name">"*Mother Name"</string>
-    <string name="Address">"*Address"</string>
+    <string name="Address">"*पता"</string>
     <string name="Addressline2">"*Address line2"</string>
     <string name="Age">*Age</string>
     <string name="Gender">*Gender</string>
@@ -193,5 +193,15 @@
     <string name="sadasya">सदस्य</string>
     <string name="postal_address">पत्र व्यवहार पता</string>
 
-
+    <string name="Postal_address">पत्र व्यवहार पता</string>
+    <string name="postaladdress_subtext">सामान्य विवरण में दिए गए पते के अलावा यदि आपसे सम्पर्क अथवा पत्र व्यवहार हेतु कोई अन्य पता है, तो कृपया यहाँ से प्रोफ़ायल में जोड़े</string>
+    <string name="Description">*विवरण</string>
+    <string name="add_to_profile">प्रोफाइल मे जोड़ो</string>
+    <string name="post">*पोस्ट</string>
+    <string name="districh">*ज़िला</string>
+    <string name="City">*शहर</string>
+    <string name="Pin">*पिन कोड</string>
+    <string name="state">*राज्य </string>
+    <string name="country">*देश </string>
+    <string name="addresstype">*पते का प्रकार </string>
 </resources>
