@@ -118,6 +118,18 @@
         <item name="colorPrimaryDark">@color/statusbarcolor</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-
+    <style name="skipButton" parent="android:Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:background">@drawable/skip_button_bg</item>
+    </style>
+    <style name="nextButton" parent="android:Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:background">@drawable/next_button_bg</item>
+    </style>
 </resources>

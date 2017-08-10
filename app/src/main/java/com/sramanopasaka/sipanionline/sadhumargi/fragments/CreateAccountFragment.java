@@ -270,7 +270,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
 
     @Override
     public void onCitySelected(String city) {
-
+            sCity.setText(city);
     }
 
     @Override

@@ -23,4 +23,7 @@
     <color name="Basic_details">#a1a6aa</color>
     <color name="update_profile">#358753</color>
 
+    <color name="profile_status_color">#DC492A</color>
+    <color name="profile_action_bar_color">#FD542F</color>
+
 </resources>

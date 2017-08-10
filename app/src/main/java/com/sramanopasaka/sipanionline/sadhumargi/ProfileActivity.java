@@ -98,7 +98,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, BasicDetailsActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",0);
                 startActivity(i);
 
             }

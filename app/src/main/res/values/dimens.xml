@@ -11,11 +11,13 @@
 
     <dimen name="sliding_text_size">18sp</dimen>
     <dimen name="small_text">14sp</dimen>
+    <dimen name="x_small_text">10sp</dimen>
     <dimen name="header_text">20sp</dimen>
     <dimen name="question_text">25sp</dimen>
     <dimen name="extra_small">5dp</dimen>
     <dimen name="small">7dp</dimen>
     <dimen name="medium">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
     <dimen name="large">15sp</dimen>
     <dimen name="extra_large">40dp</dimen>
     <dimen name="corner_radius">0dp</dimen>

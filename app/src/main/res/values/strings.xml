@@ -163,6 +163,8 @@
     <string name="thank_you">Thank you for Registration</string>
     <string name="next">"Next"</string>
     <string name="Basic_Details">"सामान्य विवरण"</string>
+    <string name="my_profile">My Profile</string>
+    <string name="add_photo">Add Photo</string>
     <string name="Password.">"पासवर्ड"</string>
     <string name="Logout">लोग आउट</string>
     <string name="Editprofile">"Edit Profile"</string>
