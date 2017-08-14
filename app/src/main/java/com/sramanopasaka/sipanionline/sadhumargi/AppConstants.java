@@ -9,4 +9,6 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 public class AppConstants {
 
     public static final String BASE_URL = "http://api.sabsjs.org/";
+
+    //http://members.sabsjs.org/app/basics
 }

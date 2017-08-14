@@ -4,10 +4,13 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.io.InputStreamReader;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 
 /**
  * Name    :   pranavjdev
@@ -36,7 +40,7 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getClient(AppConstants.BASE_URL).create(EndPointApi.class);
+        EndPointApi valYouAPI = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
         valYouAPI.doLogin(jsonObject).enqueue(new Callback<LoginResponse>() {
             @Override
@@ -90,7 +94,7 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getClient(AppConstants.BASE_URL).create(EndPointApi.class);
+        EndPointApi valYouAPI = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
         valYouAPI.doRegister(jsonObject).enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -131,6 +135,118 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void getBasicDetails(String memberId,String token) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        valYouAPI.getBasicDetails(memberId,token).enqueue(new Callback<BasicDetailsResponse>() {
+            @Override
+            public void onResponse(Call<BasicDetailsResponse> call, Response<BasicDetailsResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+               /* LoginResponse response1 = new LoginResponse();
+                if (response.body() != null) {
+                    response1.setLoginModel(response.body());
+
+                    response1.setStatus(true);
+
+                } else {
+                    response1.setStatus(false);
+                    if (!TextUtils.isEmpty(response.errorBody().toString())) {
+                        try {
+                            JSONObject jObjError = new JSONObject(convertStreamToString(response.errorBody().byteStream()));
+                            response1.setMessage(jObjError.getString("message"));
+                        } catch (Exception e) {
+                            response1.setMessage("Invalid Username or Password");
+                        }
+                    } else {
+                        response1.setMessage("Invalid Username or Password");
+
+                    }
+
+
+                }*/
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<BasicDetailsResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void updateBasicDetails(String memberId, String token, BasicDetailsData data) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        valYouAPI.updateBasicDetails(memberId,token,"update",data.getSalution(),data.getFirstName(),data.getMiddleName(),data.getLastName(),
+        data.getGuardianType(),data.getGuardianName(),data.getMotherName(),data.getAddress(),data.getCity(),data.getPincode(),data.getState(),data.getCountry(),data.getMobile(),data.getAlternateNumber(),
+                data.getWhatsappNumber(),data.getBirthDay(),data.getGender(),data.getBloodGroup(),data.getMaritalStatus(),data.getMarriageDate(),data.getChildCount(),data.getEmailAddress(),data.getIsHeadOfFamily()).enqueue(new Callback<UpdateBasicDetailsResponse>() {
+            @Override
+            public void onResponse(Call<UpdateBasicDetailsResponse> call, Response<UpdateBasicDetailsResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+               /* LoginResponse response1 = new LoginResponse();
+                if (response.body() != null) {
+                    response1.setLoginModel(response.body());
+
+                    response1.setStatus(true);
+
+                } else {
+                    response1.setStatus(false);
+                    if (!TextUtils.isEmpty(response.errorBody().toString())) {
+                        try {
+                            JSONObject jObjError = new JSONObject(convertStreamToString(response.errorBody().byteStream()));
+                            response1.setMessage(jObjError.getString("message"));
+                        } catch (Exception e) {
+                            response1.setMessage("Invalid Username or Password");
+                        }
+                    } else {
+                        response1.setMessage("Invalid Username or Password");
+
+                    }
+
+
+                }*/
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateBasicDetailsResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

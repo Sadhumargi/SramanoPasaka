@@ -14,12 +14,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dimen_10"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-
-
-
+        android:padding="@dimen/dimen_10">
 
 
         <LinearLayout
@@ -30,14 +27,13 @@
             android:weightSum="1">
 
             <CheckBox
+                android:id="@+id/isFamilyHead"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:id="@+id/chkbox2"
-                android:theme="@style/MyCheck"
                 android:text="@string/Family_head"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="?android:attr/textColorTertiary"
-                />
+                android:theme="@style/MyCheck" />
 
             <RadioGroup
 
@@ -49,7 +45,6 @@
 
                 <RadioButton
                     android:id="@+id/radio_ms"
-                    android:theme="@style/MyRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
@@ -57,46 +52,45 @@
                     android:shadowColor="@color/white"
                     android:text="@string/Ms"
                     android:textColor="@color/Basic_details"
-                    android:textSize="@dimen/large" />
+                    android:textSize="@dimen/large"
+                    android:theme="@style/MyRadio" />
 
                 <RadioButton
                     android:id="@+id/radio_mr"
-                    android:theme="@style/MyRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/Mr"
                     android:textColor="@color/Basic_details"
                     android:textSize="@dimen/large"
+                    android:theme="@style/MyRadio"
 
                     />
 
                 <RadioButton
                     android:id="@+id/radio_mrs"
-                    android:theme="@style/MyRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/Mrs"
                     android:textColor="@color/Basic_details"
-                    android:textSize="@dimen/large">
+                    android:textSize="@dimen/large"
+                    android:theme="@style/MyRadio">
 
                 </RadioButton>
 
             </RadioGroup>
 
 
-
-
             <EditText
                 android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/border_basicdetails"
                 android:hint="@string/name"
+                android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
@@ -116,32 +110,31 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/fab_margin"
+                    android:background="@drawable/border_basicdetails"
+                    android:drawableEnd="@drawable/downarrow"
+                    android:paddingBottom="@dimen/fab_margin"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
-                    android:paddingBottom="@dimen/fab_margin"
                     android:paddingTop="@dimen/fab_margin"
                     android:text="Father"
                     android:textColor="@color/Basic_details"
-                    android:drawableEnd="@drawable/downarrow"
-                    android:background="@drawable/border_basicdetails"
                     android:textSize="@dimen/large"
-                    android:textStyle="normal"
-                    />
+                    android:textStyle="normal" />
 
 
                 <EditText
+                    android:id="@+id/father"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/father"
-                    android:maxLength="10"
                     android:layout_below="@+id/radiogrp"
                     android:layout_margin="@dimen/fab_margin"
+                    android:background="@drawable/border_basicdetails"
+                    android:maxLength="10"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:textStyle="normal"
-                    android:textSize="@dimen/large"
                     android:textColor="@color/Basic_details"
                     android:textCursorDrawable="@drawable/cursor_basicdetails"
-                    android:background="@drawable/border_basicdetails"/>
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
             </LinearLayout>
 
 
@@ -149,104 +142,101 @@
                 android:id="@+id/adress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
                 android:hint="@string/Address"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
-                android:background="@drawable/border_basicdetails"
-                android:textColor="@color/Basic_details"
-                android:textColorHint="@color/Basic_details"
-                android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
-            <EditText
-                android:id="@+id/address2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/Basic_details"
+                android:textColorHint="@color/Basic_details"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/addressLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
                 android:hint="@string/Addressline2"
+                android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
-                android:background="@drawable/border_basicdetails"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="40"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
                 android:id="@+id/country"
-                android:hint="@string/select_country"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textStyle="normal"
-                android:textSize="@dimen/large"
-                android:editable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/border_basicdetails"
-                android:textColor="@color/Basic_details"
-                android:textColorHint="@color/Basic_details"
-                android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:drawableEnd="@drawable/downarrow"
-                />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="60"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:id="@+id/state"
-                android:hint="@string/select_state"
-                android:paddingBottom="@dimen/dimen_10"
                 android:editable="false"
-                android:textStyle="normal"
-                android:textSize="@dimen/large"
-                android:background="@drawable/border_basicdetails"
+                android:hint="@string/select_country"
+                android:maxLength="40"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                android:drawableEnd="@drawable/downarrow"/>
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
             <EditText
+                android:id="@+id/state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/city"
-                android:maxLength="40"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/selectcity"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textStyle="normal"
-                android:textSize="@dimen/large"
                 android:background="@drawable/border_basicdetails"
+                android:drawableEnd="@drawable/downarrow"
+                android:editable="false"
+                android:hint="@string/select_state"
+                android:maxLength="60"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                android:drawableEnd="@drawable/downarrow"/>
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
             <EditText
+                android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
-                android:maxLength="6"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:drawableEnd="@drawable/downarrow"
+                android:hint="@string/selectcity"
+                android:maxLength="40"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/Basic_details"
+                android:textColorHint="@color/Basic_details"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <EditText
                 android:id="@+id/pincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:hint="@string/pincode"
+                android:maxLength="6"
                 android:paddingBottom="@dimen/dimen_10"
-                android:textStyle="normal"
-                android:textSize="@dimen/large"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/birth_date"
@@ -254,102 +244,99 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
                 android:drawableEnd="@android:drawable/ic_menu_my_calendar"
                 android:hint="@string/birthdate"
                 android:inputType="date"
                 android:paddingBottom="@dimen/dimen_10"
-                android:background="@drawable/border_basicdetails"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
+
             <EditText
                 android:id="@+id/Age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/Age"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
                 android:background="@drawable/border_basicdetails"
+                android:hint="@string/Age"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
 
             <EditText
                 android:id="@+id/Gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/Gender"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
                 android:background="@drawable/border_basicdetails"
+                android:hint="@string/Gender"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
             <EditText
-                android:id="@+id/Bloodgrp"
+                android:id="@+id/bloodgrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/Bloodgrp"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
                 android:background="@drawable/border_basicdetails"
+                android:hint="@string/Bloodgrp"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
             <EditText
                 android:id="@+id/maritual_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="50"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/Maritalstatus"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
                 android:background="@drawable/border_basicdetails"
+                android:hint="@string/Maritalstatus"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
-                />
-
-
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
 
             <EditText
+                android:id="@+id/mobile_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/mobile_number"
-                android:maxLength="10"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/border_basicdetails"
                 android:hint="@string/mobile_number"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:paddingBottom="@dimen/dimen_10"
-                android:textStyle="normal"
-                android:textSize="@dimen/large"
                 android:textColor="@color/Basic_details"
                 android:textColorHint="@color/Basic_details"
-                android:textCursorDrawable="@drawable/cursor_basicdetails"/>
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/email"
@@ -426,8 +413,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/large"
-                android:textStyle="normal"
-                />
+                android:textStyle="normal" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

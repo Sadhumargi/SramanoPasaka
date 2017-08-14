@@ -17,7 +17,7 @@ public class SadhuMargiDialogue extends AlertDialog.Builder {
 
     public SadhuMargiDialogue(Context context) {
         //Here's the magic..dialog
-        super(context, R.style.AppTheme);
+        super(context, R.style.AlertDialogStyle);
 
 //        super.setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
 //            @Override

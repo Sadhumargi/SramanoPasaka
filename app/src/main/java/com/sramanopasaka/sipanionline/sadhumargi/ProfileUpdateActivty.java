@@ -31,7 +31,6 @@ public class ProfileUpdateActivty extends AppCompatActivity {
     private RelativeLayout contactDetailsView = null;
     private RelativeLayout educationView = null;
     private RelativeLayout businessView = null;
-    private FloatingActionButton fab = null;
 
     private ImageView basicDetailsImg = null;
     private ImageView uploadPhotoImg = null;
@@ -78,7 +77,6 @@ public class ProfileUpdateActivty extends AppCompatActivity {
         businessLeft = findViewById(R.id.businessLeft);
         basicRight = findViewById(R.id.basicRight);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
         basicDetaisView.setTag(0);
         uploadPhotoView.setTag(1);
         contactDetailsView.setTag(2);

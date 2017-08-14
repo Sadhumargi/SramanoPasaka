@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
@@ -57,6 +58,7 @@ public class UploadPhotoFragment extends BaseFragment {
     private static final int CAPTURE_PICTURE_REQUESTCODE = 2222;
     private String tempfileName = "avatar.jpg";
     public static final String IMAGE_DIRECTORY_NAME = "Sadhumargi";
+    private ImageView photo = null;
     public static UploadPhotoFragment newInstance() {
         return new UploadPhotoFragment();
     }
@@ -71,6 +73,8 @@ public class UploadPhotoFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        photo = (ImageView) view.findViewById(R.id.photo);
 
         view.findViewById(R.id.uploadPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,22 +289,13 @@ public class UploadPhotoFragment extends BaseFragment {
                 imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
                     @Override
                     public void onCompressedImage(ProfileImage profileImage) {
-                        // format to be added.
-                        // MyProfileActivity.this.mProfileImage = profileImage.imageString;
-                        // MyProfileActivity.this.changeProfile(profileImage.image);
+                         UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
                         Log.e("----",""+profileImage.imageString);
                     }
                 });
                 imageCompressionAsyncTask.execute("file:////" + selectedFilePath);
 
-                File imgFile = new File(selectedFilePath);
 
-                if ( imgFile.exists() ) {
-
-                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-
-                }
 
 
 
@@ -310,7 +305,7 @@ public class UploadPhotoFragment extends BaseFragment {
         } else if ( requestCode == CAPTURE_PICTURE_REQUESTCODE ) {
             File f = new File(Environment.getExternalStorageDirectory()
                     .toString());
-            if ( f != null ) {
+            if ( f != null && f.listFiles()!=null &&  f.listFiles().length >0){
                 for (File temp : f.listFiles()) {
                     if ( temp.getName().equals(tempfileName) ) {
                         f = temp;
@@ -318,18 +313,22 @@ public class UploadPhotoFragment extends BaseFragment {
                     }
                 }
                 final String filePath = f.getAbsolutePath();
-                Log.e("FilePath", filePath);
-                try {
-                    Bitmap imagebitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
-
-                } catch (Exception e) {
-                    Log.e("ImageException", e.getMessage());
-                }
-
+                ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
+                imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
+                    @Override
+                    public void onCompressedImage(ProfileImage profileImage) {
+                        UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
+                    }
+                });
+                imageCompressionAsyncTask.execute("file:////" + filePath);
 
 
             }
         }
+    }
+
+    public void changeProfilerPicture(Bitmap bitmap){
+        photo.setImageBitmap(bitmap);
     }
 
 }

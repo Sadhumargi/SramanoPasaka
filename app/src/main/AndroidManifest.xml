@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.ACCESS_MOCK_LOCATION"
         tools:ignore="MockLocation" />
@@ -254,7 +255,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
         <activity
-            android:name=".ContactDetailsActivity"
+            android:name=".PostalAddressActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
         android:theme="@style/MyMaterialTheme.Base"
