@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <!--UI for business-->
+
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="@string/business_top_text"
+android:textColor="@color/white"
+android:textSize="@dimen/large"
+android:background="@color/wallet_holo_blue_light"
+android:padding="@dimen/dimen_5dp"
+/>
+
+
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/edt_business"
+android:layout_below="@+id/radiogrp"
+android:layout_margin="@dimen/fab_margin"
+android:paddingBottom="@dimen/dimen_10"
+android:textStyle="normal"
+android:textSize="@dimen/large"
+android:hint="@string/edt_business"
+android:textColor="@color/black"
+android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+android:textCursorDrawable="@drawable/cursor_basicdetails"
+android:background="@drawable/border_basicdetails"/>
+
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/edt_Organizationname"
+android:layout_below="@+id/radiogrp"
+android:layout_margin="@dimen/fab_margin"
+android:paddingBottom="@dimen/dimen_10"
+android:textStyle="normal"
+android:textSize="@dimen/large"
+android:hint="@string/edt_Organizationname"
+android:textColor="@color/black"
+android:textCursorDrawable="@drawable/cursor_basicdetails"
+android:background="@drawable/border_basicdetails"/>
+
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/edt_role"
+android:layout_below="@+id/radiogrp"
+android:layout_margin="@dimen/fab_margin"
+android:paddingBottom="@dimen/dimen_10"
+android:textStyle="normal"
+android:textSize="@dimen/large"
+android:hint="@string/edt_role"
+android:textColor="@color/black"
+android:textCursorDrawable="@drawable/cursor_basicdetails"
+android:background="@drawable/border_basicdetails"/>
+
+
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/edt_start_year"
+android:layout_below="@+id/radiogrp"
+android:layout_margin="@dimen/fab_margin"
+android:paddingBottom="@dimen/dimen_10"
+android:textStyle="normal"
+android:textSize="@dimen/large"
+android:hint="@string/edt_start_year"
+android:textColor="@color/black"
+android:textCursorDrawable="@drawable/cursor_basicdetails"
+android:background="@drawable/border_basicdetails"/>
+
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/edt_end_year"
+android:layout_below="@+id/radiogrp"
+android:layout_margin="@dimen/fab_margin"
+android:paddingBottom="@dimen/dimen_10"
+android:textStyle="normal"
+android:textSize="@dimen/large"
+android:hint="@string/edt_end_year"
+android:textColor="@color/black"
+android:textCursorDrawable="@drawable/cursor_basicdetails"
+android:background="@drawable/border_basicdetails"/>
+
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="@string/tv_business_buttom_txt"
+android:textColor="@color/white"
+android:textSize="@dimen/large"
+android:background="@color/wallet_holo_blue_light"
+android:padding="@dimen/dimen_5dp"
+android:layout_margin="@dimen/fab_margin"/>
+
+<Button
+android:id="@+id/btn_add_business"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:layout_margin="@dimen/dimen_10"
+android:background="@drawable/border_shape"
+android:foregroundGravity="center_horizontal|center_vertical"
+android:text="@string/add_to_profile"
+android:textColor="@color/white"
+android:padding="@dimen/dimen_10" />
+
+</LinearLayout>
+
+    <!--END of UI for Business-->
