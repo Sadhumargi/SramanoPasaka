@@ -206,4 +206,134 @@
     <string name="state">*राज्य </string>
     <string name="country">*देश </string>
     <string name="addresstype">*पते का प्रकार </string>
+
+    <string name="Marks">अंक</string>
+    <string name="edt_educatn">*शिक्षा</string>
+    <string name="Institute">संस्थान</string>
+    <string name="year">वर्ष</string>
+
+    <string name="business_heading">व्यवसाय, नौकरी, विशेष दक्षता विवरण</string>
+    <string name="business_top_text">यदि आप किसी प्रकार के प्रोफ़ेशन से जुड़े हैं जैसे की डॉक्टर, वक़ील, CA आदि तो
+        व्यवसाय के नाम में प्रोफ़ेशन काउल्लेख करें। यदि आप स्वयं के नाम से अथवा फ़्रीलांस सलाहकार
+        के रूप में काम कर रहे हैं तो व्यवसाय के नाम में प्रोफ़ेशन के साथ Self Practice भरें।</string>
+    <string name="edt_business">*व्यवसाय</string>
+    <string name="edt_Organizationname">*नाम</string>
+    <string name="edt_role">भूमिका</string>
+    <string name="edt_start_year">आरम्भ वर्ष</string>
+    <string name="edt_end_year">समाप्ति वर्ष</string>
+    <string name="tv_business_buttom_txt">यदि वर्तमान में इसी व्यवसाय से सम्बंधित है, तो समाप्ति वर्ष को न भरें.</string>
+
+
+    <string name="achievment_header_txt">उल्लेखनीय उपलब्धियां</string>
+    <string name="Achievement_area">*क्षेत्र</string>
+    <string name="Achievement_Level">*स्तर</string>
+    <string name="Achievement_type">*प्रकार</string>
+    <string name="Achievement_details">*विवरण</string>
+
+    <string name="sadhsya_header">१८ वर्ष से कम उम्र के बच्चों का विवरण</string>
+    <string name="sadhaya_txt">आप द्वारा सामान्य विवरण के अंतर्गत बच्चों की संख्या 0 दी
+        गयी हैं। निम्न फ़ोरम द्वारा सभी अवयस्क बच्चों की जानकरी भरें। यदि आपके कोई अवयस्क बच्चें नहीं हैं,
+        तो आप यह चरण छोड़ कर आगे बढ़ सकते हैं।</string>
+
+
+    <string name="Religious_header">धार्मिक विवरण</string>
+    <string name="Religious_header2">दैनिक/साप्ताहिक त्याग,प्रत्याख्यान</string>
+
+    <string name="Tab1_Religious_Rule_">नियम/त्याग</string>
+
+    <string name="Religious_chkbx1">नवकार मंत्र माला</string>
+    <string name="Religious_chkbx2">स्वाध्याय</string>
+    <string name="Religious_chkbx3">संतदर्शन</string>
+    <string name="Religious_chkbx4">सामायिक</string>
+
+    <string name="Religious_chkbx5">नवकारसी</string>
+
+    <string name="Religious_chkbx6">प्रतिक्रमण</string>
+    <string name="Religious_chkbx7">चौविहार</string>
+    <string name="Religious_chkbx8">अन्य</string>
+    <string name="Religious_edt">विशिष्ट त्याग / प्रत्याख्यान</string>
+
+
+    <string name="Tab_2_Religious__pariksha">परीक्षाएं </string>
+
+    <string name="Religious_tab2_header">धार्मिक परीक्षाएं एवं संस्था का नाम</string>
+
+    <string name="edt_exam_name">परीक्षा का नाम</string>
+    <string name="edt_institute">संस्था का नाम</string>
+
+
+    <string name="Tab3_Religious_Rule_">ज्ञान</string>
+    <string name="Tab3_Religious_chkbx1">नवकार मंत्र</string>
+    <string name="Tab3_Religious_chkbx2">सामायिक</string>
+    <string name="Tab3_Religious_chkbx3">प्रतिक्रमण</string>
+    <string name="Tab3_Religious_chkbx4">25 बोल व अन्य थोकड़े</string>
+    <string name="Tab3_Religious_chkbx5">शास्त्र ज्ञान</string>
+    <string name="Tab3_Religious_chkbx6">विशेष ज्ञान</string>
+
+
+    <string name="Sangh_header">संघ सम्बन्धी रुचि</string>
+
+
+    <string name="Sangh_tab1_interest">रूचि</string>
+    <string name="Sangh_tab1_brieftxt">निम्नलिखत कार्यों में आपकी रूचि:</string>
+
+    <string name="Sangh_tab1_title1">संगठन</string>
+
+    <string name="Sangh_tab1_chkbx1">कंप्यूटर ऑपरेटर</string>
+    <string name="Sangh_tab1_chkbx2">प्रोजेक्ट संचालन</string>
+    <string name="Sangh_tab1_chkbx3">संघ विकास हेतु कोष एकत्र करना</string>
+    <string name="Sangh_tab1_chkbx4">प्रवास कार्यक्रम</string>
+    <string name="Sangh_tab1_chkbx5">वक्तृत्व कला के ट्रेनर बनना</string>
+    <string name="Sangh_tab1_chkbx6">संघ व्यवस्था सम्बन्धी फ़ोन करना</string>
+    <string name="Sangh_tab1_chkbx7">संघ प्रवृतियों के लिए योजना तैयार करना</string>
+
+    <string name="Sangh_tab1_title2">धार्मिक</string>
+
+    <string name="Sangh_tab1_chkbx8">संत चिकित्सा सेवा</string>
+    <string name="Sangh_tab1_chkbx9">विहार सेवा</string>
+    <string name="Sangh_tab1_chkbx10">गोचरी सेवा</string>
+    <string name="Sangh_tab1_chkbx11">जप-तप संचालन</string>
+    <string name="Sangh_tab1_chkbx12">स्वाध्यायी सेवा</string>
+    <string name="Sangh_tab1_chkbx13">धार्मिक स्थल कार सेवा</string>
+    <string name="Sangh_tab1_chkbx14"> शिविरो/धार्मिक कार्य का मैनेजमेंट</string>
+    <string name="Sangh_tab1_chkbx15">धार्मिक लेखन/संपादन</string>
+    <string name="Sangh_tab1_chkbx16">धार्मिक ड्राइंग बनाना</string>
+    <string name="Sangh_tab1_chkbx17"> स्वयं का धार्मिक ज्ञान बढ़ाना</string>
+    <string name="Sangh_tab1_chkbx18">शिविरो/पाठशाला में पढ़ाना</string>
+    <string name="Sangh_tab1_chkbx19"> स्थानीय समता शाखा संचालन</string>
+
+    <string name="Sangh_tab1_title3">सामाजिक</string>
+
+    <string name="Sangh_tab1_chkbx20">मानव सेवा</string>
+    <string name="Sangh_tab1_chkbx21">चिकित्सा शिविर</string>
+    <string name="Sangh_tab1_chkbx22">शाकाहार प्रचार</string>
+    <string name="Sangh_tab1_chkbx23">साहित्य सेवा</string>
+    <string name="Sangh_tab1_chkbx24"> प्याऊ संचालन</string>
+    <string name="Sangh_tab1_chkbx25">भाषण देना/सभा संचालन</string>
+    <string name="Sangh_tab1_chkbx26"> स्कूल छात्रावास एवं चिकित्सालय का संचालन</string>
+    <string name="Sangh_tab1_chkbx27">स्कूलो में व्यसन मुक्ति कार्यक्रम करना</string>
+    <string name="Sangh_tab1_chkbx28">वेबसाइट/इंटरनेट पर धार्मिक ग्रुप का संचालन</string>
+
+
+    <string name="Sangh_tab2">शोरिसंघसेवए</string>
+
+    <string name="Sangh_tab2_brieftxt">आप श्रीसंघ में किस प्रकार से सेवाए दे सकते है:</string>
+
+    <string name="Sangh_tab2_chkbx29">समय से</string>
+    <string name="Sangh_tab2_chkbx30">अर्थ से</string>
+    <string name="Sangh_tab2_chkbx31">अपने स्वय के कार्यालय में बैठकर</string>
+    <string name="Sangh_tab2_chkbx32">अनुभव से</string>
+    <string name="Sangh_tab2_chkbx33">विचारो से</string>
+
+
+    <string name="Sangh_tab3_Socialpost">सामाजिक पद</string>
+    <string name="Sangh_tab3_brieftxt">श्री अ. भा. सा. संघ सहित अन्य सामाजिक संस्था से सम्बन्ध/पद :</string>
+
+    <string name="Sangh_tab3_edt1">*संस्थान का नाम</string>
+    <string name="Sangh_tab3_edt2">*पद</string>
+    <string name="Sangh_tab3_edt3">अपने स्वय के कार्यालय में बैठकर</string>
+    <string name="Sangh_tab3_edt_from">कब से</string>
+    <string name="Sangh_tab3_edt_to">कब तक</string>
+
+
 </resources>
