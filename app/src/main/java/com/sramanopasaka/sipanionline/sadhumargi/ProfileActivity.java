@@ -75,11 +75,12 @@ public class ProfileActivity extends AppCompatActivity {
         userNameTxt = (TextView) findViewById(R.id.userNameTxt);
         locationTxt = (TextView) findViewById(R.id.locationTxt);
 
+
         contactDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,ContactDetailsActivity.class);
+                Intent i=new Intent(ProfileActivity.this,PostalAddressActivity.class);
                 startActivity(i);
             }
         });

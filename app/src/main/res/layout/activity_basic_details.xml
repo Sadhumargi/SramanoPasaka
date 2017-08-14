@@ -51,7 +51,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/black"
-                android:src="@drawable/round"
                 android:padding="@dimen/dimen_10"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center_vertical"

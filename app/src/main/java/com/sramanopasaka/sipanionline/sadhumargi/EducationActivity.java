@@ -29,4 +29,6 @@ public class EducationActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>शिक्षा विवरण</font>"));
     }
+
+
 }
