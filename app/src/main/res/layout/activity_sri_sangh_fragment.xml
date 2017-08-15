@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Pathsala_background"
+    android:orientation="vertical"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.SriSanghFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_srisangh"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:textStyle="normal"
+        android:textSize="@dimen/large"
+        android:text="@string/Sangh_tab2_brieftxt"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_5dp"
+        android:background="@color/wallet_holo_blue_light"
+
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab2_chkbx29"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx29"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab2_chkbx30"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx30"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab2_chkbx32"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx32"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab2_chkbx31"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx31"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:id="@+id/Sangh_tab2_chkbx33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx33"
+                android:textColor="@color/black"/>
+
+
+
+        </LinearLayout>
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sanghtab2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_10"
+        android:background="@drawable/border_shape"
+        android:foregroundGravity="center_horizontal|center_vertical"
+        android:text="@string/add_to_profile"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_10" />
+
+</LinearLayout>

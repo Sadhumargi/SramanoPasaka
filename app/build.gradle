@@ -83,12 +83,11 @@ dependencies {
     compile "com.android.support:cardview-v7:$project.supportLibraryVersion"
 
     //Country picker
-    
 
     //Retrofit
     compile "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
-    
+
     //orm database
     compile 'de.hdodenhof:circleimageview:1.2.1'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
@@ -109,6 +108,15 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     testCompile 'junit:junit:4.12'
 }
+
+
+
+
+
+
+
+
+
 
 
 

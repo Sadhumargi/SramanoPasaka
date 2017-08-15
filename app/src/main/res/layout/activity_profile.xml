@@ -17,7 +17,7 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="wrap_content"
             android:background="@color/background"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:id="@+id/profiletool"
@@ -149,7 +149,7 @@
         android:layout_gravity="center|left"
         android:gravity="center|left"/>
 
-    <TextView
+   <!-- <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:layout_marginTop="@dimen/dimen_10"
@@ -162,7 +162,7 @@
         android:background="@color/white"
         android:drawableRight="@drawable/rightarrow"
         android:layout_gravity="center|left"
-        android:gravity="center|left"/>
+        android:gravity="center|left"/>-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                 android:drawableRight="@drawable/rightarrow"
                 android:layout_gravity="center|left"
                 android:gravity="center|left"/>
-            <TextView
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_50"
                 android:layout_marginTop="@dimen/dimen_10"
@@ -238,7 +238,7 @@
                 android:background="@color/white"
                 android:drawableRight="@drawable/rightarrow"
                 android:layout_gravity="center|left"
-                android:gravity="center|left"/>
+                android:gravity="center|left"/>-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_50"

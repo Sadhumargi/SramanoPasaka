@@ -6,57 +6,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/Pathsala_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.AchivementsActivity">
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.SrisanghFragment">
 
-    <android.support.design.widget.AppBarLayout
+
+    <!--UI for Religious Viewepager2-->
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
-
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:id="@+id/achievmenttool">
-
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-
-
-    <!--UI for Achivements-->
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Achievement_area"
-        android:layout_below="@+id/radiogrp"
+        android:id="@+id/religioustab2_txt"
         android:layout_marginTop="@dimen/dimen_16"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
+        android:background="@color/wallet_holo_blue_light"
         android:textStyle="normal"
         android:textSize="@dimen/large"
-        android:hint="@string/Achievement_area"
-        android:textColor="@color/black"
-        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+        android:text="@string/Religious_tab2_header"
+        android:textColor="@color/white"
+        android:paddingBottom="@dimen/dimen_5dp"
+        android:padding="@dimen/dimen_5dp"
+
+        />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Achievement_level"
-        android:layout_below="@+id/radiogrp"
+        android:id="@+id/religioustab2_exam"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
         android:textSize="@dimen/large"
-        android:hint="@string/Achievement_Level"
+        android:hint="@string/edt_exam_name"
         android:textColor="@color/black"
-        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
         android:background="@drawable/border_basicdetails"/>
 
@@ -64,34 +43,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievement_type"
+        android:id="@+id/religioustab2_institute"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
         android:textSize="@dimen/large"
-        android:hint="@string/Achievement_type"
-        android:textColor="@color/black"
-        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/details_achievement"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Achievement_details"
+        android:hint="@string/edt_institute"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
         android:background="@drawable/border_basicdetails"/>
 
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievement_year"
+        android:id="@+id/religioustab2_year"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -104,7 +70,7 @@
 
 
     <Button
-        android:id="@+id/btn_achievments"
+        android:id="@+id/btn_Religious2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -115,7 +81,7 @@
         android:textColor="@color/white"
         android:padding="@dimen/dimen_10" />
 
-    <!--END of UI for Achievements-->
+    <!--END of UI for Religious Viewepager2-->
 
 
 </LinearLayout>

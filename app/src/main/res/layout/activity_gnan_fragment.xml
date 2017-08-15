@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.GnanFragment">
+
+
+    <!--UI for Religious Viewepager3-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/religioustab3_txt"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:textStyle="normal"
+        android:textSize="@dimen/large"
+        android:text="@string/Religious_header2"
+        android:textColor="@color/white"
+        android:background="@color/wallet_holo_blue_light"
+        android:paddingBottom="@dimen/dimen_5dp"
+        android:padding="@dimen/dimen_5dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab3_religious_chk1"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx1"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab3religious_chk4"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx4"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab3religious_chk3"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx3"
+                android:textColor="@color/black"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab3religious_chk2"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx2"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:id="@+id/tab3religious_chk5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx5"
+                android:textColor="@color/black"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab3religious_chk6"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Tab3_Religious_chkbx6"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_Religioustab3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_10"
+        android:background="@drawable/border_shape"
+        android:foregroundGravity="center_horizontal|center_vertical"
+        android:text="@string/add_to_profile"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_10" />
+
+
+
+    <!--END of UI for Religious Viewepager3-->
+
+</LinearLayout>
