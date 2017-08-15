@@ -11,316 +11,48 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_50"
+        android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:id="@+id/postaladdresstool"
+            android:id="@+id/profilesanghtool"
             >
 
         </android.support.v7.widget.Toolbar>
 
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab_sangh"
+            android:background="@color/white"
+            app:tabMode="fixed">
+
+        </android.support.design.widget.TabLayout>
+
     </android.support.design.widget.AppBarLayout>
 
 
-    <ScrollView
+
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-
-    <!--UI for Sangh-->
-
-    <!--EUI for Sangh Viewpager1-->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Sanghtab1_txt"
-        android:layout_margin="@dimen/fab_margin"
-        android:padding="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:text="@string/Sangh_tab1_brieftxt"
-        android:textColor="@color/black"
-
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Sangh_tab1_title1"
-        android:layout_margin="@dimen/fab_margin"
-        android:padding="@dimen/dimen_10"
-        android:textStyle="bold"
-        android:textSize="@dimen/large"
-        android:text="@string/Sangh_tab1_title1"
-        android:textColor="@color/black"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:id="@+id/vp_sangh"
         >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx1"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx1"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx4"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx4"
-                />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx3"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx3"
-                />
-
-            <CheckBox
-                android:id="@+id/rSangh_tab1_chkbx5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx5" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx2"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx2"
-                />
-
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx6"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx6"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Sangh_tab1_title2"
-        android:layout_margin="@dimen/fab_margin"
-        android:padding="@dimen/dimen_10"
-        android:textStyle="bold"
-        android:textSize="@dimen/large"
-        android:text="@string/Sangh_tab1_title2"
-        android:textColor="@color/black"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx9"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx9"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx10"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx10"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx11"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx11"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx12"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx12"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx13"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx13"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx14"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx14"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx15"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx15"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx17"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx17"
-                />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx16"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx16"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx8"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx8"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx19"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx19"
-                />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab1_chkbx18"
-                android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab1_chkbx18"
-                />
-        </LinearLayout>
-    </LinearLayout>
+    </android.support.v4.view.ViewPager>
 
 
 
 
-    <Button
-        android:id="@+id/btn_Sanghtab1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/dimen_10"
-        android:background="@drawable/border_shape"
-        android:foregroundGravity="center_horizontal|center_vertical"
-        android:text="@string/add_to_profile"
-        android:textColor="@color/white"
-        android:padding="@dimen/dimen_10" />
 
-    <!--EUI for Sangh Viewpager1-->
 
-        </LinearLayout>
 
-    </ScrollView>
+
+
 
 </LinearLayout>
