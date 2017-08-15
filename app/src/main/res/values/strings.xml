@@ -336,7 +336,13 @@
     <string name="Sangh_tab3_edt_to">कब तक</string>
 
     <string name="profilesadasya_header">१८ वर्ष से कम उम्र के बच्चों का विवरण</string>
-    <string name="Profilesadhasya_text">आप द्वारा सामान्य विवरण के अंतर्गत बच्चों की संख्या 0 दी गयी हैं। निम्न फ़ोरम द्वारा सभी अवयस्क बच्चों की जानकरी भरें। यदि आपके कोई अवयस्क बच्चें नहीं हैं, तो आप यह चरण छोड़ कर आगे बढ़ सकते हैं।</string>
+    <string name="Profilesadhasya_text">आप द्वारा सामान्य विवरण के अंतर्गत बच्चों की संख्या 0 दी गयी हैं।
+        निम्न फ़ोरम द्वारा सभी अवयस्क बच्चों की जानकरी भरें। यदि आपके कोई अवयस्क बच्चें नहीं हैं, तो आप यह चरण छोड़ कर आगे बढ़ सकते हैं।</string>
+
+    <string name="password">पासवर्ड</string>
+    <string name="current_password">*वर्तमान पासवर्ड</string>
+    <string name="New_password">*नवीन पासवर्ड</string>
+    <string name="Reset_password">पासवर्ड परिवर्तित करे</string>
 
 
 </resources>

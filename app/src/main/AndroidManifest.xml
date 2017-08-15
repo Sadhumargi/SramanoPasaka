@@ -298,11 +298,7 @@
             android:name=".ProfileSadhasyaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
-        <activity android:name=".RuchiFragment" />
-        <activity android:name=".SrisanghFragment" />
-        <activity android:name=".GnanFragment" />
-        <activity android:name=".SriSanghFragment" />
-        <activity android:name=".SamajikpadFragment"></activity>
+
     </application>
 
 </manifest>
