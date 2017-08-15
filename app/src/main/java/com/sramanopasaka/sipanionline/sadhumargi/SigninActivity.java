@@ -78,6 +78,16 @@ public class SigninActivity extends AppCompatActivity implements TabselectionLis
         tabLayout.getTabAt(index).select();
     }
 
+    @Override
+    public void onSelectNextTab() {
+
+    }
+
+    @Override
+    public void enableNestedScrolling(boolean status) {
+
+    }
+
     static class ViewPagerAdapter extends FragmentPagerAdapter {
 
         List<Fragment> mFragmentList=new ArrayList<>();

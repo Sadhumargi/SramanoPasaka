@@ -135,9 +135,11 @@ public class ProfileActivity extends AppCompatActivity {
         postalAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i=new Intent(ProfileActivity.this,PostalAddressActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",2);
                 startActivity(i);
+
+
             }
         });
 
@@ -145,7 +147,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, UploadPhoto.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",1);
                 startActivity(i);
             }
         });

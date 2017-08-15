@@ -4,12 +4,16 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 
 import java.io.BufferedReader;
@@ -198,6 +202,36 @@ public class RequestProcessor {
 
     }
 
+    public void getAddressList(String memberId,String token) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        valYouAPI.getAddressList(memberId,token).enqueue(new Callback<AddressListResponse>() {
+            @Override
+            public void onResponse(Call<AddressListResponse> call, Response<AddressListResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddressListResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
     public void updateBasicDetails(String memberId, String token, BasicDetailsData data) {
 
 
@@ -247,6 +281,76 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<UpdateBasicDetailsResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void addAddress(String memberId, String token, Address data) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        valYouAPI.addAddress(memberId,token,"add",data.getAddress1(),data.getAddress2(),data.getPost(),data.getDistrict(),
+                data.getCity(),data.getPincode(),data.getState(),data.getCountry(),data.getAddress_type()).enqueue(new Callback<AddAddressResponse>() {
+            @Override
+            public void onResponse(Call<AddAddressResponse> call, Response<AddAddressResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddAddressResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+    public void removeAddress(String memberId, String token, Address data) {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        valYouAPI.removeAddress(memberId,token,"delete",data.getId()).enqueue(new Callback<DeleteAddressResponse>() {
+            @Override
+            public void onResponse(Call<DeleteAddressResponse> call, Response<DeleteAddressResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteAddressResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

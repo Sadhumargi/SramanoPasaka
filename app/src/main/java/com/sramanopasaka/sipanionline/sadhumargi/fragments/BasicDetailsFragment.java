@@ -28,6 +28,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetails
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
@@ -77,6 +78,8 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     @Bind(R.id.mobile_number)
     EditText mobileNumber;
 
+    private TabselectionListner tabselectionListner = null;
+
     public static BasicDetailsFragment newInstance() {
         return new BasicDetailsFragment();
     }
@@ -92,7 +95,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        tabselectionListner = (TabselectionListner) getActivity();
 
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
@@ -148,6 +151,8 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
                         } else {
                             Toast.makeText(getActivity(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
                         }
+                        //Moving to the next page.
+                        tabselectionListner.onSelectNextTab();
                     }else{
                         if (!TextUtils.isEmpty(response.getMessage())) {
                             Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();

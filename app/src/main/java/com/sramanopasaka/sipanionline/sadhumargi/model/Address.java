@@ -8,23 +8,33 @@ package com.sramanopasaka.sipanionline.sadhumargi.model;
 
 public class Address {
 
- private String address1;
+    private String id = null;
 
- private String address2;
+    public String getId() {
+        return id;
+    }
 
- private String post;
+    public void setId(String id) {
+        this.id = id;
+    }
 
- private String district;
+    private String address1;
 
- private String city;
+    private String address2;
 
- private String pincode;
+    private String post;
 
- private String state;
+    private String district;
 
- private String country;
+    private String city;
 
- private String address_type;
+    private String pincode;
+
+    private String state;
+
+    private String country;
+
+    private String address_type;
 
     public Address(String address1, String address2, String post, String district, String city, String pincode, String state, String country, String address_type) {
         this.address1 = address1;

@@ -7,4 +7,8 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 public interface TabselectionListner {
 
     void onSelectTab(int index);
+
+    void onSelectNextTab();
+
+    void enableNestedScrolling(boolean status);
 }

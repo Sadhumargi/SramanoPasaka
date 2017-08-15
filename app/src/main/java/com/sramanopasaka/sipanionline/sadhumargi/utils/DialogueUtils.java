@@ -38,4 +38,25 @@ public class DialogueUtils {
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);*/
 
     }
+
+    public static void showDialogOKCancel(Activity activity,String title, String msg, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
+        final SadhuMargiDialogue dialog =
+                new SadhuMargiDialogue(activity);
+        dialog.setTitle(title);
+        dialog.setMessage(msg);
+//        dialog.setNegativeButtonWithListener();
+//        dialog.setOnCancelListener(cancelListener);
+        dialog.setPositiveButton("Ok", okListener);
+        dialog.setNegativeButton("Cancel", cancelListener);
+        AlertDialog alertDialog = dialog.show();
+        alertDialog.getWindow().getDecorView().setSystemUiVisibility(8);
+
+        alertDialog.getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        //  | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+    }
 }

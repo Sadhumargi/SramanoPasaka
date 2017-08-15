@@ -1,7 +1,10 @@
 package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -31,6 +34,10 @@ public interface EndPointApi {
     Call<BasicDetailsResponse> getBasicDetails(@Field("member_id") String memberId, @Field("app_token") String appTokewn);
 
     @FormUrlEncoded
+    @POST("addresses")
+    Call<AddressListResponse> getAddressList(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+    @FormUrlEncoded
     @POST("basics")
     Call<UpdateBasicDetailsResponse> updateBasicDetails(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                         @Field("method") String method, @Field("salution") String salution,
@@ -45,6 +52,20 @@ public interface EndPointApi {
                                                         @Field("blood_group") String blood_group, @Field("marital_status") String marital_status,
                                                         @Field("marriage_date") String marriage_date, @Field("child_count") String child_count,
                                                         @Field("email_address") String email_address, @Field("is_head_of_family") String is_head_of_family);
+
+    @FormUrlEncoded
+    @POST("add_remove_address")
+    Call<AddAddressResponse> addAddress(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                        @Field("method") String method, @Field("address1") String address1,
+                                        @Field("address2") String address2, @Field("post") String post,
+                                        @Field("district") String district, @Field("city") String city,
+                                        @Field("pincode") String pincode, @Field("state") String state,
+                                        @Field("country") String country, @Field("address_type") String address_type);
+
+    @FormUrlEncoded
+    @POST("add_remove_address")
+    Call<DeleteAddressResponse> removeAddress(@Field("member_id") String memberId, @Field("app_token") String appToken,@Field("method") String method,@Field("address_id") String address_id);
+
 
 
 }

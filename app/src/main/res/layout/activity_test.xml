@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:fillViewport="true">
+        <FrameLayout
+            android:id="@+id/contentPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/mainAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:elevation="4dp"
+            app:contentScrim="?attr/colorPrimary">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/back"
+                app:layout_collapseMode="parallax"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/mainToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="pin"
+                app:title="Toll bae"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextColor="@color/profile_action_bar_color"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardLayout"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/small">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:id="@+id/basicDetaisView"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium">
+
+                                <ImageView
+                                    android:id="@+id/basicDetailsImg"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:padding="@dimen/medium"
+                                    android:src="@drawable/basic_detail" />
+
+                                <View
+                                    android:id="@+id/basicRight"
+                                    android:layout_width="35dp"
+                                    android:layout_marginLeft="-10dp"
+                                    android:layout_height="2dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/basicDetailsImg"
+                                    android:background="#000000" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/basicDetailsImg"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/margin_15"
+                                    android:text="Basic Details"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/x_small_text" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/uploadPhotoView"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium">
+
+                                <ImageView
+                                    android:id="@+id/uploadPhotoImg"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:padding="@dimen/medium"
+                                    android:src="@drawable/upload" />
+
+                                <View
+                                    android:id="@+id/uploadLeft"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginRight="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@+id/uploadPhotoImg"
+                                    android:background="#000000" />
+
+                                <View
+
+                                    android:id="@+id/uploadRight"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/uploadPhotoImg"
+                                    android:background="#000000" />
+
+                                <TextView
+                                    android:id="@+id/basicDetailsTxt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/uploadPhotoImg"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/margin_15"
+                                    android:text="Upload Photo"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/x_small_text" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/contactDetailsView"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium">
+
+                                <ImageView
+                                    android:id="@+id/contactDetailsImage"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:padding="@dimen/medium"
+                                    android:src="@drawable/contact_detail" />
+
+                                <View
+                                    android:id="@+id/contactLeft"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginRight="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@+id/contactDetailsImage"
+                                    android:background="#000000" />
+
+                                <View
+                                    android:id="@+id/contactRight"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/contactDetailsImage"
+                                    android:background="#000000" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/contactDetailsImage"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/margin_15"
+                                    android:text="Contact Details"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/x_small_text" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/educationView"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium">
+
+                                <ImageView
+                                    android:id="@+id/educationImage"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:padding="@dimen/medium"
+                                    android:src="@drawable/education_icon" />
+
+                                <View
+                                    android:id="@+id/educationLeft"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginRight="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@+id/educationImage"
+                                    android:background="#000000" />
+
+                                <View
+                                    android:id="@+id/educationRight"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/educationImage"
+                                    android:background="#000000" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/educationImage"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/margin_15"
+                                    android:text="Education"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/x_small_text" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/businessView"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/medium">
+
+                                <ImageView
+                                    android:id="@+id/businessImage"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:padding="@dimen/medium"
+                                    android:src="@drawable/business" />
+
+                                <View
+                                    android:id="@+id/businessLeft"
+                                    android:layout_width="35dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginRight="-10dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@+id/businessImage"
+                                    android:background="#000000" />
+                                <!-- <view
+                                     android:layout_width="20dp"
+                                     android:layout_height="2dp"
+                                     android:layout_centerVertical="true"
+                                     android:layout_toEndOf="@+id/businessImage"
+                                     android:background="#000000" />-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/businessImage"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/margin_15"
+                                    android:text="Business"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/x_small_text" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <!-- <RelativeLayout
+                             android:layout_width="match_parent"
+                             android:visibility="gone"
+                             android:layout_height="wrap_content"
+                             android:layout_margin="@dimen/medium">
+
+                             <ImageView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_alignParentLeft="true"
+                                 android:layout_centerVertical="true"
+                                 android:background="@drawable/black_bg"
+                                 android:padding="@dimen/medium"
+                                 android:src="@drawable/aiirplane" />
+
+                             <view
+                                 android:layout_width="40dp"
+                                 android:layout_height="2dp"
+                                 android:layout_centerVertical="true"
+                                 android:background="#000000" />
+
+                             <ImageView
+                                 android:id="@+id/uploadPhotoImg"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/black_bg"
+                                 android:padding="@dimen/medium"
+                                 android:src="@drawable/round" />
+
+                             <view
+                                 android:id="@+id/uploadPhotoView"
+                                 android:layout_width="40dp"
+                                 android:layout_height="2dp"
+                                 android:layout_centerVertical="true"
+                                 android:layout_toEndOf="@+id/uploadPhotoImg"
+                                 android:background="#000000" />
+
+                             <ImageView
+                                 android:id="@+id/contactDetailsImage"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_toEndOf="@+id/uploadPhotoView"
+                                 android:background="@drawable/black_bg"
+                                 android:padding="@dimen/medium"
+                                 android:src="@drawable/call" />
+
+                             <view
+                                 android:id="@+id/contactDetailsView"
+                                 android:layout_width="40dp"
+                                 android:layout_height="2dp"
+                                 android:layout_centerVertical="true"
+                                 android:layout_toEndOf="@+id/contactDetailsImage"
+                                 android:background="#000000" />
+
+                             <ImageView
+                                 android:id="@+id/educationImage"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_toEndOf="@+id/contactDetailsView"
+                                 android:background="@drawable/black_bg"
+                                 android:padding="@dimen/medium"
+                                 android:src="@drawable/education_" />
+
+                             <view
+                                 android:id="@+id/educationView"
+                                 android:layout_width="40dp"
+                                 android:layout_height="2dp"
+                                 android:layout_centerVertical="true"
+                                 android:layout_toEndOf="@+id/educationImage"
+                                 android:background="#000000" />
+
+                             <ImageView
+                                 android:id="@+id/businessImage"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_toEndOf="@+id/educationView"
+                                 android:background="@drawable/black_bg"
+                                 android:padding="@dimen/medium"
+                                 android:src="@drawable/business" />
+
+                             <view
+                                 android:id="@+id/businessView"
+                                 android:layout_width="40dp"
+                                 android:layout_height="2dp"
+                                 android:layout_centerVertical="true"
+                                 android:layout_toEndOf="@+id/businessImage"
+                                 android:background="#000000" />
+
+
+
+                             <TextView
+                                 android:id="@+id/uploadPhotoTxt"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_below="@+id/uploadPhotoImg"
+                                 android:layout_marginTop="@dimen/medium"
+                                 android:text="@string/Upload_photo"
+                                 android:textColor="@color/black"
+                                 android:textSize="@dimen/x_small_text" />
+
+                         </RelativeLayout>-->
+
+                    </HorizontalScrollView>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cardLayout"
+                    android:layout_marginTop="@dimen/small">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/medium">
+
+                        <TextView
+                            android:id="@+id/detailsTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/medium"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/x_small_text" />
+
+                        <Button
+                            android:id="@+id/skipButton"
+                            style="@style/skipButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/detailsTxt"
+                            android:text="Skip" />
+
+                        <Button
+                            android:id="@+id/nextButton"
+                            style="@style/nextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/detailsTxt"
+                            android:layout_toStartOf="@+id/skipButton"
+                            android:text="Next" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:layout_anchor="@id/mainAppBar"
+        app:layout_anchorGravity="bottom|right"
+        android:src="@drawable/ic_add_white_24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="4dp"/>
+
+</android.support.design.widget.CoordinatorLayout>

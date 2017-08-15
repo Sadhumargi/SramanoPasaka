@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
 /**
  * Name    :   pranavjdev
@@ -24,19 +26,22 @@ import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
  * Email : pranavjaydev@gmail.com
  */
 
-public class ProfileUpdateActivty extends AppCompatActivity {
+public class ProfileUpdateActivty extends AppCompatActivity implements TabselectionListner {
 
     private RelativeLayout basicDetaisView = null;
     private RelativeLayout uploadPhotoView = null;
     private RelativeLayout contactDetailsView = null;
     private RelativeLayout educationView = null;
     private RelativeLayout businessView = null;
+    private RelativeLayout achievementDetailsView = null;
 
     private ImageView basicDetailsImg = null;
     private ImageView uploadPhotoImg = null;
     private ImageView contactDetailsImage = null;
     private ImageView educationImage = null;
     private ImageView businessImage = null;
+    private ImageView achievementDetailsImage = null;
+
 
     private View basicRight = null;
     private View businessLeft = null;
@@ -46,6 +51,11 @@ public class ProfileUpdateActivty extends AppCompatActivity {
     private View contactLeft = null;
     private View uploadRight = null;
     private View uploadLeft = null;
+    private View achievementLeft = null;
+    private View achievementRight = null;
+
+    private NestedScrollView nestedScrollView = null;
+
 
     private int MAX_DETAILS = 5;
 
@@ -56,17 +66,22 @@ public class ProfileUpdateActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
 
+        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+
         basicDetaisView = (RelativeLayout) findViewById(R.id.basicDetaisView);
         uploadPhotoView = (RelativeLayout) findViewById(R.id.uploadPhotoView);
         contactDetailsView = (RelativeLayout) findViewById(R.id.contactDetailsView);
         educationView = (RelativeLayout) findViewById(R.id.educationView);
         businessView = (RelativeLayout) findViewById(R.id.businessView);
+        achievementDetailsView = (RelativeLayout) findViewById(R.id.achievementDetailsView);
+
 
         basicDetailsImg = (ImageView) findViewById(R.id.basicDetailsImg);
         uploadPhotoImg = (ImageView) findViewById(R.id.uploadPhotoImg);
         contactDetailsImage = (ImageView) findViewById(R.id.contactDetailsImage);
         educationImage = (ImageView) findViewById(R.id.educationImage);
         businessImage = (ImageView) findViewById(R.id.businessImage);
+        achievementDetailsImage = (ImageView) findViewById(R.id.achievementDetailsImage);
 
         uploadLeft = findViewById(R.id.uploadLeft);
         uploadRight = findViewById(R.id.uploadRight);
@@ -76,18 +91,22 @@ public class ProfileUpdateActivty extends AppCompatActivity {
         educationRight = findViewById(R.id.educationRight);
         businessLeft = findViewById(R.id.businessLeft);
         basicRight = findViewById(R.id.basicRight);
+        achievementLeft = findViewById(R.id.achievementLeft);
+        achievementRight = findViewById(R.id.achievementRight);
 
         basicDetaisView.setTag(0);
         uploadPhotoView.setTag(1);
         contactDetailsView.setTag(2);
-        educationView.setTag(3);
-        businessView.setTag(4);
+        achievementDetailsView.setTag(3);
+        educationView.setTag(4);
+        businessView.setTag(5);
 
         basicDetaisView.setOnClickListener(sectionSelecredListner);
         uploadPhotoView.setOnClickListener(sectionSelecredListner);
         contactDetailsView.setOnClickListener(sectionSelecredListner);
         educationView.setOnClickListener(sectionSelecredListner);
         businessView.setOnClickListener(sectionSelecredListner);
+        achievementDetailsView.setOnClickListener(sectionSelecredListner);
 
 
         try {
@@ -100,12 +119,13 @@ public class ProfileUpdateActivty extends AppCompatActivity {
         switch (currentTab) {
             case 0:
                 setFragment(BasicDetailsFragment.newInstance(), "");
-
                 break;
             case 1:
                 setFragment(UploadPhotoFragment.newInstance(), "");
                 break;
-//
+            case 2:
+                setFragment(ContactDetailsFragment.newInstance(), "");
+                break;
             default:
                 setFragment(BasicDetailsFragment.newInstance(), "");
                 break;
@@ -137,12 +157,15 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 contactDetailsImage.setImageResource(R.drawable.contact_detail);
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
+                achievementDetailsImage.setImageResource(R.drawable.achievement);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
@@ -153,12 +176,15 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 contactDetailsImage.setImageResource(R.drawable.contact_detail);
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
+                achievementDetailsImage.setImageResource(R.drawable.achievement);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
@@ -169,12 +195,15 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
+                achievementDetailsImage.setImageResource(R.drawable.achievement);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
@@ -183,6 +212,26 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
                 uploadPhotoImg.setImageResource(R.drawable.upload_b);
                 contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                educationImage.setImageResource(R.drawable.education_icon);
+                businessImage.setImageResource(R.drawable.business);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
+
+                basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                break;
+            case 4:
+                basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
+                uploadPhotoImg.setImageResource(R.drawable.upload_b);
+                contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
                 educationImage.setImageResource(R.drawable.education_icon_b);
                 businessImage.setImageResource(R.drawable.business);
 
@@ -191,14 +240,17 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 break;
-            case 4:
+            case 5:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
                 uploadPhotoImg.setImageResource(R.drawable.upload_b);
                 contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
                 educationImage.setImageResource(R.drawable.education_icon_b);
                 businessImage.setImageResource(R.drawable.business_b);
 
@@ -207,6 +259,8 @@ public class ProfileUpdateActivty extends AppCompatActivity {
                 uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -224,6 +278,7 @@ public class ProfileUpdateActivty extends AppCompatActivity {
     };
 
     private void showPages(int tag){
+        currentTab = tag;
         switch (tag) {
             case 0:
                 setFragment(BasicDetailsFragment.newInstance(), "");
@@ -257,5 +312,26 @@ public class ProfileUpdateActivty extends AppCompatActivity {
         // fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.contentPanel, fragment, tag);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onSelectTab(int index) {
+        if(index<MAX_DETAILS){
+            currentTab = index;
+            showPages(currentTab);
+        }
+    }
+
+    @Override
+    public void onSelectNextTab() {
+        if(currentTab+1<MAX_DETAILS){
+            currentTab++;
+            showPages(currentTab);
+        }
+    }
+
+    @Override
+    public void enableNestedScrolling(boolean status) {
+           // nestedScrollView.setNestedScrollingEnabled(status);
     }
 }
