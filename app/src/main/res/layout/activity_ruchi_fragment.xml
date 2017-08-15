@@ -1,0 +1,426 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.RuchiFragment">
+
+
+    <!--UI for Sangh-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"> <!--EUI for Sangh Viewpager1-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Sanghtab1_txt"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:padding="@dimen/dimen_10"
+        android:textStyle="normal"
+        android:background="@color/wallet_holo_blue_light"
+        android:textSize="@dimen/large"
+        android:text="@string/Sangh_tab1_brieftxt"
+        android:textColor="@color/white"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Sangh_tab1_title1"
+        android:layout_margin="@dimen/fab_margin"
+        android:padding="@dimen/dimen_10"
+        android:textStyle="bold"
+        android:textSize="@dimen/large"
+        android:text="@string/Sangh_tab1_title1"
+        android:textColor="@color/black"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx1"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx1"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx4"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx4"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx3"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx3"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:id="@+id/rSangh_tab1_chkbx5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx5"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx2"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx2"
+                android:textColor="@color/black"
+                />
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx6"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx6"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Sangh_tab1_chkbx7"
+            android:layout_margin="@dimen/fab_margin"
+            android:text="@string/Sangh_tab1_chkbx7"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Sangh_tab1_title2"
+        android:layout_margin="@dimen/fab_margin"
+        android:padding="@dimen/dimen_10"
+        android:textStyle="bold"
+        android:textSize="@dimen/large"
+        android:text="@string/Sangh_tab1_title2"
+        android:textColor="@color/black"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx9"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx9"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx10"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx10"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx11"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx11"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx12"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx12"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx16"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx16"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx8"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx8"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx13"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx13"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx14"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx14"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx15"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx15"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_chkbx17"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx17"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:id="@+id/Sangh_tab1_chkbx19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx19"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/Sangh_tab1_chkbx18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab1_chkbx18"
+                android:textColor="@color/black" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab1_title3"
+                android:layout_margin="@dimen/fab_margin"
+                android:padding="@dimen/dimen_10"
+                android:textStyle="bold"
+                android:textSize="@dimen/large"
+                android:text="@string/Sangh_tab1_title3"
+                android:textColor="@color/black"
+                />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx20"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx20"
+                    android:textColor="@color/black"
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx21"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx21"
+                    android:textColor="@color/black"
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx24"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx24"
+                    android:textColor="@color/black"
+                    />
+
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Sangh_tab1_chkbx22"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:text="@string/Sangh_tab1_chkbx22"
+                        android:textColor="@color/black"
+                        />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Sangh_tab1_chkbx23"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:text="@string/Sangh_tab1_chkbx23"
+                        android:textColor="@color/black"
+                        />
+
+                    <CheckBox
+                        android:layout_width="162dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Sangh_tab1_chkbx25"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:text="@string/Sangh_tab1_chkbx25"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx26"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx26"
+                    android:textColor="@color/black"
+                    />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx27"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx27"
+                    android:textColor="@color/black"
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sangh_tab1_chkbx28"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:text="@string/Sangh_tab1_chkbx28"
+                    android:textColor="@color/black"
+                    />
+
+
+
+    <Button
+        android:id="@+id/btn_Sanghtab1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_10"
+        android:background="@drawable/border_shape"
+        android:foregroundGravity="center_horizontal|center_vertical"
+        android:text="@string/add_to_profile"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_10" />
+
+        </LinearLayout>
+
+    <!--EUI for Sangh Viewpager1-->
+
+    </ScrollView>
+
+</LinearLayout>
+

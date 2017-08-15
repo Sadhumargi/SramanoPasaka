@@ -58,14 +58,14 @@ public class ProfileActivity extends AppCompatActivity {
         basicDetails = (TextView) findViewById(R.id.basic_details);
         password = (TextView) findViewById(R.id.password);
         logOut = (TextView) findViewById(R.id.logout);
-        contactDetails= (TextView) findViewById(R.id.contact_details);
+        //contactDetails= (TextView) findViewById(R.id.contact_details);
         postalAddress= (TextView) findViewById(R.id.postal_address);
         education= (TextView) findViewById(R.id.education);
         sadhasya= (TextView) findViewById(R.id.sadasya);
         sangh= (TextView) findViewById(R.id.sangh);
         dharmik= (TextView) findViewById(R.id.dharmik);
         achievements= (TextView) findViewById(R.id.achievments);
-        vidheshiYatra= (TextView) findViewById(R.id.Vidhesiyatra);
+       // vidheshiYatra= (TextView) findViewById(R.id.Vidhesiyatra);
         business= (TextView) findViewById(R.id.business);
 
 
@@ -75,8 +75,64 @@ public class ProfileActivity extends AppCompatActivity {
         userNameTxt = (TextView) findViewById(R.id.userNameTxt);
         locationTxt = (TextView) findViewById(R.id.locationTxt);
 
+        sadhasya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        contactDetails.setOnClickListener(new View.OnClickListener() {
+                Intent i=new Intent(ProfileActivity.this,ProfileSadhasyaActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        dharmik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(ProfileActivity.this,DharmikActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        sangh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(ProfileActivity.this,SanghActivity.class);
+                startActivity(i);
+            }
+        });
+
+        achievements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(ProfileActivity.this,AchivementsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(ProfileActivity.this,BusinessActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+        education.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(ProfileActivity.this,EducationActivity.class);
+                startActivity(i);
+            }
+        });
+
+        postalAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

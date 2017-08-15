@@ -34,7 +34,7 @@ public class PostalAddressActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>पत्र व्यवहार पता</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>१८ वर्ष से कम उम्र के बच्चों का विवरण</font>"));
 
 
 

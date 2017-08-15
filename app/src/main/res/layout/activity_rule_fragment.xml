@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Pathsala_background"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.RuchiFragment">
+
+
+    <!--UI for Religious Viewepager1-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/religioustab1_txt"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:textStyle="normal"
+        android:textSize="@dimen/large"
+        android:text="@string/Religious_header2"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_5dp"
+        android:background="@color/wallet_holo_blue_light"
+        android:layout_below="@+id/tool_dharmik"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk1"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx1"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk4"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx4"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk7"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx7"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Sangh_tab2_chkbx29"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Sangh_tab2_chkbx29"
+                android:textColor="@color/black"
+                />
+
+            <CheckBox
+                android:id="@+id/Sangh_tab2_chkbx295"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="नवकारसी"
+                android:textColor="@color/black"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk8"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx8"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk3"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx3"
+                android:textColor="@color/black"
+                />
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/religious_chk6"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx6"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/religious_txt"
+        android:layout_margin="@dimen/fab_margin"
+        android:paddingBottom="@dimen/dimen_10"
+        android:textStyle="normal"
+        android:textSize="@dimen/large"
+        android:hint="@string/Religious_edt"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/cursor_basicdetails"
+        android:background="@drawable/border_basicdetails"/>
+
+    <Button
+        android:id="@+id/btn_Religioustab1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_10"
+        android:background="@drawable/border_shape"
+        android:foregroundGravity="center_horizontal|center_vertical"
+        android:text="@string/add_to_profile"
+        android:textColor="@color/white"
+        android:padding="@dimen/dimen_10" />
+
+    <!--END of UI for Religious Viewepager1-->
+
+
+</LinearLayout>

@@ -15,7 +15,7 @@ public class EducationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_education);
 
-        toolbar = (Toolbar) findViewById(R.id.profiletool);
+        toolbar = (Toolbar) findViewById(R.id.educationtool);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
