@@ -262,7 +262,7 @@
     <string name="edt_institute">संस्था का नाम</string>
 
 
-    <string name="Tab3_Religious_Rule_">ज्ञान</string>
+    <string name="Tab3_Religious_gyan_">ज्ञान</string>
     <string name="Tab3_Religious_chkbx1">नवकार मंत्र</string>
     <string name="Tab3_Religious_chkbx2">सामायिक</string>
     <string name="Tab3_Religious_chkbx3">प्रतिक्रमण</string>
@@ -315,7 +315,7 @@
     <string name="Sangh_tab1_chkbx28">वेबसाइट/इंटरनेट पर धार्मिक ग्रुप का संचालन</string>
 
 
-    <string name="Sangh_tab2">शोरिसंघसेवए</string>
+    <string name="Sangh_tab2">श्रीसंघ सेवए</string>
 
     <string name="Sangh_tab2_brieftxt">आप श्रीसंघ में किस प्रकार से सेवाए दे सकते है:</string>
 
@@ -331,9 +331,12 @@
 
     <string name="Sangh_tab3_edt1">*संस्थान का नाम</string>
     <string name="Sangh_tab3_edt2">*पद</string>
-    <string name="Sangh_tab3_edt3">अपने स्वय के कार्यालय में बैठकर</string>
+    <string name="Sangh_tab3_edt3">*स्तर</string>
     <string name="Sangh_tab3_edt_from">कब से</string>
     <string name="Sangh_tab3_edt_to">कब तक</string>
+
+    <string name="profilesadasya_header">१८ वर्ष से कम उम्र के बच्चों का विवरण</string>
+    <string name="Profilesadhasya_text">आप द्वारा सामान्य विवरण के अंतर्गत बच्चों की संख्या 0 दी गयी हैं। निम्न फ़ोरम द्वारा सभी अवयस्क बच्चों की जानकरी भरें। यदि आपके कोई अवयस्क बच्चें नहीं हैं, तो आप यह चरण छोड़ कर आगे बढ़ सकते हैं।</string>
 
 
 </resources>
