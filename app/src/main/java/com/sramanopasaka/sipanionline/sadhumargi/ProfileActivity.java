@@ -169,7 +169,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, Password.class);
+                Intent i = new Intent(ProfileActivity.this, PasswordChangeActivity.class);
                 startActivity(i);
 
             }
@@ -179,7 +179,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, Password.class);
+                Intent i = new Intent(ProfileActivity.this, PasswordChangeActivity.class);
                 startActivity(i);
 
             }

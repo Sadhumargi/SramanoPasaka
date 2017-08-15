@@ -1,6 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
+import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
@@ -64,7 +65,17 @@ public interface EndPointApi {
 
     @FormUrlEncoded
     @POST("add_remove_address")
-    Call<DeleteAddressResponse> removeAddress(@Field("member_id") String memberId, @Field("app_token") String appToken,@Field("method") String method,@Field("address_id") String address_id);
+    Call<DeleteAddressResponse> removeAddress(@Field("member_id") String memberId,
+                                              @Field("app_token") String appToken,
+                                              @Field("method") String method,
+                                              @Field("address_id") String address_id);
+
+    @FormUrlEncoded
+    @POST("password_change")
+    Call<PasswordChangeResponse> passwordChange(@Field("member_id") String memberId,
+                                               @Field("app_token") String appToken,
+                                               @Field("current_password") String currentPassword,
+                                               @Field("new_password") String newPassword);
 
 
 

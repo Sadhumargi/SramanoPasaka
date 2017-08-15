@@ -63,7 +63,7 @@ android {
 
         staging {
             buildConfigField 'String', 'MEMBER_API', '"http://members.sabsjs.org/app/"'
-            buildConfigField 'String', 'AUTH_API', '"http://api.sabsjs.org/"'
+            buildConfigField 'String', 'AUTH_API','"http://api.sabsjs.org/"'
             //buildConfigField 'String', 'HOST', '"http://ec2-13-229-63-76.ap-southeast-1.compute.amazonaws.com"'
            // resValue 'string', 'GOOGLE_APP_ID', "557666299717"
         }
@@ -120,16 +120,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:7.0.1'
 }
-
-
-
-
-
-
-
-
-
-
 
 
 apply plugin: 'com.google.gms.google-services'

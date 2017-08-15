@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
+import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
@@ -328,14 +329,45 @@ public class RequestProcessor {
     public void removeAddress(String memberId, String token, Address data) {
 
 
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        valYouAPI.removeAddress(memberId, token, "delete", data.getId()).enqueue(new Callback<DeleteAddressResponse>() {
+            @Override
+            public void onResponse(Call<DeleteAddressResponse> call, Response<DeleteAddressResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteAddressResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+    }
+
+    public void passwordChange(String memberId, String token, String currentPassword,String newPassword) {
+
+
 
         EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.removeAddress(memberId,token,"delete",data.getId()).enqueue(new Callback<DeleteAddressResponse>() {
+        valYouAPI.passwordChange(memberId,token,currentPassword,newPassword).enqueue(new Callback<PasswordChangeResponse>() {
             @Override
-            public void onResponse(Call<DeleteAddressResponse> call, Response<DeleteAddressResponse> response) {
+            public void onResponse(Call<PasswordChangeResponse> call, Response<PasswordChangeResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
@@ -350,7 +382,7 @@ public class RequestProcessor {
             }
 
             @Override
-            public void onFailure(Call<DeleteAddressResponse> call, Throwable t) {
+            public void onFailure(Call<PasswordChangeResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
