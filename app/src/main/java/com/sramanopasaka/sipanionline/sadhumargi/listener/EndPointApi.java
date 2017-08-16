@@ -5,15 +5,19 @@ import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -52,6 +56,10 @@ public interface EndPointApi {
     @POST("businesses")
     Call<BusinessListResponse> getBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
+    @FormUrlEncoded
+    @POST("dharmik")
+    Call<DharmikDetailsResponse> getDharmikDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
 
     @FormUrlEncoded
     @POST("basics")
@@ -79,11 +87,34 @@ public interface EndPointApi {
                                         @Field("country") String country, @Field("address_type") String address_type);
 
     @FormUrlEncoded
+    @POST("add_update_promises")
+    Call<UpdatePromiseResponse> updatePromises(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                           @Field("method") String method, @Field("navkar_mantra") String navkar_mantra,
+                                           @Field("swadhyay") String swadhyay, @Field("sant_darshan") String sant_darshan,
+                                           @Field("samayik") String samayik, @Field("navkarsi") String navkarsi,
+                                           @Field("pratikraman") String pratikraman, @Field("chovihar") String chovihar,
+                                           @Field("others") String others, @Field("special") String special);
+    @FormUrlEncoded
+    @POST("add_update_knowledge")
+    Call<UpdateKnowledgeResponse> updateKnowledge(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                                 @Field("method") String method, @Field("navkar_mantra") String navkar_mantra,
+                                                 @Field("samayik") String samayik, @Field("pratikraman") String pratikraman,
+                                                 @Field("bol_thokde") String bol_thokde, @Field("shastra_gyan") String shastra_gyan,
+                                                 @Field("vishesh_gyan") String vishesh_gyan);
+
+    @FormUrlEncoded
     @POST("add_remove_achievement")
     Call<AddAchievementResponse> addAchievements(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                  @Field("method") String method, @Field("achievement_sector") String achievement_sector,
                                                  @Field("achievement_level") String achievement_level, @Field("achievement_type") String achievement_type,
                                                  @Field("achievement_detail") String achievement_detail, @Field("achievement_year") String achievement_year);
+
+    @FormUrlEncoded
+    @POST("add_remove_business")
+    Call<AddBusinessResponse> addBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                          @Field("method") String method, @Field("business_type") String business_type,
+                                          @Field("business_name") String business_name, @Field("business_role") String business_role,
+                                          @Field("business_start_year") String business_start_year);
 
     @FormUrlEncoded
     @POST("add_remove_address")

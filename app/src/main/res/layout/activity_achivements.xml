@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/Pathsala_background"
+    android:orientation="vertical"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.AchivementsActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/achievmenttool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:id="@+id/achievmenttool">
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -27,80 +26,102 @@
 
     <!--UI for Achivements-->
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_style"
         android:id="@+id/achievementArea"
+        android:layout_margin="@dimen/fab_margin"/>
+
+  <!--  <EditText
+        android:id="@+id/achievementArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/radiogrp"
-        android:layout_marginTop="@dimen/dimen_16"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Achievement_area"
-        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/border_basicdetails"
         android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+        android:hint="@string/Achievement_area"
+        android:paddingBottom="@dimen/dimen_10"
+        android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />-->
 
-    <EditText
+    <!--<EditText
+        android:id="@+id/achievementLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievementLevel"
         android:layout_below="@+id/radiogrp"
         android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
+        android:background="@drawable/border_basicdetails"
+        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
         android:hint="@string/Achievement_Level"
+        android:paddingBottom="@dimen/dimen_10"
         android:textColor="@color/black"
-        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />-->
 
-
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_style"
+        android:id="@+id/achievementLevel"
+        android:layout_margin="@dimen/fab_margin"/>
+
+
+   <!-- <EditText
         android:id="@+id/achievementType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Achievement_type"
-        android:textColor="@color/black"
+        android:background="@drawable/border_basicdetails"
         android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+        android:hint="@string/Achievement_type"
+        android:paddingBottom="@dimen/dimen_10"
+        android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />
+-->
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/spinner_style"
+        android:id="@+id/achievementType"
+        android:layout_margin="@dimen/fab_margin"/>
+    <EditText
         android:id="@+id/detailsAchievement"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Achievement_details"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievementYear"
         android:layout_margin="@dimen/fab_margin"
+        android:background="@drawable/border_basicdetails"
+        android:hint="@string/Achievement_details"
+        android:paddingLeft="@dimen/small"
         android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/year"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />
 
+    <EditText
+        android:id="@+id/achievementYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:paddingLeft="@dimen/small"
+        android:background="@drawable/border_basicdetails"
+        android:hint="@string/year"
+        android:paddingBottom="@dimen/dimen_10"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/cursor_basicdetails"
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />
 
 
     <Button
@@ -111,9 +132,9 @@
         android:layout_margin="@dimen/dimen_10"
         android:background="@drawable/border_shape"
         android:foregroundGravity="center_horizontal|center_vertical"
+        android:padding="@dimen/dimen_10"
         android:text="@string/add_to_profile"
-        android:textColor="@color/white"
-        android:padding="@dimen/dimen_10" />
+        android:textColor="@color/white" />
 
     <!--END of UI for Achievements-->
 

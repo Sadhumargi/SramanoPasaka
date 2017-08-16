@@ -272,57 +272,57 @@ public class UploadPhotoFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if ( requestCode == REQUEST_PICK_GALLERY ) {
-            Uri selectedFileUri = data.getData();
-            if ( selectedFileUri == null )
-                Toast.makeText(
-                        getActivity(),
-                        "File type not supported",
-                        Toast.LENGTH_LONG).show();
-            else {
+        if(resultCode == getActivity().RESULT_OK) {
+            if (requestCode == REQUEST_PICK_GALLERY) {
+                Uri selectedFileUri = data.getData();
+                if (selectedFileUri == null)
+                    Toast.makeText(
+                            getActivity(),
+                            "File type not supported",
+                            Toast.LENGTH_LONG).show();
+                else {
 
-                final String selectedFilePath = FileUtils.getPath(
-                        getActivity(), selectedFileUri);
-                Log.e("selectedFilePath", selectedFilePath);
+                    final String selectedFilePath = FileUtils.getPath(
+                            getActivity(), selectedFileUri);
+                    Log.e("selectedFilePath", selectedFilePath);
 
-                ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
-                imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
-                    @Override
-                    public void onCompressedImage(ProfileImage profileImage) {
-                         UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
-                        Log.e("----",""+profileImage.imageString);
-                    }
-                });
-                imageCompressionAsyncTask.execute("file:////" + selectedFilePath);
-
-
-
+                    ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
+                    imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
+                        @Override
+                        public void onCompressedImage(ProfileImage profileImage) {
+                            UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
+                            Log.e("----", "" + profileImage.imageString);
+                        }
+                    });
+                    imageCompressionAsyncTask.execute("file:////" + selectedFilePath);
 
 
-            }
-
-
-        } else if ( requestCode == CAPTURE_PICTURE_REQUESTCODE ) {
-            File f = new File(Environment.getExternalStorageDirectory()
-                    .toString());
-            if ( f != null && f.listFiles()!=null &&  f.listFiles().length >0){
-                for (File temp : f.listFiles()) {
-                    if ( temp.getName().equals(tempfileName) ) {
-                        f = temp;
-                        break;
-                    }
                 }
-                final String filePath = f.getAbsolutePath();
-                ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
-                imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
-                    @Override
-                    public void onCompressedImage(ProfileImage profileImage) {
-                        UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
+
+
+            } else if (requestCode == CAPTURE_PICTURE_REQUESTCODE) {
+                File f = new File(Environment.getExternalStorageDirectory()
+                        .toString());
+                if (f != null && f.listFiles() != null && f.listFiles().length > 0) {
+                    for (File temp : f.listFiles()) {
+                        if (temp.getName().equals(tempfileName)) {
+                            f = temp;
+                            break;
+                        }
                     }
-                });
-                imageCompressionAsyncTask.execute("file:////" + filePath);
+                    final String filePath = f.getAbsolutePath();
+                    ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
+                    imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
+                        @Override
+                        public void onCompressedImage(ProfileImage profileImage) {
+                            UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
+                            Log.e("Image---",""+profileImage.imageString);
+                        }
+                    });
+                    imageCompressionAsyncTask.execute("file:////" + filePath);
 
 
+                }
             }
         }
     }

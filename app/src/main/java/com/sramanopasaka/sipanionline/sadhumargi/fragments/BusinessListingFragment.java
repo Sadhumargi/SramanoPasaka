@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.AchivementsActivity;
+import com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.adapters.AchievementListAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.adapters.BusinessListAdapter;
@@ -26,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
@@ -56,6 +58,8 @@ public class BusinessListingFragment extends BaseFragment implements GUICallback
     @Bind(R.id.fab)
     FloatingActionButton fab;
 
+    private ActionBarUpdator actionBarUpdator = null;
+
     public static BusinessListingFragment newInstance() {
         return new BusinessListingFragment();
     }
@@ -71,10 +75,12 @@ public class BusinessListingFragment extends BaseFragment implements GUICallback
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        actionBarUpdator = (ActionBarUpdator) getActivity();
+        actionBarUpdator.onUpdateTitile(getString(R.string.Business));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AchivementsActivity.class);
+                Intent i = new Intent(getActivity(), BusinessActivity.class);
                 startActivity(i);
             }
         });

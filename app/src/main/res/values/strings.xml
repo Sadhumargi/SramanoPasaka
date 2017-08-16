@@ -344,5 +344,34 @@
     <string name="New_password">*नवीन पासवर्ड</string>
     <string name="Reset_password">पासवर्ड परिवर्तित करे</string>
 
-
+    <array name="business_type">
+        <item>Student</item>
+        <item>Govt. Job</item>
+        <item>Private Job</item>
+        <item>Teacher</item>
+        <item>Business</item>
+        <item>Industry</item>
+        <item>Profession</item>
+        <item>Housewife</item>
+        <item>Retired</item>
+        <item>Other</item>
+    </array>
+    <array name="achievement_sector">
+        <item>Politics</item>
+        <item>Business</item>
+        <item>Other</item>
+    </array>
+    <array name="achievement_level">
+        <item>Local</item>
+        <item>Regional</item>
+        <item>National</item>
+        <item>International</item>
+        <item>Other</item>
+    </array>
+    <array name="achievement_type">
+        <item>Post</item>
+        <item>Award</item>
+        <item>Felicitation</item>
+        <item>Other</item>
+    </array>
 </resources>

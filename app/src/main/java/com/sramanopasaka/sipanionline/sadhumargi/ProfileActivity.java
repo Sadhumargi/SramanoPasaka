@@ -108,7 +108,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,AchivementsActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",3);
                 startActivity(i);
             }
         });
@@ -117,7 +118,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,BusinessActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",5);
                 startActivity(i);
             }
         });

@@ -27,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
@@ -79,6 +80,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     EditText mobileNumber;
 
     private TabselectionListner tabselectionListner = null;
+    private ActionBarUpdator actionBarUpdator = null;
 
     public static BasicDetailsFragment newInstance() {
         return new BasicDetailsFragment();
@@ -96,6 +98,8 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         tabselectionListner = (TabselectionListner) getActivity();
+        actionBarUpdator = (ActionBarUpdator) getActivity();
+        actionBarUpdator.onUpdateTitile(getString(R.string.Basic_Details));
 
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {

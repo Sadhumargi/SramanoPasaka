@@ -1,10 +1,12 @@
-package com.sramanopasaka.sipanionline.sadhumargi;
+package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sramanopasaka.sipanionline.sadhumargi.R;
 
 public class ParikshaFragment extends android.support.v4.app.Fragment {
 

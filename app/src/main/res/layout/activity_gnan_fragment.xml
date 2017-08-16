@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/Pathsala_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.GnanFragment">
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.fragments.KnowledgeFragment">
 
 
     <!--UI for Religious Viewepager3-->
@@ -29,17 +29,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="2"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab3_religious_chk1"
+                android:id="@+id/navkar_mantra"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Tab3_Religious_chkbx1"
                 android:textColor="@color/black"
@@ -48,7 +50,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab3religious_chk4"
+                android:id="@+id/bol_thokde"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Tab3_Religious_chkbx4"
                 android:textColor="@color/black"
@@ -57,7 +59,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab3religious_chk3"
+                android:id="@+id/pratikraman"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Tab3_Religious_chkbx3"
                 android:textColor="@color/black"
@@ -67,21 +69,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab3religious_chk2"
+                android:id="@+id/samayik"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Tab3_Religious_chkbx2"
                 android:textColor="@color/black"
                 />
 
             <CheckBox
-                android:id="@+id/tab3religious_chk5"
+                android:id="@+id/shastra_gyan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
@@ -91,7 +94,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tab3religious_chk6"
+                android:id="@+id/vishesh_gyan"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Tab3_Religious_chkbx6"
                 android:textColor="@color/black"
@@ -102,7 +105,7 @@
 
 
     <Button
-        android:id="@+id/btn_Religioustab3"
+        android:id="@+id/updateKnowledge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

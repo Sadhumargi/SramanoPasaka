@@ -26,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
@@ -58,6 +59,7 @@ public class ContactDetailsFragment extends BaseFragment implements AddressListA
     FloatingActionButton fab;
 
     private TabselectionListner tabselectionListner = null;
+    private ActionBarUpdator actionBarUpdator = null;
 
 
     public static ContactDetailsFragment newInstance() {
@@ -77,6 +79,8 @@ public class ContactDetailsFragment extends BaseFragment implements AddressListA
         super.onActivityCreated(savedInstanceState);
         tabselectionListner = (TabselectionListner) getActivity();
         tabselectionListner.enableNestedScrolling(false);
+        actionBarUpdator = (ActionBarUpdator) getActivity();
+        actionBarUpdator.onUpdateTitile(getString(R.string.postal_address));
 
 
         fab.setOnClickListener(new View.OnClickListener() {

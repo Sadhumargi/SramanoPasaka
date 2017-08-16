@@ -5,22 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Pathsala_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/businesstool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            android:id="@+id/businesstool">
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -28,121 +27,130 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
+            <!--UI for business-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:background="@color/wallet_holo_blue_light"
+                android:padding="@dimen/dimen_5dp"
+                android:text="@string/business_top_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large" />
 
 
-    <!--UI for business-->
+            <!--<EditText
+                android:id="@+id/businessType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                android:hint="@string/edt_business"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />-->
 
-<TextView
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="@string/business_top_text"
-android:textColor="@color/white"
-android:textSize="@dimen/large"
-android:background="@color/wallet_holo_blue_light"
-android:padding="@dimen/dimen_5dp"
-    android:layout_marginTop="@dimen/dimen_16"
-/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/spinner_style"
+                android:id="@+id/businessType"
+                android:layout_margin="@dimen/fab_margin"/>
 
+            <EditText
+                android:id="@+id/businessName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/edt_Organizationname"
+                android:paddingBottom="@dimen/dimen_10"
+                android:paddingLeft="@dimen/small"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/edt_business"
-android:layout_below="@+id/radiogrp"
-android:layout_margin="@dimen/fab_margin"
-android:paddingBottom="@dimen/dimen_10"
-android:textStyle="normal"
-android:textSize="@dimen/large"
-android:hint="@string/edt_business"
-android:textColor="@color/black"
-android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
-android:textCursorDrawable="@drawable/cursor_basicdetails"
-android:background="@drawable/border_basicdetails"/>
-
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/edt_Organizationname"
-android:layout_below="@+id/radiogrp"
-android:layout_margin="@dimen/fab_margin"
-android:paddingBottom="@dimen/dimen_10"
-android:textStyle="normal"
-android:textSize="@dimen/large"
-android:hint="@string/edt_Organizationname"
-android:textColor="@color/black"
-android:textCursorDrawable="@drawable/cursor_basicdetails"
-android:background="@drawable/border_basicdetails"/>
-
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/edt_role"
-android:layout_below="@+id/radiogrp"
-android:layout_margin="@dimen/fab_margin"
-android:paddingBottom="@dimen/dimen_10"
-android:textStyle="normal"
-android:textSize="@dimen/large"
-android:hint="@string/edt_role"
-android:textColor="@color/black"
-android:textCursorDrawable="@drawable/cursor_basicdetails"
-android:background="@drawable/border_basicdetails"/>
+            <EditText
+                android:id="@+id/businessRole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:paddingLeft="@dimen/small"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/edt_role"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
 
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/edt_start_year"
-android:layout_below="@+id/radiogrp"
-android:layout_margin="@dimen/fab_margin"
-android:paddingBottom="@dimen/dimen_10"
-android:textStyle="normal"
-android:textSize="@dimen/large"
-android:hint="@string/edt_start_year"
-android:textColor="@color/black"
-android:textCursorDrawable="@drawable/cursor_basicdetails"
-android:background="@drawable/border_basicdetails"/>
+            <EditText
+                android:id="@+id/businessStartYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/small"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/edt_start_year"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/edt_end_year"
-android:layout_below="@+id/radiogrp"
-android:layout_margin="@dimen/fab_margin"
-android:paddingBottom="@dimen/dimen_10"
-android:textStyle="normal"
-android:textSize="@dimen/large"
-android:hint="@string/edt_end_year"
-android:textColor="@color/black"
-android:textCursorDrawable="@drawable/cursor_basicdetails"
-android:background="@drawable/border_basicdetails"/>
+            <EditText
+                android:id="@+id/businessEndYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:paddingLeft="@dimen/small"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/edt_end_year"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
-<TextView
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="@string/tv_business_buttom_txt"
-android:textColor="@color/white"
-android:textSize="@dimen/large"
-android:background="@color/wallet_holo_blue_light"
-android:padding="@dimen/dimen_5dp"
-android:layout_margin="@dimen/fab_margin"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@color/wallet_holo_blue_light"
+                android:padding="@dimen/dimen_5dp"
+                android:text="@string/tv_business_buttom_txt"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large" />
 
-<Button
-android:id="@+id/btn_add_business"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_gravity="center"
-android:layout_margin="@dimen/dimen_10"
-android:background="@drawable/border_shape"
-android:foregroundGravity="center_horizontal|center_vertical"
-android:text="@string/add_to_profile"
-android:textColor="@color/white"
-android:padding="@dimen/dimen_10" />
+            <Button
+                android:id="@+id/addBusinessButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen_10"
+                android:background="@drawable/border_shape"
+                android:foregroundGravity="center_horizontal|center_vertical"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/add_to_profile"
+                android:textColor="@color/white" />
 
 
         </LinearLayout>

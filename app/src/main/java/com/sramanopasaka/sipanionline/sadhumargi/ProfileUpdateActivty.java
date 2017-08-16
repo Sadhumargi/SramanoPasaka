@@ -14,11 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.BusinessListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
 /**
@@ -27,7 +30,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
  * Email : pranavjaydev@gmail.com
  */
 
-public class ProfileUpdateActivty extends AppCompatActivity implements TabselectionListner {
+public class ProfileUpdateActivty extends AppCompatActivity implements TabselectionListner, ActionBarUpdator {
 
     private RelativeLayout basicDetaisView = null;
     private RelativeLayout uploadPhotoView = null;
@@ -55,6 +58,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private View achievementLeft = null;
     private View achievementRight = null;
 
+    private TextView titleTxt = null;
     private NestedScrollView nestedScrollView = null;
 
 
@@ -95,6 +99,8 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         achievementLeft = findViewById(R.id.achievementLeft);
         achievementRight = findViewById(R.id.achievementRight);
 
+        titleTxt = (TextView) findViewById(R.id.titleTxt);
+
         basicDetaisView.setTag(0);
         uploadPhotoView.setTag(1);
         contactDetailsView.setTag(2);
@@ -117,7 +123,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         }
 
 
-        switch (currentTab) {
+       /* switch (currentTab) {
             case 0:
                 setFragment(BasicDetailsFragment.newInstance(), "");
                 break;
@@ -130,6 +136,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             case 3:
                 setFragment(AchievementListingFragment.newInstance(), "");
                 break;
+            case 5:
+                setFragment(BusinessListingFragment.newInstance(), "");
+                break;
 
             default:
                 setFragment(BasicDetailsFragment.newInstance(), "");
@@ -138,15 +147,19 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         if (currentTab == -1)
             setViewColor(0);
         else
-            setViewColor(currentTab);
+            setViewColor(currentTab);*/
+        if (currentTab == -1)
+            showPages(0);
+        else
+            showPages(currentTab);
 
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentTab+1<MAX_DETAILS){
+                if (currentTab + 1 < MAX_DETAILS) {
                     currentTab++;
                     showPages(currentTab);
-                }else
+                } else
                     findViewById(R.id.nextButton).setVisibility(View.GONE);
             }
         });
@@ -282,7 +295,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         }
     };
 
-    private void showPages(int tag){
+    private void showPages(int tag) {
         currentTab = tag;
         switch (tag) {
             case 0:
@@ -302,6 +315,10 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             case 4:
 
                 break;
+            case 5:
+                setFragment(BusinessListingFragment.newInstance(), "");
+                break;
+
 
         }
         if (tag != -1)
@@ -322,7 +339,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
 
     @Override
     public void onSelectTab(int index) {
-        if(index<MAX_DETAILS){
+        if (index < MAX_DETAILS) {
             currentTab = index;
             showPages(currentTab);
         }
@@ -330,7 +347,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
 
     @Override
     public void onSelectNextTab() {
-        if(currentTab+1<MAX_DETAILS){
+        if (currentTab + 1 < MAX_DETAILS) {
             currentTab++;
             showPages(currentTab);
         }
@@ -338,6 +355,11 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
 
     @Override
     public void enableNestedScrolling(boolean status) {
-           // nestedScrollView.setNestedScrollingEnabled(status);
+        // nestedScrollView.setNestedScrollingEnabled(status);
+    }
+
+    @Override
+    public void onUpdateTitile(String title) {
+        titleTxt.setText(title);
     }
 }

@@ -91,7 +91,7 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
                     }
                 }
                 if(callAPi){
-                    if(!cPassword.equalsIgnoreCase(SHAREDPREFERENCE PASSWORD)){
+                    if(!cPassword.equalsIgnoreCase("SHAREDPREFERENCE PASSWORD")){
                         curPassword.setError("current password is wrong");
                         curPassword.requestFocus();
                         callAPi = false;

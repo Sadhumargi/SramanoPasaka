@@ -45,8 +45,8 @@ public class BusinessListAdapter extends RecyclerView.Adapter<BusinessListAdapte
     @Override
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Business model = list.get(position);
-        //holder.txtAddressTag.setText(model.getAchievement_sector());
-        //holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + model.getAchievement_detail() + ", " + model.getAchievement_year() );
+        holder.txtAddressTag.setText(model.getBusiness_type());
+        holder.txtAddress.setText(model.getBusiness_name() + ", " + model.getBusiness_name() + ", " + model.getBusiness_start_year() /*+ ", " + model.getAchievement_year() */);
 
     }
 

@@ -43,14 +43,15 @@
 
 
             <TextView
+                android:id="@+id/titleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_toEndOf="@+id/backButton"
                 android:gravity="center_vertical"
                 android:padding="@dimen/dimen_5dp"
+                android:layout_marginLeft="@dimen/margin_15"
                 android:text="@string/my_profile"
                 android:textColor="@color/white"
                 android:textSize="@dimen/large" />
@@ -85,12 +86,12 @@
 
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar"
         android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-        android:fillViewport="true"
-        android:layout_height="match_parent">
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -132,9 +133,9 @@
                             <View
                                 android:id="@+id/basicRight"
                                 android:layout_width="35dp"
-                                android:layout_marginLeft="-10dp"
                                 android:layout_height="2dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/basicDetailsImg"
                                 android:background="#000000" />
 
@@ -168,8 +169,8 @@
                                 android:id="@+id/uploadLeft"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginRight="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/uploadPhotoImg"
                                 android:background="#000000" />
 
@@ -178,8 +179,8 @@
                                 android:id="@+id/uploadRight"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginLeft="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/uploadPhotoImg"
                                 android:background="#000000" />
 
@@ -214,8 +215,8 @@
                                 android:id="@+id/contactLeft"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginRight="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/contactDetailsImage"
                                 android:background="#000000" />
 
@@ -223,8 +224,8 @@
                                 android:id="@+id/contactRight"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginLeft="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/contactDetailsImage"
                                 android:background="#000000" />
 
@@ -258,8 +259,8 @@
                                 android:id="@+id/achievementLeft"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginRight="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/achievementDetailsImage"
                                 android:background="#000000" />
 
@@ -267,8 +268,8 @@
                                 android:id="@+id/achievementRight"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginLeft="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/achievementDetailsImage"
                                 android:background="#000000" />
 
@@ -302,8 +303,8 @@
                                 android:id="@+id/educationLeft"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginRight="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/educationImage"
                                 android:background="#000000" />
 
@@ -311,8 +312,8 @@
                                 android:id="@+id/educationRight"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginLeft="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/educationImage"
                                 android:background="#000000" />
 
@@ -346,8 +347,8 @@
                                 android:id="@+id/businessLeft"
                                 android:layout_width="35dp"
                                 android:layout_height="2dp"
-                                android:layout_marginRight="-10dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/businessImage"
                                 android:background="#000000" />
                             <!-- <view
@@ -530,8 +531,6 @@
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
-
-
 
 
 </RelativeLayout>
