@@ -34,11 +34,11 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
 
-        curPassword= (EditText) findViewById(R.id.cur_password);
-        newPassword= (EditText) findViewById(R.id.new_password);
-        btnReset= (Button) findViewById(R.id.button_reset);
+        curPassword = (EditText) findViewById(R.id.cur_password);
+        newPassword = (EditText) findViewById(R.id.new_password);
+        btnReset = (Button) findViewById(R.id.button_reset);
 
-        toolbar= (Toolbar) findViewById(R.id.tool_password);
+        toolbar = (Toolbar) findViewById(R.id.tool_password);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,60 +62,70 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
 
                 Boolean callAPi = true;
 
-                if (curPassword.getText().toString().equals(newPassword.getText().toString())) {
-                    newPassword.setError("Current and New Passwords sholuldn't be same");
-                    newPassword.requestFocus();
-                    callAPi = false;
-                }
-
-                if ((newPassword.getText().toString().length()) < 8) {
-                    newPassword.setError("New Password should be atleast of 8 charactors");
-                    newPassword.requestFocus();
-                    callAPi = false;
-                }
-
-                if (newPassword.getText().toString().length() == 0) {
-                    newPassword.setError("New password is required");
-                    newPassword.requestFocus();
-                    callAPi = false;
-                }
-
-                if ((curPassword.getText().toString().length()) < 8) {
-                    curPassword.setError("Current Password should be atleast of 8 charactors");
+                if (TextUtils.isEmpty(cPassword)) {
+                    curPassword.setError("Please your the current password");
                     curPassword.requestFocus();
                     callAPi = false;
                 }
-
-                if (curPassword.getText().toString().length() == 0) {
-                    curPassword.setError("Current Password is required");
-                    curPassword.requestFocus();
+                if (TextUtils.isEmpty(nPassword)) {
+                    newPassword.setError("Please enter a new password");
+                    newPassword.requestFocus();
                     callAPi = false;
-
                 }
-                    if(callAPi){
-
-                        passwordChange();
+                if(callAPi){
+                    if ((curPassword.getText().toString().length()) < 8) {
+                        curPassword.setError("Current Password should be atleast of 8 charactors");
+                        curPassword.requestFocus();
+                        callAPi = false;
+                    }
+                    if (curPassword.getText().toString().equals(newPassword.getText().toString())) {
+                        newPassword.setError("Current and New Passwords sholuldn't be same");
+                        newPassword.requestFocus();
+                        callAPi = false;
                     }
 
-
+                    if ((newPassword.getText().toString().length()) < 8) {
+                        newPassword.setError("New Password should be atleast of 8 charactors");
+                        newPassword.requestFocus();
+                        callAPi = false;
+                    }
+                }
+                if(callAPi){
+                    if(!cPassword.equalsIgnoreCase(SHAREDPREFERENCE PASSWORD)){
+                        curPassword.setError("current password is wrong");
+                        curPassword.requestFocus();
+                        callAPi = false;
+                    }
                 }
 
 
-            });
 
 
 
-        }
+
+                if (callAPi) {
+
+                    passwordChange();
+                }
 
 
-    private void passwordChange(){
+            }
+
+
+        });
+
+
+    }
+
+
+    private void passwordChange() {
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
 
 
             RequestProcessor requestProcessor = new RequestProcessor(PasswordChangeActivity.this);
             requestProcessor.passwordChange(loginResponse.getId(), loginResponse.getAppToken(),
-                    loginResponse.getPassword(),loginResponse.getAppToken());
+                    loginResponse.getPassword(), loginResponse.getAppToken());
         }
     }
 

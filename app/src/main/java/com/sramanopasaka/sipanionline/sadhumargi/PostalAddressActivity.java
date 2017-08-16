@@ -29,7 +29,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PostalAddressActivity extends AppCompatActivity implements GUICallback {
+public class PostalAddressActivity extends BaseActivity implements GUICallback {
 
     @Bind(R.id.postaladdresstool)
     Toolbar postaladdresstool;
@@ -51,7 +51,7 @@ public class PostalAddressActivity extends AppCompatActivity implements GUICallb
     EditText country;
     @Bind(R.id.addresstype)
     EditText addresstype;
-    private ProgressDialog mProgressDialog = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,32 +92,7 @@ public class PostalAddressActivity extends AppCompatActivity implements GUICallb
         }
     }
 
-    protected void showLoadingDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(PostalAddressActivity.this) {
-                @Override
-                public void onDetachedFromWindow() {
-                    mProgressDialog = null;
-                }
-            };
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.setCanceledOnTouchOutside(false);
-            mProgressDialog.setMessage("please wait");
-            mProgressDialog.show();
-        } else {
-            if (!mProgressDialog.isShowing()) {
-                mProgressDialog.show();
-            }
-        }
-    }
 
-
-    protected void hideLoadingDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
-
-    }
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {

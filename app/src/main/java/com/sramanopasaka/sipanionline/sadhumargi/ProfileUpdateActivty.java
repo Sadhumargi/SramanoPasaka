@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
@@ -126,6 +127,10 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             case 2:
                 setFragment(ContactDetailsFragment.newInstance(), "");
                 break;
+            case 3:
+                setFragment(AchievementListingFragment.newInstance(), "");
+                break;
+
             default:
                 setFragment(BasicDetailsFragment.newInstance(), "");
                 break;
@@ -291,6 +296,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
 
                 break;
             case 3:
+                setFragment(AchievementListingFragment.newInstance(), "");
 
                 break;
             case 4:

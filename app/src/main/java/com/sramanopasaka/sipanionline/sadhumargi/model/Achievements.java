@@ -10,6 +10,24 @@ public class Achievements {
 
     private String achievement_sector = null;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id = null;
+
+    public Achievements(String achievement_sector, String achievement_level, String achievement_type, String achievement_detail, String achievement_year) {
+        this.achievement_sector = achievement_sector;
+        this.achievement_level = achievement_level;
+        this.achievement_type = achievement_type;
+        this.achievement_detail = achievement_detail;
+        this.achievement_year = achievement_year;
+    }
+
     private String achievement_level = null;
 
     private String achievement_type = null;

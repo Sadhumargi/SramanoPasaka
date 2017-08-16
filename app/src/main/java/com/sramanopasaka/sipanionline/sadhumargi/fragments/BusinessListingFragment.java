@@ -16,24 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.AchivementsActivity;
-import com.sramanopasaka.sipanionline.sadhumargi.PostalAddressActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.adapters.AchievementListAdapter;
-import com.sramanopasaka.sipanionline.sadhumargi.adapters.AddressListAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.BusinessListAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -45,11 +43,11 @@ import butterknife.ButterKnife;
  * Email : pranavjaydev@gmail.com
  */
 
-public class AchievementListingFragment extends BaseFragment implements GUICallback,AchievementListAdapter.EditDeleteActionListener {
+public class BusinessListingFragment extends BaseFragment implements GUICallback,BusinessListAdapter.EditDeleteActionListener {
 
     private View view = null;
 
-    @Bind(R.id.achievementRecycler)
+    @Bind(R.id.businessRecycler)
     RecyclerView recyclerView;
 
     @Bind(R.id.txt_no_address)
@@ -58,14 +56,14 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
     @Bind(R.id.fab)
     FloatingActionButton fab;
 
-    public static AchievementListingFragment newInstance() {
-        return new AchievementListingFragment();
+    public static BusinessListingFragment newInstance() {
+        return new BusinessListingFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_achievements, container, false);
+        view = inflater.inflate(R.layout.fragment_businesslist, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -86,30 +84,30 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
     @Override
     public void onResume() {
         super.onResume();
-        loadAddressList();
+        loadBusinessList();
     }
 
-    private void loadAddressList(){
+    private void loadBusinessList(){
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
 
 
-            RequestProcessor requestProcessor = new RequestProcessor(AchievementListingFragment.this);
-            requestProcessor.getAchievementList(loginResponse.getId(), loginResponse.getAppToken());
+            RequestProcessor requestProcessor = new RequestProcessor(BusinessListingFragment.this);
+            requestProcessor.getBusnessList(loginResponse.getId(), loginResponse.getAppToken());
         }
     }
 
-    private void showAddressList(List<Achievements> list) {
+    private void showAddressList(List<Business> list) {
         if (list != null && list.size() != 0) {
             txtNoAddress.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            AchievementListAdapter adapter = new AchievementListAdapter(getActivity(), list, this);
+            BusinessListAdapter adapter = new BusinessListAdapter(getActivity(), list, this);
             recyclerView.setAdapter(adapter);
         } else {
-            AchievementListAdapter adapter = new AchievementListAdapter(getActivity(), null, this);
+            BusinessListAdapter adapter = new BusinessListAdapter(getActivity(), null, this);
             recyclerView.setAdapter(adapter);
             txtNoAddress.setVisibility(View.VISIBLE);
         }
@@ -118,12 +116,12 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
 
 
     @Override
-    public void onRequestProcessed(GUIResponse guiResponse, GUICallback.RequestStatus requestStatus) {
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
         hideLoadingDialog();
         if (guiResponse != null) {
-            if (requestStatus.equals(GUICallback.RequestStatus.SUCCESS)) {
-                if (guiResponse instanceof AchievementListResponse) {
-                    AchievementListResponse response = (AchievementListResponse) guiResponse;
+            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+                if (guiResponse instanceof BusinessListResponse) {
+                    BusinessListResponse response = (BusinessListResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
@@ -143,18 +141,18 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
                             }
                         }
                     }
-                }else if (guiResponse instanceof DeleteAchievementResponse) {
-                    DeleteAchievementResponse response = (DeleteAchievementResponse) guiResponse;
+                }else if (guiResponse instanceof DeleteBusinessResponse) {
+                    DeleteBusinessResponse response = (DeleteBusinessResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "Address removed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Business removed", Toast.LENGTH_SHORT).show();
                             }
 
-                            loadAddressList();
+                            loadBusinessList();
 
                             Log.e("----", "success");
                         } else {
@@ -170,13 +168,14 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
         }
     }
 
+
     @Override
-    public void edit(Achievements address) {
+    public void edit(Business address) {
 
     }
 
     @Override
-    public void delete(final Achievements address) {
+    public void delete(final Business address) {
         DialogueUtils.showDialogOKCancel(getActivity(), "Delete Achievement", "Are you sure to delete this achievement ?", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -184,8 +183,8 @@ public class AchievementListingFragment extends BaseFragment implements GUICallb
                 if (loginResponse != null) {
 
 
-                    RequestProcessor requestProcessor = new RequestProcessor(AchievementListingFragment.this);
-                    requestProcessor.removeAchievements(loginResponse.getId(), loginResponse.getAppToken(),address);
+                    RequestProcessor requestProcessor = new RequestProcessor(BusinessListingFragment.this);
+                    requestProcessor.removeBusiness(loginResponse.getId(), loginResponse.getAppToken(),address);
                 }
 
                 dialogInterface.dismiss();

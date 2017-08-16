@@ -2,10 +2,15 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -39,6 +44,16 @@ public interface EndPointApi {
     Call<AddressListResponse> getAddressList(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
     @FormUrlEncoded
+    @POST("achievements")
+    Call<AchievementListResponse> getAchievementList(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+
+    @FormUrlEncoded
+    @POST("businesses")
+    Call<BusinessListResponse> getBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+
+    @FormUrlEncoded
     @POST("basics")
     Call<UpdateBasicDetailsResponse> updateBasicDetails(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                         @Field("method") String method, @Field("salution") String salution,
@@ -64,6 +79,13 @@ public interface EndPointApi {
                                         @Field("country") String country, @Field("address_type") String address_type);
 
     @FormUrlEncoded
+    @POST("add_remove_achievement")
+    Call<AddAchievementResponse> addAchievements(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                                 @Field("method") String method, @Field("achievement_sector") String achievement_sector,
+                                                 @Field("achievement_level") String achievement_level, @Field("achievement_type") String achievement_type,
+                                                 @Field("achievement_detail") String achievement_detail, @Field("achievement_year") String achievement_year);
+
+    @FormUrlEncoded
     @POST("add_remove_address")
     Call<DeleteAddressResponse> removeAddress(@Field("member_id") String memberId,
                                               @Field("app_token") String appToken,
@@ -73,9 +95,17 @@ public interface EndPointApi {
     @FormUrlEncoded
     @POST("password_change")
     Call<PasswordChangeResponse> passwordChange(@Field("member_id") String memberId,
-                                               @Field("app_token") String appToken,
-                                               @Field("current_password") String currentPassword,
-                                               @Field("new_password") String newPassword);
+                                                @Field("app_token") String appToken,
+                                                @Field("current_password") String currentPassword,
+                                                @Field("new_password") String newPassword);
+
+    @FormUrlEncoded
+    @POST("add_remove_achievement")
+    Call<DeleteAchievementResponse> deleteAchievement(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("achievement_id") String achievement_id);
+
+    @FormUrlEncoded
+    @POST("add_remove_business")
+    Call<DeleteBusinessResponse> deleteBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("business_id") String achievement_id);
 
 
 

@@ -5,17 +5,24 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,9 +52,9 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getAuthClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
-        valYouAPI.doLogin(jsonObject).enqueue(new Callback<LoginResponse>() {
+        endPointApi.doLogin(jsonObject).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
@@ -99,9 +106,9 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getAuthClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
-        valYouAPI.doRegister(jsonObject).enqueue(new Callback<RegisterResponse>() {
+        endPointApi.doRegister(jsonObject).enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
 
@@ -153,9 +160,9 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
-        valYouAPI.getBasicDetails(memberId,token).enqueue(new Callback<BasicDetailsResponse>() {
+        endPointApi.getBasicDetails(memberId,token).enqueue(new Callback<BasicDetailsResponse>() {
             @Override
             public void onResponse(Call<BasicDetailsResponse> call, Response<BasicDetailsResponse> response) {
 
@@ -207,9 +214,9 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
-        valYouAPI.getAddressList(memberId,token).enqueue(new Callback<AddressListResponse>() {
+        endPointApi.getAddressList(memberId,token).enqueue(new Callback<AddressListResponse>() {
             @Override
             public void onResponse(Call<AddressListResponse> call, Response<AddressListResponse> response) {
 
@@ -233,15 +240,75 @@ public class RequestProcessor {
 
     }
 
+    public void getAchievementList(String memberId,String token) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        endPointApi.getAchievementList(memberId,token).enqueue(new Callback<AchievementListResponse>() {
+            @Override
+            public void onResponse(Call<AchievementListResponse> call, Response<AchievementListResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AchievementListResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void getBusnessList(String memberId,String token) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        endPointApi.getBusiness(memberId,token).enqueue(new Callback<BusinessListResponse>() {
+            @Override
+            public void onResponse(Call<BusinessListResponse> call, Response<BusinessListResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<BusinessListResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
     public void updateBasicDetails(String memberId, String token, BasicDetailsData data) {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.updateBasicDetails(memberId,token,"update",data.getSalution(),data.getFirstName(),data.getMiddleName(),data.getLastName(),
+        endPointApi.updateBasicDetails(memberId,token,"update",data.getSalution(),data.getFirstName(),data.getMiddleName(),data.getLastName(),
         data.getGuardianType(),data.getGuardianName(),data.getMotherName(),data.getAddress(),data.getCity(),data.getPincode(),data.getState(),data.getCountry(),data.getMobile(),data.getAlternateNumber(),
                 data.getWhatsappNumber(),data.getBirthDay(),data.getGender(),data.getBloodGroup(),data.getMaritalStatus(),data.getMarriageDate(),data.getChildCount(),data.getEmailAddress(),data.getIsHeadOfFamily()).enqueue(new Callback<UpdateBasicDetailsResponse>() {
             @Override
@@ -295,11 +362,11 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.addAddress(memberId,token,"add",data.getAddress1(),data.getAddress2(),data.getPost(),data.getDistrict(),
+        endPointApi.addAddress(memberId,token,"add",data.getAddress1(),data.getAddress2(),data.getPost(),data.getDistrict(),
                 data.getCity(),data.getPincode(),data.getState(),data.getCountry(),data.getAddress_type()).enqueue(new Callback<AddAddressResponse>() {
             @Override
             public void onResponse(Call<AddAddressResponse> call, Response<AddAddressResponse> response) {
@@ -326,18 +393,56 @@ public class RequestProcessor {
 
 
     }
+    public void addAchievemetns(String memberId, String token, Achievements data) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.addAchievements(memberId,token,"add",data.getAchievement_sector(),data.getAchievement_level(),data.getAchievement_type(),data.getAchievement_detail(),
+                data.getAchievement_year()).enqueue(new Callback<AddAchievementResponse>() {
+            @Override
+            public void onResponse(Call<AddAchievementResponse> call, Response<AddAchievementResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddAchievementResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
     public void removeAddress(String memberId, String token, Address data) {
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
-        valYouAPI.removeAddress(memberId, token, "delete", data.getId()).enqueue(new Callback<DeleteAddressResponse>() {
+
+        endPointApi.removeAddress(memberId,token,"delete",data.getId()).enqueue(new Callback<DeleteAddressResponse>() {
             @Override
             public void onResponse(Call<DeleteAddressResponse> call, Response<DeleteAddressResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
+
 
 
                 if (response.body() != null)
@@ -349,6 +454,75 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<DeleteAddressResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void removeAchievements(String memberId, String token, Achievements data) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.deleteAchievement(memberId,token,"delete",data.getId()).enqueue(new Callback<DeleteAchievementResponse>() {
+            @Override
+            public void onResponse(Call<DeleteAchievementResponse> call, Response<DeleteAchievementResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteAchievementResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+    public void removeBusiness(String memberId, String token, Business data) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.deleteBusiness(memberId,token,"delete",data.getId()).enqueue(new Callback<DeleteBusinessResponse>() {
+            @Override
+            public void onResponse(Call<DeleteBusinessResponse> call, Response<DeleteBusinessResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteBusinessResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

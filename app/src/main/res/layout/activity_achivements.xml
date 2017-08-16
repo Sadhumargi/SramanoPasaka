@@ -30,7 +30,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Achievement_area"
+        android:id="@+id/achievementArea"
         android:layout_below="@+id/radiogrp"
         android:layout_marginTop="@dimen/dimen_16"
         android:layout_marginRight="@dimen/fab_margin"
@@ -48,7 +48,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Achievement_level"
+        android:id="@+id/achievementLevel"
         android:layout_below="@+id/radiogrp"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
@@ -64,7 +64,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievement_type"
+        android:id="@+id/achievementType"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -78,7 +78,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/details_achievement"
+        android:id="@+id/detailsAchievement"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -91,7 +91,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/achievement_year"
+        android:id="@+id/achievementYear"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -104,7 +104,7 @@
 
 
     <Button
-        android:id="@+id/btn_achievments"
+        android:id="@+id/addAchievements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
