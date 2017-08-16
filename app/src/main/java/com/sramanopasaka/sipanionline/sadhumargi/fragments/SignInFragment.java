@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
@@ -37,6 +38,12 @@ public class SignInFragment extends BaseFragment implements GUICallback {
     ProgressDialog pg;
 
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
+    String sPassword;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,12 +58,22 @@ public class SignInFragment extends BaseFragment implements GUICallback {
         btnLogin = (Button) view.findViewById(R.id.button_login);
         btnSignup = (Button) view.findViewById(R.id.button_create_profile);
 
+        // creating an shared Preference file for the information to be stored
+// first argument is the name of file and second is the mode, 0 is private mode
+
+        sharedPreferences = getActivity().getSharedPreferences("SignInFragment", 0);
+// get editor to edit in file
+        editor = sharedPreferences.edit();
+
+
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sPassword = edttxtPassword.getText().toString();
                 String username = edttxtEmail.getText().toString();
-                String password = edttxtPassword.getText().toString();
+                //String password = edttxtPassword.getText().toString();
                 LoginRequest loginRequest = new LoginRequest();
 
 
@@ -66,9 +83,9 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
                 } else if (ValidationUtils.isValidMail(username)) {
 
-                    if (!TextUtils.isEmpty(password) && password.length() > 5) {
+                    if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
                         loginRequest.setEmail(username);
-                        loginRequest.setPassword(password);
+                        loginRequest.setPassword(sPassword);
                         initiateAPI(loginRequest);
                     } else {
                         Toast.makeText(getActivity(), "Password should contain 5 - 12 characters ", Toast.LENGTH_SHORT).show();
@@ -76,9 +93,9 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
                 } else if (ValidationUtils.isValidMobile(username)) {
 
-                    if (!TextUtils.isEmpty(password) && password.length() > 5) {
+                    if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
                         loginRequest.setMobileNumber(username);
-                        loginRequest.setPassword(password);
+                        loginRequest.setPassword(sPassword);
                         initiateAPI(loginRequest);
                     } else {
                         Toast.makeText(getActivity(), "Password should contain 5 - 12 characters ", Toast.LENGTH_SHORT).show();
@@ -144,8 +161,13 @@ public class SignInFragment extends BaseFragment implements GUICallback {
                 LoginResponse loginResponse = (LoginResponse) guiResponse;
                 if (loginResponse != null) {
                     if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
-
                         OfflineData.saveLoginResponse(loginResponse.getData());
+
+                        //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
+
+                        editor.putString("password",sPassword);
+                        editor.commit();}   // commit the values
+
                         Toast.makeText(getActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), ProfileActivity.class);
                         startActivity(i);
@@ -165,4 +187,5 @@ public class SignInFragment extends BaseFragment implements GUICallback {
     }
 
 
-}
+
+

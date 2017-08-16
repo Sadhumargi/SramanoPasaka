@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +30,9 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
 
     ProgressDialog mProgressDialog;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,10 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
                 onBackPressed();
             }
         });
+
+        sharedPreferences = getApplicationContext().getSharedPreferences("SignInFragment", 0);
+// get editor to edit in file
+        final String sPassword = sharedPreferences.getString("password",null);
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,16 +99,14 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
                     }
                 }
                 if(callAPi){
-                    if(!cPassword.equalsIgnoreCase(SHAREDPREFERENCE PASSWORD)){
+
+                    //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
+                    if(!cPassword.equalsIgnoreCase(sPassword )){
                         curPassword.setError("current password is wrong");
                         curPassword.requestFocus();
                         callAPi = false;
                     }
                 }
-
-
-
-
 
 
                 if (callAPi) {
@@ -125,7 +131,7 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
 
             RequestProcessor requestProcessor = new RequestProcessor(PasswordChangeActivity.this);
             requestProcessor.passwordChange(loginResponse.getId(), loginResponse.getAppToken(),
-                    loginResponse.getPassword(), loginResponse.getAppToken());
+                    sharedPreferences.getString("password",null), newPassword.getText().toString());
         }
     }
 

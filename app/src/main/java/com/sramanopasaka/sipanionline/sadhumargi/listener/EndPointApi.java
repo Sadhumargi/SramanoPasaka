@@ -93,7 +93,7 @@ public interface EndPointApi {
                                               @Field("address_id") String address_id);
 
     @FormUrlEncoded
-    @POST("password_change")
+    @POST("password _change")
     Call<PasswordChangeResponse> passwordChange(@Field("member_id") String memberId,
                                                 @Field("app_token") String appToken,
                                                 @Field("current_password") String currentPassword,
