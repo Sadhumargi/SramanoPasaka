@@ -46,36 +46,36 @@ public interface EndPointApi {
     Call<RegisterResponse> doRegister(@Body JsonObject profiledata);
 
     @FormUrlEncoded
-    @POST("basics")
+    @POST("app/basics")
     Call<BasicDetailsResponse> getBasicDetails(@Field("member_id") String memberId, @Field("app_token") String appTokewn);
 
     @FormUrlEncoded
-    @POST("addresses")
+    @POST("app/addresses")
     Call<AddressListResponse> getAddressList(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
     @FormUrlEncoded
-    @POST("achievements")
+    @POST("app/achievements")
     Call<AchievementListResponse> getAchievementList(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
 
     @FormUrlEncoded
-    @POST("businesses")
+    @POST("app/businesses")
     Call<BusinessListResponse> getBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
     @FormUrlEncoded
-    @POST("educations")
+    @POST("app/educations")
     Call<EducationListResponse> getEducation(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
 
 
 
     @FormUrlEncoded
-    @POST("dharmik")
+    @POST("app/dharmik")
     Call<DharmikDetailsResponse> getDharmikDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
 
     @FormUrlEncoded
-    @POST("basics")
+    @POST("app/basics")
     Call<UpdateBasicDetailsResponse> updateBasicDetails(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                         @Field("method") String method, @Field("salution") String salution,
                                                         @Field("first_name") String first_name, @Field("middle_name") String middle_name,
@@ -91,7 +91,7 @@ public interface EndPointApi {
                                                         @Field("email_address") String email_address, @Field("is_head_of_family") String is_head_of_family);
 
     @FormUrlEncoded
-    @POST("add_remove_address")
+    @POST("app/add_remove_address")
     Call<AddAddressResponse> addAddress(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                         @Field("method") String method, @Field("address1") String address1,
                                         @Field("address2") String address2, @Field("post") String post,
@@ -100,7 +100,7 @@ public interface EndPointApi {
                                         @Field("country") String country, @Field("address_type") String address_type);
 
     @FormUrlEncoded
-    @POST("add_update_promises")
+    @POST("app/add_update_promises")
     Call<UpdatePromiseResponse> updatePromises(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                            @Field("method") String method, @Field("navkar_mantra") String navkar_mantra,
                                            @Field("swadhyay") String swadhyay, @Field("sant_darshan") String sant_darshan,
@@ -108,7 +108,7 @@ public interface EndPointApi {
                                            @Field("pratikraman") String pratikraman, @Field("chovihar") String chovihar,
                                            @Field("others") String others, @Field("special") String special);
     @FormUrlEncoded
-    @POST("add_update_knowledge")
+    @POST("app/add_update_knowledge")
     Call<UpdateKnowledgeResponse> updateKnowledge(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                  @Field("method") String method, @Field("navkar_mantra") String navkar_mantra,
                                                  @Field("samayik") String samayik, @Field("pratikraman") String pratikraman,
@@ -116,68 +116,68 @@ public interface EndPointApi {
                                                  @Field("vishesh_gyan") String vishesh_gyan);
 
     @FormUrlEncoded
-    @POST("add_remove_achievement")
+    @POST("app/add_remove_achievement")
     Call<AddAchievementResponse> addAchievements(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                                  @Field("method") String method, @Field("achievement_sector") String achievement_sector,
                                                  @Field("achievement_level") String achievement_level, @Field("achievement_type") String achievement_type,
                                                  @Field("achievement_detail") String achievement_detail, @Field("achievement_year") String achievement_year);
 
     @FormUrlEncoded
-    @POST("add_remove_exams")
+    @POST("app/add_remove_exams")
     Call<AddExamResponse> addExams(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                           @Field("method") String method, @Field("exam_name") String exam_name,
                                           @Field("exam_institute_name") String exam_institute_name, @Field("exam_year") String exam_year);
 
     @FormUrlEncoded
-    @POST("add_remove_education")
+    @POST("app/add_remove_education")
     Call<AddEducationResponse> addEducation(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                             @Field("method") String method, @Field("education_name") String education_name,
                                             @Field("education_description") String education_description, @Field("education_score") String education_score,
                                             @Field("education_institute") String education_institute, @Field("education_year") String education_year);
 
     @FormUrlEncoded
-    @POST("add_remove_business")
+    @POST("app/add_remove_business")
     Call<AddBusinessResponse> addBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                           @Field("method") String method, @Field("business_type") String business_type,
                                           @Field("business_name") String business_name, @Field("business_role") String business_role,
                                           @Field("business_start_year") String business_start_year);
 
     @FormUrlEncoded
-    @POST("add_remove_address")
+    @POST("app/add_remove_address")
     Call<DeleteAddressResponse> removeAddress(@Field("member_id") String memberId,
                                               @Field("app_token") String appToken,
                                               @Field("method") String method,
                                               @Field("address_id") String address_id);
 
     @FormUrlEncoded
-    @POST("password_change")
+    @POST("app/password_change")
     Call<PasswordChangeResponse> passwordChange(@Field("member_id") String memberId,
                                                 @Field("app_token") String appToken,
                                                 @Field("current_password") String currentPassword,
                                                 @Field("new_password") String newPassword);
 
     @FormUrlEncoded
-    @POST("password_recover")
+    @POST("app/password_recover")
     Call<PasswordRecoverResponse> passwordRecover(@Field("email_address") String emaiId,
                                                   @Field("mobile") String mobileNo,
                                                   @Field("first_name") String fName,
                                                   @Field("last_name") String c);
 
     @FormUrlEncoded
-    @POST("add_remove_achievement")
+    @POST("app/add_remove_achievement")
     Call<DeleteAchievementResponse> deleteAchievement(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("achievement_id") String achievement_id);
 
     @FormUrlEncoded
-    @POST("add_remove_business")
+    @POST("app/add_remove_business")
     Call<DeleteBusinessResponse> deleteBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("business_id") String achievement_id);
 
 
     @FormUrlEncoded
-    @POST("add_remove_education")
+    @POST("app/add_remove_education")
     Call<DeleteEducationResponse> deleteEducation(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("education_id") String education_id);
 
     @FormUrlEncoded
-    @POST("add_remove_exams")
+    @POST("app/add_remove_exams")
     Call<DeleteExamResponse> deleteExams(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("exam_id") String exam_id);
 
 
