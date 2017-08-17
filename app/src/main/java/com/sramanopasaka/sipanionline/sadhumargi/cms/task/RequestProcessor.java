@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
@@ -534,14 +535,44 @@ public class RequestProcessor {
     public void passwordChange(String memberId, String token, String currentPassword,String newPassword) {
 
 
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        valYouAPI.passwordChange(memberId, token, currentPassword, newPassword).enqueue(new Callback<PasswordChangeResponse>() {
+            @Override
+            public void onResponse(Call<PasswordChangeResponse> call, Response<PasswordChangeResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<PasswordChangeResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+    }
+
+    public void passwordRecovery(String emaiId, String mobileNo, String fName,String lName) {
+
+
 
         EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.passwordChange(memberId,token,currentPassword,newPassword).enqueue(new Callback<PasswordChangeResponse>() {
+        valYouAPI.passwordRecover(emaiId,mobileNo,fName,lName).enqueue(new Callback<PasswordRecoverResponse>() {
             @Override
-            public void onResponse(Call<PasswordChangeResponse> call, Response<PasswordChangeResponse> response) {
+            public void onResponse(Call<PasswordRecoverResponse> call, Response<PasswordRecoverResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
@@ -556,7 +587,7 @@ public class RequestProcessor {
             }
 
             @Override
-            public void onFailure(Call<PasswordChangeResponse> call, Throwable t) {
+            public void onFailure(Call<PasswordRecoverResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
@@ -93,11 +94,18 @@ public interface EndPointApi {
                                               @Field("address_id") String address_id);
 
     @FormUrlEncoded
-    @POST("password _change")
+    @POST("password_change")
     Call<PasswordChangeResponse> passwordChange(@Field("member_id") String memberId,
                                                 @Field("app_token") String appToken,
                                                 @Field("current_password") String currentPassword,
                                                 @Field("new_password") String newPassword);
+
+    @FormUrlEncoded
+    @POST("password_recover")
+    Call<PasswordRecoverResponse> passwordRecover(@Field("email_address") String emaiId,
+                                                  @Field("mobile") String mobileNo,
+                                                  @Field("first_name") String fName,
+                                                  @Field("last_name") String c);
 
     @FormUrlEncoded
     @POST("add_remove_achievement")

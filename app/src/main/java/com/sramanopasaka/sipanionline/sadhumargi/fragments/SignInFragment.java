@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.ResetPasswordActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
@@ -32,7 +33,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
 
     EditText edttxtEmail, edttxtPassword;
-    TextView txtFrgtpass;
+    TextView frgtPassword;
     Button btnLogin, btnSignup;
     private TabselectionListner tabselectionListner = null;
     ProgressDialog pg;
@@ -53,7 +54,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
         edttxtEmail = (EditText) view.findViewById(R.id.editTex_email);
         edttxtPassword = (EditText) view.findViewById(R.id.editText_password);
 
-        txtFrgtpass = (TextView) view.findViewById(R.id.tv_frgtpass);
+        frgtPassword = (TextView) view.findViewById(R.id.tv_frgtpass);
 
         btnLogin = (Button) view.findViewById(R.id.button_login);
         btnSignup = (Button) view.findViewById(R.id.button_create_profile);
@@ -111,10 +112,13 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
         });
 
-        txtFrgtpass.setOnClickListener(new View.OnClickListener() {
+        frgtPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Reset password", Toast.LENGTH_SHORT).show();
+
+                Intent i=new Intent(getActivity(), ResetPasswordActivity.class);
+                startActivity(i);
+
             }
         });
 
