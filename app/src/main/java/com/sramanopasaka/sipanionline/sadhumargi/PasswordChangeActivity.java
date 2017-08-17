@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,19 +16,22 @@ import android.widget.Toast;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
-public class PasswordChangeActivity extends BaseActivity implements GUICallback {
+public class PasswordChangeActivity extends AppCompatActivity implements GUICallback {
 
     Toolbar toolbar;
     Button btnReset;
     EditText curPassword;
     EditText newPassword;
 
+    ProgressDialog mProgressDialog;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,10 @@ public class PasswordChangeActivity extends BaseActivity implements GUICallback 
             }
         });
 
+        sharedPreferences = getApplicationContext().getSharedPreferences("SignInFragment", 0);
+// get editor to edit in file
+        final String sPassword = sharedPreferences.getString("password",null);
+
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +80,7 @@ public class PasswordChangeActivity extends BaseActivity implements GUICallback 
                     newPassword.requestFocus();
                     callAPi = false;
                 }
-                if (callAPi) {
+                if(callAPi){
                     if ((curPassword.getText().toString().length()) < 8) {
                         curPassword.setError("Current Password should be atleast of 8 charactors");
                         curPassword.requestFocus();
@@ -90,8 +98,10 @@ public class PasswordChangeActivity extends BaseActivity implements GUICallback 
                         callAPi = false;
                     }
                 }
-                if (callAPi) {
-                    if (!cPassword.equalsIgnoreCase("SHAREDPREFERENCE PASSWORD")) {
+                if(callAPi){
+
+                    //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
+                    if(!cPassword.equalsIgnoreCase(sPassword )){
                         curPassword.setError("current password is wrong");
                         curPassword.requestFocus();
                         callAPi = false;
@@ -117,19 +127,21 @@ public class PasswordChangeActivity extends BaseActivity implements GUICallback 
     private void passwordChange() {
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
-            showLoadingDialog();
+
 
             RequestProcessor requestProcessor = new RequestProcessor(PasswordChangeActivity.this);
             requestProcessor.passwordChange(loginResponse.getId(), loginResponse.getAppToken(),
-                    loginResponse.getPassword(), loginResponse.getAppToken());
+                    sharedPreferences.getString("password",null), newPassword.getText().toString());
         }
     }
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
 
-        hideLoadingDialog();
 
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
                 if (guiResponse instanceof PasswordChangeResponse) {

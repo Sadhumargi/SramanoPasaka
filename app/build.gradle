@@ -63,14 +63,14 @@ android {
 
         staging {
             buildConfigField 'String', 'MEMBER_API', '"http://members.sabsjs.org/app/"'
-            buildConfigField 'String', 'AUTH_API','"http://api.sabsjs.org/"'
+            buildConfigField 'String', 'AUTH_API', '"http://api.sabsjs.org/"'
             //buildConfigField 'String', 'HOST', '"http://ec2-13-229-63-76.ap-southeast-1.compute.amazonaws.com"'
-           // resValue 'string', 'GOOGLE_APP_ID', "557666299717"
+            // resValue 'string', 'GOOGLE_APP_ID', "557666299717"
         }
         production {
             buildConfigField 'String', 'HOST', '"http://members.sabsjs.org/app/"'
 
-           // resValue 'string', 'GOOGLE_APP_ID', "507834382340"
+            // resValue 'string', 'GOOGLE_APP_ID', "507834382340"
         }
     }
 
@@ -117,9 +117,10 @@ dependencies {
     compile 'com.github.mukeshsolanki:country-picker-android:1.1.9'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
-    testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:7.0.1'
+    testCompile 'junit:junit:4.12'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'
