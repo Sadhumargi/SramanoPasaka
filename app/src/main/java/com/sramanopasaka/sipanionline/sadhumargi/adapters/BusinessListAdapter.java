@@ -52,7 +52,7 @@ public class BusinessListAdapter extends RecyclerView.Adapter<BusinessListAdapte
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override

@@ -127,7 +127,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                 }
 
                 if (!password.getText().toString().equals(reTypepassword.getText().toString())) {
-                    reTypepassword.setError("Password Not matched");
+                    reTypepassword.setError("Password not matched");
                     reTypepassword.requestFocus();
                     callAPi = false;
                 }
@@ -159,7 +159,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                     callAPi = false;
                 }
                 if (sCountry.getText().toString().length() == 0) {
-                    sCountry.setError("Coutry name is required");
+                    sCountry.setError("Country name is required");
                     sCountry.requestFocus();
                     callAPi = false;
                 }
@@ -301,12 +301,4 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
 
         }
     }
-
-
-
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account_fragment);
-    }*/
 }

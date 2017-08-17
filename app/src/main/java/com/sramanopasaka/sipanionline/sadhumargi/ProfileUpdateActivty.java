@@ -20,6 +20,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFra
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BusinessListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.EducationListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
@@ -313,7 +314,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
 
                 break;
             case 4:
-
+                setFragment(EducationListingFragment.newInstance(), "");
                 break;
             case 5:
                 setFragment(BusinessListingFragment.newInstance(), "");

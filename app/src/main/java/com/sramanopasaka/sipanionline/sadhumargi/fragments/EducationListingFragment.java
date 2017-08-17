@@ -16,16 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity;
+import com.sramanopasaka.sipanionline.sadhumargi.EducationActivity;
+import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.adapters.BusinessListAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.EducationListAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.EducationListAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
 
@@ -40,7 +46,7 @@ import butterknife.ButterKnife;
  * Email : pranavjaydev@gmail.com
  */
 
-public class EducationListingFragment extends BaseFragment implements GUICallback,BusinessListAdapter.EditDeleteActionListener {
+public class EducationListingFragment extends BaseFragment implements GUICallback,EducationListAdapter.EditDeleteActionListener {
 
     private View view = null;
 
@@ -75,8 +81,8 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), BusinessActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getActivity(),EducationActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -85,30 +91,30 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
     @Override
     public void onResume() {
         super.onResume();
-        loadBusinessList();
+        loadEducationList();
     }
 
-    private void loadBusinessList(){
+    private void loadEducationList(){
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
 
 
             RequestProcessor requestProcessor = new RequestProcessor(EducationListingFragment.this);
-            requestProcessor.getBusnessList(loginResponse.getId(), loginResponse.getAppToken());
+            requestProcessor.getEducationList(loginResponse.getId(), loginResponse.getAppToken());
         }
     }
 
-    private void showAddressList(List<Business> list) {
+    private void showEducationList(List<Education> list) {
         if (list != null && list.size() != 0) {
             txtNoAddress.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            BusinessListAdapter adapter = new BusinessListAdapter(getActivity(), list, this);
+            EducationListAdapter adapter = new EducationListAdapter(getActivity(), list, this);
             recyclerView.setAdapter(adapter);
         } else {
-            BusinessListAdapter adapter = new BusinessListAdapter(getActivity(), null, this);
+            EducationListAdapter adapter = new EducationListAdapter(getActivity(), null, this);
             recyclerView.setAdapter(adapter);
             txtNoAddress.setVisibility(View.VISIBLE);
         }
@@ -121,13 +127,13 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
         hideLoadingDialog();
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
-                if (guiResponse instanceof BusinessListResponse) {
-                    BusinessListResponse response = (BusinessListResponse) guiResponse;
+                if (guiResponse instanceof EducationListResponse) {
+                    EducationListResponse response = (EducationListResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
                             if (response.getData() != null && response.getData().size() > 0) {
-                                showAddressList(response.getData());
+                                showEducationList(response.getData());
                             } else {
                                 txtNoAddress.setVisibility(View.VISIBLE);
                                 recyclerView.setVisibility(View.GONE);
@@ -140,23 +146,23 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
                             }
                         }
                     }
-                }else if (guiResponse instanceof DeleteBusinessResponse) {
-                    DeleteBusinessResponse response = (DeleteBusinessResponse) guiResponse;
+                }else if (guiResponse instanceof DeleteEducationResponse) {
+                    DeleteEducationResponse response = (DeleteEducationResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "Business removed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Education removed", Toast.LENGTH_SHORT).show();
                             }
 
-                            loadBusinessList();
+                            loadEducationList();
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "some thing went wrong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -166,14 +172,11 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
     }
 
 
-    @Override
-    public void edit(Business address) {
 
-    }
 
     @Override
-    public void delete(final Business address) {
-        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Achievement", "Are you sure to delete this achievement ?", new DialogInterface.OnClickListener() {
+    public void delete(final Education education) {
+        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Education", "Are you sure to delete this education ?", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 LoginModel loginResponse = OfflineData.getLoginData();
@@ -181,7 +184,7 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
 
 
                     RequestProcessor requestProcessor = new RequestProcessor(EducationListingFragment.this);
-                    requestProcessor.removeBusiness(loginResponse.getId(), loginResponse.getAppToken(),address);
+                    requestProcessor.removeEducation(loginResponse.getId(), loginResponse.getAppToken(),education);
                 }
 
                 dialogInterface.dismiss();

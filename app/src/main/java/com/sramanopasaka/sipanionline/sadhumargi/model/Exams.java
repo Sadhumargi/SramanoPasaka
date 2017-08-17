@@ -9,6 +9,12 @@ package com.sramanopasaka.sipanionline.sadhumargi.model;
 public class Exams {
 
 
+    public Exams(String exam_name, String exam_institute_name, String exam_year) {
+        this.exam_name = exam_name;
+        this.exam_institute_name = exam_institute_name;
+        this.exam_year = exam_year;
+    }
+
     private String id = null;
 
     private String member_id = null;

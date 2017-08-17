@@ -298,6 +298,10 @@
             android:name=".ProfileSadhasyaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
+        <activity
+            android:name=".AddExamActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base" />
 
     </application>
 

@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,38 +25,38 @@ import butterknife.OnClick;
  * Email : pranavjaydev@gmail.com
  */
 
-public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdapter.EducationListViewHolder> {
-    private List<Education> list = Collections.emptyList();
+public class ExamListAdapter extends RecyclerView.Adapter<ExamListAdapter.EducationListViewHolder> {
+    private List<Exams> list = Collections.emptyList();
     private LayoutInflater inflater;
-    private EducationListAdapter.EditDeleteActionListener listener;
+    private ExamListAdapter.EditDeleteActionListener listener;
 
-    public EducationListAdapter(Context activity, List<Education> list, EducationListAdapter.EditDeleteActionListener listener) {
+    public ExamListAdapter(Context activity, List<Exams> list, ExamListAdapter.EditDeleteActionListener listener) {
         inflater = LayoutInflater.from(activity);
         this.list = list;
         this.listener = listener;
     }
 
     @Override
-    public EducationListAdapter.EducationListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ExamListAdapter.EducationListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.education_list_item, parent, false);
-        return new EducationListAdapter.EducationListViewHolder(view);
+        return new ExamListAdapter.EducationListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(EducationListViewHolder holder, int position) {
-        final Education model = list.get(position);
-        holder.educationName.setText(model.getEducationName());
-        holder.educationYear.setText(model.getYear());
-        holder.instituteName.setText(model.getIstitute());
-        holder.description.setText(model.getDescription());
-        holder.score.setText(model.getScore());
+        final Exams model = list.get(position);
+        holder.educationName.setText(model.getExam_name());
+        holder.educationYear.setText(model.getExam_year());
+        holder.instituteName.setText(model.getExam_institute_name());
+        holder.description.setText("");
+        holder.score.setText("");
     }
 
 
 
     @Override
     public int getItemCount() {
-        return list == null ? 0 : list.size();
+        return list == null ? 0 :list.size();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdap
 
     public interface EditDeleteActionListener {
 
-        void delete(Education education);
+        void delete(Exams exams);
     }
 
 }

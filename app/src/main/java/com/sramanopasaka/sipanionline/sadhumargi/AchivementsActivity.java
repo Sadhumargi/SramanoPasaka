@@ -63,7 +63,6 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.achievement_sector, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //achievementArea.setPrompt("Select your favorite Planet!");
 
         achievementArea.setAdapter(
                 new NothingSelectedSpinnerAdapter(
@@ -106,7 +105,7 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
             callApi = false;
             Toast.makeText(AchivementsActivity.this,"Please select your achievement level",Toast.LENGTH_SHORT).show();
         }
-        else if (achievementLevel.getSelectedItem() == null) {
+        else if (achievementType.getSelectedItem() == null) {
             callApi = false;
             Toast.makeText(AchivementsActivity.this,"Please select your achievement type",Toast.LENGTH_SHORT).show();
         }
@@ -116,8 +115,6 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
                     detailsAchievement.getText().toString(), achievementYear.getText().toString());
             LoginModel loginResponse = OfflineData.getLoginData();
             if (loginResponse != null) {
-
-
                 RequestProcessor requestProcessor = new RequestProcessor(AchivementsActivity.this);
                 requestProcessor.addAchievemetns(loginResponse.getId(), loginResponse.getAppToken(), address);
             }

@@ -189,7 +189,7 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "some thing went wrong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

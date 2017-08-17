@@ -5,8 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/Pathsala_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.SrisanghFragment">
+    android:background="@color/Pathsala_background">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/achievmenttool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
 
     <!--UI for Religious Viewepager2-->
@@ -29,7 +43,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/religioustab2_exam"
+        android:id="@+id/examName"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -43,7 +57,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/religioustab2_institute"
+        android:id="@+id/instituteName"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -57,7 +71,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/religioustab2_year"
+        android:id="@+id/year"
+        android:editable="false"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"
         android:textStyle="normal"
@@ -70,7 +85,7 @@
 
 
     <Button
-        android:id="@+id/btn_Religious2"
+        android:id="@+id/addExam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

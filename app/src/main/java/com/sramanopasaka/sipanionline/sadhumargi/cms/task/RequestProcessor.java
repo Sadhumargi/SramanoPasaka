@@ -9,13 +9,18 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddEducationResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -27,6 +32,8 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Promise;
 
 import java.io.BufferedReader;
@@ -299,6 +306,35 @@ public class RequestProcessor {
 
     }
 
+    public void getEducationList(String memberId, String token) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        endPointApi.getEducation(memberId, token).enqueue(new Callback<EducationListResponse>() {
+            @Override
+            public void onResponse(Call<EducationListResponse> call, Response<EducationListResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<EducationListResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
     public void getDharmikDetails(String memberId, String token) {
 
 
@@ -455,8 +491,8 @@ public class RequestProcessor {
     }
 
     public void updateKnowledge(String memberId, String token, String navkar_mantra,
-                               String samayik, String pratikraman,
-                                String bol_thokde,  String shastra_gyan,
+                                String samayik, String pratikraman,
+                                String bol_thokde, String shastra_gyan,
                                 String vishesh_gyan) {
 
 
@@ -515,6 +551,71 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<AddAchievementResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void addExams(String memberId, String token, Exams data) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.addExams(memberId, token, "add", data.getExam_name(), data.getExam_institute_name(), data.getExam_year()).enqueue(new Callback<AddExamResponse>() {
+            @Override
+            public void onResponse(Call<AddExamResponse> call, Response<AddExamResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddExamResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void addEducation(String memberId, String token, Education data) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.addEducation(memberId, token, "add", data.getEducationName(), data.getDescription(), data.getScore(), data.getIstitute(),
+                data.getYear()).enqueue(new Callback<AddEducationResponse>() {
+            @Override
+            public void onResponse(Call<AddEducationResponse> call, Response<AddEducationResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddEducationResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
@@ -643,6 +744,68 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<DeleteBusinessResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+    }
+
+    public void removeEducation(String memberId, String token, Education data) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.deleteEducation(memberId, token, "delete", data.getId()).enqueue(new Callback<DeleteEducationResponse>() {
+            @Override
+            public void onResponse(Call<DeleteEducationResponse> call, Response<DeleteEducationResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteEducationResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+    }
+
+    public void removeExam(String memberId, String token, Exams data) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.deleteExams(memberId, token, "delete", data.getId()).enqueue(new Callback<DeleteExamResponse>() {
+            @Override
+            public void onResponse(Call<DeleteExamResponse> call, Response<DeleteExamResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteExamResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

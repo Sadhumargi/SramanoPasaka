@@ -6,13 +6,18 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddEducationResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -55,6 +60,13 @@ public interface EndPointApi {
     @FormUrlEncoded
     @POST("businesses")
     Call<BusinessListResponse> getBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+    @FormUrlEncoded
+    @POST("educations")
+    Call<EducationListResponse> getEducation(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+
+
 
     @FormUrlEncoded
     @POST("dharmik")
@@ -110,6 +122,19 @@ public interface EndPointApi {
                                                  @Field("achievement_detail") String achievement_detail, @Field("achievement_year") String achievement_year);
 
     @FormUrlEncoded
+    @POST("add_remove_exams")
+    Call<AddExamResponse> addExams(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                          @Field("method") String method, @Field("exam_name") String exam_name,
+                                          @Field("exam_institute_name") String exam_institute_name, @Field("exam_year") String exam_year);
+
+    @FormUrlEncoded
+    @POST("add_remove_education")
+    Call<AddEducationResponse> addEducation(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                            @Field("method") String method, @Field("education_name") String education_name,
+                                            @Field("education_description") String education_description, @Field("education_score") String education_score,
+                                            @Field("education_institute") String education_institute, @Field("education_year") String education_year);
+
+    @FormUrlEncoded
     @POST("add_remove_business")
     Call<AddBusinessResponse> addBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken,
                                           @Field("method") String method, @Field("business_type") String business_type,
@@ -138,6 +163,14 @@ public interface EndPointApi {
     @POST("add_remove_business")
     Call<DeleteBusinessResponse> deleteBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("business_id") String achievement_id);
 
+
+    @FormUrlEncoded
+    @POST("add_remove_education")
+    Call<DeleteEducationResponse> deleteEducation(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("education_id") String education_id);
+
+    @FormUrlEncoded
+    @POST("add_remove_exams")
+    Call<DeleteExamResponse> deleteExams(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("exam_id") String exam_id);
 
 
 }

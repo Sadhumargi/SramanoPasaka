@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.ExamListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.KnowledgeFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ParikshaFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.PromiseFragment;
@@ -87,7 +88,9 @@ public class DharmikActivity extends BaseActivity implements GUICallback {
 
         DharmikActivity.ViewPagerAdapter adapter = new DharmikActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new PromiseFragment().newInstance(), "नियम/त्याग");
-        adapter.addFragment(new ParikshaFragment(), "परीक्षाएं ");
+        adapter.addFragment(new ExamListingFragment().newInstance(), "परीक्षाएं ");
+
+        //adapter.addFragment(new ParikshaFragment(), "परीक्षाएं ");
         adapter.addFragment(new KnowledgeFragment().newInstance(), "ज्ञान");
         viewPager.setAdapter(adapter);
 

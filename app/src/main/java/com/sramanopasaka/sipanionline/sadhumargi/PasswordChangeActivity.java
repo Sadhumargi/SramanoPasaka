@@ -15,19 +15,19 @@ import android.widget.Toast;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
-public class PasswordChangeActivity extends AppCompatActivity implements GUICallback {
+public class PasswordChangeActivity extends BaseActivity implements GUICallback {
 
     Toolbar toolbar;
     Button btnReset;
     EditText curPassword;
     EditText newPassword;
 
-    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
                     newPassword.requestFocus();
                     callAPi = false;
                 }
-                if(callAPi){
+                if (callAPi) {
                     if ((curPassword.getText().toString().length()) < 8) {
                         curPassword.setError("Current Password should be atleast of 8 charactors");
                         curPassword.requestFocus();
@@ -90,17 +90,13 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
                         callAPi = false;
                     }
                 }
-                if(callAPi){
-                    if(!cPassword.equalsIgnoreCase("SHAREDPREFERENCE PASSWORD")){
+                if (callAPi) {
+                    if (!cPassword.equalsIgnoreCase("SHAREDPREFERENCE PASSWORD")) {
                         curPassword.setError("current password is wrong");
                         curPassword.requestFocus();
                         callAPi = false;
                     }
                 }
-
-
-
-
 
 
                 if (callAPi) {
@@ -121,7 +117,7 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
     private void passwordChange() {
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
-
+            showLoadingDialog();
 
             RequestProcessor requestProcessor = new RequestProcessor(PasswordChangeActivity.this);
             requestProcessor.passwordChange(loginResponse.getId(), loginResponse.getAppToken(),
@@ -132,10 +128,8 @@ public class PasswordChangeActivity extends AppCompatActivity implements GUICall
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
 
+        hideLoadingDialog();
 
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
                 if (guiResponse instanceof PasswordChangeResponse) {

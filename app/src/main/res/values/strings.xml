@@ -374,4 +374,13 @@
         <item>Felicitation</item>
         <item>Other</item>
     </array>
+    <array name="education_names">
+        <item>BSc</item>
+        <item>Msc</item>
+        <item>BA</item>
+        <item>MCA</item>
+        <item>BCA</item>
+        <item>BTech</item>
+        <item>MTech</item>
+    </array>
 </resources>
