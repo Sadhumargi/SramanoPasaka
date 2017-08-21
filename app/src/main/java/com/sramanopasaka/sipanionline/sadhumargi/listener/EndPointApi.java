@@ -12,6 +12,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
@@ -24,7 +25,12 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.model.City;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 
+import java.util.List;
+
+import retrofit2.http.GET;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -180,5 +186,10 @@ public interface EndPointApi {
     @POST("app/add_remove_exams")
     Call<DeleteExamResponse> deleteExams(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("exam_id") String exam_id);
 
+    @GET("api/states")
+    Call<List<Country>> selectCountry();
+
+    @GET("api/cities")
+    Call<List<City>> selectCity();
 
 }

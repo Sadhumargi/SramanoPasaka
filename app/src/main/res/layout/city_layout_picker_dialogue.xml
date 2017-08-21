@@ -13,16 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/select_state"
+        android:text="@string/selectcity"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/holo_blue_light"
-        />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title_tv"
-        android:layout_above="@+id/search_edt"
         android:textColor="@android:color/holo_blue_light"
         />
 
@@ -31,9 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_tv"
-        android:hint="search your state here"
-        android:drawableStart="@drawable/places_ic_search"
+        android:hint="search your city here"
         android:imeOptions="flagNoExtractUi"
+        android:drawableStart="@drawable/places_ic_search"
         android:maxLines="1"
         android:layout_marginTop="@dimen/dimen_5dp"
         android:singleLine="true"
@@ -41,7 +33,7 @@
         />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/country_dialog_rv"
+        android:id="@+id/city_dialog_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/search_edt"

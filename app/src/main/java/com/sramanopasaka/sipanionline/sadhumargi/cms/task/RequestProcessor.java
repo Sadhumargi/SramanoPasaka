@@ -15,6 +15,8 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
@@ -22,6 +24,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -33,6 +36,8 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
+import com.sramanopasaka.sipanionline.sadhumargi.model.City;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Promise;
@@ -41,6 +46,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -896,6 +902,80 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<PasswordRecoverResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void Country() {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        valYouAPI.selectCountry().enqueue(new Callback<List<Country>>() {
+            @Override
+            public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                CountryResponse countryResponse = new CountryResponse();
+
+                if (response.body() != null) {
+                    countryResponse.setCountryList(response.body());
+                    guiCallback.onRequestProcessed(countryResponse, GUICallback.RequestStatus.SUCCESS);
+                }else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Country>> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void City() {
+
+
+
+        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        valYouAPI.selectCity().enqueue(new Callback<List<City>>() {
+            @Override
+            public void onResponse(Call<List<City>> call, Response<List<City>> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                CityResponse cityResponse = new CityResponse();
+
+                if (response.body() != null) {
+                    cityResponse.setCityList(response.body());
+                    guiCallback.onRequestProcessed(cityResponse, GUICallback.RequestStatus.SUCCESS);
+                }else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<City>> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

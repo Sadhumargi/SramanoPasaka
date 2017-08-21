@@ -1,9 +1,8 @@
-package com.sramanopasaka.sipanionline.sadhumargi.utils;
+package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,48 +13,44 @@ import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
-import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.CityChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.CountryCodeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Dialog for selecting Country.
- * <p>
- * Created by Joielechong on 11 May 2017.
+ * Created by sipani001 on 18/8/17.
  */
 
-public class StatePickerDialog extends Dialog implements CountryCodeAdapter.Callback {
+public class CityPickerDialog extends Dialog implements CountryCodeAdapter.Callback, CityChangeListner {
+
     private RelativeLayout mRlyDialog = null;
     private AppCompatTextView mTvTitle = null;
     private AppCompatEditText mEdtSearch = null;
     private AppCompatTextView mTvNoResult  =null;
     private RecyclerView country_dialog_rv = null;
-private StateChangeListner stateChangeListner = null;
-    private List<Country> mFilteredCountries;
-    private List<Country> stateList = null;
+    private CityChangeListner cityChangeListner = null;
+    private List<City> mFilteredCity;
     private List<City> cityList = null;
     private Context context = null;
-private boolean isCity = false;
+    private boolean isCity = false;
 
-    public StatePickerDialog(Context context, StateChangeListner stateChangeListner, List<Country> countryResponse) {
+
+    public CityPickerDialog(Context context, CityChangeListner cityChangeListner, List<City> cityResponse) {
         super(context);
         this.context = context;
-        this.stateChangeListner = stateChangeListner;
-        this.isCity = isCity;
-        this.stateList=countryResponse;
+        this.cityChangeListner = cityChangeListner;
+        this.cityList=cityResponse;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.layout_picker_dialogue);
+        setContentView(R.layout.city_layout_picker_dialogue);
         setupUI();
         //setupData();
         setTextWatcher();
@@ -119,16 +114,16 @@ private boolean isCity = false;
 
                 @Override
                 public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                    if (stateList != null ) {
+                    if (cityList != null ) {
                         charSequence = charSequence.toString().trim().toLowerCase();
-                        final List<Country> filteredList = new ArrayList<>();
+                        final List<City> filteredList = new ArrayList<>();
                         boolean itemFound = false;
-                        for (int i = 0; i < stateList.size(); i++) {
+                        for (int i = 0; i < cityList.size(); i++) {
 
-                            final String text = stateList.get(i).getState_name().toLowerCase();
+                            final String text = cityList.get(i).getCity_name().toLowerCase();
                             if (text.contains(charSequence)) {
                                 itemFound = true;
-                                filteredList.add(stateList.get(i));
+                                filteredList.add(cityList.get(i));
                             }
                         }
                   /*  if (!itemFound) {
@@ -138,8 +133,8 @@ private boolean isCity = false;
                         selected = charSequence.toString();
                         filteredList.add(college);
                     }*/
-                       // CountryCodeAdapter countryCodeAdapter = new CountryCodeAdapter(filteredList,StatePickerDialog.this);
-                      //  country_dialog_rv.setAdapter(countryCodeAdapter);
+                        CountryCodeAdapter countryCodeAdapter = new CountryCodeAdapter(filteredList, CityPickerDialog.this);
+                        country_dialog_rv.setAdapter(countryCodeAdapter);
                     }
                 }
             });
@@ -163,25 +158,30 @@ private boolean isCity = false;
             query = query.substring(1);
         }
 
-       // mFilteredCountries = getFilteredCountries(query);
+        // mFilteredCountries = getFilteredCountries(query);
 
-        if (mFilteredCountries.size() == 0) {
+        if (mFilteredCity.size() == 0) {
             mTvNoResult.setVisibility(View.VISIBLE);
         }
 
-      //  mAdapter.notifyDataSetChanged();
+        //  mAdapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onItemSelected(Country country) {
 
-        stateChangeListner.onStateSelected(country.getState_name());
-        dismiss();
     }
 
     @Override
     public void onItemSelected(City city) {
 
+        cityChangeListner.onCitySelected(city.getCity_name());
+        dismiss();
+    }
+
+    @Override
+    public void onCitySelected(String city) {
+
     }
 }
+
