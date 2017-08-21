@@ -15,6 +15,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 import static com.sramanopasaka.sipanionline.sadhumargi.R.id.fab;
 
@@ -31,7 +32,8 @@ public class SocialRoleFragment extends BaseFragment implements GUICallback, Dat
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.fragment_businesslist,container,false);
+
+        ButterKnife.bind(this,view);
         return view;
     }
 
