@@ -27,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
@@ -227,21 +228,28 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         sCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPicker();
+                showCountryPicker();
             }
         });
 
         countryCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPicker();
+                showCountryPicker();
             }
         });
         sState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this,false);
-                statePickerDialog.show();
+
+                StateListResponse stateListResponse = OfflineData.getStateList();
+                if(stateListResponse!=null) {
+                    StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this, stateListResponse.getStateList());
+                    statePickerDialog.show();
+                }else{
+                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    processor.getStateList();
+                }
             }
         });
 
@@ -249,7 +257,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
     }
 
 
-    private void showPicker() {
+    private void showCountryPicker() {
         final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
         picker.setListener(new CountryPickerListener() {
             @Override
@@ -269,10 +277,6 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         sState.setError(null);
     }
 
-    @Override
-    public void onCitySelected(String city) {
-            sCity.setText(city);
-    }
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
@@ -280,21 +284,30 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                RegisterResponse loginResponse = (RegisterResponse) guiResponse;
-                if (loginResponse != null) {
-                    if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
-                        PreferenceUtils.setPassword(getActivity(),password.getText().toString());
-                        OfflineData.saveLoginResponse(loginResponse.getData());
-                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(getActivity(), ProfileActivity.class);
-                        startActivity(i);
-                        getActivity().finish();
-                    } else {
-                        if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                            Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                if(guiResponse instanceof RegisterResponse) {
+                    RegisterResponse loginResponse = (RegisterResponse) guiResponse;
+                    if (loginResponse != null) {
+                        if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
+                            PreferenceUtils.setPassword(getActivity(), password.getText().toString());
+                            OfflineData.saveLoginResponse(loginResponse.getData());
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getActivity(), ProfileActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
                         } else {
-                            Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            if (!TextUtils.isEmpty(loginResponse.getMessage())) {
+                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    }
+                }else  if(guiResponse instanceof StateListResponse) {
+                    StateListResponse stateListResponse = (StateListResponse) guiResponse;
+                    if(stateListResponse !=null){
+                        OfflineData.saveStateResponse(stateListResponse);
+                        StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this, stateListResponse.getStateList());
+                        statePickerDialog.show();
                     }
                 }
 

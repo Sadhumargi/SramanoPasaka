@@ -1,71 +1,40 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
 public class State{
-	private String area;
-	private String country;
-	private String capital;
-	private String name;
-	private String largestCity;
-	private String abbr;
+	private String state_name = null;
+	private String state_code;
+	private String state_id;
+	private String zone_id;
 
-	public void setArea(String area){
-		this.area = area;
+	public String getState_name() {
+		return state_name;
 	}
 
-	public String getArea(){
-		return area;
+	public void setState_name(String state_name) {
+		this.state_name = state_name;
 	}
 
-	public void setCountry(String country){
-		this.country = country;
+	public String getState_code() {
+		return state_code;
 	}
 
-	public String getCountry(){
-		return country;
+	public void setState_code(String state_code) {
+		this.state_code = state_code;
 	}
 
-	public void setCapital(String capital){
-		this.capital = capital;
+	public String getState_id() {
+		return state_id;
 	}
 
-	public String getCapital(){
-		return capital;
+	public void setState_id(String state_id) {
+		this.state_id = state_id;
 	}
 
-	public void setName(String name){
-		this.name = name;
+	public String getZone_id() {
+		return zone_id;
 	}
 
-	public String getName(){
-		return name;
+	public void setZone_id(String zone_id) {
+		this.zone_id = zone_id;
 	}
-
-	public void setLargestCity(String largestCity){
-		this.largestCity = largestCity;
-	}
-
-	public String getLargestCity(){
-		return largestCity;
-	}
-
-	public void setAbbr(String abbr){
-		this.abbr = abbr;
-	}
-
-	public String getAbbr(){
-		return abbr;
-	}
-
-	@Override
- 	public String toString(){
-		return 
-			"State{" + 
-			"area = '" + area + '\'' + 
-			",country = '" + country + '\'' + 
-			",capital = '" + capital + '\'' + 
-			",name = '" + name + '\'' + 
-			",largest_city = '" + largestCity + '\'' + 
-			",abbr = '" + abbr + '\'' + 
-			"}";
-		}
 }

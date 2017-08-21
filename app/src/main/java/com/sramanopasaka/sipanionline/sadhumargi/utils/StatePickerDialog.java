@@ -3,7 +3,6 @@ package com.sramanopasaka.sipanionline.sadhumargi.utils;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,13 +13,24 @@ import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mukesh.countrypicker.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.CountryCodeAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.StatePickerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
-import com.sramanopasaka.sipanionline.sadhumargi.model.City;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
+import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,25 +40,22 @@ import java.util.List;
  * Created by Joielechong on 11 May 2017.
  */
 
-public class StatePickerDialog extends Dialog implements CountryCodeAdapter.Callback {
+public class StatePickerDialog extends Dialog implements StatePickerAdapter.Callback {
     private RelativeLayout mRlyDialog = null;
     private AppCompatTextView mTvTitle = null;
     private AppCompatEditText mEdtSearch = null;
     private AppCompatTextView mTvNoResult  =null;
     private RecyclerView country_dialog_rv = null;
-private StateChangeListner stateChangeListner = null;
+    private StateChangeListner stateChangeListner = null;
     private List<Country> mFilteredCountries;
-    private List<Country> stateList = null;
-    private List<City> cityList = null;
+    private List<State> stateList = null;
     private Context context = null;
-private boolean isCity = false;
 
-    public StatePickerDialog(Context context, StateChangeListner stateChangeListner, List<Country> countryResponse) {
+    public StatePickerDialog(Context context,StateChangeListner stateChangeListner,List<State> stateList) {
         super(context);
         this.context = context;
         this.stateChangeListner = stateChangeListner;
-        this.isCity = isCity;
-        this.stateList=countryResponse;
+        this.stateList = stateList;
     }
 
     @Override
@@ -57,7 +64,7 @@ private boolean isCity = false;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_picker_dialogue);
         setupUI();
-        //setupData();
+        setupData();
         setTextWatcher();
     }
 
@@ -66,41 +73,17 @@ private boolean isCity = false;
         mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
         mEdtSearch = (AppCompatEditText) this.findViewById(R.id.search_edt);
         mTvNoResult = (AppCompatTextView) this.findViewById(R.id.no_result_tv);
-
         country_dialog_rv = (RecyclerView) this.findViewById(R.id.country_dialog_rv);
         country_dialog_rv.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    /*private void setupData() {
-        InputStream is = context.getResources().openRawResource(R.raw.state);
-        if(isCity)
-             is = context.getResources().openRawResource(R.raw.city);
-        Writer writer = new StringWriter();
-        char[] buffer = new char[1024];
-        try {
-            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            int n;
-            while ((n = reader.read(buffer)) != -1) {
-                writer.write(buffer, 0, n);
-            }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
+    private void setupData() {
 
-            }
-        }
 
-        Type listType = new TypeToken<List<State>>() {
-        }.getType();
-        stateList = (List<State>) new Gson().fromJson(writer.toString(), listType);*/
 
-        /*CountryCodeAdapter countryCodeAdapter = new CountryCodeAdapter(stateList,this);
-        country_dialog_rv.setAdapter(countryCodeAdapter);*/
+        StatePickerAdapter statePickerAdapter = new StatePickerAdapter(stateList,this);
+        country_dialog_rv.setAdapter(statePickerAdapter);
+    }
 
     /**
      * add textChangeListener, to apply new query each time editText get text changed.
@@ -121,7 +104,7 @@ private boolean isCity = false;
                 public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                     if (stateList != null ) {
                         charSequence = charSequence.toString().trim().toLowerCase();
-                        final List<Country> filteredList = new ArrayList<>();
+                        final List<State> filteredList = new ArrayList<>();
                         boolean itemFound = false;
                         for (int i = 0; i < stateList.size(); i++) {
 
@@ -138,8 +121,8 @@ private boolean isCity = false;
                         selected = charSequence.toString();
                         filteredList.add(college);
                     }*/
-                       // CountryCodeAdapter countryCodeAdapter = new CountryCodeAdapter(filteredList,StatePickerDialog.this);
-                      //  country_dialog_rv.setAdapter(countryCodeAdapter);
+                        StatePickerAdapter countryCodeAdapter = new StatePickerAdapter(filteredList,StatePickerDialog.this);
+                        country_dialog_rv.setAdapter(countryCodeAdapter);
                     }
                 }
             });
@@ -163,25 +146,19 @@ private boolean isCity = false;
             query = query.substring(1);
         }
 
-       // mFilteredCountries = getFilteredCountries(query);
+        // mFilteredCountries = getFilteredCountries(query);
 
         if (mFilteredCountries.size() == 0) {
             mTvNoResult.setVisibility(View.VISIBLE);
         }
 
-      //  mAdapter.notifyDataSetChanged();
+        //  mAdapter.notifyDataSetChanged();
     }
 
 
     @Override
-    public void onItemSelected(Country country) {
-
+    public void onItemSelected(State country) {
         stateChangeListner.onStateSelected(country.getState_name());
         dismiss();
-    }
-
-    @Override
-    public void onItemSelected(City city) {
-
     }
 }

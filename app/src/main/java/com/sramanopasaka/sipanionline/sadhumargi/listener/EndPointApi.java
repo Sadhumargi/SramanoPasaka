@@ -12,7 +12,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
@@ -28,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
+import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
 import java.util.List;
 
@@ -192,7 +192,7 @@ public interface EndPointApi {
     Call<DeleteExamResponse> deleteExams(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("exam_id") String exam_id);
 
     @GET("api/states")
-    Call<List<Country>> selectCountry();
+    Call<List<State>> getStateList();
 
     @GET("api/cities")
     Call<List<City>> selectCity();

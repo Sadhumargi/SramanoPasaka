@@ -15,7 +15,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListRespons
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
@@ -23,7 +23,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
@@ -40,6 +39,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
+import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -938,7 +938,7 @@ public class RequestProcessor {
 
     }
 
-    public void Country() {
+    public void getStateList() {
 
 
 
@@ -946,26 +946,26 @@ public class RequestProcessor {
 
 
 
-        valYouAPI.selectCountry().enqueue(new Callback<List<Country>>() {
+        valYouAPI.getStateList().enqueue(new Callback<List<State>>() {
             @Override
-            public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
+            public void onResponse(Call<List<State>> call, Response<List<State>> response) {
 
 
                 Log.e("Response message=", "" + response.message());
 
 
-                CountryResponse countryResponse = new CountryResponse();
+                StateListResponse stateListResponse = new StateListResponse();
 
                 if (response.body() != null) {
-                    countryResponse.setCountryList(response.body());
-                    guiCallback.onRequestProcessed(countryResponse, GUICallback.RequestStatus.SUCCESS);
+                    stateListResponse.setStateList(response.body());
+                    guiCallback.onRequestProcessed(stateListResponse, GUICallback.RequestStatus.SUCCESS);
                 }else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 
             }
 
             @Override
-            public void onFailure(Call<List<Country>> call, Throwable t) {
+            public void onFailure(Call<List<State>> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

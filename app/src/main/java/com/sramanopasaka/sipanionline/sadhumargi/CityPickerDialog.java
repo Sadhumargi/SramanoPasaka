@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.CityChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.CountryCodeAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.adapters.CountryCodeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

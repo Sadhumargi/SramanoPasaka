@@ -98,7 +98,7 @@ public class SanghFragment extends BaseFragment implements GUICallback{
         loadSanghData();
 
 
-       /* knowledgeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        socialRoleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
 
@@ -107,7 +107,7 @@ public class SanghFragment extends BaseFragment implements GUICallback{
                 }
             }
         });
-        promiseButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        servicesButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
 
@@ -116,17 +116,16 @@ public class SanghFragment extends BaseFragment implements GUICallback{
                 }
             }
         });
-        examButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        hobbiesButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
 
                 if(checked){
-                    setFragment(ExamListingFragment.newInstance(),"");
+                    setFragment(HobbyFragment.newInstance(),"");
                 }
             }
         });
 
-        */
         setFragment(HobbyFragment.newInstance(),"");
 
     }

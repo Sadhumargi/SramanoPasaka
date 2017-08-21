@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.helpers;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.DharmicData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
@@ -60,8 +61,23 @@ public class OfflineData extends BaseOffline {
             return null;
         }
     }
-
     public static void deleteSanghResponse() {
         deleteOfflineData("sangh");
     }
+
+    public static void saveStateResponse(StateListResponse response) {
+        saveOfflineData("state", response);
+    }
+
+
+    public static StateListResponse getStateList() {
+        String offlineData = getOfflineData("state");
+        if (offlineData != null) {
+            return getStringToObject(offlineData, StateListResponse.class);
+        } else {
+            return null;
+        }
+    }
+
+
 }
