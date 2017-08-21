@@ -31,7 +31,7 @@ public class SocialRoleFragment extends BaseFragment implements GUICallback, Dat
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        view = inflater.inflate(R.layout.fragment_businesslist, container, false);
 
         ButterKnife.bind(this,view);
         return view;

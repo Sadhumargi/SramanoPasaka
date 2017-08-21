@@ -91,7 +91,7 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
             });
         }*/
 
-
+@OnClick(R.id.btn_Socialrole)
         public void addSocialRole() {
 
             boolean callApi = true;

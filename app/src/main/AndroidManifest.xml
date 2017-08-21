@@ -304,7 +304,9 @@
             android:name=".ResetPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
-        <activity android:name=".AddSocialRoleActivity"></activity>
+        <activity android:name=".AddSocialRoleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base"></activity>
     </application>
 
 </manifest>
