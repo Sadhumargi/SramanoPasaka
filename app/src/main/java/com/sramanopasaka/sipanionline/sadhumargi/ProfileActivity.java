@@ -89,7 +89,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,DharmikActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",6);
                 startActivity(i);
 
             }
@@ -99,7 +100,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,SanghActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",7);
                 startActivity(i);
             }
         });
@@ -129,7 +131,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(ProfileActivity.this,EducationActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",4);
                 startActivity(i);
             }
         });
@@ -172,7 +175,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(ProfileActivity.this, PasswordChangeActivity.class);
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",8);
                 startActivity(i);
 
             }

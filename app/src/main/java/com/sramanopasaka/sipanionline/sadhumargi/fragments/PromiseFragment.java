@@ -62,7 +62,6 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
 
 
     private View view = null;
-    private DharmikActivity dharmikActivity = null;
 
     public static PromiseFragment newInstance() {
         return new PromiseFragment();
@@ -79,7 +78,7 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
     }
 
 
-    @Override
+  /*  @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
@@ -92,8 +91,7 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                     if (getActivity() != null) {
 
                         showDataUi();
-                        dharmikActivity = (DharmikActivity) getActivity();
-                        dharmikActivity.setDataUpdator(PromiseFragment.this);
+
 
                     }
                 }
@@ -101,6 +99,12 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
             }, 100L);
 
         }
+    }*/
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        showDataUi();
     }
 
     private void showDataUi() {
@@ -175,10 +179,10 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
-                            if (dharmikActivity == null)
+                            /*if (dharmikActivity == null)
                                 dharmikActivity = (DharmikActivity) getActivity();
                             dharmikActivity.loadDharmikData();
-
+*/
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {

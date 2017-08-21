@@ -12,15 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.plus.model.people.Person;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BusinessListingFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.ChangePasswordFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.ContactDetailsFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.DharmicFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.EducationListingFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.SanghFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
@@ -39,6 +44,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private RelativeLayout educationView = null;
     private RelativeLayout businessView = null;
     private RelativeLayout achievementDetailsView = null;
+    private RelativeLayout dharmikView = null;
+    private RelativeLayout sanghView = null;
+    private RelativeLayout passwordView = null;
 
     private ImageView basicDetailsImg = null;
     private ImageView uploadPhotoImg = null;
@@ -46,6 +54,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private ImageView educationImage = null;
     private ImageView businessImage = null;
     private ImageView achievementDetailsImage = null;
+    private ImageView dharmikImage = null;
+    private ImageView sanghImage = null;
+    private ImageView passwordImage = null;
 
 
     private View basicRight = null;
@@ -58,12 +69,20 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private View uploadLeft = null;
     private View achievementLeft = null;
     private View achievementRight = null;
+    private View dharmikLeft = null;
+    private View dharmikRight = null;
+    private View businessRight = null;
+    private View sanghLeft = null;
+    private View sanghRight =  null;
+    private View passwordLeft = null;
 
     private TextView titleTxt = null;
-    private NestedScrollView nestedScrollView = null;
+    private HorizontalScrollView horizondalScrollView = null;
 
 
-    private int MAX_DETAILS = 5;
+
+
+    private int MAX_DETAILS = 8;
 
     private int currentTab = -1;
 
@@ -72,7 +91,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
 
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+        horizondalScrollView = (HorizontalScrollView) findViewById(R.id.horizondalScrollView);
 
         basicDetaisView = (RelativeLayout) findViewById(R.id.basicDetaisView);
         uploadPhotoView = (RelativeLayout) findViewById(R.id.uploadPhotoView);
@@ -80,6 +99,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         educationView = (RelativeLayout) findViewById(R.id.educationView);
         businessView = (RelativeLayout) findViewById(R.id.businessView);
         achievementDetailsView = (RelativeLayout) findViewById(R.id.achievementDetailsView);
+        dharmikView = (RelativeLayout) findViewById(R.id.dharmikView);
+        sanghView = (RelativeLayout) findViewById(R.id.sanghView);
+        passwordView = (RelativeLayout) findViewById(R.id.passwordView);
 
 
         basicDetailsImg = (ImageView) findViewById(R.id.basicDetailsImg);
@@ -88,6 +110,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         educationImage = (ImageView) findViewById(R.id.educationImage);
         businessImage = (ImageView) findViewById(R.id.businessImage);
         achievementDetailsImage = (ImageView) findViewById(R.id.achievementDetailsImage);
+        dharmikImage  = (ImageView) findViewById(R.id.dharmikImage);
+        sanghImage   = (ImageView) findViewById(R.id.sanghImage);
+        passwordImage   = (ImageView) findViewById(R.id.passwordImage);
 
         uploadLeft = findViewById(R.id.uploadLeft);
         uploadRight = findViewById(R.id.uploadRight);
@@ -99,6 +124,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         basicRight = findViewById(R.id.basicRight);
         achievementLeft = findViewById(R.id.achievementLeft);
         achievementRight = findViewById(R.id.achievementRight);
+        dharmikLeft  = findViewById(R.id.dharmikLeft);
+        dharmikRight  = findViewById(R.id.dharmikRight);
+        businessRight  = findViewById(R.id.businessRight);
+        sanghLeft  = findViewById(R.id.sanghLeft);
+        sanghRight  = findViewById(R.id.sanghRight);
+        passwordLeft = findViewById(R.id.passwordLeft);
 
         titleTxt = (TextView) findViewById(R.id.titleTxt);
 
@@ -108,6 +139,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         achievementDetailsView.setTag(3);
         educationView.setTag(4);
         businessView.setTag(5);
+        dharmikView.setTag(6);
+        sanghView.setTag(7);
+        passwordView.setTag(8);
 
         basicDetaisView.setOnClickListener(sectionSelecredListner);
         uploadPhotoView.setOnClickListener(sectionSelecredListner);
@@ -115,6 +149,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         educationView.setOnClickListener(sectionSelecredListner);
         businessView.setOnClickListener(sectionSelecredListner);
         achievementDetailsView.setOnClickListener(sectionSelecredListner);
+        dharmikView.setOnClickListener(sectionSelecredListner);
+        sanghView.setOnClickListener(sectionSelecredListner);
+        passwordView.setOnClickListener(sectionSelecredListner);
 
 
         try {
@@ -177,6 +214,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
                 achievementDetailsImage.setImageResource(R.drawable.achievement);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
@@ -188,6 +228,14 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+
+
                 break;
             case 1:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
@@ -196,6 +244,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
                 achievementDetailsImage.setImageResource(R.drawable.achievement);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -207,6 +258,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 break;
             case 2:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
@@ -215,6 +272,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
                 achievementDetailsImage.setImageResource(R.drawable.achievement);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -226,14 +286,23 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 break;
             case 3:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
                 uploadPhotoImg.setImageResource(R.drawable.upload_b);
                 contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
                 educationImage.setImageResource(R.drawable.education_icon);
                 businessImage.setImageResource(R.drawable.business);
-                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -245,6 +314,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 break;
             case 4:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
@@ -253,6 +328,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 achievementDetailsImage.setImageResource(R.drawable.achievement_b);
                 educationImage.setImageResource(R.drawable.education_icon_b);
                 businessImage.setImageResource(R.drawable.business);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -264,6 +342,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
                 break;
             case 5:
                 basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
@@ -272,6 +356,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 achievementDetailsImage.setImageResource(R.drawable.achievement_b);
                 educationImage.setImageResource(R.drawable.education_icon_b);
                 businessImage.setImageResource(R.drawable.business_b);
+                dharmikImage.setImageResource(R.drawable.dharmic);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
 
                 basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
@@ -283,6 +370,98 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                break;
+
+            case 6:
+                basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
+                uploadPhotoImg.setImageResource(R.drawable.upload_b);
+                contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
+                educationImage.setImageResource(R.drawable.education_icon_b);
+                businessImage.setImageResource(R.drawable.business_b);
+                dharmikImage.setImageResource(R.drawable.dharmic_b);
+                sanghImage.setImageResource(R.drawable.sangh);
+                passwordImage.setImageResource(R.drawable.password_w);
+
+                basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                break;
+
+            case 7:
+                basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
+                uploadPhotoImg.setImageResource(R.drawable.upload_b);
+                contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
+                educationImage.setImageResource(R.drawable.education_icon_b);
+                businessImage.setImageResource(R.drawable.business_b);
+                dharmikImage.setImageResource(R.drawable.dharmic_b);
+                sanghImage.setImageResource(R.drawable.sangh_b);
+                passwordImage.setImageResource(R.drawable.password_w);
+
+                basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.white));
+                break;
+            case 8:
+                basicDetailsImg.setImageResource(R.drawable.basic_detail_b);
+                uploadPhotoImg.setImageResource(R.drawable.upload_b);
+                contactDetailsImage.setImageResource(R.drawable.contact_detail_b);
+                achievementDetailsImage.setImageResource(R.drawable.achievement_b);
+                educationImage.setImageResource(R.drawable.education_icon_b);
+                businessImage.setImageResource(R.drawable.business_b);
+                dharmikImage.setImageResource(R.drawable.dharmic_b);
+                sanghImage.setImageResource(R.drawable.sangh_b);
+                passwordImage.setImageResource(R.drawable.password_b);
+
+                basicRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                uploadRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                contactRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                achievementRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                educationRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                businessRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                dharmikRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                sanghLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                sanghRight.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
+                passwordLeft.setBackgroundColor(ContextCompat.getColor(ProfileUpdateActivty.this, R.color.black));
                 break;
 
         }
@@ -296,7 +475,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         }
     };
 
-    private void showPages(int tag) {
+    private void showPages(final int tag) {
         currentTab = tag;
         switch (tag) {
             case 0:
@@ -319,11 +498,29 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             case 5:
                 setFragment(BusinessListingFragment.newInstance(), "");
                 break;
+            case 6:
+                setFragment(DharmicFragment.newInstance(), "");
+                break;
+            case 7:
+                setFragment(SanghFragment.newInstance(), "");
+                break;
+            case 8:
+                setFragment(ChangePasswordFragment.newInstance(), "");
+                break;
+
+
 
 
         }
-        if (tag != -1)
+        if (tag != -1) {
             setViewColor(tag);
+            horizondalScrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    horizondalScrollView.scrollTo(125 * tag, 0);
+                }
+            });
+        }
     }
 
     protected void setFragment(Fragment fragment, String tag) {

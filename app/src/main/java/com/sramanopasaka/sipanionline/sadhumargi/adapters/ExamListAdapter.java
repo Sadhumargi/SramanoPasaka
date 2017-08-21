@@ -27,18 +27,19 @@ import butterknife.OnClick;
 
 public class ExamListAdapter extends RecyclerView.Adapter<ExamListAdapter.EducationListViewHolder> {
     private List<Exams> list = Collections.emptyList();
-    private LayoutInflater inflater;
+    private Context context;
     private ExamListAdapter.EditDeleteActionListener listener;
 
     public ExamListAdapter(Context activity, List<Exams> list, ExamListAdapter.EditDeleteActionListener listener) {
-        inflater = LayoutInflater.from(activity);
+        context = activity;
         this.list = list;
         this.listener = listener;
     }
 
     @Override
     public ExamListAdapter.EducationListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.education_list_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.education_list_item, parent, false);
+       // View view = inflater.inflate(R.layout.education_list_item, parent, false);
         return new ExamListAdapter.EducationListViewHolder(view);
     }
 

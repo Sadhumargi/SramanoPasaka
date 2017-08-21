@@ -3,8 +3,8 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,31 +20,26 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
-import com.sramanopasaka.sipanionline.sadhumargi.CityPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.request.GUIRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CountryResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.CityChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
-import com.sramanopasaka.sipanionline.sadhumargi.model.City;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
-public class CreateAccountFragment extends BaseFragment implements StateChangeListner, GUICallback,CityChangeListner {
+public class CreateAccountFragment extends BaseFragment implements StateChangeListner, GUICallback {
 
     EditText fName;
     EditText mName;
@@ -62,11 +57,6 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
     Button btnCreateProfile;
     TextView countryCode;
 
-    public List<Country> countryList;
-    public List<City> cityList;
-
-
-    RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -234,66 +224,28 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
             }
         });
 
-
         sCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 showPicker();
             }
         });
-
 
         countryCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showPicker();
-
             }
         });
-
-
         sState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                sCountry();
-
+                StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this,false);
+                statePickerDialog.show();
             }
         });
-
-        sCity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                sCity();
-            }
-        });
-
 
         return view;
-    }
-
-
-
-    private void sCountry() {
-        CountryResponse countryResponse= new CountryResponse();
-
-        if(countryResponse!=null){
-
-        RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
-        requestProcessor.Country();
-        }
-    }
-
-    private void sCity() {
-        CountryResponse countryResponse= new CountryResponse();
-
-        if(countryResponse!=null){
-
-            RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
-            requestProcessor.City();
-        }
     }
 
 
@@ -311,7 +263,6 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         picker.show(getActivity().getSupportFragmentManager(), "COUNTRY_PICKER");
     }
 
-
     @Override
     public void onStateSelected(String state) {
         sState.setText(state);
@@ -320,10 +271,8 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
 
     @Override
     public void onCitySelected(String city) {
-        sCity.setText(city);
+            sCity.setText(city);
     }
-
-
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
@@ -331,63 +280,26 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                if (guiResponse instanceof LoginResponse) {
-
-                    RegisterResponse loginResponse = (RegisterResponse) guiResponse;
-                    if (loginResponse != null) {
-                        if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
-
-                            OfflineData.saveLoginResponse(loginResponse.getData());
-                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(getActivity(), ProfileActivity.class);
-                            startActivity(i);
-                            getActivity().finish();
-                        } else {
-                            if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                } else if (guiResponse instanceof CountryResponse) {
-
-                    CountryResponse countryResponse = (CountryResponse) guiResponse;
-                    if (countryResponse != null) {
-
-                        countryList = countryResponse.getCountryList();
-
-                        StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this,countryList);
-                        statePickerDialog.show();
-
-                        } else {
-
-                            Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                        }
-                    }else if (guiResponse instanceof CityResponse) {
-
-                    CityResponse cityResponse = (CityResponse) guiResponse;
-                    if (cityResponse != null) {
-
-                        cityList = cityResponse.getCityList();
-
-                        CityPickerDialog cityPickerDialog = new CityPickerDialog(getActivity(), CreateAccountFragment.this,cityList);
-                        cityPickerDialog.show();
-
+                RegisterResponse loginResponse = (RegisterResponse) guiResponse;
+                if (loginResponse != null) {
+                    if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
+                        PreferenceUtils.setPassword(getActivity(),password.getText().toString());
+                        OfflineData.saveLoginResponse(loginResponse.getData());
+                        Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getActivity(), ProfileActivity.class);
+                        startActivity(i);
+                        getActivity().finish();
                     } else {
-
-                        Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        if (!TextUtils.isEmpty(loginResponse.getMessage())) {
+                            Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
                 }
 
             }
 
         }
-
     }
-
-
-
-
-
+}

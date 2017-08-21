@@ -31,7 +31,7 @@ import retrofit2.http.Field;
 public class KnowledgeFragment extends BaseFragment implements GUICallback, DataUpdator {
 
     private View view = null;
-    private DharmikActivity dharmikActivity = null;
+    //private DharmikActivity dharmikActivity = null;
 
     @Bind(R.id.navkar_mantra)
     CheckBox navkar_mantra;
@@ -65,7 +65,13 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
         ButterKnife.bind(this, view);
         return view;
     }
+
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        showDataUi();
+    }
+   /* @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
@@ -78,8 +84,8 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
                     if (getActivity() != null) {
 
                         showDataUi();
-                        dharmikActivity = (DharmikActivity) getActivity();
-                        dharmikActivity.setDataUpdator(KnowledgeFragment.this);
+                       *//* dharmikActivity = (DharmikActivity) getActivity();
+                        dharmikActivity.setDataUpdator(KnowledgeFragment.this);*//*
 
                     }
                 }
@@ -87,7 +93,7 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
             }, 100L);
 
         }
-    }
+    }*/
 
     private void showDataUi() {
         DharmicData dharmicData = OfflineData.getDharmikData();
@@ -152,9 +158,9 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
-                            if (dharmikActivity == null)
+                           /* if (dharmikActivity == null)
                                 dharmikActivity = (DharmikActivity) getActivity();
-                            dharmikActivity.loadDharmikData();
+                            dharmikActivity.loadDharmikData();*/
 
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();

@@ -3,8 +3,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.cms.task;
 import android.util.Log;
 
 import com.google.gson.JsonObject;
-import com.sramanopasaka.sipanionline.sadhumargi.AppConstants;
-import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
@@ -27,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListRespo
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
@@ -40,7 +40,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Promise;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,7 +50,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 /**
  * Name    :   pranavjdev
@@ -368,6 +366,35 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<DharmikDetailsResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void getSanghDetails(String memberId, String token) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        endPointApi.getSanghDetails(memberId, token).enqueue(new Callback<SanghDetailsResponse>() {
+            @Override
+            public void onResponse(Call<SanghDetailsResponse> call, Response<SanghDetailsResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<SanghDetailsResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

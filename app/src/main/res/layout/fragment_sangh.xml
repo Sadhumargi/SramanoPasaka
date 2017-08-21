@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/Pathsala_background"
+    android:orientation="vertical">
+
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:id="@+id/segmentGroup"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+
+        segmentedgroup:sc_border_width="0dp"
+        segmentedgroup:sc_checked_text_color="@color/background"
+        segmentedgroup:sc_corner_radius="0dp"
+        segmentedgroup:sc_tint_color="@android:color/white"
+        segmentedgroup:sc_unchecked_tint_color="#ff0000">
+
+        <RadioButton
+            android:id="@+id/hobbiesButton"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="रूचि" />
+
+        <RadioButton
+            android:id="@+id/servicesButton"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="श्रीसंघ सेवए" />
+
+        <RadioButton
+            android:id="@+id/socialRoleButton"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="सामाजिक पद" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <RelativeLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/segmentGroup"
+        android:layout_marginTop="@dimen/small" />
+
+</RelativeLayout>

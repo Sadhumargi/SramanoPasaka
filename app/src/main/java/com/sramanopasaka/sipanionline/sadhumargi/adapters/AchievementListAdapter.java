@@ -28,18 +28,19 @@ import butterknife.OnClick;
 
 public class AchievementListAdapter extends RecyclerView.Adapter<AchievementListAdapter.AddressListViewHolder> {
     private List<Achievements> list = Collections.emptyList();
-    private LayoutInflater inflater;
+    private Context context;
     private EditDeleteActionListener listener;
 
     public AchievementListAdapter(Context activity, List<Achievements> list, EditDeleteActionListener listener) {
-        inflater = LayoutInflater.from(activity);
+        context = (activity);
         this.list = list;
         this.listener = listener;
     }
 
     @Override
     public AddressListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.address_list_item, parent, false);
+        // View view = inflater.inflate(R.layout.address_list_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.address_list_item, parent, false);
         return new AddressListViewHolder(view);
     }
 
@@ -47,7 +48,7 @@ public class AchievementListAdapter extends RecyclerView.Adapter<AchievementList
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Achievements model = list.get(position);
         holder.txtAddressTag.setText(model.getAchievement_sector());
-        holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + model.getAchievement_detail() + ", " + model.getAchievement_year() );
+        holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + model.getAchievement_detail() + ", " + model.getAchievement_year());
 
     }
 

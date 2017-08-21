@@ -27,18 +27,19 @@ import butterknife.OnClick;
 
 public class BusinessListAdapter extends RecyclerView.Adapter<BusinessListAdapter.AddressListViewHolder> {
     private List<Business> list = Collections.emptyList();
-    private LayoutInflater inflater;
+    private Context context;
     private EditDeleteActionListener listener;
 
     public BusinessListAdapter(Context activity, List<Business> list, EditDeleteActionListener listener) {
-        inflater = LayoutInflater.from(activity);
+        context = (activity);
         this.list = list;
         this.listener = listener;
     }
 
     @Override
     public AddressListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.address_list_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.address_list_item, parent, false);
+       // View view = inflater.inflate(R.layout.address_list_item, parent, false);
         return new AddressListViewHolder(view);
     }
 

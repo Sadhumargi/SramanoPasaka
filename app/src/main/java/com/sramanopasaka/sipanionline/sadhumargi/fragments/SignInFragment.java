@@ -27,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
 
 public class SignInFragment extends BaseFragment implements GUICallback {
@@ -38,9 +39,6 @@ public class SignInFragment extends BaseFragment implements GUICallback {
     private TabselectionListner tabselectionListner = null;
     ProgressDialog pg;
 
-
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     String sPassword;
 
@@ -61,12 +59,6 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
         // creating an shared Preference file for the information to be stored
 // first argument is the name of file and second is the mode, 0 is private mode
-
-        sharedPreferences = getActivity().getSharedPreferences("SignInFragment", 0);
-// get editor to edit in file
-        editor = sharedPreferences.edit();
-
-
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +108,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(getActivity(), ResetPasswordActivity.class);
+                Intent i = new Intent(getActivity(), ResetPasswordActivity.class);
                 startActivity(i);
 
             }
@@ -169,8 +161,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
                         //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
 
-                        editor.putString("password",sPassword);
-                        editor.commit();}   // commit the values
+                        PreferenceUtils.setPassword(getActivity(), sPassword);
 
                         Toast.makeText(getActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), ProfileActivity.class);
@@ -189,6 +180,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
         }
     }
+}
 
 
 

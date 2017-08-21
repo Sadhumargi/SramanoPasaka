@@ -1,7 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
-import com.sramanopasaka.sipanionline.sadhumargi.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
@@ -22,6 +22,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
@@ -78,6 +79,10 @@ public interface EndPointApi {
     @FormUrlEncoded
     @POST("app/dharmik")
     Call<DharmikDetailsResponse> getDharmikDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
+
+    @FormUrlEncoded
+    @POST("app/sangh")
+    Call<SanghDetailsResponse> getSanghDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
 
     @FormUrlEncoded

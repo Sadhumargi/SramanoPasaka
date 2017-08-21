@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:segmentedgroup="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:background="@color/Pathsala_background">
+
+    <!--UI for Religious-->
+
+   <!-- <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab_dharmik"
+        android:background="@color/white"
+
+        app:tabMode="fixed">
+
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vp_dharmik"
+        >
+
+    </android.support.v4.view.ViewPager>-->
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:layout_alignParentTop="true"
+
+        android:id="@+id/segmentGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+
+        segmentedgroup:sc_tint_color="@android:color/white"
+        segmentedgroup:sc_unchecked_tint_color="#ff0000"
+        segmentedgroup:sc_border_width="0dp"
+        segmentedgroup:sc_corner_radius="0dp"
+        segmentedgroup:sc_checked_text_color="@color/background">
+
+        <RadioButton
+            android:id="@+id/promiseButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="नियम/त्याग"
+            android:checked="true"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/examButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="परीक्षाएं"
+            style="@style/RadioButton" />
+        <RadioButton
+            android:id="@+id/knowledgeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ज्ञान"
+            style="@style/RadioButton" />
+    </info.hoang8f.android.segmented.SegmentedGroup>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/small"
+        android:layout_below="@+id/segmentGroup"
+        android:layout_width="match_parent"
+        android:id="@+id/frameContainer"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

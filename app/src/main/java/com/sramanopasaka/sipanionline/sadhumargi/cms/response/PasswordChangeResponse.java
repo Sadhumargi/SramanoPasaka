@@ -1,4 +1,4 @@
-package com.sramanopasaka.sipanionline.sadhumargi;
+package com.sramanopasaka.sipanionline.sadhumargi.cms.response;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 

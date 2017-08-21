@@ -97,9 +97,13 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tabselectionListner = (TabselectionListner) getActivity();
-        actionBarUpdator = (ActionBarUpdator) getActivity();
-        actionBarUpdator.onUpdateTitile(getString(R.string.Basic_Details));
+        try {
+            tabselectionListner = (TabselectionListner) getActivity();
+            actionBarUpdator = (ActionBarUpdator) getActivity();
+            actionBarUpdator.onUpdateTitile(getString(R.string.Basic_Details));
+        }catch (Exception ex){
+
+        }
 
         LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
