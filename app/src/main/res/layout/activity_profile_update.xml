@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="@dimen/small">
+                android:layout_margin="@dimen/small">
 
                 <HorizontalScrollView
                     android:id="@+id/horizondalScrollView"
@@ -146,9 +146,9 @@
                                 android:layout_below="@+id/basicDetailsImg"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Basic Details"
+                                android:text="@string/Basic_Details"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -192,9 +192,9 @@
                                 android:layout_below="@+id/uploadPhotoImg"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Upload Photo"
+                                android:text="@string/Upload_photo"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -236,9 +236,9 @@
                                 android:layout_below="@+id/contactDetailsImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Contact Details"
+                                android:text="@string/contact_details"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -280,9 +280,9 @@
                                 android:layout_below="@+id/achievementDetailsImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Achievements"
+                                android:text="@string/Achievements"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -324,9 +324,9 @@
                                 android:layout_below="@+id/educationImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Education"
+                                android:text="@string/Education"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -366,9 +366,9 @@
                                 android:layout_below="@+id/businessImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
-                                android:text="Business"
+                                android:text="@string/Business"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -411,7 +411,7 @@
                                 android:layout_marginTop="@dimen/margin_15"
                                 android:text="@string/Dharmik"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:id="@+id/sanghView"
@@ -453,7 +453,7 @@
                                 android:layout_marginTop="@dimen/margin_15"
                                 android:text="@string/Sangh"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:id="@+id/passwordView"
@@ -487,7 +487,7 @@
                                 android:layout_marginTop="@dimen/margin_15"
                                 android:text="@string/password"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/x_small_text" />
+                                android:textSize="@dimen/small_text" />
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -603,7 +603,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cardLayout"
-                android:layout_marginTop="@dimen/small">
+                android:layout_margin="@dimen/small">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -617,7 +617,7 @@
                         android:layout_marginBottom="@dimen/medium"
                         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                         android:textColor="@color/black"
-                        android:textSize="@dimen/x_small_text" />
+                        android:textSize="@dimen/small_text" />
 
                     <Button
                         android:id="@+id/skipButton"

@@ -1,5 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.cms.task;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.JsonObject;
@@ -14,7 +15,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
@@ -36,9 +37,9 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
 import java.io.BufferedReader;
@@ -125,45 +126,32 @@ public class RequestProcessor {
 
         EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
-        endPointApi.doRegister(jsonObject).enqueue(new Callback<RegisterResponse>() {
+        endPointApi.doRegister(jsonObject).enqueue(new Callback<LoginModel>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
 
 
                 Log.e("Response message=", "" + response.message());
 
-               /* LoginResponse response1 = new LoginResponse();
-                if (response.body() != null) {
-                    response1.setLoginModel(response.body());
-
-                    response1.setStatus(true);
-
-                } else {
-                    response1.setStatus(false);
-                    if (!TextUtils.isEmpty(response.errorBody().toString())) {
-                        try {
-                            JSONObject jObjError = new JSONObject(convertStreamToString(response.errorBody().byteStream()));
-                            response1.setMessage(jObjError.getString("message"));
-                        } catch (Exception e) {
-                            response1.setMessage("Invalid Username or Password");
-                        }
-                    } else {
-                        response1.setMessage("Invalid Username or Password");
-
-                    }
-
-
-                }*/
+                LoginModel response1 = response.body();
+                RegisterResponse registerResponse = new RegisterResponse();
+                registerResponse.setData(response1);
+                if(response1!=null){
+                    if(!TextUtils.isEmpty(response1.getStatus()))
+                        registerResponse.setStatus(response1.getStatus());
+                    if(!TextUtils.isEmpty(response1.getMessage()))
+                        registerResponse.setMessage(response1.getMessage());
+                }
 
                 if (response.body() != null)
-                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                    guiCallback.onRequestProcessed(registerResponse, GUICallback.RequestStatus.SUCCESS);
                 else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(Call<LoginModel> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
@@ -975,7 +963,7 @@ public class RequestProcessor {
 
     }
 
-    public void City() {
+    public void getCityList() {
 
 
 
@@ -983,7 +971,7 @@ public class RequestProcessor {
 
 
 
-        valYouAPI.selectCity().enqueue(new Callback<List<City>>() {
+        valYouAPI.getCityList().enqueue(new Callback<List<City>>() {
             @Override
             public void onResponse(Call<List<City>> call, Response<List<City>> response) {
 
@@ -991,11 +979,11 @@ public class RequestProcessor {
                 Log.e("Response message=", "" + response.message());
 
 
-                CityResponse cityResponse = new CityResponse();
+                CityListResponse cityListResponse = new CityListResponse();
 
                 if (response.body() != null) {
-                    cityResponse.setCityList(response.body());
-                    guiCallback.onRequestProcessed(cityResponse, GUICallback.RequestStatus.SUCCESS);
+                    cityListResponse.setCityList(response.body());
+                    guiCallback.onRequestProcessed(cityListResponse, GUICallback.RequestStatus.SUCCESS);
                 }else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 

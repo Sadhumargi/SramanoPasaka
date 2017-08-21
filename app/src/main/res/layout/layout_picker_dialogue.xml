@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_tv"
-        android:hint="search your state here"
+        android:hint="Search your state here"
         android:drawableStart="@drawable/places_ic_search"
         android:imeOptions="flagNoExtractUi"
         android:maxLines="1"

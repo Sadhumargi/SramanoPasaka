@@ -1,5 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.helpers;
 
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
@@ -78,6 +79,18 @@ public class OfflineData extends BaseOffline {
             return null;
         }
     }
+    public static void saveCityResponse(CityListResponse response) {
+        saveOfflineData("city", response);
+    }
 
+
+    public static CityListResponse getCityList() {
+        String offlineData = getOfflineData("city");
+        if (offlineData != null) {
+            return getStringToObject(offlineData, CityListResponse.class);
+        } else {
+            return null;
+        }
+    }
 
 }
