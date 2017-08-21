@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Pathsala_background"
     android:orientation="vertical"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.SriSanghFragment">
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.ServicesFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -26,17 +26,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab2_chkbx29"
+                android:id="@+id/samayse"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Sangh_tab2_chkbx29"
                 android:textColor="@color/black"
@@ -45,7 +47,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab2_chkbx30"
+                android:id="@+id/arthse"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Sangh_tab2_chkbx30"
                 android:textColor="@color/black"
@@ -54,36 +56,44 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab2_chkbx32"
+                android:id="@+id/apnerupke"
                 android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab2_chkbx32"
+                android:text="@string/Sangh_tab2_chkbx31"
                 android:textColor="@color/black"
                 />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Sangh_tab2_chkbx31"
+                android:id="@+id/anubavse"
                 android:layout_margin="@dimen/fab_margin"
-                android:text="@string/Sangh_tab2_chkbx31"
+                android:text="@string/Sangh_tab2_chkbx32"
                 android:textColor="@color/black"
                 />
 
             <CheckBox
-                android:id="@+id/Sangh_tab2_chkbx33"
+                android:id="@+id/vicharose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
                 android:text="@string/Sangh_tab2_chkbx33"
                 android:textColor="@color/black"/>
 
+            <CheckBox
+                android:id="@+id/others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:text="@string/Religious_chkbx8"
+                android:textColor="@color/black"/>
 
 
         </LinearLayout>
@@ -91,7 +101,7 @@
 </LinearLayout>
 
     <Button
-        android:id="@+id/btn_sanghtab2"
+        android:id="@+id/updateServices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -282,14 +282,6 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
                     social_drug_rehab.setChecked(true);
                 else
                     social_drug_rehab.setChecked(false);
-
-
-
-
-
-
-
-
             }
         }
     }

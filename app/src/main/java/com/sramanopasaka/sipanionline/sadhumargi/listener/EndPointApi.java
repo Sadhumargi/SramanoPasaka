@@ -1,6 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -25,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsRespon
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
@@ -196,5 +198,22 @@ public interface EndPointApi {
 
     @GET("api/cities")
     Call<List<City>> selectCity();
+
+    @FormUrlEncoded
+    @POST("app/add_update_services")
+    Call<UpdateServiceResponse> updateServices(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                               @Field("method") String method, @Field("service_time") String service_time,
+                                               @Field("service_money") String service_money , @Field("service_office") String service_office,
+                                               @Field("service_experience") String service_experience, @Field("service_thoughts") String service_thoughts,
+                                               @Field("service_others") String service_others);
+
+
+    @FormUrlEncoded
+    @POST("app/add_remove_role")
+    Call<AddScocialRoleResponse> addSocilaRole(@Field("member_id") String memberId, @Field("app_token") String app_Token,
+                                               @Field("method") String method ,@Field("start_date") String start_date,
+                                               @Field("start_date") String end_date, @Field("social_org_name") String social_org_name,
+                                               @Field("social_org_active") String social_org_active,@Field("social_org_role") String social_org_role,
+                                               @Field("social_org_role_level") String social_org_role_level);
 
 }

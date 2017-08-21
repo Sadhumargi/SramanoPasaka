@@ -18,7 +18,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.SocialRoleFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.ServicesFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
@@ -78,7 +79,7 @@ public class SanghFragment extends BaseFragment implements GUICallback{
         super.onActivityCreated(savedInstanceState);
         try {
             actionBarUpdator = (ActionBarUpdator) getActivity();
-            actionBarUpdator.onUpdateTitile(getString(R.string.Dharmik));
+            actionBarUpdator.onUpdateTitile(getString(R.string.Sangh_header));
         }catch (Exception ex){
 
         }
@@ -103,7 +104,7 @@ public class SanghFragment extends BaseFragment implements GUICallback{
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
 
                 if(checked){
-                    setFragment(KnowledgeFragment.newInstance(),"");
+                    setFragment(SocialRoleFragment.newInstance(),"");
                 }
             }
         });
@@ -112,7 +113,7 @@ public class SanghFragment extends BaseFragment implements GUICallback{
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
 
                 if(checked){
-                    setFragment(PromiseFragment.newInstance(),"");
+                    setFragment(ServicesFragment.newInstance(),"");
                 }
             }
         });
@@ -156,11 +157,16 @@ public class SanghFragment extends BaseFragment implements GUICallback{
     private void setUpViewpager(ViewPager viewPager) {
 
         SanghFragment.ViewPagerAdapter adapter = new SanghFragment.ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new PromiseFragment().newInstance(), "नियम/त्याग");
-        adapter.addFragment(new ExamListingFragment().newInstance(), "परीक्षाएं ");
+/*
+        adapter.addFragment(new RuchiFragment(),"रूचि");
+        adapter.addFragment(new SriSanghFragment(),"श्रीसंघ सेवए");
+        adapter.addFragment(new SocialRoleFragment(),"सामाजिक पद");*/
+
+        adapter.addFragment(new HobbyFragment().newInstance(), "नियम/त्याग");
+        adapter.addFragment(new ServicesFragment(),"श्रीसंघ सेवए");
 
         //adapter.addFragment(new ParikshaFragment(), "परीक्षाएं ");
-        adapter.addFragment(new KnowledgeFragment().newInstance(), "ज्ञान");
+        adapter.addFragment(new SocialRoleFragment(),"सामाजिक पद");
         viewPager.setAdapter(adapter);
 
     }

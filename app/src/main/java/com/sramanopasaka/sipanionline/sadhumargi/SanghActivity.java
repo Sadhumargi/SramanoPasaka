@@ -9,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class SanghActivity extends AppCompatActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>संघ सम्बन्धी रुचि</font>"));
+       // getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>संघ सम्बन्धी रुचि</font>"));
 
 
         viewPager= (ViewPager) findViewById(R.id.vp_sangh);
@@ -58,8 +57,8 @@ public class SanghActivity extends AppCompatActivity {
 
         SanghActivity.ViewPagerAdapter adapter=new  SanghActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new RuchiFragment(),"रूचि");
-        adapter.addFragment(new SriSanghFragment(),"श्रीसंघ सेवए");
-        adapter.addFragment(new SamajikpadFragment(),"सामाजिक पद");
+        adapter.addFragment(new ServicesFragment(),"श्रीसंघ सेवए");
+        adapter.addFragment(new SocialRoleFragment(),"सामाजिक पद");
         viewPager.setAdapter(adapter);
 
     }

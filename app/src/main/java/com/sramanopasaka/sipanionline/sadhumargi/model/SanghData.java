@@ -17,4 +17,24 @@ public class SanghData {
     public void setHobbies(Hobby hobbies) {
         this.hobbies = hobbies;
     }
+
+    private Services services=null;
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
+
+    public SocialRole getSocialRole() {
+        return socialRole;
+    }
+
+    public void setSocialRole(SocialRole socialRole) {
+        this.socialRole = socialRole;
+    }
+
+    private SocialRole socialRole=null;
 }

@@ -58,7 +58,7 @@ public class DharmikActivity extends BaseActivity implements GUICallback {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>धार्मिक विवरण</font>"));
+       // getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>धार्मिक विवरण</font>"));
 
         viewPager = (ViewPager) findViewById(R.id.vp_dharmik);
         tabLayout = (TabLayout) findViewById(R.id.tab_dharmik);

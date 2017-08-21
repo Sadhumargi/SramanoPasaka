@@ -3,6 +3,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.cms.task;
 import android.util.Log;
 
 import com.google.gson.JsonObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -29,6 +30,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsRespon
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
@@ -1003,6 +1005,80 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<List<City>> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+
+
+    public void updateServices(String memberId, String token, String service_time,
+                               String service_money, String service_office,
+                               String service_experience, String service_thoughts,
+                               String service_others) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.updateServices(memberId, token, "update", service_time, service_money, service_office, service_experience,
+                service_thoughts, service_others).enqueue(new Callback<UpdateServiceResponse>() {
+            @Override
+            public void onResponse(Call<UpdateServiceResponse> call, Response<UpdateServiceResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateServiceResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void AddSocialRole(String memberId, String token, String start_date,
+                               String end_date, String social_org_name,
+                               String social_org_active, String social_org_role,
+                               String social_org_role_level) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.addSocilaRole(memberId, token, "add", start_date, end_date, social_org_name, social_org_active,
+                social_org_role, social_org_role_level).enqueue(new Callback<AddScocialRoleResponse>() {
+            @Override
+            public void onResponse(Call<AddScocialRoleResponse> call, Response<AddScocialRoleResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<AddScocialRoleResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
