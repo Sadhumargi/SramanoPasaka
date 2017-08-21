@@ -1,5 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -35,6 +37,9 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Name    :   pranavjdev
  * Date   : 8/10/17
@@ -52,6 +57,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private RelativeLayout dharmikView = null;
     private RelativeLayout sanghView = null;
     private RelativeLayout passwordView = null;
+
+
+    private List<RelativeLayout> bgViews = new ArrayList<>();
 
     private ImageView basicDetailsImg = null;
     private ImageView uploadPhotoImg = null;
@@ -107,6 +115,16 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         dharmikView = (RelativeLayout) findViewById(R.id.dharmikView);
         sanghView = (RelativeLayout) findViewById(R.id.sanghView);
         passwordView = (RelativeLayout) findViewById(R.id.passwordView);
+        bgViews.add(basicDetaisView);
+        bgViews.add(uploadPhotoView);
+        bgViews.add(contactDetailsView);
+        bgViews.add(achievementDetailsView);
+
+        bgViews.add(educationView);
+        bgViews.add(businessView);
+        bgViews.add(dharmikView);
+        bgViews.add(sanghView);
+        bgViews.add(passwordView);
 
 
         basicDetailsImg = (ImageView) findViewById(R.id.basicDetailsImg);
@@ -517,7 +535,14 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             horizondalScrollView.post(new Runnable() {
                 @Override
                 public void run() {
-                    horizondalScrollView.scrollTo(125 * tag, 0);
+
+                    Display display = getWindowManager().getDefaultDisplay();
+                    Point size = new Point();
+                    display.getSize(size);
+                    final int width = size.x;
+                    int scrollX = (bgViews.get(tag).getLeft() - (width / 2)) + (bgViews.get(tag).getWidth() / 2);
+                    horizondalScrollView.smoothScrollTo(scrollX, 0);
+                    //horizondalScrollView.scrollTo(125 * tag, 0);
                 }
             });
         }

@@ -279,6 +279,31 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             }
         });
 
+        final DatePickerDialog.OnDateSetListener dateSelected = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                monthOfYear+=1;
+
+                birth_date.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+            }
+
+
+
+        };
+
+        birth_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(getActivity(), dateSelected, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
 
     }
 
@@ -314,7 +339,6 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
                                 birth_date.setText(response.getData().getBirthDay());
                                 state.setText(response.getData().getState());
                                 alternateNumber.setText(response.getData().getAlternateNumber());
-                                birth_date.setText(response.getData().getBirthDay());
                                 //bloodgrp.setText(response.getData().getBloodGroup());
                                 city.setText(response.getData().getCity());
                                 email.setText(response.getData().getEmailAddress());
