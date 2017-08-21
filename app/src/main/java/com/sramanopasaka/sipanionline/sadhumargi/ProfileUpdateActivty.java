@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.plus.model.people.Person;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BusinessListingFragment;
@@ -27,8 +28,12 @@ import com.sramanopasaka.sipanionline.sadhumargi.fragments.DharmicFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.EducationListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.SanghFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.UploadPhotoFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+
+import org.w3c.dom.Text;
 
 /**
  * Name    :   pranavjdev
@@ -73,13 +78,13 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private View dharmikRight = null;
     private View businessRight = null;
     private View sanghLeft = null;
-    private View sanghRight =  null;
+    private View sanghRight = null;
     private View passwordLeft = null;
+
+    private TextView profileName = null;
 
     private TextView titleTxt = null;
     private HorizontalScrollView horizondalScrollView = null;
-
-
 
 
     private int MAX_DETAILS = 8;
@@ -110,9 +115,9 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         educationImage = (ImageView) findViewById(R.id.educationImage);
         businessImage = (ImageView) findViewById(R.id.businessImage);
         achievementDetailsImage = (ImageView) findViewById(R.id.achievementDetailsImage);
-        dharmikImage  = (ImageView) findViewById(R.id.dharmikImage);
-        sanghImage   = (ImageView) findViewById(R.id.sanghImage);
-        passwordImage   = (ImageView) findViewById(R.id.passwordImage);
+        dharmikImage = (ImageView) findViewById(R.id.dharmikImage);
+        sanghImage = (ImageView) findViewById(R.id.sanghImage);
+        passwordImage = (ImageView) findViewById(R.id.passwordImage);
 
         uploadLeft = findViewById(R.id.uploadLeft);
         uploadRight = findViewById(R.id.uploadRight);
@@ -124,14 +129,16 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         basicRight = findViewById(R.id.basicRight);
         achievementLeft = findViewById(R.id.achievementLeft);
         achievementRight = findViewById(R.id.achievementRight);
-        dharmikLeft  = findViewById(R.id.dharmikLeft);
-        dharmikRight  = findViewById(R.id.dharmikRight);
-        businessRight  = findViewById(R.id.businessRight);
-        sanghLeft  = findViewById(R.id.sanghLeft);
-        sanghRight  = findViewById(R.id.sanghRight);
+        dharmikLeft = findViewById(R.id.dharmikLeft);
+        dharmikRight = findViewById(R.id.dharmikRight);
+        businessRight = findViewById(R.id.businessRight);
+        sanghLeft = findViewById(R.id.sanghLeft);
+        sanghRight = findViewById(R.id.sanghRight);
         passwordLeft = findViewById(R.id.passwordLeft);
 
         titleTxt = (TextView) findViewById(R.id.titleTxt);
+
+        profileName = (TextView) findViewById(R.id.profileName);
 
         basicDetaisView.setTag(0);
         uploadPhotoView.setTag(1);
@@ -161,31 +168,6 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         }
 
 
-       /* switch (currentTab) {
-            case 0:
-                setFragment(BasicDetailsFragment.newInstance(), "");
-                break;
-            case 1:
-                setFragment(UploadPhotoFragment.newInstance(), "");
-                break;
-            case 2:
-                setFragment(ContactDetailsFragment.newInstance(), "");
-                break;
-            case 3:
-                setFragment(AchievementListingFragment.newInstance(), "");
-                break;
-            case 5:
-                setFragment(BusinessListingFragment.newInstance(), "");
-                break;
-
-            default:
-                setFragment(BasicDetailsFragment.newInstance(), "");
-                break;
-        }
-        if (currentTab == -1)
-            setViewColor(0);
-        else
-            setViewColor(currentTab);*/
         if (currentTab == -1)
             showPages(0);
         else
@@ -202,6 +184,26 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             }
         });
 
+
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null) {
+
+
+            profileName.setText(loginResponse.getFirstName());
+        }
+
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        findViewById(R.id.skipButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
@@ -509,8 +511,6 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 break;
 
 
-
-
         }
         if (tag != -1) {
             setViewColor(tag);
@@ -528,9 +528,6 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =
                 fragmentManager.beginTransaction();
-
-
-        // fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.contentPanel, fragment, tag);
         fragmentTransaction.commit();
     }

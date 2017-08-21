@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.GUIRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
@@ -32,6 +35,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.CityPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
@@ -40,7 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class CreateAccountFragment extends BaseFragment implements StateChangeListner, GUICallback {
+public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
     EditText fName;
     EditText mName;
@@ -54,16 +58,17 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
     EditText pinCode;
     EditText password;
     EditText reTypepassword;
-    CheckBox chkbox;
+    CheckBox termsCheckBox;
     Button btnCreateProfile;
     TextView countryCode;
-
+    RadioGroup radiogrp;
+    private View view = null;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_create_account_fragment, container, false);
+         view = inflater.inflate(R.layout.activity_create_account_fragment, container, false);
 
 
         fName = (EditText) view.findViewById(R.id.first_name);
@@ -78,9 +83,10 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         pinCode = (EditText) view.findViewById(R.id.pincode);
         password = (EditText) view.findViewById(R.id.password);
         reTypepassword = (EditText) view.findViewById(R.id.retype_password);
-        chkbox = (CheckBox) view.findViewById(R.id.chkbox);
+        termsCheckBox = (CheckBox) view.findViewById(R.id.termsCheckBox);
         btnCreateProfile = (Button) view.findViewById(R.id.create_profile);
         countryCode = (TextView) view.findViewById(R.id.countryCodeTxt);
+        radiogrp = (RadioGroup) view.findViewById(R.id.radiogrp);
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -89,20 +95,12 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                monthOfYear+=1;
+
+                bDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
             }
 
 
-            public void updateLabel() {
-                String myFormat = "dd/mm/yyyy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-                bDate.setText(sdf.format(myCalendar.getTime()));
-            }
 
         };
 
@@ -195,9 +193,14 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                     fName.requestFocus();
                     callAPi = false;
                 }
+                if (callAPi && !termsCheckBox.isChecked()) {
+                    Toast.makeText(getActivity(), "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
+                    callAPi = false;
+                }
 
 
                 if (callAPi) {
+                    showLoadingDialog();
                     RegisterRequest registerRequest = new RegisterRequest();
                     registerRequest.setFirst_name(fName.getText().toString());
                     registerRequest.setMiddle_name(mName.getText().toString());
@@ -211,10 +214,15 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                     registerRequest.setPincode(pinCode.getText().toString());
                     registerRequest.setPassword(password.getText().toString());
 
+                    int selectedId = radiogrp.getCheckedRadioButtonId();
+
+                    registerRequest.setSalution(((RadioButton) view.findViewById(selectedId)).getText().toString());
+
                     JsonParser jsonParser = new JsonParser();
                     JsonObject gsonObject = (JsonObject) jsonParser.parse(registerRequest.getURLEncodedPostdata().toString());
                     RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
                     requestProcessor.doRegister(gsonObject);
+
 
                 }
 
@@ -238,15 +246,46 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                 showCountryPicker();
             }
         });
+        sCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CityListResponse cityListResponse = OfflineData.getCityList();
+                if (cityListResponse != null) {
+                    final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), cityListResponse.getCityList());
+                    statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                        @Override
+                        public void onStateSelected(String state) {
+                            sCity.setText(state);
+                            sCity.setError(null);
+                            statePickerDialog.dismiss();
+                        }
+                    });
+                    statePickerDialog.show();
+                } else {
+                    showLoadingDialog();
+                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    processor.getCityList();
+                }
+            }
+        });
         sState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 StateListResponse stateListResponse = OfflineData.getStateList();
-                if(stateListResponse!=null) {
-                    StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this, stateListResponse.getStateList());
+                if (stateListResponse != null) {
+                    final StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), stateListResponse.getStateList());
+                    statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                        @Override
+                        public void onStateSelected(String state) {
+                            sState.setText(state);
+                            sState.setError(null);
+                            statePickerDialog.dismiss();
+                        }
+                    });
                     statePickerDialog.show();
-                }else{
+                } else {
+                    showLoadingDialog();
                     RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
                     processor.getStateList();
                 }
@@ -271,12 +310,6 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         picker.show(getActivity().getSupportFragmentManager(), "COUNTRY_PICKER");
     }
 
-    @Override
-    public void onStateSelected(String state) {
-        sState.setText(state);
-        sState.setError(null);
-    }
-
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
@@ -284,7 +317,7 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                if(guiResponse instanceof RegisterResponse) {
+                if (guiResponse instanceof RegisterResponse) {
                     RegisterResponse loginResponse = (RegisterResponse) guiResponse;
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
@@ -302,11 +335,34 @@ public class CreateAccountFragment extends BaseFragment implements StateChangeLi
                             }
                         }
                     }
-                }else  if(guiResponse instanceof StateListResponse) {
+                } else if (guiResponse instanceof StateListResponse) {
                     StateListResponse stateListResponse = (StateListResponse) guiResponse;
-                    if(stateListResponse !=null){
+                    if (stateListResponse != null) {
                         OfflineData.saveStateResponse(stateListResponse);
-                        StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), CreateAccountFragment.this, stateListResponse.getStateList());
+                        final StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), stateListResponse.getStateList());
+                        statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                            @Override
+                            public void onStateSelected(String state) {
+                                sState.setText(state);
+                                sState.setError(null);
+                                statePickerDialog.dismiss();
+                            }
+                        });
+                        statePickerDialog.show();
+                    }
+                } else if (guiResponse instanceof CityListResponse) {
+                    CityListResponse stateListResponse = (CityListResponse) guiResponse;
+                    if (stateListResponse != null) {
+                        OfflineData.saveCityResponse(stateListResponse);
+                        final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), stateListResponse.getCityList());
+                        statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                            @Override
+                            public void onStateSelected(String state) {
+                                sCity.setText(state);
+                                sCity.setError(null);
+                                statePickerDialog.dismiss();
+                            }
+                        });
                         statePickerDialog.show();
                     }
                 }

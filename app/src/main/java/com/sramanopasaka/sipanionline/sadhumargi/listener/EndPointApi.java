@@ -29,6 +29,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseRespo
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public interface EndPointApi {
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
     @POST("members/create")
-    Call<RegisterResponse> doRegister(@Body JsonObject profiledata);
+    Call<LoginModel> doRegister(@Body JsonObject profiledata);
 
     @FormUrlEncoded
     @POST("app/basics")
@@ -197,7 +198,7 @@ public interface EndPointApi {
     Call<List<State>> getStateList();
 
     @GET("api/cities")
-    Call<List<City>> selectCity();
+    Call<List<City>> getCityList();
 
     @FormUrlEncoded
     @POST("app/add_update_services")

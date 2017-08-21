@@ -8,7 +8,7 @@ import java.util.List;
  * Created by sipani001 on 18/8/17.
  */
 
-public class CityResponse extends GUIResponse{
+public class CityListResponse extends GUIResponse{
 
     private List<City> cityList=null;
 

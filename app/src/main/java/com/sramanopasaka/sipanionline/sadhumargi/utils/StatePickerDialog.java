@@ -46,15 +46,19 @@ public class StatePickerDialog extends Dialog implements StatePickerAdapter.Call
     private AppCompatEditText mEdtSearch = null;
     private AppCompatTextView mTvNoResult  =null;
     private RecyclerView country_dialog_rv = null;
+
+    public void setStateChangeListner(StateChangeListner stateChangeListner) {
+        this.stateChangeListner = stateChangeListner;
+    }
+
     private StateChangeListner stateChangeListner = null;
     private List<Country> mFilteredCountries;
     private List<State> stateList = null;
     private Context context = null;
 
-    public StatePickerDialog(Context context,StateChangeListner stateChangeListner,List<State> stateList) {
+    public StatePickerDialog(Context context,List<State> stateList) {
         super(context);
         this.context = context;
-        this.stateChangeListner = stateChangeListner;
         this.stateList = stateList;
     }
 
