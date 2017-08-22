@@ -29,6 +29,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
@@ -1067,6 +1068,50 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<AddScocialRoleResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void updateHobbies(String memberId, String token, String org_planning,
+                              String org_comp_operator, String org_project_operation,
+                              String org_fund_raise, String org_migration_prg, String org_oration_trainer,
+                              String org_management_phones, String rel_medical_service,String rel_vihar_service, String rel_gochary_service,
+                              String rel_jap_tap_cordination,String rel_swadhyai_service,String rel_kar_sewa,String rel_shivir_management, String rel_writeup,String rel_drawing,
+                              String rel_self_learning,String rel_teaching,String rel_branch, String social_human_service,String social_education_service
+    ,String social_medical_service,String social_veg_publicity,String social_lit_service,String social_water_kiosk_service,String social_web_handling
+    ,String social_speech,String social_drug_rehab) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.updateHobbies(memberId, token, "add", org_planning, org_comp_operator,
+                org_project_operation, org_fund_raise, org_migration_prg,org_oration_trainer,org_management_phones,
+                rel_medical_service,rel_vihar_service,rel_gochary_service,rel_jap_tap_cordination,rel_swadhyai_service,rel_kar_sewa,
+                rel_shivir_management,rel_writeup,rel_drawing,rel_self_learning,rel_teaching,rel_branch,social_human_service,
+                social_education_service,social_medical_service,social_veg_publicity,social_lit_service,social_water_kiosk_service,social_web_handling
+        ,social_speech,social_drug_rehab).enqueue(new Callback<UpdateHobbiesResponse>() {
+            @Override
+            public void onResponse(Call<UpdateHobbiesResponse> call, Response<UpdateHobbiesResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateHobbiesResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
