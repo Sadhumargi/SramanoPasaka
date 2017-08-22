@@ -50,7 +50,7 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
 
         setSupportActionBar(toolbar);
 
-        toolbar.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
