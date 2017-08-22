@@ -172,6 +172,7 @@
                 android:editable="false"
                 android:paddingLeft="@dimen/extra_small"
                 android:hint="@string/country"
+                android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                 android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"

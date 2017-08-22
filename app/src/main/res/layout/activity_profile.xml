@@ -29,7 +29,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_70"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/white">
 
@@ -41,13 +41,14 @@
             android:textColor="@color/black"
             android:textStyle="normal"
             android:id="@+id/titleTxt"
-            android:layout_toStartOf="@+id/button4"
+            android:layout_toStartOf="@+id/buttonNxt"
             android:layout_alignParentEnd="true" />
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonNxt"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_30"
             android:background="@color/background"
+            android:layout_below="@+id/titleTxt"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textStyle="normal"
@@ -55,7 +56,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="@dimen/dimen_5dp"
             android:layout_marginRight="@dimen/dimen_10"
-            android:layout_alignParentBottom="true"
             />
 
     </RelativeLayout>

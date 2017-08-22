@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Pathsala_background"
     android:orientation="vertical"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.ServicesFragment">
+    tools:context="com.sramanopasaka.sipanionline.sadhumargi.fragments.ServicesFragment">
 
     <TextView
         android:layout_width="match_parent"

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.sramanopasaka.sipanionline.sadhumargi.DharmikActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
@@ -183,6 +184,7 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                                 dharmikActivity = (DharmikActivity) getActivity();
                             dharmikActivity.loadDharmikData();
 */
+                            loadDharmikData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
@@ -197,6 +199,20 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                             }
                         }
                     }
+                }else if (guiResponse instanceof DharmikDetailsResponse) {
+                    DharmikDetailsResponse response = (DharmikDetailsResponse) guiResponse;
+                    if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
+                        OfflineData.saveDharmicResponse(response.getData());
+                    /*if (dataUpdator != null)
+                        dataUpdator.onDataRefreshed();*/
+                        showDataUi();
+                    } else {
+                        if (!TextUtils.isEmpty(response.getMessage())) {
+                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             } else {
                 Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
@@ -208,4 +224,16 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
     public void onDataRefreshed() {
         showDataUi();
     }
+
+    public void loadDharmikData() {
+        showLoadingDialog();
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null) {
+
+
+            RequestProcessor requestProcessor = new RequestProcessor(PromiseFragment.this);
+            requestProcessor.getDharmikDetails(loginResponse.getId(), loginResponse.getAppToken());
+        }
+    }
+
 }

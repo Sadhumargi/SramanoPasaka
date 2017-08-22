@@ -48,10 +48,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="@dimen/margin_15"
                 android:layout_toEndOf="@+id/backButton"
                 android:gravity="center_vertical"
                 android:padding="@dimen/dimen_5dp"
-                android:layout_marginLeft="@dimen/margin_15"
                 android:text="@string/my_profile"
                 android:textColor="@color/white"
                 android:textSize="@dimen/large" />
@@ -139,16 +139,18 @@
                                 android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/basicDetailsImg"
                                 android:background="#000000" />
-
+                            <!--android:text="@string/Basic_Details"-->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/basicDetailsImg"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Basic_Details"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -192,9 +194,11 @@
                                 android:layout_below="@+id/uploadPhotoImg"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Upload_photo"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -236,9 +240,11 @@
                                 android:layout_below="@+id/contactDetailsImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/contact_details"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -280,9 +286,11 @@
                                 android:layout_below="@+id/achievementDetailsImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Achievements"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -324,9 +332,11 @@
                                 android:layout_below="@+id/educationImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Education"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -352,6 +362,7 @@
                                 android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/businessImage"
                                 android:background="#000000" />
+
                             <View
                                 android:id="@+id/businessRight"
                                 android:layout_width="35dp"
@@ -360,15 +371,18 @@
                                 android:layout_marginLeft="-10dp"
                                 android:layout_toEndOf="@+id/businessImage"
                                 android:background="#000000" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/businessImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Business"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -394,6 +408,7 @@
                                 android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/dharmikImage"
                                 android:background="#000000" />
+
                             <View
                                 android:id="@+id/dharmikRight"
                                 android:layout_width="35dp"
@@ -409,10 +424,13 @@
                                 android:layout_below="@+id/dharmikImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Dharmik"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:id="@+id/sanghView"
                             android:layout_width="100dp"
@@ -436,6 +454,7 @@
                                 android:layout_marginRight="-10dp"
                                 android:layout_toStartOf="@+id/sanghImage"
                                 android:background="#000000" />
+
                             <View
                                 android:id="@+id/sanghRight"
                                 android:layout_width="35dp"
@@ -451,10 +470,13 @@
                                 android:layout_below="@+id/sanghImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/Sangh"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:id="@+id/passwordView"
                             android:layout_width="100dp"
@@ -485,9 +507,11 @@
                                 android:layout_below="@+id/passwordImage"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="@dimen/margin_15"
+                                android:maxHeight="@dimen/dimen_30"
+                                android:minHeight="@dimen/dimen_30"
                                 android:text="@string/password"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/small_text" />
+                                android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -615,7 +639,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/medium"
-                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+                        android:text="धन्यवाद! आपने प्रोफाइल की सभी श्रेणियों को अनलॉक कर लिया है। कृपया अपने प्रोफाइल को हमेशा नवीनतम रखे।"
                         android:textColor="@color/black"
                         android:textSize="@dimen/small_text" />
 

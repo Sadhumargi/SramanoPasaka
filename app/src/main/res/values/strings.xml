@@ -160,7 +160,7 @@
     <string name="create_profile">CREATE PROFILE</string>
 
     <string name="my_Profile">My Profile</string>
-    <string name="thank_you">Thank you for Registration</string>
+    <string name="thank_you">धन्यवाद! आपने प्रोफाइल की सभी श्रेणियों को अनलॉक कर लिया है। कृपया अपने प्रोफाइल को हमेशा नवीनतम रखे। यदि आपको किसी भी प्रकार की सहायता की जरुरत हो अथवा किसी प्रकार की कोई त्रुटि नजर आये तो आप हमसे info@sadhumargi.com पर संपर्क कर सकते हैं।</string>
     <string name="next">"Next"</string>
     <string name="Basic_Details">"सामान्य विवरण"</string>
     <string name="my_profile">My Profile</string>
@@ -371,6 +371,34 @@
     <array name="guardian_type">
         <item>Father</item>
         <item>Husband</item>
+    </array>
+    <array name="org_level">
+        <item>Local</item>
+        <item>Regional</item>
+        <item>National</item>
+    </array>
+    <array name="org_role">
+        <item>President</item>
+        <item>General Secretary</item>
+        <item>Treasurer</item>
+        <item>Co-Treasurer</item>
+        <item>Vice President</item>
+        <item>Secretary</item>
+        <item>Convener</item>
+        <item>Co-Convener</item>
+        <item>Chairman</item>
+        <item>Member of Samiti</item>
+        <item>Mandal</item>
+        <item>Jila Prabhari</item>
+        <item>Sakha Pramukh</item>
+        <item>Kshetriya Sanyojak</item>
+        <item>Member</item>
+        <item>Patron</item>
+        <item>Advisor</item>
+        <item>Editor</item>
+        <item>Representative</item>
+        <item>Other</item>
+
     </array>
     <array name="address_type">
         <item>Residential</item>

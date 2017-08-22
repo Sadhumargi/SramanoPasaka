@@ -13,7 +13,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
-public class ProfileActivity extends AppCompatActivity {
+public class  ProfileActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView basicDetails;
@@ -195,6 +195,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.buttonNxt).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+                i.putExtra("position",0);
+                startActivity(i);
+            }
+        });
 
         fillDataToUi();
 

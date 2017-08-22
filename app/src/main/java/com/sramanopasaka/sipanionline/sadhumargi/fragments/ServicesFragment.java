@@ -1,35 +1,28 @@
-package com.sramanopasaka.sipanionline.sadhumargi;
+package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.PromiseFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.model.DharmicData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Services;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.sramanopasaka.sipanionline.sadhumargi.R.id.chovihar;
 
 public class ServicesFragment extends BaseFragment implements GUICallback, DataUpdator {
 
@@ -134,6 +127,7 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
                                 dharmikActivity = (DharmikActivity) getActivity();
                             dharmikActivity.loadDharmikData();
 */
+                            loadSanghData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
@@ -148,10 +142,35 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
                             }
                         }
                     }
+                }else if (guiResponse instanceof SanghDetailsResponse) {
+                    SanghDetailsResponse response = (SanghDetailsResponse) guiResponse;
+                    if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
+                        OfflineData.saveSanghResponse(response.getData());
+                    /*if (dataUpdator != null)
+                        dataUpdator.onDataRefreshed();*/
+                        showDataUi();
+                    } else {
+                        if (!TextUtils.isEmpty(response.getMessage())) {
+                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             } else {
                 Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    public void loadSanghData() {
+        showLoadingDialog();
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null) {
+
+
+            RequestProcessor requestProcessor = new RequestProcessor(ServicesFragment.this);
+            requestProcessor.getSanghDetails(loginResponse.getId(), loginResponse.getAppToken());
         }
     }
 

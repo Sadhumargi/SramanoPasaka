@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/Pathsala_background"
+    android:orientation="vertical"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.AddSocialRoleActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -33,121 +33,157 @@
             android:orientation="vertical">
 
 
+            <TextView
+                android:id="@+id/tv_samajikpad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:background="@color/wallet_holo_blue_light"
+                android:padding="@dimen/dimen_5dp"
+                android:text="@string/Sangh_tab3_brieftxt"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_samajikpad"
-        android:layout_marginTop="@dimen/dimen_16"
-        android:layout_marginBottom="@dimen/dimen_16"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:text="@string/Sangh_tab3_brieftxt"
-        android:textColor="@color/white"
-        android:padding="@dimen/dimen_5dp"
-        android:background="@color/wallet_holo_blue_light"/>
+            <EditText
+                android:id="@+id/orgName"
+                android:paddingStart="@dimen/extra_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/Sangh_tab3_edt1"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/edt_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".3"
+                    android:text="*पद"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/cursor_basicdetails"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/institute_name"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Sangh_tab3_edt1"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"
-        />
+                <RadioGroup
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edt_address"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:hint="*पद"
-        android:textSize="@dimen/large"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+                    android:id="@+id/radiogrp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edt_role"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:hint="Please Select"
-        android:textSize="@dimen/large"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+                    <RadioButton
+                        android:id="@+id/current"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:shadowColor="@color/white"
+                        android:text="Current"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/large"
+                        android:theme="@style/MyRadio" />
+
+                    <RadioButton
+                        android:id="@+id/past"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Past"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/large"
+                        android:theme="@style/MyRadio"
+
+                        />
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/level"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:textColor="@color/black"
-        android:hint="@string/Sangh_tab3_edt3"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/startyear"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Sangh_tab3_edt_from"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+            <Spinner
+
+                android:id="@+id/role"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin" />
 
 
+            <Spinner
+                android:id="@+id/level"
+                style="@style/spinner_style"
+                android:layout_width="match_parent"
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/endyear"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingBottom="@dimen/dimen_10"
-        android:textStyle="normal"
-        android:textSize="@dimen/large"
-        android:hint="@string/Sangh_tab3_edt_to"
-        android:textColor="@color/black"
-        android:textCursorDrawable="@drawable/cursor_basicdetails"
-        android:background="@drawable/border_basicdetails"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin" />
 
 
-    <Button
-        android:id="@+id/btn_Socialrole"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginRight="@dimen/dimen_16"
-        android:layout_marginLeft="@dimen/dimen_16"
-        android:layout_marginTop="@dimen/dimen_16"
-        android:background="@drawable/border_shape"
-        android:foregroundGravity="center_horizontal|center_vertical"
-        android:text="@string/add_to_profile"
-        android:textColor="@color/white"
-        android:padding="@dimen/dimen_10" />
+            <EditText
+                android:id="@+id/startyear"
+                android:editable="false"
+                android:paddingStart="@dimen/extra_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/Sangh_tab3_edt_from"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
-       </LinearLayout>
+
+            <EditText
+                android:id="@+id/endyear"
+                android:paddingStart="@dimen/extra_small"
+                android:editable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/Sangh_tab3_edt_to"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+
+            <Button
+                android:id="@+id/btn_Socialrole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dimen_16"
+                android:layout_marginRight="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:background="@drawable/border_shape"
+                android:foregroundGravity="center_horizontal|center_vertical"
+                android:padding="@dimen/dimen_10"
+                android:text="@string/add_to_profile"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
     </ScrollView>
 
 

@@ -7,18 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.model.DharmicData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
 
@@ -115,9 +113,6 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
 
     @Bind(R.id.social_drug_rehab)
     CheckBox social_drug_rehab;
-
-
-
 
 
     private View view = null;
@@ -298,14 +293,14 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
             requestProcessor.updateHobbies(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(org_planning.isChecked()), String.valueOf(org_comp_operator.isChecked()),
                     String.valueOf(org_project_operation.isChecked()), String.valueOf(org_fund_raise.isChecked()), String.valueOf(org_migration_prg.isChecked()),
                     String.valueOf(org_oration_trainer.isChecked()), String.valueOf(org_management_phones.isChecked()), String.valueOf(rel_medical_service.isChecked()),
-                   String.valueOf(rel_vihar_service.isChecked()),String.valueOf(rel_gochary_service.isChecked()),String.valueOf(rel_jap_tap_cordination.isChecked()),
-                           String.valueOf(rel_swadhyai_service.isChecked()), String.valueOf(rel_kar_sewa.isChecked()),String.valueOf(rel_shivir_management.isChecked()),
-                                   String.valueOf(rel_writeup.isChecked()),String.valueOf(rel_drawing.isChecked()),String.valueOf(rel_self_learning.isChecked()),
-                                           String.valueOf(rel_teaching.isChecked()),String.valueOf(rel_branch.isChecked()),String.valueOf(social_human_service.isChecked()),
-                                                   String.valueOf(social_education_service.isChecked()),String.valueOf(social_medical_service.isChecked()),
-                                                           String.valueOf(social_veg_publicity.isChecked()),String.valueOf(social_lit_service.isChecked()),
-                                                                   String.valueOf(social_water_kiosk_service.isChecked()),String.valueOf(social_web_handling.isChecked()),
-                                                                           String.valueOf(social_speech.isChecked()), String.valueOf(social_drug_rehab.isChecked()));
+                    String.valueOf(rel_vihar_service.isChecked()), String.valueOf(rel_gochary_service.isChecked()), String.valueOf(rel_jap_tap_cordination.isChecked()),
+                    String.valueOf(rel_swadhyai_service.isChecked()), String.valueOf(rel_kar_sewa.isChecked()), String.valueOf(rel_shivir_management.isChecked()),
+                    String.valueOf(rel_writeup.isChecked()), String.valueOf(rel_drawing.isChecked()), String.valueOf(rel_self_learning.isChecked()),
+                    String.valueOf(rel_teaching.isChecked()), String.valueOf(rel_branch.isChecked()), String.valueOf(social_human_service.isChecked()),
+                    String.valueOf(social_education_service.isChecked()), String.valueOf(social_medical_service.isChecked()),
+                    String.valueOf(social_veg_publicity.isChecked()), String.valueOf(social_lit_service.isChecked()),
+                    String.valueOf(social_water_kiosk_service.isChecked()), String.valueOf(social_web_handling.isChecked()),
+                    String.valueOf(social_speech.isChecked()), String.valueOf(social_drug_rehab.isChecked()));
         }
 
 
@@ -325,6 +320,7 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
                                 dharmikActivity = (DharmikActivity) getActivity();
                             dharmikActivity.loadDharmikData();
 */
+                            loadSanghData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
@@ -339,10 +335,35 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
                             }
                         }
                     }
+                } else if (guiResponse instanceof SanghDetailsResponse) {
+                    SanghDetailsResponse response = (SanghDetailsResponse) guiResponse;
+                    if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
+                        OfflineData.saveSanghResponse(response.getData());
+                    /*if (dataUpdator != null)
+                        dataUpdator.onDataRefreshed();*/
+                        showDataUi();
+                    } else {
+                        if (!TextUtils.isEmpty(response.getMessage())) {
+                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             } else {
                 Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    public void loadSanghData() {
+        showLoadingDialog();
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null) {
+
+
+            RequestProcessor requestProcessor = new RequestProcessor(HobbyFragment.this);
+            requestProcessor.getSanghDetails(loginResponse.getId(), loginResponse.getAppToken());
         }
     }
 

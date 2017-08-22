@@ -1,5 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import java.util.List;
+
 /**
  * Name    :   pranavjdev
  * Date   : 8/18/17
@@ -28,13 +30,14 @@ public class SanghData {
         this.services = services;
     }
 
-    public SocialRole getSocialRole() {
-        return socialRole;
+
+    private List<SocialRole> roles=null;
+
+    public List<SocialRole> getSocialRole() {
+        return roles;
     }
 
-    public void setSocialRole(SocialRole socialRole) {
-        this.socialRole = socialRole;
+    public void setSocialRole(List<SocialRole> socialRole) {
+        this.roles = socialRole;
     }
-
-    private SocialRole socialRole=null;
 }

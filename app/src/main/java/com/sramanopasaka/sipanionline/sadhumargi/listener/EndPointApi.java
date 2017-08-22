@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -195,6 +196,11 @@ public interface EndPointApi {
     @POST("app/add_remove_exams")
     Call<DeleteExamResponse> deleteExams(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("exam_id") String exam_id);
 
+    @FormUrlEncoded
+    @POST("app/add_remove_role")
+    Call<DeleteSocialRoleResponse> deleteSocialRole(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("role_id") String role_id);
+
+
     @GET("api/states")
     Call<List<State>> getStateList();
 
@@ -214,7 +220,7 @@ public interface EndPointApi {
     @POST("app/add_remove_role")
     Call<AddScocialRoleResponse> addSocilaRole(@Field("member_id") String memberId, @Field("app_token") String app_Token,
                                                @Field("method") String method ,@Field("start_date") String start_date,
-                                               @Field("start_date") String end_date, @Field("social_org_name") String social_org_name,
+                                               @Field("end_date") String end_date, @Field("social_org_name") String social_org_name,
                                                @Field("social_org_active") String social_org_active,@Field("social_org_role") String social_org_role,
                                                @Field("social_org_role_level") String social_org_role_level);
 

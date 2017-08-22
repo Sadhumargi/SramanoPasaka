@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -43,6 +44,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.model.SocialRole;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
 import java.io.BufferedReader;
@@ -861,6 +863,37 @@ public class RequestProcessor {
 
     }
 
+    public void removeSocialRole(String memberId, String token, SocialRole data) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.deleteSocialRole(memberId, token, "delete", data.getId()).enqueue(new Callback<DeleteSocialRoleResponse>() {
+            @Override
+            public void onResponse(Call<DeleteSocialRoleResponse> call, Response<DeleteSocialRoleResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteSocialRoleResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+    }
+
     public void passwordChange(String memberId, String token, String currentPassword,String newPassword) {
 
 
@@ -1041,10 +1074,10 @@ public class RequestProcessor {
 
     }
 
-    public void AddSocialRole(String memberId, String token, String start_date,
-                               String end_date, String social_org_name,
-                               String social_org_active, String social_org_role,
-                               String social_org_role_level) {
+    public void addSocialRole(String memberId, String token, String start_date,
+                              String end_date, String social_org_name,
+                              String social_org_active, String social_org_role,
+                              String social_org_role_level) {
 
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);

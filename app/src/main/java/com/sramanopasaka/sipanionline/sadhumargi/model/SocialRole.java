@@ -6,11 +6,30 @@ package com.sramanopasaka.sipanionline.sadhumargi.model;
 
 public class SocialRole {
 
-String start_date=null;
+    String id = null;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    String start_date=null;
     String end_date=null;
     String social_org_name=null;
     String social_org_active=null;
     String social_org_role=null;
+    String sangh_local_name = null;
+
+    public String getSangh_local_name() {
+        return sangh_local_name;
+    }
+
+    public void setSangh_local_name(String sangh_local_name) {
+        this.sangh_local_name = sangh_local_name;
+    }
 
     public String getStart_date() {
         return start_date;
