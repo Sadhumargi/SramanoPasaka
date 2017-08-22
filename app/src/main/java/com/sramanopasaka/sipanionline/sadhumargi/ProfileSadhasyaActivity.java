@@ -19,15 +19,15 @@ public class ProfileSadhasyaActivity extends AppCompatActivity {
         toolbar= (Toolbar) findViewById(R.id.profilesadhasyatool);
         setSupportActionBar(toolbar);
 
-        toolbar.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>१८ वर्ष से कम उम्र के बच्चों का विवरण</font>"));
 
     }

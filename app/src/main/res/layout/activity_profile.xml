@@ -52,9 +52,11 @@
             android:textAllCaps="false"
             android:textStyle="normal"
             android:textColor="@color/white"
-            android:layout_below="@+id/titleTxt"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="@dimen/dimen_10"/>
+            android:layout_marginBottom="@dimen/dimen_5dp"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_alignParentBottom="true"
+            />
 
     </RelativeLayout>
 
