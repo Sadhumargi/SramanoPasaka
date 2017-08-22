@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class SanghActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.profilesanghtool);
         setSupportActionBar(toolbar);
 
-        toolbar.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
@@ -38,7 +39,7 @@ public class SanghActivity extends AppCompatActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>संघ सम्बन्धी रुचि</font>"));
+       getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>संघ सम्बन्धी रुचि</font>"));
 
 
         viewPager= (ViewPager) findViewById(R.id.vp_sangh);

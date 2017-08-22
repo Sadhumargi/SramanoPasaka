@@ -71,7 +71,7 @@ public class PostalAddressActivity extends BaseActivity implements GUICallback {
 
         setSupportActionBar(postaladdresstool);
 
-        postaladdresstool.setOnClickListener(new View.OnClickListener() {
+        postaladdresstool.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
@@ -80,7 +80,7 @@ public class PostalAddressActivity extends BaseActivity implements GUICallback {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>१८ वर्ष से कम उम्र के बच्चों का विवरण</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>पत्र व्यवहार पता</font>"));
 
         country.setOnClickListener(new View.OnClickListener() {
             @Override
