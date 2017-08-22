@@ -65,7 +65,7 @@ public class EducationActivity extends BaseActivity implements GUICallback{
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>शिक्षा विवरण</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>शिक्षा</font>"));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.education_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

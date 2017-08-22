@@ -77,7 +77,7 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         actionBarUpdator = (ActionBarUpdator) getActivity();
-        actionBarUpdator.onUpdateTitile(getString(R.string.Business));
+        actionBarUpdator.onUpdateTitile(getString(R.string.Education));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
