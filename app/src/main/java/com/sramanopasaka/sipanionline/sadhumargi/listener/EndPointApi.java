@@ -24,6 +24,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
@@ -216,5 +217,23 @@ public interface EndPointApi {
                                                @Field("start_date") String end_date, @Field("social_org_name") String social_org_name,
                                                @Field("social_org_active") String social_org_active,@Field("social_org_role") String social_org_role,
                                                @Field("social_org_role_level") String social_org_role_level);
+
+    @FormUrlEncoded
+    @POST("app/add_update_hobbies")
+    Call<UpdateHobbiesResponse> updateHobbies(@Field("member_id") String memberId, @Field("app_token") String appToken,
+                                              @Field("method") String method, @Field("org_planning") String org_planning,
+                                              @Field("org_comp_operator") String org_comp_operator , @Field("org_project_operation") String org_project_operation,
+                                              @Field("org_fund_raise") String org_fund_raise, @Field("org_migration_prg") String org_migration_prg,
+                                              @Field("org_oration_trainer") String org_oration_trainer, @Field("org_management_phones") String org_management_phones,
+                                              @Field("rel_medical_service") String rel_medical_service, @Field("rel_vihar_service") String rel_vihar_service,
+                                              @Field("rel_gochary_service") String rel_gochary_service, @Field("rel_jap_tap_cordination") String rel_jap_tap_cordination,@Field("rel_swadhyai_service")String rel_swadhyai_service,
+                                              @Field("rel_kar_sewa") String rel_kar_sewa, @Field("rel_shivir_management") String rel_shivir_management,
+                                              @Field("rel_writeup") String rel_writeup, @Field("rel_drawing") String rel_drawing,
+                                              @Field("rel_self_learning") String rel_self_learning, @Field("rel_teaching") String rel_teaching,
+                                              @Field("rel_branch") String rel_branch, @Field("social_human_service") String social_human_service,
+                                              @Field("social_education_service") String social_education_service, @Field("social_medical_service") String social_medical_service,
+                                              @Field("social_veg_publicity") String social_veg_publicity, @Field("social_lit_service") String social_lit_service,
+                                              @Field("social_water_kiosk_service") String social_water_kiosk_service, @Field("social_web_handling") String social_web_handling,
+                                              @Field("social_speech") String social_speech, @Field("social_drug_rehab") String social_drug_rehab);
 
 }

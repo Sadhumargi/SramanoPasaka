@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
@@ -294,9 +295,17 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
             showLoadingDialog();
 
             RequestProcessor requestProcessor = new RequestProcessor(HobbyFragment.this);
-            /*requestProcessor.updatePromises(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(navkar_mantra.isChecked()), String.valueOf(swadhyay.isChecked()),
-                    String.valueOf(sant_darshan.isChecked()), String.valueOf(samayik.isChecked()), String.valueOf(navkarsi.isChecked()),
-                    String.valueOf(pratikraman.isChecked()), String.valueOf(chovihar.isChecked()), String.valueOf(others.isChecked()), special.getText().toString());*/
+            requestProcessor.updateHobbies(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(org_planning.isChecked()), String.valueOf(org_comp_operator.isChecked()),
+                    String.valueOf(org_project_operation.isChecked()), String.valueOf(org_fund_raise.isChecked()), String.valueOf(org_migration_prg.isChecked()),
+                    String.valueOf(org_oration_trainer.isChecked()), String.valueOf(org_management_phones.isChecked()), String.valueOf(rel_medical_service.isChecked()),
+                   String.valueOf(rel_vihar_service.isChecked()),String.valueOf(rel_gochary_service.isChecked()),String.valueOf(rel_jap_tap_cordination.isChecked()),
+                           String.valueOf(rel_swadhyai_service.isChecked()), String.valueOf(rel_kar_sewa.isChecked()),String.valueOf(rel_shivir_management.isChecked()),
+                                   String.valueOf(rel_writeup.isChecked()),String.valueOf(rel_drawing.isChecked()),String.valueOf(rel_self_learning.isChecked()),
+                                           String.valueOf(rel_teaching.isChecked()),String.valueOf(rel_branch.isChecked()),String.valueOf(social_human_service.isChecked()),
+                                                   String.valueOf(social_education_service.isChecked()),String.valueOf(social_medical_service.isChecked()),
+                                                           String.valueOf(social_veg_publicity.isChecked()),String.valueOf(social_lit_service.isChecked()),
+                                                                   String.valueOf(social_water_kiosk_service.isChecked()),String.valueOf(social_web_handling.isChecked()),
+                                                                           String.valueOf(social_speech.isChecked()), String.valueOf(social_drug_rehab.isChecked()));
         }
 
 
@@ -307,8 +316,8 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
         hideLoadingDialog();
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
-                if (guiResponse instanceof UpdatePromiseResponse) {
-                    UpdatePromiseResponse response = (UpdatePromiseResponse) guiResponse;
+                if (guiResponse instanceof UpdateHobbiesResponse) {
+                    UpdateHobbiesResponse response = (UpdateHobbiesResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
 
