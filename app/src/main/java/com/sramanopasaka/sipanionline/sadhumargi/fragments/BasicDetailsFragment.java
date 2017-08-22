@@ -421,13 +421,13 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
 
         boolean callAPi = true;
         if (alternateNumber.getText().toString().length() == 0) {
-            alternateNumber.setError("Alternate number is required");
+            alternateNumber.setError("Alternative number is required");
             alternateNumber.requestFocus();
             callAPi = false;
         }
 
         if (whatsupnumber.getText().toString().length() == 0) {
-            whatsupnumber.setError("Whatsu number is required");
+            whatsupnumber.setError("Whatsapp number is required");
             whatsupnumber.requestFocus();
             callAPi = false;
         }
@@ -460,7 +460,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         if (Gender.getSelectedItem() == null && callAPi) {
             Toast.makeText(getActivity(), "Gender is required", Toast.LENGTH_SHORT).show();
             Gender.requestFocus();
-            Gender.requestFocusFromTouch();
+           // Gender.requestFocusFromTouch();
             callAPi = false;
         }
         if (bloodgrp.getSelectedItem() == null && callAPi) {
@@ -522,7 +522,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         }
 
         if (adress.getText().toString().length() == 0) {
-            adress.setError("Adress is required");
+            adress.setError("Address is required");
             adress.requestFocus();
             callAPi = false;
         }

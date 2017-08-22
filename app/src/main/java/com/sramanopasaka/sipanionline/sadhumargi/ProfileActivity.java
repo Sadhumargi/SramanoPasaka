@@ -53,7 +53,7 @@ public class  ProfileActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>मेरी प्रोफाइल</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>प्रोफाइल</font>"));
 
         basicDetails = (TextView) findViewById(R.id.basic_details);
         password = (TextView) findViewById(R.id.password);

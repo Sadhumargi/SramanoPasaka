@@ -122,78 +122,155 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 boolean callAPi = true;
 
                 if ((password.getText().toString().length()) < 8) {
-                    password.setError("Password should be atleast of 8 charactors");
+                    password.setError("Password should be atleast of 8 characters");
                     password.requestFocus();
                     callAPi = false;
+                }else{
+
+                    password.setError(null);
                 }
 
                 if (!password.getText().toString().equals(reTypepassword.getText().toString())) {
                     reTypepassword.setError("Password not matched");
                     reTypepassword.requestFocus();
                     callAPi = false;
+                }else{
+
+                    reTypepassword.setError(null);
                 }
 
                 if (reTypepassword.getText().toString().length() == 0) {
                     reTypepassword.setError("Please confirm password");
                     reTypepassword.requestFocus();
                     callAPi = false;
+                }else{
+
+                    reTypepassword.setError(null);
                 }
 
                 if (password.getText().toString().length() == 0) {
                     password.setError("Password is required");
                     password.requestFocus();
                     callAPi = false;
+                }else{
+
+                    password.setError(null);
                 }
+
+
                 if (pinCode.getText().toString().length() == 0) {
                     pinCode.setError("Pincode is required");
                     pinCode.requestFocus();
                     callAPi = false;
+                }else{
+
+                    pinCode.setError(null);
                 }
+
+
                 if (sCity.getText().toString().length() == 0) {
                     sCity.setError("City name is required");
                     sCity.requestFocus();
                     callAPi = false;
+                }else{
+
+                    sCity.setError(null);
                 }
+
+
                 if (sState.getText().toString().length() == 0) {
                     sState.setError("State name is required");
                     sState.requestFocus();
                     callAPi = false;
+                }else{
+
+                    sState.setError(null);
                 }
+
+
                 if (sCountry.getText().toString().length() == 0) {
                     sCountry.setError("Country name is required");
                     sCountry.requestFocus();
                     callAPi = false;
+                }else{
+
+                    sCountry.setError(null);
                 }
+
+
                 if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
-                    emailId.setError("Email id is required");
+                    emailId.setError("Email id is not valid");
+                    emailId.requestFocus();
+                    callAPi = false;
+                }else{
+
+                    emailId.setError(null);
+                }
+
+
+                if (emailId.getText().toString().length()==0) {
+                    emailId.setError("Email id number is required");
                     emailId.requestFocus();
                     callAPi = false;
                 }
-                if (!ValidationUtils.isValidMobile(pNumber.getText().toString())) {
+
+                if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length()<5)) {
+                    pNumber.setError("Mobile number is not valid");
+                    pNumber.requestFocus();
+                    callAPi = false;
+                }else{
+
+                    pNumber.setError(null);
+                }
+
+
+                if (pNumber.getText().toString().length()==0) {
                     pNumber.setError("Mobile number is required");
                     pNumber.requestFocus();
                     callAPi = false;
                 }
+
                 if (bDate.getText().toString().length() == 0) {
                     bDate.setError("Birthdate is required");
                     bDate.requestFocus();
                     callAPi = false;
+                }else{
+                    bDate.setError(null);
+                    bDate.setError(null);
                 }
+
+
+
                 if (lName.getText().toString().length() == 0) {
                     lName.setError("Last name is required");
                     lName.requestFocus();
                     callAPi = false;
+                }else{
+
+                   lName.setError(null);
+                    lName.clearFocus();
                 }
+
                 if (mName.getText().toString().length() == 0) {
                     mName.setError("Middle name is required");
                     mName.requestFocus();
                     callAPi = false;
+                }else{
+
+                    mName.setError(null);
+                    mName.clearFocus();
                 }
+
                 if (fName.getText().toString().length() == 0) {
                     fName.setError("First name is required");
                     fName.requestFocus();
                     callAPi = false;
+                }else{
+
+                    fName.setError(null);
+                    fName.clearFocus();
                 }
+
                 if (callAPi && !termsCheckBox.isChecked()) {
                     Toast.makeText(getActivity(), "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
                     callAPi = false;

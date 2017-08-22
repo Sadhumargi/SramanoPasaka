@@ -72,7 +72,7 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:paddingLeft="@dimen/extra_small"
                 android:background="@drawable/border_basicdetails"
-                android:hint="  पता"
+                android:hint="पता"
                 android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"

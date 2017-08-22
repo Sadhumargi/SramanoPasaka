@@ -140,7 +140,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         Menu menu = navigationView.getMenu();
         MenuItem loginItem = menu.findItem(R.id.nav_8);
         if(OfflineData.getLoginData()!=null){
-            loginItem.setTitle("मेरी प्रोफाइल");
+            loginItem.setTitle("प्रोफाइल");
         }else{
             loginItem.setTitle("सदस्य लॉगिन / रजिस्ट्रेशन");
         }

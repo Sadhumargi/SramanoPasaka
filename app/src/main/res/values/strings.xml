@@ -185,8 +185,8 @@
     <string name="Gender">*Gender</string>
     <string name="Bloodgrp">Blood Group</string>
     <string name="Maritalstatus">Marital Status</string>
-    <string name="Whatsupno">Whatsup No.</string>
-    <string name="Alternativeno.">Alternatice No.</string>
+    <string name="Whatsupno">Whatsapp No.</string>
+    <string name="Alternativeno.">Alternative No.</string>
     <string name="Details">Details</string>
     <string name="Sangh">"संघ"</string>
     <string name="Achievements">उपलब्धियां</string>
@@ -198,7 +198,7 @@
     <string name="Postal_address">पत्र व्यवहार पता</string>
     <string name="postaladdress_subtext">सामान्य विवरण में दिए गए पते के अलावा यदि आपसे सम्पर्क अथवा पत्र व्यवहार हेतु कोई अन्य पता है, तो कृपया यहाँ से प्रोफ़ायल में जोड़े</string>
     <string name="Description">*विवरण</string>
-    <string name="add_to_profile">प्रोफाइल मे जोड़ो</string>
+    <string name="add_to_profile">प्रोफाइल मे जोड़े</string>
     <string name="post">*पोस्ट</string>
     <string name="districh">*ज़िला</string>
     <string name="City">*शहर</string>
