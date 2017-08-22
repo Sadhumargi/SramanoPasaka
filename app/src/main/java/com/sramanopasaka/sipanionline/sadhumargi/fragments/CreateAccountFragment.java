@@ -25,6 +25,7 @@ import com.mukesh.countrypicker.CountryPickerListener;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.GUIRequest;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
@@ -322,11 +323,20 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
                             PreferenceUtils.setPassword(getActivity(), password.getText().toString());
-                            OfflineData.saveLoginResponse(loginResponse.getData());
+                          /*  OfflineData.saveLoginResponse(loginResponse.getData());
                             Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(getActivity(), ProfileActivity.class);
                             startActivity(i);
-                            getActivity().finish();
+                            getActivity().finish();*/
+                            LoginRequest loginRequest = new LoginRequest();
+                            loginRequest.setMobileNumber(pNumber.getText().toString());
+                            loginRequest.setPassword(password.getText().toString());
+                            showLoadingDialog();
+                            JsonParser jsonParser = new JsonParser();
+                            JsonObject gsonObject = (JsonObject) jsonParser.parse(loginRequest.getURLEncodedPostdata().toString());
+                            RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
+                            requestProcessor.doLogin(gsonObject);
+
                         } else {
                             if (!TextUtils.isEmpty(loginResponse.getMessage())) {
                                 Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -364,6 +374,27 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             }
                         });
                         statePickerDialog.show();
+                    }
+                }else if (guiResponse instanceof LoginResponse){
+                    LoginResponse loginResponse = (LoginResponse) guiResponse;
+                    if (loginResponse != null) {
+                        if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
+                            OfflineData.saveLoginResponse(loginResponse.getData());
+
+                            //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
+
+
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getActivity(), ProfileActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        } else {
+                            if (!TextUtils.isEmpty(loginResponse.getMessage())) {
+                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 }
 
