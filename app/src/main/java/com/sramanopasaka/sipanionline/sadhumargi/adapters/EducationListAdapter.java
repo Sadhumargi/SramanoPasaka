@@ -47,10 +47,11 @@ public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdap
     public void onBindViewHolder(EducationListViewHolder holder, int position) {
         final Education model = list.get(position);
         holder.educationName.setText(model.getEducationName());
-        holder.educationYear.setText(model.getYear());
-        holder.instituteName.setText(model.getIstitute());
         holder.description.setText(model.getDescription());
         holder.score.setText(model.getScore());
+        holder.educationYear.setText(model.getYear());
+        holder.instituteName.setText(model.getIstitute());
+
     }
 
 

@@ -464,7 +464,7 @@ public class RequestProcessor {
 
 
         endPointApi.addAddress(memberId,token,"add",data.getAddress1(),data.getAddress2(),data.getPost(),data.getDistrict(),
-                data.getCity(),data.getPincode(),data.getState(),data.getCountry(),data.getAddress_type()).enqueue(new Callback<AddAddressResponse>() {
+                data.getCity(),data.getPincode(),data.getState_name(),data.getCountry(),data.getAddress_type()).enqueue(new Callback<AddAddressResponse>() {
             @Override
             public void onResponse(Call<AddAddressResponse> call, Response<AddAddressResponse> response) {
 

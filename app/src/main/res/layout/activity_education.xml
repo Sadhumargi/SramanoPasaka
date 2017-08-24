@@ -75,6 +75,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:background="@drawable/border_basicdetails"
         android:hint="@string/Marks"
+        android:inputType="number"
         android:paddingBottom="@dimen/dimen_10"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"

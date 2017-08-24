@@ -9,12 +9,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
@@ -63,6 +66,13 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     Button btnCreateProfile;
     TextView countryCode;
     RadioGroup radiogrp;
+    EditText anchal;
+    EditText localSanghName;
+    EditText headOfFamily;
+    Spinner relation;
+
+
+
     private View view = null;
 
     @Nullable
@@ -88,6 +98,9 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
         btnCreateProfile = (Button) view.findViewById(R.id.create_profile);
         countryCode = (TextView) view.findViewById(R.id.countryCodeTxt);
         radiogrp = (RadioGroup) view.findViewById(R.id.radiogrp);
+
+
+        relation= (Spinner) view.findViewById(R.id.relation);
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -115,6 +128,21 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
             }
         });
+
+
+        ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(getActivity(), R.array.head_offamily_relation, android.R.layout.simple_spinner_item);
+                typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
+                //achievementArea.setPrompt("Select your favorite Planet!");
+
+                relation.setAdapter(
+                        new NothingSelectedSpinnerAdapter(
+                                typeadapter,
+                                R.layout.head_of_family_relation_selection,
+                                getActivity()));
+
 
         btnCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -59,7 +59,7 @@ public class AddExamActivity extends BaseActivity implements GUICallback {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>उल्लेखनीय उपलब्धियां</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>धार्मिक</font>"));
 
 
 

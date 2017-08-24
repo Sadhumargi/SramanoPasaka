@@ -137,11 +137,7 @@ public class PostalAddressActivity extends BaseActivity implements GUICallback {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.address_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        addresstype.setAdapter(
-                new NothingSelectedSpinnerAdapter(
-                        adapter,
-                        R.layout.address_type_selection,
-                        this));
+        addresstype.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.address_type_selection,this));
 
 
     }
@@ -160,55 +156,90 @@ public class PostalAddressActivity extends BaseActivity implements GUICallback {
     }
 
     @OnClick(R.id.addAddress)
-    public void addAddressListner() {
+    public void addAddress() {
         boolean callAPi = true;
-        if (address1.getText().toString().length() == 0) {
-            address1.setError("Address line 1 is required");
-            address1.requestFocus();
+
+        if (addresstype.getSelectedItem() == null) {
+            callAPi = false;
+            Toast.makeText(PostalAddressActivity.this, "Address type is required", Toast.LENGTH_SHORT).show();
+            addresstype.requestFocus();
+            addresstype.requestFocusFromTouch();
+        }
+
+        if (pin.getText().toString().length() <6) {
+            pin.setError("Pin Code is not valid");
+            pin.requestFocus();
+            callAPi = false;
+        }else{
+
+            pin.setError(null);
+        }
+
+
+
+
+        if (pin.getText().toString().length() == 0) {
+            pin.setError("Pin Code is required");
+            pin.requestFocus();
             callAPi = false;
         }
-        if (address2.getText().toString().length() == 0) {
-            address2.setError("Address line 2 is required");
-            address2.requestFocus();
+
+        if (country.getText().toString().length() == 0) {
+            country.setError("Country is required");
+            country.requestFocus();
+            callAPi = false;
+        }else{
+
+            country.setError(null);
+        }
+
+        if (state.getText().toString().length() == 0) {
+            state.setError("State is required");
+            state.requestFocus();
             callAPi = false;
         }
-        if (post.getText().toString().length() == 0) {
-            post.setError("Post is required");
-            post.requestFocus();
-            callAPi = false;
+        else{
+
+            state.setError(null);
         }
+
+        if (city.getText().toString().length() == 0) {
+            city.setError("City is required");
+            city.requestFocus();
+            callAPi = false;
+        }else{
+
+            city.setError(null);
+        }
+
 
         if (district.getText().toString().length() == 0) {
             district.setError("District is required");
             district.requestFocus();
             callAPi = false;
         }
-        if (city.getText().toString().length() == 0) {
-            city.setError("City is required");
-            city.requestFocus();
+
+        if (post.getText().toString().length() == 0) {
+            post.setError("Post is required");
+            post.requestFocus();
             callAPi = false;
         }
-        if (state.getText().toString().length() == 0) {
-            state.setError("State is required");
-            state.requestFocus();
+
+
+        if (address2.getText().toString().length() == 0) {
+            address2.setError("Address line 2 is required");
+            address2.requestFocus();
             callAPi = false;
         }
-        if (country.getText().toString().length() == 0) {
-            country.setError("Country is required");
-            country.requestFocus();
+
+
+        if (address1.getText().toString().length() == 0) {
+            address1.setError("Address line 1 is required");
+            address1.requestFocus();
             callAPi = false;
         }
-        if (pin.getText().toString().length() == 0) {
-            pin.setError("Country is required");
-            pin.requestFocus();
-            callAPi = false;
-        }
-        if (addresstype.getSelectedItem() == null) {
-            Toast.makeText(PostalAddressActivity.this, "Address type is required", Toast.LENGTH_SHORT).show();
-            addresstype.requestFocus();
-            addresstype.requestFocusFromTouch();
-            callAPi = false;
-        }
+
+
 
         if (callAPi) {
             showLoadingDialog();

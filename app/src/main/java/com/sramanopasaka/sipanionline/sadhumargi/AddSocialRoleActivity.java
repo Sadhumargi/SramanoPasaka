@@ -163,10 +163,33 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
     public void addSocialRole() {
 
         boolean callApi = true;
-        if (TextUtils.isEmpty(orgName.getText().toString())) {
+
+
+
+        if (TextUtils.isEmpty(enddate.getText().toString())) {
             callApi = false;
-            orgName.setError("Please enter the institute name");
-            orgName.requestFocus();
+            enddate.setError("Please enter the end year");
+            enddate.requestFocus();
+        }
+
+        if (TextUtils.isEmpty(startdate.getText().toString())) {
+            callApi = false;
+            startdate.setError("Please enter the start year");
+            startdate.requestFocus();
+        }
+
+        if (level.getSelectedItem() == null && callApi) {
+            Toast.makeText(AddSocialRoleActivity.this, "Organisation level is required", Toast.LENGTH_SHORT).show();
+            level.requestFocusFromTouch();
+            level.requestFocus();
+            callApi = false;
+        }
+
+        if (role.getSelectedItem() == null && callApi) {
+            Toast.makeText(AddSocialRoleActivity.this, "Organisation role is required", Toast.LENGTH_SHORT).show();
+            role.requestFocusFromTouch();
+            role.requestFocus();
+            callApi = false;
         }
 
         int selectedId = radiogrp.getCheckedRadioButtonId();
@@ -177,31 +200,13 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
             callApi = false;
         }
 
-        if (role.getSelectedItem() == null && callApi) {
-            Toast.makeText(AddSocialRoleActivity.this, "Organisation role is required", Toast.LENGTH_SHORT).show();
-            role.requestFocusFromTouch();
-            role.requestFocus();
+        if (TextUtils.isEmpty(orgName.getText().toString())) {
             callApi = false;
-        }
-        if (level.getSelectedItem() == null && callApi) {
-            Toast.makeText(AddSocialRoleActivity.this, "Organisation level is required", Toast.LENGTH_SHORT).show();
-            level.requestFocusFromTouch();
-            level.requestFocus();
-            callApi = false;
+            orgName.setError("Institute name is required");
+            orgName.requestFocus();
         }
 
 
-        if (TextUtils.isEmpty(startdate.getText().toString())) {
-            callApi = false;
-            startdate.setError("Please enter the start year");
-            startdate.requestFocus();
-        }
-
-        if (TextUtils.isEmpty(enddate.getText().toString())) {
-            callApi = false;
-            enddate.setError("Please enter the end year");
-            enddate.requestFocus();
-        }
 
 
         if (callApi) {

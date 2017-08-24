@@ -17,10 +17,12 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.DialogueListner;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -91,6 +93,16 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
                         R.layout.achievement_type_selection,
                         this));
 
+    }
+
+    @OnClick(R.id.achievementYear)
+    public void achievmentYear(){
+        DialogueUtils.showYearPicker(AchivementsActivity.this, new DialogueListner() {
+            @Override
+            public void onYearSelected(String year) {
+                achievementYear.setText(year);
+            }
+        });
     }
 
     @OnClick(R.id.addAchievements)

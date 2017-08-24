@@ -127,6 +127,88 @@
                 android:textStyle="normal" />
 
             <EditText
+                android:id="@+id/Anchal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:hint="*Anchal"
+                android:inputType="text|none"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/sangh_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:hint="@string/Sangh_Name"
+                android:inputType="text|none"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:drawableEnd="@drawable/downarrow"
+                android:editable="false"
+                android:hint="@string/selectcity"
+                android:maxLength="40"
+                android:paddingBottom="@dimen/dimen_10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+
+            <EditText
+                android:id="@+id/head_of_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:editable="false"
+                android:hint="@string/HeadofFamil"
+                android:maxLength="40"
+                android:paddingBottom="@dimen/dimen_10"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:drawableEnd="@drawable/downarrow"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/spinner_style"
+                android:id="@+id/relation"
+                android:layout_margin="@dimen/fab_margin"/>
+
+            <EditText
                 android:id="@+id/birth_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -241,24 +323,7 @@
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:hint="@string/selectcity"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+
 
             <EditText
                 android:id="@+id/pincode"

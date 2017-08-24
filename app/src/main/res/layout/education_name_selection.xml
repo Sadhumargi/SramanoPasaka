@@ -6,6 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
-    android:textSize="18sp"
+    android:textSize="@dimen/large"
     android:textColor="#808080"
     android:text="@string/edt_educatn" />

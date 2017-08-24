@@ -197,7 +197,7 @@
 
     <string name="Postal_address">पत्र व्यवहार पता</string>
     <string name="postaladdress_subtext">सामान्य विवरण में दिए गए पते के अलावा यदि आपसे सम्पर्क अथवा पत्र व्यवहार हेतु कोई अन्य पता है, तो कृपया यहाँ से प्रोफ़ायल में जोड़े</string>
-    <string name="Description">*विवरण</string>
+    <string name="Description">विवरण</string>
     <string name="add_to_profile">प्रोफाइल मे जोड़े</string>
     <string name="post">*पोस्ट</string>
     <string name="districh">*ज़िला</string>
@@ -217,7 +217,7 @@
         व्यवसाय के नाम में प्रोफ़ेशन काउल्लेख करें। यदि आप स्वयं के नाम से अथवा फ़्रीलांस सलाहकार
         के रूप में काम कर रहे हैं तो व्यवसाय के नाम में प्रोफ़ेशन के साथ Self Practice भरें।</string>
     <string name="edt_business">*व्यवसाय</string>
-    <string name="edt_Organizationname">*नाम</string>
+    <string name="edt_Organizationname">नाम</string>
     <string name="edt_role">भूमिका</string>
     <string name="edt_start_year">आरम्भ वर्ष</string>
     <string name="edt_end_year">समाप्ति वर्ष</string>
@@ -228,7 +228,7 @@
     <string name="Achievement_area">*क्षेत्र</string>
     <string name="Achievement_Level">*स्तर</string>
     <string name="Achievement_type">*प्रकार</string>
-    <string name="Achievement_details">*विवरण</string>
+    <string name="Achievement_details">विवरण</string>
 
     <string name="sadhsya_header">१८ वर्ष से कम उम्र के बच्चों का विवरण</string>
     <string name="sadhaya_txt">आप द्वारा सामान्य विवरण के अंतर्गत बच्चों की संख्या 0 दी
@@ -258,8 +258,8 @@
 
     <string name="Religious_tab2_header">धार्मिक परीक्षाएं एवं संस्था का नाम</string>
 
-    <string name="edt_exam_name">परीक्षा का नाम</string>
-    <string name="edt_institute">संस्था का नाम</string>
+    <string name="edt_exam_name">*परीक्षा का नाम</string>
+    <string name="edt_institute">*संस्था का नाम</string>
 
 
     <string name="Tab3_Religious_gyan_">ज्ञान</string>
@@ -349,6 +349,9 @@
     <string name="or">OR</string>
     <string name="Close">Close</string>
     <string name="Recover">Recover</string>
+    <string name="Sangh_Name">*Local Sangh Name</string>
+    <string name="HeadofFamil">*Head Of Family</string>
+    <string name="RelationwithHOf">*Relation with Head Of Family</string>
 
 
     <array name="business_type">
@@ -402,7 +405,7 @@
     </array>
     <array name="address_type">
         <item>Residential</item>
-        <item>Business</item>
+        <item>Office/Business</item>
         <item>Other</item>
     </array>
     <array name="gender_type">
@@ -422,7 +425,7 @@
     </array>
     <array name="maretial_status">
         <item>Married</item>
-        <item>UmMarried</item>
+        <item>UnMarried</item>
     </array>
     <array name="achievement_level">
         <item>Local</item>
@@ -446,4 +449,39 @@
         <item>BTech</item>
         <item>MTech</item>
     </array>
+
+    <array name="head_of_family_relation">
+
+        <item>Self स्वयं</item>
+        <item>Grand	Father दादा</item>
+        <item>Grand	Mother दादी</item>
+        <item>Maternal Grand Father	नाना</item>
+        <item>Maternal Grand Mother	नानी</item>
+        <item>Father पिता </item>
+        <item>Mother माता </item>
+        <item>Elder	Brother बड़ा भाई 	</item>
+        <item>Younger Brother छोटा भाई</item>
+        <item>Husband's elder brother जेठ</item>
+        <item>Husband's	younger brother देवर</item>
+        <item>Elder Sister बड़ी बहन</item>
+        <item>Younger Sister छोटी बहन </item>
+        <item>Husband पति</item>
+        <item>Wife पत्नी</item>
+        <item>Son पुत्र</item>
+        <item>Daughter पुत्री</item>
+        <item>Granddaughter पोत्रि</item>
+        <item>Maternal Grandson दोहिता</item>
+        <item>Maternal Granddaughter दोहिता</item>
+        <item>Uncle	चाचा </item>
+        <item>Aunt चाची </item>
+        <item>Maternal Uncle मामा</item>
+        <item>Maternal Aunt मामी </item>
+        <item>Cousin Brother चचेरा भाई</item>
+        <item>Cousin Sister चचेरी बहन </item>
+
+    </array>
+
+
+
+
 </resources>

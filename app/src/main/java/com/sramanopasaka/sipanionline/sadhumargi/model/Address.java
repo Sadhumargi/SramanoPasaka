@@ -30,7 +30,15 @@ public class Address {
 
     private String pincode;
 
-    private String state;
+    public String getState_name() {
+        return state_name;
+    }
+
+    public void setState_name(String state_name) {
+        this.state_name = state_name;
+    }
+
+    private String state_name;
 
     private String country;
 
@@ -43,7 +51,7 @@ public class Address {
         this.district = district;
         this.city = city;
         this.pincode = pincode;
-        this.state = state;
+        this.state_name = state;
         this.country = country;
         this.address_type = address_type;
     }
@@ -96,13 +104,7 @@ public class Address {
         this.pincode = pincode;
     }
 
-    public String getState() {
-        return state;
-    }
 
-    public void setState(String state) {
-        this.state = state;
-    }
 
     public String getCountry() {
         return country;

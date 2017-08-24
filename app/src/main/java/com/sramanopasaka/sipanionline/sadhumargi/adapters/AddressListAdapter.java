@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
@@ -47,7 +48,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Address model = list.get(position);
         holder.txtAddressTag.setText(model.getAddress_type());
-        holder.txtAddress.setText(model.getAddress1() + ", " + model.getAddress2() + ", " + model.getCity() + ", " + model.getState() + ", " + model.getPincode());
+        holder.txtAddress.setText(model.getAddress1() + ", " + model.getAddress2() + ", " + model.getPost() + ", " + model.getDistrict() + ", " +
+                model.getCity()  + ", " + model.getPincode() + ", " + model.getState_name() + ", " + model.getCountry()  );
 
     }
 

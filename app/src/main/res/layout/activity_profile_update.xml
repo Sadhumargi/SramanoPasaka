@@ -242,7 +242,7 @@
                                 android:layout_marginTop="@dimen/margin_15"
                                 android:maxHeight="@dimen/dimen_30"
                                 android:minHeight="@dimen/dimen_30"
-                                android:text="@string/contact_details"
+                                android:text="@string/postal_address"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/small_text_12" />
                         </RelativeLayout>

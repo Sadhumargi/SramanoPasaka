@@ -117,6 +117,7 @@
         android:paddingLeft="@dimen/small"
         android:background="@drawable/border_basicdetails"
         android:hint="@string/year"
+        android:editable="false"
         android:paddingBottom="@dimen/dimen_10"
         android:textColor="@color/black"
         android:textCursorDrawable="@drawable/cursor_basicdetails"

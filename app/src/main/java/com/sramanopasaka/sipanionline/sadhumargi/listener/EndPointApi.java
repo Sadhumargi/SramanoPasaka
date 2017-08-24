@@ -112,7 +112,7 @@ public interface EndPointApi {
                                         @Field("method") String method, @Field("address1") String address1,
                                         @Field("address2") String address2, @Field("post") String post,
                                         @Field("district") String district, @Field("city") String city,
-                                        @Field("pincode") String pincode, @Field("state") String state,
+                                        @Field("pincode") String pincode, @Field("state") String getState_name,
                                         @Field("country") String country, @Field("address_type") String address_type);
 
     @FormUrlEncoded

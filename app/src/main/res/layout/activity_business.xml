@@ -79,6 +79,7 @@
                 android:hint="@string/edt_Organizationname"
                 android:paddingBottom="@dimen/dimen_10"
                 android:paddingLeft="@dimen/small"
+                android:maxLength="80"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
@@ -93,6 +94,7 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/border_basicdetails"
                 android:hint="@string/edt_role"
+                android:maxLength="80"
                 android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
@@ -111,21 +113,7 @@
                 android:hint="@string/edt_start_year"
                 android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/black"
-                android:textCursorDrawable="@drawable/cursor_basicdetails"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            <EditText
-                android:id="@+id/businessEndYear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:paddingLeft="@dimen/small"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/border_basicdetails"
-                android:hint="@string/edt_end_year"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textColor="@color/black"
+                android:editable="false"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
