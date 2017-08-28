@@ -66,11 +66,12 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     Button btnCreateProfile;
     TextView countryCode;
     RadioGroup radiogrp;
-    EditText anchal;
-    EditText localSanghName;
-    EditText headOfFamily;
+    Spinner anchal;
+    Spinner localSanghName;
+    CheckBox headOfFamily;
     Spinner relation;
     Spinner profileCreatedby;
+    Spinner selectFamily;
 
 
 
@@ -101,8 +102,10 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
         radiogrp = (RadioGroup) view.findViewById(R.id.radiogrp);
 
 
+
         relation= (Spinner) view.findViewById(R.id.relation);
         profileCreatedby= (Spinner) view.findViewById(R.id.profile_created_by);
+        selectFamily= (Spinner) view.findViewById(R.id.family);
 
 
         final Calendar myCalendar = Calendar.getInstance();
@@ -147,7 +150,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                                 getActivity()));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.profile_created_by, android.R.layout.simple_spinner_item);
-        typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
 
@@ -155,10 +158,13 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
         profileCreatedby.setAdapter(
                 new NothingSelectedSpinnerAdapter(
-                        adapter,
-                        R.layout.profile_created_by_selection,
-                        getActivity()));
+                        adapter, R.layout.profile_created_by_selection, getActivity()));
 
+
+        ArrayAdapter<CharSequence> family=ArrayAdapter.createFromResource(getActivity(),R.array.select_family,android.R.layout.simple_spinner_item);
+        family.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        selectFamily.setAdapter(new NothingSelectedSpinnerAdapter(family,R.layout.family_selection,getActivity()));
 
         btnCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override

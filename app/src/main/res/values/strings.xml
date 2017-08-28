@@ -350,8 +350,9 @@
     <string name="Close">Close</string>
     <string name="Recover">Recover</string>
     <string name="Sangh_Name">*Local Sangh Name</string>
-    <string name="HeadofFamil">*Head Of Family</string>
+    <string name="HeadofFamil">Head Of Family</string>
     <string name="RelationwithHOf">*Relation with Head Of Family</string>
+    <string name="SelectFamily">*Select Family</string>
 
     <string name="ProfileCreatedby">Profile Created By</string>
 
@@ -488,6 +489,11 @@
         <item>Self</item>
 
         <item>Sangh	Karyakarta</item>
+
+    </array>
+
+    <array name="select_family">
+        <item> List of family</item>
 
     </array>
 
