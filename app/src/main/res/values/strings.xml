@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:name="http://schemas.android.com/tools">
     <string name="app_name">साधुमार्गी </string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -353,6 +353,8 @@
     <string name="HeadofFamil">*Head Of Family</string>
     <string name="RelationwithHOf">*Relation with Head Of Family</string>
 
+    <string name="ProfileCreatedby">Profile Created By</string>
+
 
     <array name="business_type">
         <item>Student</item>
@@ -478,6 +480,14 @@
         <item>Maternal Aunt मामी </item>
         <item>Cousin Brother चचेरा भाई</item>
         <item>Cousin Sister चचेरी बहन </item>
+
+    </array>
+
+    <array name="profile_created_by">
+
+        <item>Self</item>
+
+        <item>Sangh	Karyakarta</item>
 
     </array>
 

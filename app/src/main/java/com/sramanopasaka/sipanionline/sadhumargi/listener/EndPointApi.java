@@ -3,6 +3,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamiliesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -241,5 +242,24 @@ public interface EndPointApi {
                                               @Field("social_veg_publicity") String social_veg_publicity, @Field("social_lit_service") String social_lit_service,
                                               @Field("social_water_kiosk_service") String social_water_kiosk_service, @Field("social_web_handling") String social_web_handling,
                                               @Field("social_speech") String social_speech, @Field("social_drug_rehab") String social_drug_rehab);
+
+
+    @FormUrlEncoded
+    @POST("api/families")
+    Call<FamiliesResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName\t") String firstName,
+                                        @Field("Middle\tName\t") String middleName , @Field("Last\tName\t") String lastName,
+                                        @Field("City\t") String city);
+
+    @FormUrlEncoded
+    @POST("api/native_families")
+    Call<NativeFamilyResponse> selectNativeFamily(@Field("Local\tSangh\tID") String lacalSanghID,
+                                       @Field("City\t") String city);
+
+    @FormUrlEncoded
+    @POST("api/family_members\t")
+    Call<FamilyMembersResponse> familyMembers(@Field("member_id\t") String member_id,
+                                                    @Field("app_token") String app_token);
+
+
 
 }

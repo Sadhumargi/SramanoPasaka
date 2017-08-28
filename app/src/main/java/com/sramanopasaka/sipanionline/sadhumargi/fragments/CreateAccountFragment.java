@@ -70,6 +70,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     EditText localSanghName;
     EditText headOfFamily;
     Spinner relation;
+    Spinner profileCreatedby;
 
 
 
@@ -101,6 +102,8 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
 
         relation= (Spinner) view.findViewById(R.id.relation);
+        profileCreatedby= (Spinner) view.findViewById(R.id.profile_created_by);
+
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -142,6 +145,19 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                                 typeadapter,
                                 R.layout.head_of_family_relation_selection,
                                 getActivity()));
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.profile_created_by, android.R.layout.simple_spinner_item);
+        typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
+        //achievementArea.setPrompt("Select your favorite Planet!");
+
+        profileCreatedby.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.profile_created_by_selection,
+                        getActivity()));
 
 
         btnCreateProfile.setOnClickListener(new View.OnClickListener() {

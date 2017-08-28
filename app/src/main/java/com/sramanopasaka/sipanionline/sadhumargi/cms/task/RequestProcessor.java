@@ -1154,6 +1154,106 @@ public class RequestProcessor {
 
     }
 
+
+    public void selectFamily(String lacalSanghID, String firstName, String middleName,
+                              String lastName, String city) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.selectFamily(lacalSanghID, firstName, middleName, lastName, city).enqueue(new Callback<FamiliesResponse>() {
+            @Override
+            public void onResponse(Call<FamiliesResponse> call, Response<FamiliesResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<FamiliesResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void selectNativeFamily(String lacalSanghID,String city) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.selectNativeFamily(lacalSanghID, city).enqueue(new Callback<NativeFamilyResponse>() {
+            @Override
+            public void onResponse(Call<NativeFamilyResponse> call, Response<NativeFamilyResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<NativeFamilyResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void familyMembers(String memberId, String token) {
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+        endPointApi.familyMembers(memberId, token).enqueue(new Callback<FamilyMembersResponse>() {
+            @Override
+            public void onResponse(Call<FamilyMembersResponse> call, Response<FamilyMembersResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<FamilyMembersResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+
+
     public String convertStreamToString(InputStream inputStream) {
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
