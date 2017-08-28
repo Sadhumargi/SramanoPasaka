@@ -144,8 +144,6 @@
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
-
-
             <EditText
                 android:id="@+id/sangh_name"
                 android:layout_width="match_parent"
@@ -183,12 +181,18 @@
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
-               <Spinner android:layout_width="match_parent"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/spinner_style"
-                android:id="@+id/family"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/fab_margin"/>
+                android:layout_margin="@dimen/fab_margin"
+                android:textColorHint="@color/white"
+                android:background="@drawable/edt_border"
+                android:ems="10"
+                android:textSize="@dimen/large"
+                android:hint="@string/SelectFamily"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/white" />
 
 
             <LinearLayout
@@ -224,8 +228,7 @@
                 style="@style/spinner_style"
                 android:id="@+id/relation"
                 android:textAlignment="center"
-                android:layout_margin="@dimen/fab_margin"
-                />
+                android:layout_margin="@dimen/fab_margin"/>
 
             <EditText
                 android:id="@+id/birth_date"

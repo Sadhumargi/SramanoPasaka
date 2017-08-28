@@ -6,7 +6,7 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamiliesResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
@@ -901,11 +901,11 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.passwordChange(memberId,token,currentPassword,newPassword).enqueue(new Callback<PasswordChangeResponse>() {
+        endPointApi.passwordChange(memberId,token,currentPassword,newPassword).enqueue(new Callback<PasswordChangeResponse>() {
             @Override
             public void onResponse(Call<PasswordChangeResponse> call, Response<PasswordChangeResponse> response) {
 
@@ -934,11 +934,11 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.passwordRecover(emaiId,mobileNo,fName,lName).enqueue(new Callback<PasswordRecoverResponse>() {
+        endPointApi.passwordRecover(emaiId,mobileNo,fName,lName).enqueue(new Callback<PasswordRecoverResponse>() {
             @Override
             public void onResponse(Call<PasswordRecoverResponse> call, Response<PasswordRecoverResponse> response) {
 
@@ -969,11 +969,11 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.getStateList().enqueue(new Callback<List<State>>() {
+        endPointApi.getStateList().enqueue(new Callback<List<State>>() {
             @Override
             public void onResponse(Call<List<State>> call, Response<List<State>> response) {
 
@@ -1006,11 +1006,11 @@ public class RequestProcessor {
 
 
 
-        EndPointApi valYouAPI = RetrofitClient.getMemberClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
 
-        valYouAPI.getCityList().enqueue(new Callback<List<City>>() {
+        endPointApi.getCityList().enqueue(new Callback<List<City>>() {
             @Override
             public void onResponse(Call<List<City>> call, Response<List<City>> response) {
 
@@ -1165,9 +1165,9 @@ public class RequestProcessor {
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
-        endPointApi.selectFamily(lacalSanghID, firstName, middleName, lastName, city).enqueue(new Callback<FamiliesResponse>() {
+        endPointApi.selectFamily(lacalSanghID, firstName, middleName, lastName, city).enqueue(new Callback<FamilyResponse>() {
             @Override
-            public void onResponse(Call<FamiliesResponse> call, Response<FamiliesResponse> response) {
+            public void onResponse(Call<FamilyResponse> call, Response<FamilyResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
@@ -1181,7 +1181,7 @@ public class RequestProcessor {
             }
 
             @Override
-            public void onFailure(Call<FamiliesResponse> call, Throwable t) {
+            public void onFailure(Call<FamilyResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

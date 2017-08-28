@@ -126,18 +126,17 @@ public class TestActivity extends AppCompatActivity implements SearchFamilyUpdat
     @Override
     public void onQuerryChanged(String querry) {
 
-        LoginModel loginResponse = OfflineData.getLoginData();
+       /* LoginModel loginResponse = OfflineData.getLoginData();
         if (loginResponse != null) {
 
 
             RequestProcessor requestProcessor = new RequestProcessor(DharmicFragment.this);
             requestProcessor.getDharmikDetails(loginResponse.getId(), loginResponse.getAppToken());
-        }
-    }
+        }*/
 
-    @Override
+   /* @Override
     public void onResultReceived() {
 
     }
-}
-*/
+}*/
+

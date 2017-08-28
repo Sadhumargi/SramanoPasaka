@@ -3,7 +3,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.listener;
 import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamiliesResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
@@ -25,7 +25,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
@@ -33,7 +32,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Country;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 
@@ -248,9 +246,9 @@ public interface EndPointApi {
 
     @FormUrlEncoded
     @POST("api/families")
-    Call<FamiliesResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName") String firstName,
-                                        @Field("Middle\tName") String middleName , @Field("Last\tName") String lastName,
-                                        @Field("City") String city);
+    Call<FamilyResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName") String firstName,
+                                      @Field("Middle\tName") String middleName , @Field("Last\tName") String lastName,
+                                      @Field("City") String city);
 
     @FormUrlEncoded
     @POST("api/native_families")

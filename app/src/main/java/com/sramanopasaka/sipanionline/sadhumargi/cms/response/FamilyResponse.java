@@ -9,7 +9,7 @@ import java.util.List;
  * Created by sipani001 on 28/8/17.
  */
 
-public class FamiliesResponse extends GUIResponse {
+public class FamilyResponse extends GUIResponse {
 
     private boolean statusCode = false;
 

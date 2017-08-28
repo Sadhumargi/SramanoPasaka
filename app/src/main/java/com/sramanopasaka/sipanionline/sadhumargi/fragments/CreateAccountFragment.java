@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -30,6 +31,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.request.GUIRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
@@ -71,8 +73,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     CheckBox headOfFamily;
     Spinner relation;
     Spinner profileCreatedby;
-    Spinner selectFamily;
-
+AutoCompleteTextView familyMember;
 
 
     private View view = null;
@@ -100,12 +101,13 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
         btnCreateProfile = (Button) view.findViewById(R.id.create_profile);
         countryCode = (TextView) view.findViewById(R.id.countryCodeTxt);
         radiogrp = (RadioGroup) view.findViewById(R.id.radiogrp);
+        familyMember = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
 
 
 
         relation= (Spinner) view.findViewById(R.id.relation);
         profileCreatedby= (Spinner) view.findViewById(R.id.profile_created_by);
-        selectFamily= (Spinner) view.findViewById(R.id.family);
+       // selectFamily= (Spinner) view.findViewById(R.id.family);
 
 
         final Calendar myCalendar = Calendar.getInstance();
@@ -150,7 +152,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                                 getActivity()));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.profile_created_by, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
 
@@ -158,13 +160,10 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
         profileCreatedby.setAdapter(
                 new NothingSelectedSpinnerAdapter(
-                        adapter, R.layout.profile_created_by_selection, getActivity()));
+                        adapter,
+                        R.layout.profile_created_by_selection,
+                        getActivity()));
 
-
-        ArrayAdapter<CharSequence> family=ArrayAdapter.createFromResource(getActivity(),R.array.select_family,android.R.layout.simple_spinner_item);
-        family.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        selectFamily.setAdapter(new NothingSelectedSpinnerAdapter(family,R.layout.family_selection,getActivity()));
 
         btnCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -521,6 +520,26 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             } else {
                                 Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
                             }
+                        }
+                    }
+                } else {
+                    if (guiResponse instanceof FamilyResponse) {
+
+                        FamilyResponse response = (FamilyResponse) guiResponse;
+                        if (response != null && response.getFamilies() != null && response.getFamilies().size() > 0) {
+
+                            String[] datas = new String[response.getFamilies().size()];
+
+                            for (int i = 0; i < response.getFamilies().size(); i++) {
+                                datas[i] = response.getFamilies().get(i).getLast_name();
+                            }
+
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                    (getActivity(), android.R.layout.select_dialog_item, datas);
+
+                            familyMember.setThreshold(1);//will start working from first character
+                            familyMember.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+                            //familyMember.setTextColor(Color.RED);
                         }
                     }
                 }
