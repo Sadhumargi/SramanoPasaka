@@ -130,7 +130,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
         });
 
 
-        ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(getActivity(), R.array.head_offamily_relation, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(getActivity(), R.array.head_of_family_relation, android.R.layout.simple_spinner_item);
                 typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
