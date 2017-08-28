@@ -18,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,6 +82,14 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         checkConnection();
+
+
+        ///////////
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int densityDpi = (int)(metrics.density * 160f);
+        Log.e("-------","densityDpi"+densityDpi);
+        Log.e("-------","density"+getResources().getDisplayMetrics().density);
 
 
     }

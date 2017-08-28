@@ -246,19 +246,19 @@ public interface EndPointApi {
 
     @FormUrlEncoded
     @POST("api/families")
-    Call<FamiliesResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName\t") String firstName,
-                                        @Field("Middle\tName\t") String middleName , @Field("Last\tName\t") String lastName,
-                                        @Field("City\t") String city);
+    Call<FamiliesResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName") String firstName,
+                                        @Field("Middle\tName") String middleName , @Field("Last\tName") String lastName,
+                                        @Field("City") String city);
 
-    @FormUrlEncoded
+   /* @FormUrlEncoded
     @POST("api/native_families")
     Call<NativeFamilyResponse> selectNativeFamily(@Field("Local\tSangh\tID") String lacalSanghID,
-                                       @Field("City\t") String city);
+                                       @Field("City") String city);
 
     @FormUrlEncoded
-    @POST("api/family_members\t")
-    Call<FamilyMembersResponse> familyMembers(@Field("member_id\t") String member_id,
-                                                    @Field("app_token") String app_token);
+    @POST("api/family_members")
+    Call<FamilyMembersResponse> familyMembers(@Field("member_id") String member_id,
+                                                    @Field("app_token") String app_token);*/
 
 
 

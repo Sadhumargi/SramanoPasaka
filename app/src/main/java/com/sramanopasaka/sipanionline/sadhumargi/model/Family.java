@@ -4,7 +4,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.model;
  * Created by sipani001 on 28/8/17.
  */
 
-public class Families {
+public class Family {
 
     String family_id=null;
 
@@ -80,29 +80,7 @@ public class Families {
         this.mobile = mobile;
     }
 
-    public String getRelation_id() {
-        return relation_id;
-    }
 
-    public void setRelation_id(String relation_id) {
-        this.relation_id = relation_id;
-    }
-
-    public String getRelation_label_en() {
-        return relation_label_en;
-    }
-
-    public void setRelation_label_en(String relation_label_en) {
-        this.relation_label_en = relation_label_en;
-    }
-
-    public String getRelation_label_hi() {
-        return relation_label_hi;
-    }
-
-    public void setRelation_label_hi(String relation_label_hi) {
-        this.relation_label_hi = relation_label_hi;
-    }
 
     String first_name=null;
     String middle_name=null;
@@ -113,8 +91,6 @@ public class Families {
     String state_id=null;
     String mobile=null;
 
-    String relation_id=null;
-    String relation_label_en=null;
-    String relation_label_hi=null;
+
 
 }

@@ -9,8 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_marginTop="50dp"
-    android:id="@+id/relt"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.ContentMainCollectionview">
+    android:id="@+id/relt">
 
 
     <GridView
