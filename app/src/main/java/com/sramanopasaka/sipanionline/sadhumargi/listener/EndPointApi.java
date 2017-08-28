@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamiliesResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -250,15 +252,15 @@ public interface EndPointApi {
                                         @Field("Middle\tName") String middleName , @Field("Last\tName") String lastName,
                                         @Field("City") String city);
 
-   /* @FormUrlEncoded
+    @FormUrlEncoded
     @POST("api/native_families")
     Call<NativeFamilyResponse> selectNativeFamily(@Field("Local\tSangh\tID") String lacalSanghID,
-                                       @Field("City") String city);
+                                                  @Field("City") String city);
 
     @FormUrlEncoded
     @POST("api/family_members")
     Call<FamilyMembersResponse> familyMembers(@Field("member_id") String member_id,
-                                                    @Field("app_token") String app_token);*/
+                                              @Field("app_token") String app_token);
 
 
 

@@ -1,3 +1,4 @@
+/*
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.graphics.Color;
@@ -39,12 +40,16 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+*/
 /**
  * Name    :   pranavjdev
  * Date   : 8/15/17
  * Email : pranavjaydev@gmail.com
- */
+ *//*
 
+
+*/
+/*
 public class TestActivity extends AppCompatActivity implements SearchFamilyUpdator {
     @Bind(R.id.eTxtFindNBookTabFind)
     DelayAutoCompleteTextView eTxtFindNBookTabFind;
@@ -54,6 +59,8 @@ public class TestActivity extends AppCompatActivity implements SearchFamilyUpdat
 
     @Bind(R.id.resultRecycler)
     RecyclerView resultRecycler;
+*//*
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +76,8 @@ public class TestActivity extends AppCompatActivity implements SearchFamilyUpdat
 //        eTxtFindNBookTabFind.setAdapter(findSpecialityAdapter);
 
 
-      /*  eTxtFindNBookTabFind.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      */
+/*  eTxtFindNBookTabFind.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 FindSpecialityModel model = (FindSpecialityModel) adapterView.getItemAtPosition(position);
@@ -82,7 +90,8 @@ public class TestActivity extends AppCompatActivity implements SearchFamilyUpdat
 
                 getActivity().startActivity(intent);
             }
-        });*/
+        });*//*
+
 
     }
     public TextWatcher getTextWatcher() {
@@ -131,3 +140,4 @@ public class TestActivity extends AppCompatActivity implements SearchFamilyUpdat
 
     }
 }
+*/

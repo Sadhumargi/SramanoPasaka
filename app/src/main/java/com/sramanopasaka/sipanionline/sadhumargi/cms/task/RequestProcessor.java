@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamiliesResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
@@ -1189,7 +1191,7 @@ public class RequestProcessor {
 
     }
 
-   /* public void selectNativeFamily(String lacalSanghID,String city) {
+   public void selectNativeFamily(String lacalSanghID,String city) {
 
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
@@ -1221,7 +1223,7 @@ public class RequestProcessor {
 
     }
 
-    public void familyMembers(String memberId, String token) {
+     public void familyMembers(String memberId, String token) {
 
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
@@ -1251,7 +1253,7 @@ public class RequestProcessor {
         });
 
 
-    }*/
+    }
 
 
 
