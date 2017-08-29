@@ -352,12 +352,19 @@
     <string name="Recover">Recover</string>
     <string name="Sangh_Name">*Local Sangh Name</string>
     <string name="HeadofFamil">Head Of Family</string>
-    <string name="RelationwithHOf">*Relation with Head Of Family</string>
-    <string name="SelectFamily">*Select Family</string>
+    <string name="Relation">*Relationship of the member\'s family head</string>
+    <string name="SelectFamily">*Select Family Head</string>
+    <string name="ancestral_place">Do youh ave a family related to your ancestral place?</string>
 
     <string name="ProfileCreatedby">*Profile Created By</string>
 
     <string name="anchal">*Select Anchal</string>
+    <string name="Family">*Family</string>
+    <string name="Native">*Native residence zone</string>
+
+    <string name="Native_Sangh">*Native resident Sangh</string>
+    <string name="Basic_residence">*Basic residence family</string>
+    <string name="relation">*Relation</string>
 
 
     <array name="business_type">

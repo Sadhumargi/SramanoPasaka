@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
-    tools:context="com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment">
+    android:background="@drawable/login_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,86 +18,57 @@
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
-            <RadioGroup
 
-                android:id="@+id/radiogrp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_ms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:checked="true"
-                    android:padding="10dp"
-                    android:shadowColor="@color/white"
-                    android:text="@string/Ms"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton" />
-
-                <RadioButton
-                    android:id="@+id/radio_mr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/Mr"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton" />
-
-                <RadioButton
-                    android:id="@+id/radio_mrs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/Mrs"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton">
-
-                </RadioButton>
-
-            </RadioGroup>
+    <EditText
+        android:id="@+id/family_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiogrp"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@drawable/edt_border"
+        android:hint="@string/SelectFamily"
+        android:inputType="text|none"
+        android:maxLength="50"
+        android:paddingBottom="@dimen/dimen_10"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+        android:textSize="@dimen/large"
+        android:textStyle="normal" />
 
 
             <EditText
-                android:id="@+id/first_name"
+                android:id="@+id/relationship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:hint="@string/firstname"
-                android:imeOptions="actionNext"
-                android:inputType="text|textPersonName"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-
-
-
-            <EditText
-                android:id="@+id/last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/lastname"
+                android:hint="@string/Relation"
                 android:inputType="text|none"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:singleLine="false"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+
+
+
+            <CheckBox
+                android:id="@+id/family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:text="@string/ancestral_place"
+                style="@style/MyCheckBox"
+                android:paddingBottom="@dimen/dimen_10"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
@@ -108,17 +76,17 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/anchal"
+                android:id="@+id/native_zone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:hint="*Anchal"
+                android:hint="@string/Native"
                 android:inputType="text|none"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
@@ -126,17 +94,17 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/sangh_name"
+                android:id="@+id/native_sangh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:hint="@string/Sangh_Name"
+                android:hint="@string/Native_Sangh"
                 android:inputType="text|none"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
@@ -144,18 +112,17 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/city"
+                android:id="@+id/basic_residence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:hint="@string/selectcity"
-                android:maxLength="40"
+                android:hint="@string/Basic_residence"
+                android:inputType="text|none"
+                android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
@@ -163,22 +130,22 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/district"
+                android:id="@+id/family_relation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:hint="Select District"
-                android:maxLength="40"
+                android:hint="@string/relation"
+                android:inputType="text|none"
+                android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
-
 
 
             <Button
@@ -192,8 +159,12 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
+
+
+
+
+
         </LinearLayout>
     </ScrollView>
 
-
-</RelativeLayout>
+</LinearLayout>
