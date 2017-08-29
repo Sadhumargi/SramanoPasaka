@@ -49,7 +49,7 @@ public class ZonePickerAdapter extends RecyclerView.Adapter<ZonePickerAdapter.Zo
             @Override
             public void onClick(View view) {
 
-              mCallback.onZoneSelected(zoneList.,zoneList.get(position));
+              //mCallback.onZoneSelected(zoneList.,zoneList.get(position));
             }
         });
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.sramanopasaka.sipanionline.sadhumargi.model.ProfileImage;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.ImageUtil;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.ImageUtils;
 
 public class ImageCompressionAsyncTask extends AsyncTask<String, Void, ProfileImage> {
     public interface OnImageCompressed {
@@ -30,9 +30,9 @@ public class ImageCompressionAsyncTask extends AsyncTask<String, Void, ProfileIm
     @Override
     protected ProfileImage doInBackground(String... params) {
         ProfileImage profileImage = new ProfileImage();
-        String filePath = new ImageUtil(mContext).compressImage(params[0], mWidth, mHeight);
-        profileImage.image = ImageUtil.decodeBitmapFromPath(params[0]);
-        profileImage.imageString = ImageUtil.encodeTobase64(profileImage.image);
+        String filePath = new ImageUtils(mContext).compressImage(params[0], mWidth, mHeight);
+        profileImage.image = ImageUtils.decodeBitmapFromPath(params[0]);
+        profileImage.imageString = ImageUtils.encodeTobase64(profileImage.image);
         return profileImage;
     }
 

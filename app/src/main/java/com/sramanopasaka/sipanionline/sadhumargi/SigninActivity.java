@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.SignInFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.SignUpFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class SigninActivity extends AppCompatActivity implements TabselectionLis
 
         ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new SignInFragment(), getResources().getString(R.string.Sign_in));
-        adapter.addFragment(new CreateAccountFragment(),getResources().getString(R.string.Create_Account));
+        adapter.addFragment(new SignUpFragment(),getResources().getString(R.string.Create_Account));
         viewPager.setAdapter(adapter);
 
     }

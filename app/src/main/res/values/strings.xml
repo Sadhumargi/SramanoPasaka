@@ -158,6 +158,7 @@
     <string name="Retype_password">*Retype Password</string>
     <string name="terms_conditions">I agree to the Tems and Conditions</string>
     <string name="create_profile">CREATE PROFILE</string>
+    <string name="go_ahead">Go Ahead</string>
 
     <string name="my_Profile">My Profile</string>
     <string name="thank_you">धन्यवाद! आपने प्रोफाइल की सभी श्रेणियों को अनलॉक कर लिया है। कृपया अपने प्रोफाइल को हमेशा नवीनतम रखे। यदि आपको किसी भी प्रकार की सहायता की जरुरत हो अथवा किसी प्रकार की कोई त्रुटि नजर आये तो आप हमसे info@sadhumargi.com पर संपर्क कर सकते हैं।</string>
@@ -500,6 +501,7 @@
     </array>
 
 
+    <string name="home">होम</string>
 
 
 </resources>

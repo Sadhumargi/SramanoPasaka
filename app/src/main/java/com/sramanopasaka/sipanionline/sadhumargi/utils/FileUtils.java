@@ -43,29 +43,7 @@ import java.io.Writer;
  */
 public class FileUtils {
 
-  //  public static final String LOGIN_LIST = "login.json";
 
-   /* public static final String INDUSTRY_LIST = "industry.json";
-
-    public static final String DOMAIN_LIST = "domain.json";
-
-    public static final String JOB_LIST = "jobs.json";
-
-    public static final String USER_JOBS_LIST = "user_jobs.json";
-
-    public static final String ARTICLE_LIST = "article.json";
-
-    public static final String ARTICLE_RECOMM_LIST = "article_recomm.json";
-
-    public static final String BOOK_RECOMM_LIST = "book_recomm.json";
-
-    public static final String COURSE_RECOMM_LIST = "course_recomm.json";
-
-    public static final String COURSE_LIST = "course.json";
-
-    public static final String BOOK_LIST = "book.json";
-
-    public static final String MEETING_LIST = "meeting.json";*/
 
 
     /**
@@ -332,11 +310,7 @@ public class FileUtils {
     }
 
 
-    public static String getVideoPathName(String fileName){
-        String parent = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath();
-        Log.e("Path---", parent + "/valYou/" + fileName);
-        return   parent + "/valYou/" + fileName;
-    }
+
 
 
     public static boolean renameFile(String source, String destFileName){
