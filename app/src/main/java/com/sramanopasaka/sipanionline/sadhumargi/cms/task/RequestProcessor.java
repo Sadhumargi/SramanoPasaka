@@ -8,6 +8,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
@@ -37,6 +38,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesRespo
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.EndPointApi;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
@@ -46,9 +48,11 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SocialRole;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -1246,6 +1250,81 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<FamilyMembersResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+
+    public void selectZoneList() {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.getZoneList().enqueue(new Callback<List<Zone>>() {
+            @Override
+            public void onResponse(Call<List<Zone>> call, Response<List<Zone>> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                ZoneListResponse zoneListResponse = new ZoneListResponse();
+
+                if (response.body() != null) {
+                    zoneListResponse.setZoneList(response.body());
+                    guiCallback.onRequestProcessed(zoneListResponse, GUICallback.RequestStatus.SUCCESS);
+                }else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Zone>> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void LocalSanghList(String id) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.getLocalSanghList(id).enqueue(new Callback<List<LocalSangh>>() {
+            @Override
+            public void onResponse(Call<List<LocalSangh>> call, Response<List<LocalSangh>> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+                LocalSanghResponse localSanghResponse = new LocalSanghResponse();
+
+                if (response.body() != null) {
+                    localSanghResponse.setData(response.body());
+                    guiCallback.onRequestProcessed(localSanghResponse, GUICallback.RequestStatus.SUCCESS);
+                }else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<LocalSangh>> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

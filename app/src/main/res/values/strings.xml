@@ -356,6 +356,8 @@
 
     <string name="ProfileCreatedby">*Profile Created By</string>
 
+    <string name="anchal">*Select Anchal</string>
+
 
     <array name="business_type">
         <item>Student</item>

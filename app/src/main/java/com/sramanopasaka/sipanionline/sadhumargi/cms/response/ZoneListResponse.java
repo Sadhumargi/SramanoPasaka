@@ -8,12 +8,13 @@ import java.util.List;
  * Created by sipani001 on 28/8/17.
  */
 
-public class ZoneListResponse  extends GUIResponse {
+public class ZoneListResponse extends GUIResponse {
 
     private boolean statusCode=false;
-    private List<Zone> zoneList;
+    private List<Zone> zoneList=null;
 
-    public void setStatusCode(boolean statusCode) {
+    public void setStatusCode(boolean statusCode)
+    {
         this.statusCode = statusCode;
     }
 
@@ -21,7 +22,8 @@ public class ZoneListResponse  extends GUIResponse {
         return zoneList;
     }
 
-    public void setZoneList(List<Zone> zoneList) {
+    public void setZoneList(List<Zone> zoneList)
+    {
         this.zoneList = zoneList;
     }
 

@@ -3,7 +3,6 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -27,28 +26,29 @@ import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.request.GUIRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.CityPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
@@ -68,12 +68,12 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     Button btnCreateProfile;
     TextView countryCode;
     RadioGroup radiogrp;
-    Spinner anchal;
+    EditText anchal;
     Spinner localSanghName;
     CheckBox headOfFamily;
     Spinner relation;
     Spinner profileCreatedby;
-AutoCompleteTextView familyMember;
+    AutoCompleteTextView familyMember;
 
 
     private View view = null;
@@ -82,7 +82,7 @@ AutoCompleteTextView familyMember;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.activity_create_account_fragment, container, false);
+        view = inflater.inflate(R.layout.activity_create_account_fragment, container, false);
 
 
         fName = (EditText) view.findViewById(R.id.first_name);
@@ -104,10 +104,11 @@ AutoCompleteTextView familyMember;
         familyMember = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
 
 
-
-        relation= (Spinner) view.findViewById(R.id.relation);
-        profileCreatedby= (Spinner) view.findViewById(R.id.profile_created_by);
-       // selectFamily= (Spinner) view.findViewById(R.id.family);
+        relation = (Spinner) view.findViewById(R.id.relation);
+        profileCreatedby = (Spinner) view.findViewById(R.id.profile_created_by);
+        anchal= (EditText) view.findViewById(R.id.Zone);
+        localSanghName= (Spinner) view.findViewById(R.id.local_sangh_name);
+        // selectFamily= (Spinner) view.findViewById(R.id.family);
 
 
         final Calendar myCalendar = Calendar.getInstance();
@@ -117,11 +118,10 @@ AutoCompleteTextView familyMember;
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                monthOfYear+=1;
+                monthOfYear += 1;
 
-                bDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+                bDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
             }
-
 
 
         };
@@ -139,21 +139,19 @@ AutoCompleteTextView familyMember;
 
 
         ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(getActivity(), R.array.head_of_family_relation, android.R.layout.simple_spinner_item);
-                typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
+        //achievementArea.setPrompt("Select your favorite Planet!");
 
-                //achievementArea.setPrompt("Select your favorite Planet!");
-
-                relation.setAdapter(
-                        new NothingSelectedSpinnerAdapter(
-                                typeadapter,
-                                R.layout.head_of_family_relation_selection,
-                                getActivity()));
+        relation.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        typeadapter,
+                        R.layout.head_of_family_relation_selection,
+                        getActivity()));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.profile_created_by, android.R.layout.simple_spinner_item);
         typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
 
         //achievementArea.setPrompt("Select your favorite Planet!");
@@ -174,7 +172,7 @@ AutoCompleteTextView familyMember;
                     password.setError("Password should be atleast of 8 characters");
                     password.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     password.setError(null);
                 }
@@ -183,7 +181,7 @@ AutoCompleteTextView familyMember;
                     reTypepassword.setError("Password not matched");
                     reTypepassword.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     reTypepassword.setError(null);
                 }
@@ -192,7 +190,7 @@ AutoCompleteTextView familyMember;
                     reTypepassword.setError("Please confirm password");
                     reTypepassword.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     reTypepassword.setError(null);
                 }
@@ -201,7 +199,7 @@ AutoCompleteTextView familyMember;
                     password.setError("Password is required");
                     password.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     password.setError(null);
                 }
@@ -211,7 +209,7 @@ AutoCompleteTextView familyMember;
                     pinCode.setError("Pincode is required");
                     pinCode.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     pinCode.setError(null);
                 }
@@ -221,7 +219,7 @@ AutoCompleteTextView familyMember;
                     sCity.setError("City name is required");
                     sCity.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     sCity.setError(null);
                 }
@@ -231,7 +229,7 @@ AutoCompleteTextView familyMember;
                     sState.setError("State name is required");
                     sState.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     sState.setError(null);
                 }
@@ -241,7 +239,7 @@ AutoCompleteTextView familyMember;
                     sCountry.setError("Country name is required");
                     sCountry.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     sCountry.setError(null);
                 }
@@ -251,29 +249,29 @@ AutoCompleteTextView familyMember;
                     emailId.setError("Email id is not valid");
                     emailId.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     emailId.setError(null);
                 }
 
 
-                if (emailId.getText().toString().length()==0) {
+                if (emailId.getText().toString().length() == 0) {
                     emailId.setError("Email id number is required");
                     emailId.requestFocus();
                     callAPi = false;
                 }
 
-                if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length()<5)) {
+                if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length() < 5)) {
                     pNumber.setError("Mobile number is not valid");
                     pNumber.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     pNumber.setError(null);
                 }
 
 
-                if (pNumber.getText().toString().length()==0) {
+                if (pNumber.getText().toString().length() == 0) {
                     pNumber.setError("Mobile number is required");
                     pNumber.requestFocus();
                     callAPi = false;
@@ -283,20 +281,19 @@ AutoCompleteTextView familyMember;
                     bDate.setError("Birthdate is required");
                     bDate.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
                     bDate.setError(null);
                     bDate.setError(null);
                 }
-
 
 
                 if (lName.getText().toString().length() == 0) {
                     lName.setError("Last name is required");
                     lName.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
-                   lName.setError(null);
+                    lName.setError(null);
                     lName.clearFocus();
                 }
 
@@ -304,7 +301,7 @@ AutoCompleteTextView familyMember;
                     mName.setError("Middle name is required");
                     mName.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     mName.setError(null);
                     mName.clearFocus();
@@ -314,7 +311,7 @@ AutoCompleteTextView familyMember;
                     fName.setError("First name is required");
                     fName.requestFocus();
                     callAPi = false;
-                }else{
+                } else {
 
                     fName.setError(null);
                     fName.clearFocus();
@@ -419,11 +416,53 @@ AutoCompleteTextView familyMember;
             }
         });
 
+        anchal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ZoneListResponse zoneListResponse = new ZoneListResponse();
+                if (zoneListResponse != null) {
+                    final ZonePickerDialog zonePickerDialog;
+                    zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList());
+                    zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
+                        @Override
+                        public void onZoneSelected(String name,String id) {
+                            anchal.setText(name);
+                            anchal.setError(null);
+                            zonePickerDialog.dismiss();
+                        }
+                    });
+                    zonePickerDialog.show();
+                } else {
+                    showLoadingDialog();
+                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    processor.selectZoneList();
+                }
+            }
+        });
+
+        RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+        processor.selectZoneList();
+
         return view;
     }
 
 
     private void showCountryPicker() {
+        final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
+        picker.setListener(new CountryPickerListener() {
+            @Override
+            public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
+                sCountry.setText(name);
+                sCountry.setError(null);
+                countryCode.setText(dialCode);
+                picker.dismiss();
+            }
+        });
+        picker.show(getActivity().getSupportFragmentManager(), "COUNTRY_PICKER");
+    }
+
+    private void showZonePicker() {
         final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
         picker.setListener(new CountryPickerListener() {
             @Override
@@ -501,7 +540,7 @@ AutoCompleteTextView familyMember;
                         });
                         statePickerDialog.show();
                     }
-                }else if (guiResponse instanceof LoginResponse){
+                } else if (guiResponse instanceof LoginResponse) {
                     LoginResponse loginResponse = (LoginResponse) guiResponse;
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
@@ -541,11 +580,62 @@ AutoCompleteTextView familyMember;
                             familyMember.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
                             //familyMember.setTextColor(Color.RED);
                         }
+                    } else if (guiResponse instanceof ZoneListResponse) {
+
+                        ZoneListResponse response = (ZoneListResponse) guiResponse;
+                        if (response != null && response.getZoneList() != null && response.getZoneList().size() > 0) {
+
+
+                            final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(),response.getZoneList());
+                            zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
+                                @Override
+                                public void onZoneSelected(String zone,String id) {
+                                    anchal.setText(zone);
+                                    anchal.setError(null);
+                                    zonePickerDialog.dismiss();
+                                }
+                            });
+                            zonePickerDialog.show();
+
+                           /* String[] datas = new String[response.getZoneList().size()];
+
+                            for (int i = 0; i < response.getZoneList().size(); i++) {
+                                datas[i] = response.getZoneList().get(i).getName();
+                            }
+
+
+                            *//*ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                    (getActivity(), android.R.layout.simple_spinner_dropdown_item, datas);
+                            anchal.setAdapter(adapter);*/
+
+
+                        }
                     }
+
+                    else if (guiResponse instanceof LocalSanghResponse) {
+
+                        LocalSanghResponse response = (LocalSanghResponse) guiResponse;
+                        if (response != null && response.getData() != null && response.getData().size() > 0) {
+
+                            String[] datas = new String[response.getData().size()];
+
+                            for (int i = 0; i < response.getData().size(); i++) {
+                                datas[i] = response.getData().get(i).getBranch_name();
+                            }
+
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                    (getActivity(), android.R.layout.simple_spinner_dropdown_item, datas);
+
+                            localSanghName.setAdapter(adapter);
+
+
+                        }
+                    }
+
                 }
 
             }
-
         }
     }
+
 }

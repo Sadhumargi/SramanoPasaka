@@ -32,8 +32,10 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 
 import java.util.List;
 
@@ -261,5 +263,10 @@ public interface EndPointApi {
                                               @Field("app_token") String app_token);
 
 
+    @GET("api/anchals")
+    Call<List<Zone>> getZoneList();
+
+    @GET("branches/branch/api?mode=list&anchal={Id}")
+    Call<List<LocalSangh>> getLocalSanghList(String Id);
 
 }
