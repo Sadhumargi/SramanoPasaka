@@ -8,4 +8,4 @@
     android:ellipsize="marquee"
     android:textColor="@color/white"
     android:padding="@dimen/dimen_5dp"
-    android:text="@string/Relation" />
+    android:text="@string/Family_head" />

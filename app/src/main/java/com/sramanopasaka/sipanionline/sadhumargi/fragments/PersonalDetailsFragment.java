@@ -392,11 +392,14 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                         R.layout.profile_created_by_selection,
                         getActivity()));
 
+
         valunteerCode.setVisibility(View.GONE);
 
         profileCreatedby.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 Object item = adapterView.getItemAtPosition(position);
                 if (item != null) {
                     if (item.toString().equalsIgnoreCase("volunteer"))

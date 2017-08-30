@@ -84,8 +84,8 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
             callAPi = false;
         }
         if (callAPi) {
-            if ((currentPassword.getText().toString().length()) < 8) {
-                currentPassword.setError("Current Password should be atleast of 8 charactors");
+            if ((currentPassword.getText().toString().length()) < 5) {
+                currentPassword.setError("Current Password should be atleast of 5 charactors");
                 currentPassword.requestFocus();
                 callAPi = false;
             }
@@ -95,8 +95,8 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
                 callAPi = false;
             }
 
-            if ((newPassword.getText().toString().length()) < 8) {
-                newPassword.setError("New Password should be atleast of 8 charactors");
+            if ((newPassword.getText().toString().length()) < 5) {
+                newPassword.setError("New Password should be atleast of 5 charactors");
                 newPassword.requestFocus();
                 callAPi = false;
             }
