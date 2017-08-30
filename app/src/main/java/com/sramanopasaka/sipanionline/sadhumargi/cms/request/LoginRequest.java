@@ -43,16 +43,35 @@ public class LoginRequest extends GUIRequest {
 
     private String mobileNumber = null;
 
+    private String id = null;
+
+    private String token = null;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @Override
     public JSONObject getURLEncodedPostdata() {
         JSONObject object = new JSONObject();
         try {
-            if (!TextUtils.isEmpty(email))
-                object.put("email_address", email);
+            object.put("email_address", email);
             object.put("password", password);
-            if (!TextUtils.isEmpty(mobileNumber))
-                object.put("mobile", mobileNumber);
+            object.put("mobile", mobileNumber);
+            object.put("token", token);
+            object.put("id", id);
 
         } catch (JSONException e) {
             e.printStackTrace();

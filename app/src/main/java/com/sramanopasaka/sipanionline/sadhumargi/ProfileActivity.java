@@ -75,6 +75,11 @@ public class  ProfileActivity extends AppCompatActivity {
         userNameTxt = (TextView) findViewById(R.id.userNameTxt);
         locationTxt = (TextView) findViewById(R.id.locationTxt);
 
+
+
+
+
+
         sadhasya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

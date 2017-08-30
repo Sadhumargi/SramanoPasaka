@@ -156,7 +156,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     }
 
                 }
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                try {
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                }catch (Exception ex ){
+
+                }
             }
 
             @Override
@@ -167,7 +171,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         currentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                try {
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                }catch (Exception ex ){
+
+                }
             }
 
             @Override
@@ -293,6 +301,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.signUpContainer, familyDetailsFragment);
+          //  fragmentTransaction.addToBackStack("FamilyDetailsFragment");
             fragmentTransaction.commit();
 
 

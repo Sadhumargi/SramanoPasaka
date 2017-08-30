@@ -62,6 +62,10 @@ public interface EndPointApi {
     @POST("members/auth")
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
+    @POST("api/auth")
+    Call<LoginResponse> doLoginWithToken(@Body JsonObject profiledata);
+
+    @FormUrlEncoded
     @POST("api/register")
     Call<RegisterResponse> doRegister(@Field("anchal_id") String anchalId, @Field("local_sangh_id") String loca_Sangh_Id,
                                       @Field("family_id") String familyId, @Field("relation_id") String relation_Id,

@@ -14,6 +14,26 @@ public class RegisterResponse extends GUIResponse{
 
     private String message = null;
 
+    private String app_token = null;
+
+    private int id ;
+
+    public String getApp_token() {
+        return app_token;
+    }
+
+    public void setApp_token(String app_token) {
+        this.app_token = app_token;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String profile_base = null;
 
     public String getProfile_base() {

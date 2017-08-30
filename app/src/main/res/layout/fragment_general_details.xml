@@ -20,15 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:padding="@dimen/dimen_10"
+            android:padding="@dimen/dimen_22"
             app:spb_animateToCurrentProgressState="true"
             app:spb_checkStateCompleted="true"
-            app:spb_currentStateDescriptionColor="#009688"
+            app:spb_currentStateDescriptionColor="@color/background"
             app:spb_currentStateNumber="one"
             app:spb_maxStateNumber="three"
             app:spb_stateBackgroundColor="#BDBDBD"
             app:spb_stateDescriptionColor="#808080"
-            app:spb_stateForegroundColor="#009688"
+            app:spb_stateForegroundColor="@color/background"
             app:spb_stateNumberBackgroundColor="#808080"
             app:spb_stateNumberForegroundColor="#eeeeee" />
     </LinearLayout>
@@ -63,7 +63,7 @@
                     android:padding="10dp"
                     android:shadowColor="@color/black"
                     android:text="@string/Ms"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/Mr"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton" />
 
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/Mrs"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton">
 
@@ -106,8 +106,8 @@
                 android:paddingBottom="@dimen/dimen_10"
                 android:paddingLeft="@dimen/dimen_10"
                 android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Basic_details"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
@@ -128,8 +128,8 @@
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Basic_details"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
@@ -147,8 +147,8 @@
                 android:paddingBottom="@dimen/dimen_10"
                 android:paddingLeft="@dimen/dimen_10"
                 android:maxLines="1"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Basic_details"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
@@ -176,8 +176,8 @@
                 android:maxLength="40"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Basic_details"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
@@ -194,8 +194,8 @@
                 android:paddingLeft="@dimen/dimen_10"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Basic_details"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />

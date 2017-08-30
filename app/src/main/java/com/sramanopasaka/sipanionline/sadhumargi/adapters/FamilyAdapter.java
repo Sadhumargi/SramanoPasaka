@@ -1,6 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,27 +34,16 @@ public class FamilyAdapter extends ArrayAdapter<Family> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(this.getContext())
-                    .inflate(R.layout.list_item, parent, false);
-
-            viewHolder = new ViewHolder();
-            viewHolder.itemView = (TextView) convertView.findViewById(R.id.textView);
-
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
         Family item = getItem(position);
+        TextView label = new TextView(this.getContext());
+        label.setTextColor(Color.BLACK);
+
         if (item!= null) {
-            // My layout has only one TextView
-            // do whatever you want with your string and long
-            viewHolder.itemView.setText(String.format("%s %s", item.getCode(),item.getFirst_name()));
+            label.setText(String.format("%s %s", item.getCode(),item.getFirst_name()));
         }
 
-        return convertView;
+
+        return label;
     }
 
     // And here is when the "chooser" is popped up

@@ -50,6 +50,7 @@ public class SignUpFragment extends BaseFragment implements RegisterProgressUpda
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.signUpContainer,GeneralDetailsFragment.newInstance());
+        //fragmentTransaction.addToBackStack("GeneralDetailsFragment");
         fragmentTransaction.commit();
     }
 

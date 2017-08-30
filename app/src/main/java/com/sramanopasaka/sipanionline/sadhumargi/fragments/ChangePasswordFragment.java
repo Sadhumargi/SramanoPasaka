@@ -103,10 +103,13 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
         }
         if (callAPi) {
 
-            if (!cPassword.equalsIgnoreCase(sPassword)) {
-                currentPassword.setError("current password is wrong");
-                currentPassword.requestFocus();
-                callAPi = false;
+            if(!TextUtils.isEmpty(sPassword)) {
+                if (!cPassword.equalsIgnoreCase(sPassword)) {
+                    currentPassword.setError("current password is wrong");
+                    currentPassword.requestFocus();
+                    callAPi = false;
+                }
+
             }
         }
 

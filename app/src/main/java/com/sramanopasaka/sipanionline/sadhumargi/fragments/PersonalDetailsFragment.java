@@ -1,10 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,10 +24,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
+import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
+import com.sramanopasaka.sipanionline.sadhumargi.ProfileUpdateActivty;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
@@ -34,6 +44,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
 
@@ -73,11 +84,11 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     @Bind(R.id.pincode)
     EditText pinCode;
 
-    @Bind(R.id.password)
+  /*  @Bind(R.id.password)
     EditText password;
 
     @Bind(R.id.retype_password)
-    EditText reTypepassword;
+    EditText reTypepassword;*/
 
     @Bind(R.id.termsCheckBox)
     CheckBox termsCheckBox;
@@ -99,7 +110,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     @Bind(R.id.age)
     EditText age;
-
+    String[] descriptionData = {"Basic", "Family", "Personal"};
 
     private View view = null;
 
@@ -118,7 +129,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
         view = inflater.inflate(R.layout.personal_details_fragment, container, false);
         ButterKnife.bind(this, view);
-
+        StateProgressBar step_view = (StateProgressBar) view.findViewById(R.id.step_view);
+        step_view.setStateDescriptionData(descriptionData);
         try {
             registrationPojo = getArguments().getParcelable("DATA");
         }catch (Exception ex){
@@ -154,7 +166,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
 
-                if ((password.getText().toString().length()) < 8) {
+             /*   if ((password.getText().toString().length()) < 8) {
                     password.setError("Password should be atleast of 8 characters");
                     password.requestFocus();
                     callAPi = false;
@@ -188,7 +200,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 } else {
 
                     password.setError(null);
-                }
+                }*/
 
                 if (post.getText().toString().length() == 0) {
                     post.setError("Password is required");
@@ -287,9 +299,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);
 
 
+                    showLoadingDialog();
                     requestProcessor.doRegister(registrationPojo.getAnchalId(),registrationPojo.getLocalSanghId(),registrationPojo.getFamilyId(),registrationPojo.getRelationId(),registrationPojo.getSaluation(),registrationPojo.getFirstName(),registrationPojo.getLastName()
-                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),age.getText().toString(),gender.getSelectedItem().toString(),
-                            emailId.getText().toString(),pinCode.getText().toString(),profileCreatedby.getSelectedItem().toString(),valunteerCode.getText().toString(),"");
+                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),TextUtils.isEmpty(age.getText().toString()) ? "0" : age.getText().toString(),gender.getSelectedItem().toString(),
+                            emailId.getText().toString(),pinCode.getText().toString(),profileCreatedby.getSelectedItem().toString(),valunteerCode.getText().toString());
                 }
 
             }
@@ -312,6 +325,17 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 new DatePickerDialog(getActivity(), date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -453,6 +477,59 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             }
                         });
                         statePickerDialog.show();
+                    }
+                }else if (guiResponse instanceof RegisterResponse) {
+                    RegisterResponse loginResponse = (RegisterResponse) guiResponse;
+                    if (loginResponse != null) {
+                        if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
+                            PreferenceUtils.setAppToken(getActivity(), loginResponse.getApp_token());
+                            PreferenceUtils.setUserId(getActivity(), loginResponse.getId());
+                          /*  OfflineData.saveLoginResponse(loginResponse.getData());
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getActivity(), ProfileActivity.class);
+                            startActivity(i);
+                            getActivity().finish();*/
+
+
+                          LoginRequest loginRequest = new LoginRequest();
+                            loginRequest.setToken(loginResponse.getApp_token());
+                            loginRequest.setId(String.valueOf(loginResponse.getId()));
+                            JsonParser jsonParser = new JsonParser();
+                            JsonObject gsonObject = (JsonObject) jsonParser.parse(loginRequest.getURLEncodedPostdata().toString());
+
+                            RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);
+                            requestProcessor.doLoginWithToken(gsonObject);
+
+                        } else {
+                            if (!TextUtils.isEmpty(loginResponse.getMessage())) {
+                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }else if (guiResponse instanceof LoginResponse) {
+                    LoginResponse loginResponse = (LoginResponse) guiResponse;
+                    if (loginResponse != null) {
+                        if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
+                            OfflineData.saveLoginResponse(loginResponse.getData());
+
+                            //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
+
+
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(getActivity(), ProfileUpdateActivty.class);
+                            i.putExtra("position",8);
+                            startActivity(i);
+                            getActivity().finish();
+                        } else {
+                            if (!TextUtils.isEmpty(loginResponse.getMessage())) {
+                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 }
             }

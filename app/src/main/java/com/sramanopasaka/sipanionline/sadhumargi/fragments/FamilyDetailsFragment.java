@@ -70,7 +70,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     Spinner relationLast;
 
     @Bind(R.id.familyLayout)
-    CardView familyLayout;
+    LinearLayout familyLayout;
 
     @Bind(R.id.family)
     CheckBox family;
@@ -89,6 +89,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     private String selectedRelationId = null;
     private String selectedFamilyId = null;
     String[] descriptionData = {"Basic", "Family", "Personal"};
+
     public static FamilyDetailsFragment newInstance() {
         return new FamilyDetailsFragment();
     }
@@ -122,9 +123,9 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Family relations = (Family) adapterView.getItemAtPosition(i);
-                if(relations!=null) {
+                if (relations != null) {
                     selectedFamilyId = relations.getId();
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 }
             }
 
@@ -147,9 +148,9 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Relations relations = (Relations) adapterView.getItemAtPosition(i);
-                if(relations!=null) {
+                if (relations != null) {
                     selectedRelationId = relations.getId();
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 }
             }
 
@@ -169,7 +170,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             }
 
             @Override
@@ -228,7 +229,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                     }
 
                 }
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
 
                 showLoadingDialog();
                 RequestProcessor requestProcessor = new RequestProcessor(new GUICallback() {
@@ -272,6 +273,34 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             }
         });
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getActivity(), android.R.layout.simple_spinner_dropdown_item, new String[]{""});
+
+
+        localSanghName.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.local_sangh_selection,
+                        getActivity()));
+
+        basic_residence.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.basic_residence_selection,
+                        getActivity()));
+
+        basic_residence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     private void showFamilyHeadUi(ArrayList<Family> familyList) {
@@ -303,7 +332,6 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     }
 
     private void showRelationUi(ArrayList<Relations> relations) {
-
 
 
         RelationAdapter adapter = new RelationAdapter
@@ -361,16 +389,16 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     public void goAhead() {
         boolean callAPi = true;
         if (familyHead.getSelectedItem() == null) {
-          Toast.makeText(getActivity(),"Family head is required",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Family head is required", Toast.LENGTH_SHORT).show();
             callAPi = false;
         }
 
         if (relation.getSelectedItem() == null) {
-            Toast.makeText(getActivity(),"relation is required",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "relation is required", Toast.LENGTH_SHORT).show();
             callAPi = false;
         }
 
-        if(family.isChecked()){
+        if (family.isChecked()) {
             if (zone.getText().toString().length() == 0) {
                 zone.setError("zone name is required");
                 zone.requestFocus();
@@ -388,19 +416,12 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                 callAPi = false;
                 Toast.makeText(getActivity(), "current residence is required", Toast.LENGTH_SHORT).show();
             }
-            if(callAPi && !localSanghName.getSelectedItem().toString().equalsIgnoreCase(basic_residence.getSelectedItem().toString())){
-                callAPi = false;
-                Toast.makeText(getActivity(), "current residence and local sangh should be same", Toast.LENGTH_SHORT).show();
-            }
+
             if (relationLast.getSelectedItem() == null) {
-                Toast.makeText(getActivity(),"relation is required",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "relation is required", Toast.LENGTH_SHORT).show();
                 callAPi = false;
             }
         }
-
-
-
-
 
 
         if (callAPi) {
@@ -415,6 +436,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.signUpContainer, familyDetailsFragment);
+            //fragmentTransaction.addToBackStack("PersonalDetailsFragment");
             fragmentTransaction.commit();
 
 

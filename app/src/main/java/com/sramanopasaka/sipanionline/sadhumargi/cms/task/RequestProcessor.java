@@ -133,17 +133,48 @@ public class RequestProcessor {
 
     }
 
+    public void doLoginWithToken(JsonObject jsonObject) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+        endPointApi.doLoginWithToken(jsonObject).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+                if (response.body() != null)
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
     public void doRegister(String anchalId,String loca_Sangh_Id, String familyId, String relation_Id,String salution,String first_Name,
                            String last_Name,String post,String city,String district,String state,String country,String mobile,String birth_day,
-                           String age,String gender, String email_address,String pincode,String profile_Created_By,String refcode,String reg_Type) {
+                           String age,String gender, String email_address,String pincode,String profile_Created_By,String refcode) {
 
 
 
-        EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
         endPointApi.doRegister(anchalId,loca_Sangh_Id,familyId,relation_Id,salution,first_Name,last_Name,
                 post,city,district,state,country,mobile,birth_day,age,gender,email_address,pincode,
-                profile_Created_By,refcode,reg_Type).enqueue(new Callback<RegisterResponse>() {
+                profile_Created_By,refcode,"android").enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call< RegisterResponse> call, Response<RegisterResponse> response) {
 
