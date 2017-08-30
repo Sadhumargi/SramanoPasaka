@@ -26,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
@@ -62,16 +63,16 @@ public interface EndPointApi {
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
     @POST("api/register")
-    Call<RegistrationPojo> doRegister(@Field("anchal_id") String anchalId, @Field("local_sangh_id") String loca_Sangh_Id,
-                                      @Field("family_id") String familyId,@Field("relation_id") String relation_Id,
-                                      @Field("salution") String salution,@Field("first_name") String first_Name,
-                                      @Field("last_name") String last_Name,@Field("post") String post,
-                                      @Field("city") String city,@Field("district") String district,
-                                      @Field("state") String state,@Field("country") String country,
-                                      @Field("mobile") String mobile,@Field("birth_day") String birth_day,
-                                      @Field("age") String age,@Field("gender") String gender,
-                                      @Field("email_address") String email_address,@Field("pincode") String pincode,
-                                      @Field("profile_created_by") String profile_Created_By,@Field("_refcode") String refcode,
+    Call<RegisterResponse> doRegister(@Field("anchal_id") String anchalId, @Field("local_sangh_id") String loca_Sangh_Id,
+                                      @Field("family_id") String familyId, @Field("relation_id") String relation_Id,
+                                      @Field("salution") String salution, @Field("first_name") String first_Name,
+                                      @Field("last_name") String last_Name, @Field("post") String post,
+                                      @Field("city") String city, @Field("district") String district,
+                                      @Field("state") String state, @Field("country") String country,
+                                      @Field("mobile") String mobile, @Field("birth_day") String birth_day,
+                                      @Field("age") String age, @Field("gender") String gender,
+                                      @Field("email_address") String email_address, @Field("pincode") String pincode,
+                                      @Field("profile_created_by") String profile_Created_By, @Field("_refcode") String refcode,
                                       @Field("reg_type") String reg_Type);
 
     @FormUrlEncoded

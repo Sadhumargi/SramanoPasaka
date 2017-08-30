@@ -143,22 +143,22 @@ public class RequestProcessor {
 
         endPointApi.doRegister(anchalId,loca_Sangh_Id,familyId,relation_Id,salution,first_Name,last_Name,
                 post,city,district,state,country,mobile,birth_day,age,gender,email_address,pincode,
-                profile_Created_By,refcode,reg_Type).enqueue(new Callback<RegistrationPojo>() {
+                profile_Created_By,refcode,reg_Type).enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<RegistrationPojo> call, Response<RegistrationPojo> response) {
+            public void onResponse(Call< RegisterResponse> call, Response<RegisterResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
 
                 if (response.body() != null)
-                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.SUCCESS);
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
                 else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 
             }
 
             @Override
-            public void onFailure(Call<RegistrationPojo> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
