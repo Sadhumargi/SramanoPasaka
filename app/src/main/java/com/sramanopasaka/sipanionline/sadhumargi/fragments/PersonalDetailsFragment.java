@@ -92,7 +92,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     @Bind(R.id.post)
     EditText post;
 
-    @Bind(R.id.Age)
+    @Bind(R.id.age)
     EditText age;
 
 
@@ -101,8 +101,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     private RegistrationPojo registrationPojo = null;
 
-    public static GeneralDetailsFragment newInstance() {
-        return new GeneralDetailsFragment();
+    public static PersonalDetailsFragment newInstance() {
+        return new PersonalDetailsFragment();
     }
 
     @Nullable

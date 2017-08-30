@@ -61,7 +61,7 @@ public interface EndPointApi {
     @POST("members/auth")
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
-    @POST("members/create")
+    @POST("api/register")
     Call<RegistrationPojo> doRegister(@Field("anchal_id") String anchalId, @Field("local_sangh_id") String loca_Sangh_Id,
                                       @Field("family_id") String familyId,@Field("relation_id") String relation_Id,
                                       @Field("salution") String salution,@Field("first_name") String first_Name,

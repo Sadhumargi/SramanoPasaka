@@ -3,6 +3,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
@@ -36,6 +38,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.RegisterProgressUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
@@ -58,6 +61,7 @@ import butterknife.OnClick;
 
 public class GeneralDetailsFragment extends BaseFragment implements GUICallback {
 
+    String[] descriptionData = {"Basic", "Family", "Personal"};
     @Bind(R.id.first_name)
     EditText firstName;
 
@@ -89,9 +93,12 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
     private String selectedAnchalId = null;
     private String selectedLocalSanghId = null;
 
+
     public static GeneralDetailsFragment newInstance() {
         return new GeneralDetailsFragment();
     }
+
+
 
     @Nullable
     @Override
@@ -101,9 +108,13 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         return view;
     }
 
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        StateProgressBar step_view = (StateProgressBar) view.findViewById(R.id.step_view);
+        step_view.setStateDescriptionData(descriptionData);
 
         zone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +156,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     }
 
                 }
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
             }
 
             @Override
@@ -156,7 +167,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         currentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
             }
 
             @Override
@@ -187,6 +198,24 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                 }
             }
         });
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getActivity(), android.R.layout.simple_spinner_dropdown_item, new String[]{""});
+
+
+        localSanghName.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.local_sangh_selection,
+                        getActivity()));
+
+
+        currentResidence.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.current_resident_selection,
+                        getActivity()));
 
 
     }
@@ -246,6 +275,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             radiogrp.requestFocusFromTouch();
             Toast.makeText(getActivity(), "Please select the salution", Toast.LENGTH_SHORT).show();
             callAPi = false;
+        }
+
+        if(callAPi && !localSanghName.getSelectedItem().toString().equalsIgnoreCase(currentResidence.getSelectedItem().toString())){
+            callAPi = false;
+            Toast.makeText(getActivity(), "current residence and local sangh should be same", Toast.LENGTH_SHORT).show();
         }
 
         if (callAPi) {
