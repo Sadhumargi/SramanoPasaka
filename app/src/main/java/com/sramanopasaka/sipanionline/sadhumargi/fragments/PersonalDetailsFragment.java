@@ -31,6 +31,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerA
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
@@ -92,7 +93,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     @Bind(R.id.post)
     EditText post;
 
-    @Bind(R.id.Age)
+    @Bind(R.id.age)
     EditText age;
 
 
@@ -101,8 +102,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     private RegistrationPojo registrationPojo = null;
 
-    public static GeneralDetailsFragment newInstance() {
-        return new GeneralDetailsFragment();
+    public static PersonalDetailsFragment newInstance() {
+        return new PersonalDetailsFragment();
     }
 
     @Nullable
@@ -114,7 +115,11 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
         view = inflater.inflate(R.layout.personal_details_fragment, container, false);
         ButterKnife.bind(this, view);
 
+        try {
+            registrationPojo = getArguments().getParcelable("DATA");
+        }catch (Exception ex){
 
+        }
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -274,6 +279,14 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     callAPi = false;
                 }
 
+                if(callAPi){
+                    RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);
+
+
+                    requestProcessor.doRegister(registrationPojo.getAnchalId(),registrationPojo.getLocalSanghId(),registrationPojo.getFamilyId(),registrationPojo.getRelationId(),registrationPojo.getSaluation(),registrationPojo.getFirstName(),registrationPojo.getLastName()
+                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),age.getText().toString(),gender.getSelectedItem().toString(),
+                            emailId.getText().toString(),pinCode.getText().toString(),profileCreatedby.getSelectedItem().toString(),valunteerCode.getText().toString(),"");
+                }
 
             }
         });

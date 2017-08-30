@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.RegisterProgressUpdator;
 
 import butterknife.ButterKnife;
 
@@ -19,7 +21,7 @@ import butterknife.ButterKnife;
  * Email : pranavjaydev@gmail.com
  */
 
-public class SignUpFragment extends BaseFragment {
+public class SignUpFragment extends BaseFragment implements RegisterProgressUpdator {
 
     //signUpContainer
 
@@ -49,5 +51,11 @@ public class SignUpFragment extends BaseFragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.signUpContainer,GeneralDetailsFragment.newInstance());
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onProgressUpdate(int progress) {
+
+        Log.e("----",""+progress);
     }
 }

@@ -341,11 +341,11 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     int selectedId = radiogrp.getCheckedRadioButtonId();
 
                     registerRequest.setSalution(((RadioButton) view.findViewById(selectedId)).getText().toString());
-
+/*
                     JsonParser jsonParser = new JsonParser();
                     JsonObject gsonObject = (JsonObject) jsonParser.parse(registerRequest.getURLEncodedPostdata().toString());
                     RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
-                    requestProcessor.doRegister(gsonObject);
+                    requestProcessor.doRegister(gsonObject);*/
 
 
                 }

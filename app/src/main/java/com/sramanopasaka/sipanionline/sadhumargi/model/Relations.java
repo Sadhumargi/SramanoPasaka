@@ -11,6 +11,25 @@ public class Relations {
     String relation_id=null;
     String relation_label_en=null;
     String relation_label_hi=null;
+    private String relation = null;
+    private String id = null;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRelation() {
+
+        return relation;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
 
     public String getRelation_id() {
         return relation_id;
