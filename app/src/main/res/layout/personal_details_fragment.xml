@@ -43,47 +43,62 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border">
+               >
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="6"
+                    android:paddingBottom="@dimen/dimen_10"
+                   >
 
                 <CheckBox
                     android:id="@+id/no_birth_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="28dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:theme="@style/MyCheckBox" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/radiogrp"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/fab_margin"
                     android:text="@string/No_birth_date"
+                    android:background="@drawable/edt_border"
+                    android:paddingBottom="@dimen/dimen_10"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:textStyle="normal"
+                    android:layout_weight="4"
                     />
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/age"
-                android:inputType="number"
-                android:maxLength="3"
-                android:paddingBottom="@dimen/dimen_10"
-                android:editable="false"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:background="@drawable/edt_border"
+                    android:hint="@string/age"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:editable="false"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"
+                    android:layout_weight="4"/>
+
+            </LinearLayout>
 
 
             <Spinner
@@ -308,17 +323,18 @@
             android:layout_weight="1">
     <Spinner
         android:layout_width="0dp"
-        android:layout_weight=".5"
+        android:layout_weight=".3"
         android:layout_height="wrap_content"
         style="@style/spinner_style"
         android:id="@+id/profile_created_by"
         android:textAlignment="center"
+        android:background="@drawable/edt_border"
         android:layout_margin="@dimen/fab_margin"/>
 
             <EditText
                 android:id="@+id/work_code"
                 android:layout_width="0dp"
-                android:layout_weight=".5"
+                android:layout_weight=".7"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"

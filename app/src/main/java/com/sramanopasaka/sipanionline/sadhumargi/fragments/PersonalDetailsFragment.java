@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -92,6 +93,9 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     @Bind(R.id.post)
     EditText post;
+
+    @Bind(R.id.no_birth_date)
+    CheckBox ageCheckBox;
 
     @Bind(R.id.age)
     EditText age;
@@ -364,6 +368,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                         R.layout.profile_created_by_selection,
                         getActivity()));
 
+        valunteerCode.setVisibility(View.GONE);
+
         profileCreatedby.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -376,11 +382,26 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
             }
 
+
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
 
+        });
+
+        age.setVisibility(View.GONE);
+
+        ageCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    age.setVisibility(View.VISIBLE);
+                } else {
+                    age.setVisibility(View.GONE);
+                }
+            }
         });
 
         return view;
