@@ -79,6 +79,7 @@
                 android:inputType="text|textPersonName"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
+                android:paddingLeft="@dimen/dimen_10"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -98,6 +99,7 @@
                 android:background="@drawable/edt_border"
                 android:hint="@string/lastname"
                 android:inputType="text|none"
+                android:paddingLeft="@dimen/dimen_10"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
@@ -108,40 +110,32 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/anchal"
+                android:id="@+id/zone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
-                android:hint="*Anchal"
-                android:inputType="text|none"
+                android:hint="@string/anchal"
+                android:editable="false"
                 android:maxLength="50"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
+                android:paddingLeft="@dimen/dimen_10"
+                android:maxLines="1"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
-            <EditText
-                android:id="@+id/sangh_name"
+            <Spinner
+                android:id="@+id/local_sangh_name"
+                style="@style/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/Sangh_Name"
-                android:inputType="text|none"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+
+                />
 
             <EditText
                 android:id="@+id/city"
@@ -153,6 +147,7 @@
                 android:drawableEnd="@drawable/downarrow"
                 android:editable="false"
                 android:hint="@string/selectcity"
+                android:paddingLeft="@dimen/dimen_10"
                 android:maxLength="40"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
@@ -171,6 +166,7 @@
                 android:background="@drawable/edt_border"
                 android:hint="Select District"
                 android:maxLength="40"
+                android:paddingLeft="@dimen/dimen_10"
                 android:paddingBottom="@dimen/dimen_10"
                 android:singleLine="true"
                 android:textColor="@color/white"
@@ -179,10 +175,17 @@
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
+            <Spinner
+                style="@style/spinner_style"
+                android:id="@+id/currentResidence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
 
+                />
 
             <Button
-                android:id="@+id/go_ahead"
+                android:id="@+id/goAhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"

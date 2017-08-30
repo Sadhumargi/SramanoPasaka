@@ -151,7 +151,6 @@
                 android:layout_margin="@dimen/fab_margin"
                 android:background="@drawable/edt_border"
                 android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
               />
 
             <EditText

@@ -1162,14 +1162,14 @@ public class RequestProcessor {
     }
 
 
-    public void selectFamily(String lacalSanghID, String firstName, String middleName,
+    public void selectFamily(String lacalSanghID, String firstName,
                               String lastName, String city) {
 
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
-        endPointApi.selectFamily(lacalSanghID, firstName, middleName, lastName, city).enqueue(new Callback<FamilyResponse>() {
+        endPointApi.selectFamily(lacalSanghID, firstName, lastName, city).enqueue(new Callback<FamilyResponse>() {
             @Override
             public void onResponse(Call<FamilyResponse> call, Response<FamilyResponse> response) {
 
@@ -1297,7 +1297,7 @@ public class RequestProcessor {
 
     }
 
-    public void LocalSanghList(String id) {
+    public void getLocalSanghList(String id) {
 
 
 
@@ -1305,26 +1305,24 @@ public class RequestProcessor {
 
 
 
-        endPointApi.getLocalSanghList(id).enqueue(new Callback<List<LocalSangh>>() {
+        endPointApi.getLocalSanghList(id).enqueue(new Callback<LocalSanghResponse>() {
             @Override
-            public void onResponse(Call<List<LocalSangh>> call, Response<List<LocalSangh>> response) {
+            public void onResponse(Call<LocalSanghResponse> call, Response<LocalSanghResponse> response) {
 
 
                 Log.e("Response message=", "" + response.message());
 
 
-                LocalSanghResponse localSanghResponse = new LocalSanghResponse();
 
                 if (response.body() != null) {
-                    localSanghResponse.setData(response.body());
-                    guiCallback.onRequestProcessed(localSanghResponse, GUICallback.RequestStatus.SUCCESS);
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
                 }else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 
             }
 
             @Override
-            public void onFailure(Call<List<LocalSangh>> call, Throwable t) {
+            public void onFailure(Call<LocalSanghResponse> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

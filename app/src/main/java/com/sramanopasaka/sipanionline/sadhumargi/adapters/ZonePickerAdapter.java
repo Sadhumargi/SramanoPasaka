@@ -41,15 +41,15 @@ public class ZonePickerAdapter extends RecyclerView.Adapter<ZonePickerAdapter.Zo
     public void onBindViewHolder(ZoneViewHolder holder, int i) {
 
 
-        final int position= holder.getAdapterPosition();
+        final Zone zone = zoneList.get(i);
 
-        holder.setZone(zoneList.get(position)) ;
+        holder.setZone(zone) ;
 
         holder.tvName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
-              //mCallback.onZoneSelected(zoneList.,zoneList.get(position));
+              mCallback.onZoneSelected(zone.getName(),zone.getAnchal_id());
             }
         });
 

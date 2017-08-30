@@ -3,19 +3,52 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
+import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
+import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.CityPickerDialog;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Name    :   pranavjdev
@@ -23,7 +56,7 @@ import butterknife.ButterKnife;
  * Email : pranavjaydev@gmail.com
  */
 
-public class GeneralDetailsFragment extends BaseFragment {
+public class GeneralDetailsFragment extends BaseFragment implements GUICallback {
 
     @Bind(R.id.first_name)
     EditText firstName;
@@ -31,12 +64,30 @@ public class GeneralDetailsFragment extends BaseFragment {
     @Bind(R.id.last_name)
     EditText lastName;
 
-    @Bind(R.id.go_ahead)
-    Button btn_go_ahead;
+    @Bind(R.id.zone)
+    EditText zone;
 
+    @Bind(R.id.local_sangh_name)
+    Spinner localSanghName;
+
+
+    @Bind(R.id.currentResidence)
+    Spinner currentResidence;
+
+    @Bind(R.id.city)
+    EditText sCity;
+
+    @Bind(R.id.district)
+    EditText district;
+
+    @Bind(R.id.radiogrp)
+    RadioGroup radiogrp;
 
 
     private View view = null;
+
+    private String selectedAnchalId = null;
+    private String selectedLocalSanghId = null;
 
     public static GeneralDetailsFragment newInstance() {
         return new GeneralDetailsFragment();
@@ -44,32 +95,268 @@ public class GeneralDetailsFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_general_details, container, false);
         ButterKnife.bind(this, view);
-
-        btn_go_ahead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-/*
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                FragmentTransaction replace = fragmentTransaction.replace(GeneralDetailsFragment, Fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
-            }
-
-
-
-        });
-
         return view;
     }
-
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        zone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ZoneListResponse zoneListResponse = OfflineData.getZoneList();
+                if (zoneListResponse == null) {
+                    RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                    processor.selectZoneList();
+                } else {
+                    final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList());
+                    zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
+                        @Override
+                        public void onZoneSelected(String zoneTxt, String id) {
+                            zone.setText(zoneTxt);
+                            selectedAnchalId = id;
+                            zone.setError(null);
+                            zonePickerDialog.dismiss();
+                            RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                            processor.getLocalSanghList(id);
+                        }
+                    });
+                    zonePickerDialog.show();
+                }
+
+            }
+        });
+
+        localSanghName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+               String selected = (String) adapterView.getItemAtPosition(i);
+                LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
+                if(localSanghResponse!=null && localSanghResponse.getData()!=null){
+
+                    for(LocalSangh sanghData : localSanghResponse.getData()){
+                        if(sanghData.getBranch_name().equalsIgnoreCase(selected))
+                            selectedLocalSanghId = sanghData.getId();
+                    }
+
+                }
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        currentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        sCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CityListResponse cityListResponse = OfflineData.getCityList();
+                if (cityListResponse != null) {
+                    final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), cityListResponse.getCityList());
+                    statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                        @Override
+                        public void onStateSelected(String state) {
+                            sCity.setText(state);
+                            sCity.setError(null);
+                            statePickerDialog.dismiss();
+                        }
+                    });
+                    statePickerDialog.show();
+                } else {
+                    showLoadingDialog();
+                    RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                    processor.getCityList();
+                }
+            }
+        });
+
+
+    }
+
+    @OnClick(R.id.goAhead)
+    public void goAhead() {
+        boolean callAPi = true;
+        if (sCity.getText().toString().length() == 0) {
+            sCity.setError("City name is required");
+            sCity.requestFocus();
+            callAPi = false;
+        } else {
+
+            sCity.setError(null);
+        }
+
+        if (lastName.getText().toString().length() == 0) {
+            lastName.setError("Last name is required");
+            lastName.requestFocus();
+            callAPi = false;
+        } else {
+
+            lastName.setError(null);
+            lastName.clearFocus();
+        }
+
+        if (firstName.getText().toString().length() == 0) {
+            firstName.setError("First name is required");
+            firstName.requestFocus();
+            callAPi = false;
+        } else {
+
+            firstName.setError(null);
+            firstName.clearFocus();
+        }
+
+        if (zone.getText().toString().length() == 0) {
+            zone.setError("zone name is required");
+            zone.requestFocus();
+            callAPi = false;
+        } else {
+
+            zone.setError(null);
+            zone.clearFocus();
+        }
+        if (localSanghName.getSelectedItem() == null) {
+            callAPi = false;
+            Toast.makeText(getActivity(), "local sangh is required", Toast.LENGTH_SHORT).show();
+        }
+        if (currentResidence.getSelectedItem() == null) {
+            callAPi = false;
+            Toast.makeText(getActivity(), "current residence is required", Toast.LENGTH_SHORT).show();
+        }
+        int selectedId = radiogrp.getCheckedRadioButtonId();
+        if (selectedId == -1 && callAPi) {
+            radiogrp.requestFocus();
+            radiogrp.requestFocusFromTouch();
+            Toast.makeText(getActivity(), "Please select the salution", Toast.LENGTH_SHORT).show();
+            callAPi = false;
+        }
+
+        if (callAPi) {
+            RegistrationPojo registrationPojo = new RegistrationPojo(selectedAnchalId, selectedLocalSanghId, firstName.getText().toString(), lastName.getText().toString(), ((RadioButton) view.findViewById(selectedId)).getText().toString(), sCity.getText().toString(), district.getText().toString());
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("DATA", registrationPojo);
+
+            FamilyDetailsFragment familyDetailsFragment = FamilyDetailsFragment.newInstance();
+            familyDetailsFragment.setArguments(bundle);
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.signUpContainer, familyDetailsFragment);
+            fragmentTransaction.commit();
+
+
+        }
+
+    }
+
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        hideLoadingDialog();
+        if (guiResponse != null) {
+            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+
+                if (guiResponse instanceof CityListResponse) {
+                    CityListResponse stateListResponse = (CityListResponse) guiResponse;
+                    if (stateListResponse != null) {
+                        OfflineData.saveCityResponse(stateListResponse);
+                        final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), stateListResponse.getCityList());
+                        statePickerDialog.setStateChangeListner(new StateChangeListner() {
+                            @Override
+                            public void onStateSelected(String state) {
+                                sCity.setText(state);
+                                sCity.setError(null);
+                                statePickerDialog.dismiss();
+                            }
+                        });
+                        statePickerDialog.show();
+                    }
+                } else if (guiResponse instanceof ZoneListResponse) {
+
+                    ZoneListResponse response = (ZoneListResponse) guiResponse;
+                    if (response != null && response.getZoneList() != null && response.getZoneList().size() > 0) {
+                        OfflineData.saveZoneResponse(response);
+
+                        final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), response.getZoneList());
+                        zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
+                            @Override
+                            public void onZoneSelected(String zoneTxt, String id) {
+                                zone.setText(zoneTxt);
+                                zone.setError(null);
+                                zonePickerDialog.dismiss();
+                                selectedAnchalId = id;
+
+                                RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                                processor.getLocalSanghList(id);
+
+
+                            }
+                        });
+                        zonePickerDialog.show();
+
+                           /* String[] datas = new String[response.getZoneList().size()];
+
+                            for (int i = 0; i < response.getZoneList().size(); i++) {
+                                datas[i] = response.getZoneList().get(i).getName();
+                            }
+
+
+                            *//*ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                    (getActivity(), android.R.layout.simple_spinner_dropdown_item, datas);
+                            anchal.setAdapter(adapter);*/
+
+
+                    }
+                } else if (guiResponse instanceof LocalSanghResponse) {
+
+                    LocalSanghResponse response = (LocalSanghResponse) guiResponse;
+                    if (response != null && response.getData() != null && response.getData().size() > 0) {
+                        OfflineData.saveLocalSanghResponse(response);
+                        String[] datas = new String[response.getData().size()];
+
+                        for (int i = 0; i < response.getData().size(); i++) {
+                            datas[i] = response.getData().get(i).getBranch_name();
+                        }
+
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                                (getActivity(), android.R.layout.simple_spinner_dropdown_item, datas);
+
+
+                        localSanghName.setAdapter(
+                                new NothingSelectedSpinnerAdapter(
+                                        adapter,
+                                        R.layout.local_sangh_selection,
+                                        getActivity()));
+
+
+                        currentResidence.setAdapter(
+                                new NothingSelectedSpinnerAdapter(
+                                        adapter,
+                                        R.layout.current_resident_selection,
+                                        getActivity()));
+
+
+                    }
+                }
+
+            }
+
+        }
     }
 }

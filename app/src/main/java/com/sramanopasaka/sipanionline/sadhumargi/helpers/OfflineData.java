@@ -1,9 +1,11 @@
 package com.sramanopasaka.sipanionline.sadhumargi.helpers;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.DharmicData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
@@ -88,6 +90,34 @@ public class OfflineData extends BaseOffline {
         String offlineData = getOfflineData("city");
         if (offlineData != null) {
             return getStringToObject(offlineData, CityListResponse.class);
+        } else {
+            return null;
+        }
+    }
+
+    public static void saveZoneResponse(ZoneListResponse response) {
+        saveOfflineData("zone", response);
+    }
+
+
+    public static ZoneListResponse getZoneList() {
+        String offlineData = getOfflineData("zone");
+        if (offlineData != null) {
+            return getStringToObject(offlineData, ZoneListResponse.class);
+        } else {
+            return null;
+        }
+    }
+
+    public static void saveLocalSanghResponse(LocalSanghResponse response) {
+        saveOfflineData("localSangh", response);
+    }
+
+
+    public static LocalSanghResponse getLocalSanghList() {
+        String offlineData = getOfflineData("localSangh");
+        if (offlineData != null) {
+            return getStringToObject(offlineData, LocalSanghResponse.class);
         } else {
             return null;
         }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 
 import butterknife.ButterKnife;
@@ -23,6 +24,8 @@ public class SignUpFragment extends BaseFragment {
     //signUpContainer
 
     private View view = null;
+
+    String[] descriptionData = {"Basic", "Family", "Personal"};
 
     public static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -40,6 +43,8 @@ public class SignUpFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        StateProgressBar step_view = (StateProgressBar) view.findViewById(R.id.step_view);
+        step_view.setStateDescriptionData(descriptionData);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.signUpContainer,GeneralDetailsFragment.newInstance());

@@ -5,6 +5,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
@@ -45,6 +46,8 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Name    :   pranavjdev
@@ -248,9 +251,9 @@ public interface EndPointApi {
 
     @FormUrlEncoded
     @POST("api/families")
-    Call<FamilyResponse> selectFamily(@Field("Local\tSangh\tID") String lacalSanghID, @Field("First\tName") String firstName,
-                                      @Field("Middle\tName") String middleName , @Field("Last\tName") String lastName,
-                                      @Field("City") String city);
+    Call<FamilyResponse> selectFamily(@Field("local_sangh_id") String lacalSanghID, @Field("first_name") String firstName,
+                                       @Field("last_name") String lastName,
+                                      @Field("city") String city);
 
     @FormUrlEncoded
     @POST("api/native_families")
@@ -266,7 +269,7 @@ public interface EndPointApi {
     @GET("api/anchals")
     Call<List<Zone>> getZoneList();
 
-    @GET("branches/branch/api?mode=list&anchal={Id}")
-    Call<List<LocalSangh>> getLocalSanghList(String Id);
+    @GET("api/branches")
+    Call<LocalSanghResponse> getLocalSanghList(@Query("anchal") String Id);
 
 }

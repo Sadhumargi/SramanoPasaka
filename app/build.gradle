@@ -62,7 +62,7 @@ android {
     productFlavors {
 
         staging {
-            buildConfigField 'String', 'MEMBER_API', '"http://members.sabsjs.org/"'
+            buildConfigField 'String', 'MEMBER_API', '"http://members.sadhumargi.com/"'
             buildConfigField 'String', 'AUTH_API', '"http://api.sabsjs.org/"'
         }
         production {
