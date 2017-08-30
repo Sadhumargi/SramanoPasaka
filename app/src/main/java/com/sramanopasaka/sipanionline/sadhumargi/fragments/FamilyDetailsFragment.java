@@ -78,10 +78,10 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     @Bind(R.id.native_zone)
     EditText zone;
 
-    @Bind(R.id.local_sangh_name)
+    @Bind(R.id.native_sangh_name)
     Spinner localSanghName;
 
-    @Bind(R.id.basic_residence)
+    @Bind(R.id.native_family)
     Spinner basic_residence;
 
     private String selectedAnchalId = null;
@@ -280,7 +280,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
         localSanghName.setAdapter(
                 new NothingSelectedSpinnerAdapter(
                         adapter,
-                        R.layout.local_sangh_selection,
+                        R.layout.native_sangh_selection,
                         getActivity()));
 
         basic_residence.setAdapter(
@@ -327,7 +327,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
         familyHead.setAdapter(
                 new NothingSelectedSpinnerAdapter(
                         adapter,
-                        R.layout.head_of_family_relation_selection,
+                        R.layout.head_of_family_selection,
                         getActivity()));
     }
 
@@ -356,7 +356,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                     if (familyResponse != null) {
                         showFamilyHeadUi(familyResponse.getFamilies());
                         showRelationUi(familyResponse.getRelations());
-                    }
+                }
                 } else if (guiResponse instanceof LocalSanghResponse) {
 
                     LocalSanghResponse response = (LocalSanghResponse) guiResponse;
@@ -375,7 +375,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                         localSanghName.setAdapter(
                                 new NothingSelectedSpinnerAdapter(
                                         adapter,
-                                        R.layout.local_sangh_selection,
+                                        R.layout.native_sangh_selection,
                                         getActivity()));
 
 

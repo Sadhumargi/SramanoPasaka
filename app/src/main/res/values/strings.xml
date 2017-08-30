@@ -350,8 +350,8 @@
     <string name="or">OR</string>
     <string name="Close">Close</string>
     <string name="Recover">Recover</string>
-    <string name="Sangh_Name">*Local Sangh Name</string>
-    <string name="HeadofFamil">Head Of Family</string>
+    <string name="Sangh_Name">*Select Local Sangh</string>
+    <string name="HeadofFamil">*Head Of Family</string>
     <string name="Relation">*Relationship of the member\'s family head</string>
     <string name="SelectFamily">*Select Family Head</string>
     <string name="ancestral_place">Do youh ave a family related to your ancestral place?</string>
@@ -360,10 +360,11 @@
 
     <string name="anchal">*Select Anchal</string>
     <string name="Family">*Family</string>
-    <string name="Native">*Native residence zone</string>
+    <string name="Native_Zone">*Select Native Zone </string>
 
-    <string name="Native_Sangh">*Native resident Sangh</string>
-    <string name="Basic_residence">*Basic residence family</string>
+    <string name="Native_Sangh">*Select Native Sangh</string>
+    <string name="Basic_residence_family">*Select Native Family</string>
+    <string name="Current_residence">*Select Current Residence </string>
     <string name="relation">*Relation</string>
     <string name="workercode">*Unique code issued to volunteer </string>
 

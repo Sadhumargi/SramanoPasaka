@@ -123,7 +123,7 @@
                         android:layout_margin="@dimen/fab_margin"
                         android:background="@drawable/edt_border"
                         android:editable="false"
-                        android:hint="@string/Native"
+                        android:hint="@string/Native_Zone"
                         android:maxLength="50"
                         android:maxLines="1"
                         android:paddingBottom="@dimen/dimen_10"
@@ -171,7 +171,7 @@
                          android:textStyle="normal" />-->
 
                     <Spinner
-                        android:id="@+id/local_sangh_name"
+                        android:id="@+id/native_sangh_name"
                         style="@style/spinner_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -197,10 +197,9 @@
                          android:textSize="@dimen/large"
                          android:textStyle="normal" />-->
                     <Spinner
-                        android:id="@+id/basic_residence"
+                        android:id="@+id/native_family"
                         style="@style/spinner_style"
                         android:layout_width="match_parent"
-
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/fab_margin" />
 
