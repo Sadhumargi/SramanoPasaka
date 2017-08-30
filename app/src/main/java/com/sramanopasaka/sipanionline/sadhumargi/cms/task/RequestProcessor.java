@@ -50,6 +50,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SocialRole;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
@@ -132,38 +133,32 @@ public class RequestProcessor {
 
     }
 
-    public void doRegister(JsonObject jsonObject) {
+    public void doRegister(String anchalId,String loca_Sangh_Id, String familyId, String relation_Id,String salution,String first_Name,
+                           String last_Name,String post,String city,String district,String state,String country,String mobile,String birth_day,
+                           String age,String gender, String email_address,String pincode,String profile_Created_By,String refcode,String reg_Type) {
 
 
 
         EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
 
-        endPointApi.doRegister(jsonObject).enqueue(new Callback<LoginModel>() {
+        endPointApi.doRegister(anchalId,loca_Sangh_Id,familyId,relation_Id,salution,first_Name,last_Name,
+                post,city,district,state,country,mobile,birth_day,age,gender,email_address,pincode,
+                profile_Created_By,refcode,reg_Type).enqueue(new Callback<RegistrationPojo>() {
             @Override
-            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+            public void onResponse(Call<RegistrationPojo> call, Response<RegistrationPojo> response) {
 
 
                 Log.e("Response message=", "" + response.message());
 
-                LoginModel response1 = response.body();
-                RegisterResponse registerResponse = new RegisterResponse();
-                registerResponse.setData(response1);
-                if(response1!=null){
-                    if(!TextUtils.isEmpty(response1.getStatus()))
-                        registerResponse.setStatus(response1.getStatus());
-                    if(!TextUtils.isEmpty(response1.getMessage()))
-                        registerResponse.setMessage(response1.getMessage());
-                }
-
                 if (response.body() != null)
-                    guiCallback.onRequestProcessed(registerResponse, GUICallback.RequestStatus.SUCCESS);
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.SUCCESS);
                 else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
 
             }
 
             @Override
-            public void onFailure(Call<LoginModel> call, Throwable t) {
+            public void onFailure(Call<RegistrationPojo> call, Throwable t) {
 
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);

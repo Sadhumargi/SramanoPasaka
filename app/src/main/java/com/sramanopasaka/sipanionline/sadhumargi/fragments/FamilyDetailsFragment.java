@@ -3,6 +3,8 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +52,21 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback{
             RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
 
             requestProcessor.selectFamily(registrationPojo.getLocalSanghId(),registrationPojo.getFirstName(),registrationPojo.getLastName(),registrationPojo.getCity());
+
+
             Log.e("----", registrationPojo + "");
+
+
         } catch (Exception ex) {
         }
+
+        /*FamilyDetailsFragment familyDetailsFragment = FamilyDetailsFragment.newInstance();
+        familyDetailsFragment.setArguments(bundle);*/
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.signUpContainer, PersonalDetailsFragment.newInstance());
+        fragmentTransaction.commit();
 
 
 

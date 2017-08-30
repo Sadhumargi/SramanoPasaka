@@ -192,12 +192,33 @@ public class RegistrationPojo  implements Parcelable {
     private String age = null;
     private String gender = null;
     private String emailAddress = null;
+    private String profile_created_by=null;
+    private String _refcode=null;
+    private String _reg_type=null;
 
+    public String getProfile_created_by() {
+        return profile_created_by;
+    }
 
+    public void setProfile_created_by(String profile_created_by) {
+        this.profile_created_by = profile_created_by;
+    }
 
+    public String get_refcode() {
+        return _refcode;
+    }
 
+    public void set_refcode(String _refcode) {
+        this._refcode = _refcode;
+    }
 
+    public String get_reg_type() {
+        return _reg_type;
+    }
 
+    public void set_reg_type(String _reg_type) {
+        this._reg_type = _reg_type;
+    }
 
     protected RegistrationPojo(Parcel in) {
         anchalId = in.readString();
@@ -217,6 +238,7 @@ public class RegistrationPojo  implements Parcelable {
         emailAddress = in.readString();
         firstName = in.readString();
         lastName = in.readString();
+
     }
 
     public static Creator<RegistrationPojo> getCREATOR() {

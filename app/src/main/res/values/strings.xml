@@ -365,6 +365,11 @@
     <string name="Native_Sangh">*Native resident Sangh</string>
     <string name="Basic_residence">*Basic residence family</string>
     <string name="relation">*Relation</string>
+    <string name="workercode">*Unique code issued to volunteer </string>
+
+    <string name="No_birth_date">Do not know the date of birth?</string>
+    <string name="age">*Age</string>
+    <string name="Post">*Post</string>
 
 
     <array name="business_type">
@@ -496,17 +501,10 @@
 
     <array name="profile_created_by">
 
-        <item>Self</item>
-
-        <item>Sangh	Karyakarta</item>
-
-    </array>
-
-    <array name="select_family">
-        <item> List of family</item>
+        <item>self</item>
+        <item>volunteer</item>
 
     </array>
-
 
     <string name="home">होम</string>
 

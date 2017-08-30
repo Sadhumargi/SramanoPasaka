@@ -35,6 +35,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceRespo
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 
@@ -61,7 +62,17 @@ public interface EndPointApi {
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
     @POST("members/create")
-    Call<LoginModel> doRegister(@Body JsonObject profiledata);
+    Call<RegistrationPojo> doRegister(@Field("anchal_id") String anchalId, @Field("local_sangh_id") String loca_Sangh_Id,
+                                      @Field("family_id") String familyId,@Field("relation_id") String relation_Id,
+                                      @Field("salution") String salution,@Field("first_name") String first_Name,
+                                      @Field("last_name") String last_Name,@Field("post") String post,
+                                      @Field("city") String city,@Field("district") String district,
+                                      @Field("state") String state,@Field("country") String country,
+                                      @Field("mobile") String mobile,@Field("birth_day") String birth_day,
+                                      @Field("age") String age,@Field("gender") String gender,
+                                      @Field("email_address") String email_address,@Field("pincode") String pincode,
+                                      @Field("profile_created_by") String profile_Created_By,@Field("_refcode") String refcode,
+                                      @Field("reg_type") String reg_Type);
 
     @FormUrlEncoded
     @POST("app/basics")
