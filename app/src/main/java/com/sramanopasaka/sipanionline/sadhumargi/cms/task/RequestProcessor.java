@@ -166,7 +166,7 @@ public class RequestProcessor {
 
     public void doRegister(String anchalId,String loca_Sangh_Id, String familyId, String relation_Id,String salution,String first_Name,
                            String last_Name,String post,String city,String district,String state,String country,String mobile,String birth_day,
-                           String age,String gender, String email_address,String pincode,String profile_Created_By,String refcode) {
+                           int age,String gender, String email_address,String pincode,String profile_Created_By,String refcode) {
 
 
 

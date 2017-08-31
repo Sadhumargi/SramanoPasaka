@@ -301,7 +301,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                     showLoadingDialog();
                     requestProcessor.doRegister(registrationPojo.getAnchalId(),registrationPojo.getLocalSanghId(),registrationPojo.getFamilyId(),registrationPojo.getRelationId(),registrationPojo.getSaluation(),registrationPojo.getFirstName(),registrationPojo.getLastName()
-                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),TextUtils.isEmpty(age.getText().toString()) ? "0" : age.getText().toString(),gender.getSelectedItem().toString(),
+                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),Integer.parseInt(age.getText().toString()),gender.getSelectedItem().toString(),
                             emailId.getText().toString(),pinCode.getText().toString(),profileCreatedby.getSelectedItem().toString(),valunteerCode.getText().toString());
                 }
 
