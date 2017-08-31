@@ -83,7 +83,7 @@ public class RequestProcessor {
 
 
 
-        EndPointApi endPointApi = RetrofitClient.getAuthClient().create(EndPointApi.class);
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
         endPointApi.doLogin(jsonObject).enqueue(new Callback<LoginResponse>() {
             @Override

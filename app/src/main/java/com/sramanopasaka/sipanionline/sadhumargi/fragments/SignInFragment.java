@@ -10,8 +10,11 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
@@ -38,24 +42,28 @@ public class SignInFragment extends BaseFragment implements GUICallback {
     Button btnLogin, btnSignup;
     private TabselectionListner tabselectionListner = null;
     ProgressDialog pg;
-
-
+    private static Animation shakeAnimation;
+private View view = null;
     String sPassword;
+    private LinearLayout loginLayout = null;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_sign_in_fragment, container, false);
+        view = inflater.inflate(R.layout.activity_sign_in_fragment, container, false);
 
         edttxtEmail = (EditText) view.findViewById(R.id.editTex_email);
         edttxtPassword = (EditText) view.findViewById(R.id.editText_password);
+        loginLayout = (LinearLayout) view.findViewById(R.id.loginLayout);
 
         frgtPassword = (TextView) view.findViewById(R.id.tv_frgtpass);
 
         btnLogin = (Button) view.findViewById(R.id.button_login);
         btnSignup = (Button) view.findViewById(R.id.button_create_profile);
+        shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
+                R.anim.shake);
 
         // creating an shared Preference file for the information to be stored
 // first argument is the name of file and second is the mode, 0 is private mode
@@ -72,16 +80,22 @@ public class SignInFragment extends BaseFragment implements GUICallback {
 
                 if (TextUtils.isEmpty(username)) {
 
-                    Toast.makeText(getActivity(), "Please enter a valid email/mobile number", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), "Please enter a valid email/mobile number", Toast.LENGTH_LONG).show();
+                    loginLayout.startAnimation(shakeAnimation);
+                    new CustomToast().Show_Toast(getActivity(), view,
+                            "Please enter a valid email/mobile number");
 
                 } else if (ValidationUtils.isValidMail(username)) {
 
                     if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
                         loginRequest.setEmail(username);
                         loginRequest.setPassword(sPassword);
+                        loginRequest.setMobileNumber("");
                         initiateAPI(loginRequest);
                     } else {
-                        Toast.makeText(getActivity(), "Password should contain 5 - 12 characters ", Toast.LENGTH_SHORT).show();
+                        loginLayout.startAnimation(shakeAnimation);
+                        new CustomToast().Show_Toast(getActivity(), view,
+                                "Password should contain 5 - 12 characters");
                     }
 
                 } else if (ValidationUtils.isValidMobile(username)) {
@@ -89,13 +103,19 @@ public class SignInFragment extends BaseFragment implements GUICallback {
                     if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
                         loginRequest.setMobileNumber(username);
                         loginRequest.setPassword(sPassword);
+                        loginRequest.setEmail("");
                         initiateAPI(loginRequest);
                     } else {
-                        Toast.makeText(getActivity(), "Password should contain 5 - 12 characters ", Toast.LENGTH_SHORT).show();
+
+                        loginLayout.startAnimation(shakeAnimation);
+                        new CustomToast().Show_Toast(getActivity(), view,
+                                "Password should contain 5 - 12 characters");
                     }
 
                 } else {
-                    Toast.makeText(getActivity(), "Please enter a valid email/mobile and password to login ", Toast.LENGTH_SHORT).show();
+                    loginLayout.startAnimation(shakeAnimation);
+                    new CustomToast().Show_Toast(getActivity(), view,
+                            "Please enter a valid email/mobile and password to login ");
                 }
 
 
@@ -169,9 +189,13 @@ public class SignInFragment extends BaseFragment implements GUICallback {
                         getActivity().finish();
                     } else {
                         if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                            Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            loginLayout.startAnimation(shakeAnimation);
+                            new CustomToast().Show_Toast(getActivity(), view,
+                                    loginResponse.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                            loginLayout.startAnimation(shakeAnimation);
+                            new CustomToast().Show_Toast(getActivity(), view,
+                                    "Invalid username/password");
                         }
                     }
                 }

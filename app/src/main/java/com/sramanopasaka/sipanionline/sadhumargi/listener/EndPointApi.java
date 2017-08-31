@@ -59,7 +59,7 @@ import retrofit2.http.Query;
 
 public interface EndPointApi {
 
-    @POST("members/auth")
+    @POST("api/auth")
     Call<LoginResponse> doLogin(@Body JsonObject profiledata);
 
     @POST("api/auth")
@@ -74,10 +74,10 @@ public interface EndPointApi {
                                       @Field("city") String city, @Field("district") String district,
                                       @Field("state") String state, @Field("country") String country,
                                       @Field("mobile") String mobile, @Field("birth_day") String birth_day,
-                                      @Field("age") String age, @Field("gender") String gender,
+                                      @Field("age") int age, @Field("gender") String gender,
                                       @Field("email_address") String email_address, @Field("pincode") String pincode,
                                       @Field("profile_created_by") String profile_Created_By, @Field("_refcode") String refcode,
-                                      @Field("reg_type") String reg_Type);
+                                      @Field("_reg_type") String reg_Type);
 
     @FormUrlEncoded
     @POST("app/basics")
