@@ -46,20 +46,52 @@
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
-            <Spinner
+
+
+            <EditText
                 android:id="@+id/family_head"
-                style="@style/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin" />
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:hint="@string/HeadofFamil"
+                android:editable="false"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
+                android:paddingLeft="@dimen/dimen_10"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
 
 
-            <Spinner
+            <EditText
+                android:id="@+id/relation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogrp"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/edt_border"
+                android:hint="@string/Relation"
+                android:editable="false"
+                android:maxLength="50"
+                android:paddingBottom="@dimen/dimen_10"
+                android:paddingLeft="@dimen/dimen_10"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/orange"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />
+          <!--  <Spinner
                 android:id="@+id/relation"
                 style="@style/spinner_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin" />
+                android:layout_margin="@dimen/fab_margin" />-->
 
 
           <!--  <CheckBox
@@ -134,43 +166,9 @@
                         android:textSize="@dimen/large"
                         android:textStyle="normal" />
 
-                    <!--<EditText
-                        android:id="@+id/native_zone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/radiogrp"
-                        android:layout_margin="@dimen/fab_margin"
-                        android:background="@drawable/edt_border"
-                        android:hint="@string/Native"
-                        android:inputType="text|none"
-                        android:maxLength="50"
-                        android:paddingBottom="@dimen/dimen_10"
-                        android:singleLine="false"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        android:textCursorDrawable="@drawable/cursor_drawable"
-                        android:textSize="@dimen/large"
-                        android:textStyle="normal" />-->
 
-                    <!-- <EditText
-                         android:id="@+id/native_sangh"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_below="@+id/radiogrp"
-                         android:layout_margin="@dimen/fab_margin"
-                         android:background="@drawable/edt_border"
-                         android:hint="@string/Native_Sangh"
-                         android:inputType="text|none"
-                         android:maxLength="50"
-                         android:paddingBottom="@dimen/dimen_10"
-                         android:singleLine="false"
-                         android:textColor="@color/white"
-                         android:textColorHint="@color/white"
-                         android:textCursorDrawable="@drawable/cursor_drawable"
-                         android:textSize="@dimen/large"
-                         android:textStyle="normal" />-->
 
-                    <Spinner
+                    <!--<Spinner
                         android:id="@+id/native_sangh_name"
                         style="@style/spinner_style"
                         android:layout_width="match_parent"
@@ -178,6 +176,25 @@
                         android:layout_margin="@dimen/fab_margin"
 
                         />
+-->
+                    <EditText
+                        android:id="@+id/native_sangh_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/radiogrp"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:background="@drawable/edt_border"
+                        android:hint="@string/Sangh_Name"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:paddingBottom="@dimen/dimen_10"
+                        android:paddingLeft="@dimen/dimen_10"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/orange"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
 
                     <!-- <EditText
                          android:id="@+id/basic_residence"
@@ -196,20 +213,52 @@
                          android:textCursorDrawable="@drawable/cursor_drawable"
                          android:textSize="@dimen/large"
                          android:textStyle="normal" />-->
-                    <Spinner
+                  <!--  <Spinner
                         android:id="@+id/native_family"
                         style="@style/spinner_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/fab_margin" />
+                        android:layout_margin="@dimen/fab_margin" />-->
 
-
-                    <Spinner
-                        android:id="@+id/relationLast"
-                        style="@style/spinner_style"
+                    <EditText
+                        android:id="@+id/native_family"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/fab_margin" />
+                        android:layout_below="@+id/radiogrp"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:background="@drawable/edt_border"
+                        android:hint="@string/Basic_residence_family"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:paddingBottom="@dimen/dimen_10"
+                        android:paddingLeft="@dimen/dimen_10"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/orange"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
+
+
+                    <EditText
+                        android:id="@+id/relationLast"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/radiogrp"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:background="@drawable/edt_border"
+                        android:hint="@string/Relation"
+                        android:editable="false"
+                        android:maxLength="50"
+                        android:paddingBottom="@dimen/dimen_10"
+                        android:paddingLeft="@dimen/dimen_10"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/orange"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
+
                 </LinearLayout>
 
 

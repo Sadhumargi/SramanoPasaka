@@ -132,9 +132,9 @@
     <string name="Sign_in">Sign in </string>
     <string name="Create_Account">CreateAccount</string>
 
-    <string name="Mr">Mr.</string>
-    <string name="Ms">Ms.</string>
-    <string name="Mrs">Mrs.</string>
+    <string name="Mr">Kumar</string>
+    <string name="Ms">Kumari</string>
+    <string name="Mrs">Shrimati</string>
 
     <string name="Emailid">*Mobile No./Email id</string>
     <string name="Password">*Password</string>
