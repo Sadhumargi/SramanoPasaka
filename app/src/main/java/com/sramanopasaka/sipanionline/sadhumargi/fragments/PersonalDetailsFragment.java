@@ -126,14 +126,13 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-
         view = inflater.inflate(R.layout.personal_details_fragment, container, false);
         ButterKnife.bind(this, view);
         StateProgressBar step_view = (StateProgressBar) view.findViewById(R.id.step_view);
         step_view.setStateDescriptionData(descriptionData);
         try {
             registrationPojo = getArguments().getParcelable("DATA");
-        }catch (Exception ex){
+        } catch (Exception ex) {
 
         }
 
@@ -145,8 +144,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 monthOfYear += 1;
-
-                bDate.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+//2017-08-16
+                bDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
             }
 
 
@@ -280,7 +279,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     callAPi = false;
                 }
 
-                if (bDate.getText().toString().length() == 0) {
+                if (!ageCheckBox.isChecked() && bDate.getText().toString().length() == 0) {
                     bDate.setError("Birthdate is required");
                     bDate.requestFocus();
                     callAPi = false;
@@ -288,21 +287,33 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     bDate.setError(null);
                     bDate.setError(null);
                 }
-
+                if (ageCheckBox.isChecked() && age.getText().toString().length() == 0) {
+                    age.setError("age is required");
+                    age.requestFocus();
+                    callAPi = false;
+                } else {
+                    age.setError(null);
+                    age.setError(null);
+                }
 
                 if (callAPi && !termsCheckBox.isChecked()) {
                     Toast.makeText(getActivity(), "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
                     callAPi = false;
                 }
 
-                if(callAPi){
+                if (callAPi) {
                     RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);
 
+                    if (ageCheckBox.isChecked())
+                        bDate.setText("");
+                    else{
+                        age.setText("0");
+                    }
 
                     showLoadingDialog();
-                    requestProcessor.doRegister(registrationPojo.getAnchalId(),registrationPojo.getLocalSanghId(),registrationPojo.getFamilyId(),registrationPojo.getRelationId(),registrationPojo.getSaluation(),registrationPojo.getFirstName(),registrationPojo.getLastName()
-                    ,post.getText().toString(),registrationPojo.getCity(),registrationPojo.getDistrict(),sState.getText().toString(),sCountry.getText().toString(),pNumber.getText().toString(),bDate.getText().toString(),Integer.parseInt(age.getText().toString()),gender.getSelectedItem().toString(),
-                            emailId.getText().toString(),pinCode.getText().toString(),profileCreatedby.getSelectedItem().toString(),valunteerCode.getText().toString());
+                    requestProcessor.doRegister(registrationPojo.getAnchalId(), registrationPojo.getLocalSanghId(), registrationPojo.getFamilyId(), registrationPojo.getRelationId(), registrationPojo.getSaluation(), registrationPojo.getFirstName(), registrationPojo.getLastName()
+                            , post.getText().toString(), registrationPojo.getCity(), registrationPojo.getDistrict(), sState.getText().toString(), sCountry.getText().toString(), pNumber.getText().toString(), bDate.getText().toString(), Integer.parseInt(age.getText().toString()), gender.getSelectedItem().toString(),
+                            emailId.getText().toString(), pinCode.getText().toString(), profileCreatedby.getSelectedItem().toString(), valunteerCode.getText().toString());
                 }
 
             }
@@ -410,7 +421,6 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             }
 
 
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -439,8 +449,6 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
 
 
     }
@@ -481,7 +489,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                         });
                         statePickerDialog.show();
                     }
-                }else if (guiResponse instanceof RegisterResponse) {
+                } else if (guiResponse instanceof RegisterResponse) {
                     RegisterResponse loginResponse = (RegisterResponse) guiResponse;
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
@@ -494,7 +502,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             getActivity().finish();*/
 
 
-                          LoginRequest loginRequest = new LoginRequest();
+                            LoginRequest loginRequest = new LoginRequest();
                             loginRequest.setToken(loginResponse.getApp_token());
                             loginRequest.setId(String.valueOf(loginResponse.getId()));
                             JsonParser jsonParser = new JsonParser();
@@ -511,7 +519,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             }
                         }
                     }
-                }else if (guiResponse instanceof LoginResponse) {
+                } else if (guiResponse instanceof LoginResponse) {
                     LoginResponse loginResponse = (LoginResponse) guiResponse;
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
@@ -523,7 +531,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
 
                             Intent i = new Intent(getActivity(), ProfileUpdateActivty.class);
-                            i.putExtra("position",8);
+                            i.putExtra("position", 8);
                             startActivity(i);
                             getActivity().finish();
                         } else {
