@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,6 +66,8 @@ private View view = null;
         shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
                 R.anim.shake);
 
+
+
         // creating an shared Preference file for the information to be stored
 // first argument is the name of file and second is the mode, 0 is private mode
 
@@ -85,37 +88,39 @@ private View view = null;
                     new CustomToast().Show_Toast(getActivity(), view,
                             "Please enter a valid email/mobile number");
 
-                } else if (ValidationUtils.isValidMail(username)) {
-
-                    if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
-                        loginRequest.setEmail(username);
-                        loginRequest.setPassword(sPassword);
-                        loginRequest.setMobileNumber("");
-                        initiateAPI(loginRequest);
-                    } else {
-                        loginLayout.startAnimation(shakeAnimation);
-                        new CustomToast().Show_Toast(getActivity(), view,
-                                "Password should contain 5 - 12 characters");
-                    }
-
-                } else if (ValidationUtils.isValidMobile(username)) {
-
-                    if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
-                        loginRequest.setMobileNumber(username);
-                        loginRequest.setPassword(sPassword);
-                        loginRequest.setEmail("");
-                        initiateAPI(loginRequest);
-                    } else {
-
-                        loginLayout.startAnimation(shakeAnimation);
-                        new CustomToast().Show_Toast(getActivity(), view,
-                                "Password should contain 5 - 12 characters");
-                    }
-
                 } else {
-                    loginLayout.startAnimation(shakeAnimation);
-                    new CustomToast().Show_Toast(getActivity(), view,
-                            "Please enter a valid email/mobile and password to login ");
+                    if (ValidationUtils.isValidMail(username)) {
+
+                        if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
+                            loginRequest.setEmail(username);
+                            loginRequest.setPassword(sPassword);
+                            loginRequest.setMobileNumber("");
+                            initiateAPI(loginRequest);
+                        } else {
+                            loginLayout.startAnimation(shakeAnimation);
+                            new CustomToast().Show_Toast(getActivity(), view,
+                                    "Password should contain 5 - 12 characters");
+                        }
+
+                    } else if (ValidationUtils.isValidMobile(username)) {
+
+                        if (!TextUtils.isEmpty(sPassword) && sPassword.length() > 5) {
+                            loginRequest.setMobileNumber(username);
+                            loginRequest.setPassword(sPassword);
+                            loginRequest.setEmail("");
+                            initiateAPI(loginRequest);
+                        } else {
+
+                            loginLayout.startAnimation(shakeAnimation);
+                            new CustomToast().Show_Toast(getActivity(), view,
+                                    "Password should contain 5 - 12 characters");
+                        }
+
+                    } else {
+                        loginLayout.startAnimation(shakeAnimation);
+                        new CustomToast().Show_Toast(getActivity(), view,
+                                "Please enter a valid email/mobile and password to login ");
+                    }
                 }
 
 
@@ -148,6 +153,11 @@ private View view = null;
 
 
         return view;
+    }
+
+    public void setLength(int newLength) {
+
+
     }
 
 

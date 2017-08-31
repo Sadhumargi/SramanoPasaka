@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
-    android:textSize="18sp"
+    android:textSize="@dimen/large"
+    android:hint="@string/Gender"
     android:textColor="@color/white"
     android:text="*Gender" />

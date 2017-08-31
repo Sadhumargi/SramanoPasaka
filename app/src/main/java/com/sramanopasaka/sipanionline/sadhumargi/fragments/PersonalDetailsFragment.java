@@ -110,6 +110,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     @Bind(R.id.age)
     EditText age;
+
     String[] descriptionData = {"Basic", "Family", "Personal"};
 
     private View view = null;
@@ -297,7 +298,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
                 if (callAPi && !termsCheckBox.isChecked()) {
-                    Toast.makeText(getActivity(), "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
                     callAPi = false;
                 }
 

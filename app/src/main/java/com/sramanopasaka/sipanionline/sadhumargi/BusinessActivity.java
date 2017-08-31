@@ -96,20 +96,40 @@ public class BusinessActivity extends BaseActivity implements GUICallback {
 
     @OnClick(R.id.addBusinessButton)
     public void addBusiness(){
-        if(businessType.getSelectedItem()!=null) {
+
+        boolean callApi=true;
+
+
+
+        if(businessType.getSelectedItem()==null) {
+
+            Toast.makeText(BusinessActivity.this,"Please select your business type",Toast.LENGTH_SHORT).show();
+            callApi=false;
+        }
+
+        if (businessStartYear.getText().toString().length() == 0) {
+            businessStartYear.setError("Start year is required");
+            businessStartYear.requestFocus();
+            callApi = false;
+        } else {
+
+            businessStartYear.setError(null);
+        }
+
+          if(callApi) {
+
             showLoadingDialog();
-            Business business = new Business(businessType.getSelectedItem().toString(), businessName.getText().toString(), businessRole.getText().toString(),
+              Business business = new Business(businessType.getSelectedItem().toString(), businessName.getText().toString(), businessRole.getText().toString(),
                     businessStartYear.getText().toString());
             LoginModel loginResponse = OfflineData.getLoginData();
+
             if (loginResponse != null) {
-
-
                 RequestProcessor requestProcessor = new RequestProcessor(BusinessActivity.this);
                 requestProcessor.addBusiness(loginResponse.getId(), loginResponse.getAppToken(), business);
             }
-        }else{
-            Toast.makeText(BusinessActivity.this,"Please select your business type",Toast.LENGTH_SHORT).show();
-        }
+
+          }
+
     }
 
     @Override

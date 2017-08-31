@@ -126,9 +126,8 @@
                     android:layout_below="@+id/radiogrp"
                     android:layout_margin="@dimen/fab_margin"
                     android:layout_weight=".6"
-
                     android:background="@drawable/border_basicdetails"
-                    android:maxLength="10"
+                    android:maxLength="200"
                     android:textColor="@color/black"
                     android:textColorHint="@color/Basic_details"
                     android:textCursorDrawable="@drawable/cursor_basicdetails"
