@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,9 @@ public class BusinessListAdapter extends RecyclerView.Adapter<BusinessListAdapte
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Business model = list.get(position);
         holder.txtAddressTag.setText(model.getBusiness_type());
-        holder.txtAddress.setText(model.getBusiness_name() + ", " + model.getBusiness_role() + ", " + model.getBusiness_start_year() /*+ ", " + model.getAchievement_year() */);
+        String businessName = TextUtils.isEmpty(model.getBusiness_name()) ? " " : model.getBusiness_name() + ", " ;
+        String businessRole = TextUtils.isEmpty(model.getBusiness_role()) ? " " : model.getBusiness_role() + ", " ;
+        holder.txtAddress.setText( businessName + businessRole + model.getBusiness_start_year() /*+ ", " + model.getAchievement_year() */);
 
     }
 

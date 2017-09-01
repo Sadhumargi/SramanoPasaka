@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +36,12 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.RegisterProgressUpdator;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
@@ -46,6 +49,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.CityPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
@@ -72,11 +76,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
     EditText zone;
 
     @Bind(R.id.local_sangh_name)
-    Spinner localSanghName;
+    EditText localSanghName;
 
 
     @Bind(R.id.currentResidence)
-    Spinner currentResidence;
+    EditText currentResidence;
 
     @Bind(R.id.city)
     EditText sCity;
@@ -143,7 +147,72 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             }
         });
 
-        localSanghName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        localSanghName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!TextUtils.isEmpty(selectedAnchalId)) {
+                    LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
+                    if (localSanghResponse != null && localSanghResponse.getData() != null) {
+                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData());
+                        sanghPickerDialog.setZoneChangeListner(new SanghChangeListener() {
+                            @Override
+                            public void onSanghSelected(String sangh, String id) {
+                                localSanghName.setText(sangh);
+                                selectedLocalSanghId = id;
+                                sanghPickerDialog.dismiss();
+                            }
+                        });
+                        sanghPickerDialog.show();
+
+                    } else {
+                        if (!TextUtils.isEmpty(selectedAnchalId)) {
+                            RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                            processor.getLocalSanghList(selectedAnchalId);
+                        } else {
+                            Log.e("----", "please select achal");
+                        }
+                    }
+                }else{
+                    new CustomToast().Show_Toast(getActivity(), view,
+                            "Please select anchal first");
+                }
+
+            }
+        });
+
+        currentResidence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!TextUtils.isEmpty(selectedAnchalId)) {
+                    LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
+                    if (localSanghResponse != null && localSanghResponse.getData() != null) {
+                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData());
+                        sanghPickerDialog.setZoneChangeListner(new SanghChangeListener() {
+                            @Override
+                            public void onSanghSelected(String sangh, String id) {
+                                currentResidence.setText(sangh);
+                                sanghPickerDialog.dismiss();
+                            }
+                        });
+                        sanghPickerDialog.show();
+
+                    } else {
+                        if (!TextUtils.isEmpty(selectedAnchalId)) {
+                            RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
+                            processor.getLocalSanghList(selectedAnchalId);
+                        } else {
+                            Log.e("----", "please select achal");
+                        }
+                    }
+                }else{
+                    new CustomToast().Show_Toast(getActivity(), view,
+                            "Please select anchal first");
+                }
+
+            }
+        });
+
+       /* localSanghName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                String selected = (String) adapterView.getItemAtPosition(i);
@@ -167,8 +236,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
-        currentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        });*/
+      /*  currentResidence.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
@@ -182,7 +251,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
 
         sCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,23 +277,23 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+      /*  ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getActivity(), android.R.layout.simple_spinner_dropdown_item, new String[]{""});
 
-
-        localSanghName.setAdapter(
+*/
+     /*   localSanghName.setAdapter(
                 new NothingSelectedSpinnerAdapter(
                         adapter,
                         R.layout.local_sangh_selection,
                         getActivity()));
+*/
 
-
-        currentResidence.setAdapter(
+       /* currentResidence.setAdapter(
                 new NothingSelectedSpinnerAdapter(
                         adapter,
                         R.layout.current_resident_selection,
                         getActivity()));
-
+*/
 
     }
 
@@ -269,14 +338,16 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             zone.setError(null);
             zone.clearFocus();
         }
-        if (localSanghName.getSelectedItem() == null) {
+        if (localSanghName.getText().toString().length() == 0) {
+            localSanghName.setError("localSangh name is required");
+            localSanghName.requestFocus();
             callAPi = false;
-            Toast.makeText(getActivity(), "local sangh is required", Toast.LENGTH_SHORT).show();
+        } else {
+
+            localSanghName.setError(null);
+            localSanghName.clearFocus();
         }
-        if (currentResidence.getSelectedItem() == null) {
-            callAPi = false;
-            Toast.makeText(getActivity(), "current residence is required", Toast.LENGTH_SHORT).show();
-        }
+
         int selectedId = radiogrp.getCheckedRadioButtonId();
         if (selectedId == -1 && callAPi) {
             radiogrp.requestFocus();
@@ -285,7 +356,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             callAPi = false;
         }
 
-        if(callAPi && !localSanghName.getSelectedItem().toString().equalsIgnoreCase(currentResidence.getSelectedItem().toString())){
+        if(callAPi && !localSanghName.getText().toString().equalsIgnoreCase(currentResidence.getText().toString())){
             callAPi = false;
             Toast.makeText(getActivity(), "current residence and local sangh should be same", Toast.LENGTH_SHORT).show();
         }
@@ -371,7 +442,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     LocalSanghResponse response = (LocalSanghResponse) guiResponse;
                     if (response != null && response.getData() != null && response.getData().size() > 0) {
                         OfflineData.saveLocalSanghResponse(response);
-                        String[] datas = new String[response.getData().size()];
+                       /* String[] datas = new String[response.getData().size()];
 
                         for (int i = 0; i < response.getData().size(); i++) {
                             datas[i] = response.getData().get(i).getBranch_name();
@@ -392,7 +463,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                                 new NothingSelectedSpinnerAdapter(
                                         adapter,
                                         R.layout.current_resident_selection,
-                                        getActivity()));
+                                        getActivity()));*/
 
 
                     }
