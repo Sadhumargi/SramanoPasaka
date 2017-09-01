@@ -72,6 +72,10 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     RadioGroup radiogrp;
     @Bind(R.id.first_name)
     EditText firstName;
+
+    @Bind(R.id.last_name)
+    EditText lastName;
+
     @Bind(R.id.adress)
     EditText adress;
 
@@ -284,11 +288,10 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                monthOfYear+=1;
+                monthOfYear += 1;
 
-                birth_date.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+                birth_date.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
             }
-
 
 
         };
@@ -332,6 +335,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
 
                             if (response.getData() != null) {
                                 firstName.setText(response.getData().getFirstName());
+                                lastName.setText(response.getData().getLastName());
                                 guardianName.setText(response.getData().getGuardianName());
                                 adress.setText(response.getData().getAddress());
                                 country.setText(response.getData().getCountry());
@@ -344,14 +348,21 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
                                 email.setText(response.getData().getEmailAddress());
                                 whatsupnumber.setText(response.getData().getWhatsappNumber());
                                 mobileNumber.setText(response.getData().getMobile());
-                                selectSpinnerItemByValue(guardianType,response.getData().getGuardianType());
-                                selectSpinnerItemByValue(Gender,response.getData().getGender());
-                                selectSpinnerItemByValue(bloodgrp,response.getData().getBloodGroup());
-                                selectSpinnerItemByValue(maritual_status,response.getData().getMaritalStatus());
-                                if(!TextUtils.isEmpty(response.getData().getMaritalStatus()) && response.getData().getMaritalStatus().equalsIgnoreCase("Married")){
+                                selectSpinnerItemByValue(guardianType, response.getData().getGuardianType());
+                                selectSpinnerItemByValue(Gender, response.getData().getGender());
+                                selectSpinnerItemByValue(bloodgrp, response.getData().getBloodGroup());
+                                if (!TextUtils.isEmpty(response.getData().getMaritalStatus()) && response.getData().getMaritalStatus().equalsIgnoreCase("0"))
+                                    selectSpinnerItemByValue(maritual_status, "Married");
+                                else
+                                    selectSpinnerItemByValue(maritual_status, "UnMarried");
+                                if (!TextUtils.isEmpty(response.getData().getMaritalStatus()) && response.getData().getMaritalStatus().equalsIgnoreCase("Married")) {
                                     marriedDate.setVisibility(View.VISIBLE);
                                     marriedDate.setText(response.getData().getMarriageDate());
                                 }
+                                if (!TextUtils.isEmpty(response.getData().getIsHeadOfFamily()) && response.getData().getIsHeadOfFamily().equalsIgnoreCase("1")) {
+                                    isFamilyHead.setChecked(true);
+                                } else
+                                    isFamilyHead.setChecked(false);
 
                             }
 
@@ -460,7 +471,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         if (Gender.getSelectedItem() == null && callAPi) {
             Toast.makeText(getActivity(), "Gender is required", Toast.LENGTH_SHORT).show();
             Gender.requestFocus();
-           // Gender.requestFocusFromTouch();
+            // Gender.requestFocusFromTouch();
             callAPi = false;
         }
         if (bloodgrp.getSelectedItem() == null && callAPi) {
@@ -537,6 +548,11 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             firstName.requestFocus();
             callAPi = false;
         }
+        if (lastName.getText().toString().length() == 0) {
+            lastName.setError("last name is required");
+            lastName.requestFocus();
+            callAPi = false;
+        }
 
 
         if (maritual_status.getSelectedItem() != null && callAPi) {
@@ -555,6 +571,8 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             if (selectedId == -1)
                 basicDetailsData.setSalution(((RadioButton) view.findViewById(selectedId)).getText().toString());
             basicDetailsData.setFirstName(firstName.getText().toString());
+            basicDetailsData.setChildCount("0");
+            basicDetailsData.setLastName(lastName.getText().toString());
             basicDetailsData.setGuardianType(guardianType.getSelectedItem().toString());
             basicDetailsData.setGuardianName(guardianName.getText().toString());
             basicDetailsData.setAddress(adress.getText().toString());
@@ -565,7 +583,10 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             basicDetailsData.setBirthDay(birth_date.getText().toString());
             basicDetailsData.setGender(Gender.getSelectedItem().toString());
             basicDetailsData.setBloodGroup(bloodgrp.getSelectedItem().toString());
-            basicDetailsData.setMaritalStatus(maritual_status.getSelectedItem().toString());
+            if (maritual_status.getSelectedItem().toString().equalsIgnoreCase("Married"))
+                basicDetailsData.setMaritalStatus("0");
+            else
+                basicDetailsData.setMaritalStatus("1");
             basicDetailsData.setMobile(mobileNumber.getText().toString());
             basicDetailsData.setEmailAddress(email.getText().toString());
             basicDetailsData.setWhatsappNumber(whatsupnumber.getText().toString());
@@ -586,7 +607,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         NothingSelectedSpinnerAdapter adapter = (NothingSelectedSpinnerAdapter) spnr.getAdapter();
         for (int position = 0; position < adapter.getCount(); position++) {
             Object object = adapter.getItem(position);
-            if(object!=null) {
+            if (object != null) {
                 if (adapter.getItem(position).toString().equalsIgnoreCase(value)) {
                     spnr.setSelection(position);
                     return;

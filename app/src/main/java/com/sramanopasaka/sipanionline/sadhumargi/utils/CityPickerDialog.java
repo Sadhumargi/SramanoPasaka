@@ -111,13 +111,11 @@ public class CityPickerDialog extends Dialog implements CityPickerAdapter.Callba
                                 filteredList.add(cityList.get(i));
                             }
                         }
-                  /*  if (!itemFound) {
-                        Industry college = new Industry();
-                        college.setName(charSequence.toString());
-                        college.setId("new");
-                        selected = charSequence.toString();
+                    if (!itemFound) {
+                        City college = new City();
+                        college.setCity_name(charSequence.toString());
                         filteredList.add(college);
-                    }*/
+                    }
                         CityPickerAdapter countryCodeAdapter = new CityPickerAdapter(filteredList,CityPickerDialog.this);
                         country_dialog_rv.setAdapter(countryCodeAdapter);
                     }

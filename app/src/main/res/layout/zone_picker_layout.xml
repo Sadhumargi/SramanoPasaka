@@ -4,7 +4,23 @@
     android:layout_height="match_parent">
 
 
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_light"
+        />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_below="@+id/title_tv"
+        android:layout_above="@+id/search_edt"
+        android:textColor="@android:color/holo_blue_light"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/zone_dialog_rv"

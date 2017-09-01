@@ -423,7 +423,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 ZoneListResponse zoneListResponse = new ZoneListResponse();
                 if (zoneListResponse != null) {
                     final ZonePickerDialog zonePickerDialog;
-                    zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList());
+                    zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList(),"");
                     zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                         @Override
                         public void onZoneSelected(String name,String id) {
@@ -586,7 +586,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                         if (response != null && response.getZoneList() != null && response.getZoneList().size() > 0) {
 
 
-                            final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(),response.getZoneList());
+                            final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(),response.getZoneList(),"");
                             zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                                 @Override
                                 public void onZoneSelected(String zone,String id) {

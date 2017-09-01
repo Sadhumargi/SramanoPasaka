@@ -61,6 +61,8 @@
                 android:textSize="@dimen/large"
                 android:textStyle="normal" />
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,8 +75,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight=".3"
-                    android:text="*पद"
+                    android:layout_weight=".2"
+                    android:hint="*पद"
+                    android:paddingLeft="@dimen/small"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@drawable/cursor_basicdetails"
                     android:textSize="@dimen/large"
@@ -86,7 +89,7 @@
                     android:id="@+id/radiogrp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".7"
+                    android:layout_weight=".8"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -117,13 +120,26 @@
 
             </LinearLayout>
 
+           <!-- <EditText
+                android:id="@+id/localsanghName"
+                android:paddingStart="@dimen/extra_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@drawable/border_basicdetails"
+                android:hint="@string/Sangh_Name"
+                android:paddingBottom="@dimen/dimen_10"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_basicdetails"
+                android:textSize="@dimen/large"
+                android:textStyle="normal" />-->
+
 
             <Spinner
 
                 android:id="@+id/role"
                 style="@style/spinner_style"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin" />
 
@@ -132,7 +148,6 @@
                 android:id="@+id/level"
                 style="@style/spinner_style"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin" />
 

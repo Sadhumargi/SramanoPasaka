@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
@@ -25,12 +26,15 @@ public class ZonePickerDialog extends Dialog implements ZonePickerAdapter.Callba
     private List<String> mFilteredZone;
     private List<Zone> zoneList = null;
     private Context context = null;
-    private  RecyclerView zone_dialog_rv;
+    private RecyclerView zone_dialog_rv;
+    private AppCompatTextView mTvTitle;
 
-    public ZonePickerDialog(@NonNull Context context, List<Zone> zoneList) {
+    private String tilteTxt = null;
+    public ZonePickerDialog(@NonNull Context context, List<Zone> zoneList,String tilteTxt) {
         super(context);
-        this.context=context;
-        this.zoneList=zoneList;
+        this.context = context;
+        this.zoneList = zoneList;
+        this.tilteTxt = tilteTxt;
     }
 
     public void setZoneChangeListner(ZoneChangeListener zoneChangeListner) {
@@ -49,25 +53,25 @@ public class ZonePickerDialog extends Dialog implements ZonePickerAdapter.Callba
 
     private void setupUI() {
         //mRlyDialog = (RelativeLayout) this.findViewById(R.id.dialog_rly);
-       // mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
-       // mEdtSearch = (AppCompatEditText) this.findViewById(R.id.search_edt);
-       // mTvNoResult = (AppCompatTextView) this.findViewById(R.id.no_result_tv);
+        mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
+        // mEdtSearch = (AppCompatEditText) this.findViewById(R.id.search_edt);
+        // mTvNoResult = (AppCompatTextView) this.findViewById(R.id.no_result_tv);
         zone_dialog_rv = (RecyclerView) this.findViewById(R.id.zone_dialog_rv);
         zone_dialog_rv.setLayoutManager(new LinearLayoutManager(context));
+        mTvTitle.setText(tilteTxt);
     }
 
     private void setupData() {
 
 
-
-        ZonePickerAdapter zonePickerAdapter = new ZonePickerAdapter(zoneList,this);
+        ZonePickerAdapter zonePickerAdapter = new ZonePickerAdapter(zoneList, this);
         zone_dialog_rv.setAdapter(zonePickerAdapter);
     }
 
     @Override
-    public void onZoneSelected(String zone,String id) {
+    public void onZoneSelected(String zone, String id) {
 
-        zonechangeListner.onZoneSelected(zone,id);
+        zonechangeListner.onZoneSelected(zone, id);
 
 
     }
@@ -139,9 +143,6 @@ public class ZonePickerDialog extends Dialog implements ZonePickerAdapter.Callba
 
         //  mAdapter.notifyDataSetChanged();
     }*/
-
-
-
 
 
 }

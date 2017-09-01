@@ -92,3 +92,4 @@ public class BusinessListAdapter extends RecyclerView.Adapter<BusinessListAdapte
     }
 
 }
+//member_id=11&app_token=0e4e7debeb748efb343129884296075e

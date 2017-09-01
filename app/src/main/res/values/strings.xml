@@ -352,7 +352,7 @@
     <string name="Recover">Recover</string>
     <string name="Sangh_Name">*Select Local Sangh</string>
     <string name="HeadofFamil">*Head Of Family</string>
-    <string name="Relation">*Relationship of the member\'s family head</string>
+    <string name="Relation">*Relationship??</string>
     <string name="SelectFamily">*Select Family Head</string>
     <string name="ancestral_place">Do youh ave a family related to your ancestral place?</string>
 
@@ -363,7 +363,7 @@
     <string name="Native_Zone">*Select Native Zone </string>
 
     <string name="Native_Sangh">*Select Native Sangh</string>
-    <string name="Basic_residence_family">*Select Native Family</string>
+    <string name="Basic_residence_family">*Family??</string>
     <string name="Current_residence">*Select Current Residence </string>
     <string name="relation">*Relation</string>
     <string name="workercode">*Unique code issued to volunteer </string>

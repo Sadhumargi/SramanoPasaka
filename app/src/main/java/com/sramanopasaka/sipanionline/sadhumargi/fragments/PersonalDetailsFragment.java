@@ -528,10 +528,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                             //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
 
-
+                            PreferenceUtils.setLastLoginTime(getActivity(),System.currentTimeMillis());
                             Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
 
-                            Intent i = new Intent(getActivity(), ProfileUpdateActivty.class);
+                            Intent i = new Intent(getActivity(), ProfileActivity.class);
                             i.putExtra("position", 8);
                             startActivity(i);
                             getActivity().finish();
