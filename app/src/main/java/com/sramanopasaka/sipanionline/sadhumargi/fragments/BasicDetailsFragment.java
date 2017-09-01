@@ -431,7 +431,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
     public void updateProfile() {
 
         boolean callAPi = true;
-        if (alternateNumber.getText().toString().length() == 0) {
+        /*if (alternateNumber.getText().toString().length() == 0) {
             alternateNumber.setError("Alternative number is required");
             alternateNumber.requestFocus();
             callAPi = false;
@@ -441,7 +441,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             whatsupnumber.setError("Whatsapp number is required");
             whatsupnumber.requestFocus();
             callAPi = false;
-        }
+        }*/
         if (!ValidationUtils.isValidMail(email.getText().toString())) {
             email.setError("Email id is required");
             email.requestFocus();
@@ -555,13 +555,13 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         }
 
 
-        if (maritual_status.getSelectedItem() != null && callAPi) {
+       /* if (maritual_status.getSelectedItem() != null && callAPi) {
             if (maritual_status.getSelectedItem().toString().equalsIgnoreCase("Married") && TextUtils.isEmpty(marriedDate.getText().toString())) {
                 marriedDate.requestFocus();
                 marriedDate.setError("Please select your married date");
                 callAPi = false;
             }
-        }
+        }*/
 
 
         if (callAPi) {

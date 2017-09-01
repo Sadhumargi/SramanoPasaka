@@ -273,9 +273,10 @@
 
                 android:id="@+id/radiogrp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="49dp"
                 android:layout_margin="@dimen/fab_margin"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <RadioButton
                     android:id="@+id/radio_ms"
@@ -285,9 +286,10 @@
                     android:layout_marginRight="16dp"
                     android:padding="10dp"
                     android:shadowColor="@color/white"
-                    android:text="@string/Ms"
+                    android:text="@string/MrorMs"
                     android:textColor="@color/Basic_details"
-                    android:textSize="@dimen/large" />
+                    android:textSize="@dimen/large"
+                    android:layout_weight=".6"/>
 
                 <RadioButton
                     android:id="@+id/radio_mr"
@@ -295,9 +297,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mr"
+                    android:text="@string/Sriman"
                     android:textColor="@color/Basic_details"
                     android:textSize="@dimen/large"
+                    android:layout_weight=".2"
 
                     />
 
@@ -307,9 +310,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mrs"
+                    android:text="@string/Srimati"
                     android:textColor="@color/Basic_details"
-                    android:textSize="@dimen/large">
+                    android:textSize="@dimen/large"
+                    android:layout_weight=".2">
 
                 </RadioButton>
 

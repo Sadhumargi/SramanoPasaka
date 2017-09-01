@@ -37,21 +37,22 @@
                     android:checked="true"
                     android:padding="10dp"
                     android:shadowColor="@color/white"
-                    android:text="@string/Ms"
+                    android:text="@string/MrorMs"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton" />
+                    android:theme="@style/MyRadioButton"
+                    android:layout_weight="6"/>
 
                 <RadioButton
                     android:id="@+id/radio_mr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mr"
+                    android:text="@string/Sriman"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton"
-
+                    android:layout_weight="2"
                     />
 
                 <RadioButton
@@ -59,9 +60,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mrs"
+                    android:text="@string/Srimati"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
+                    android:layout_weight="2"
                     android:theme="@style/MyRadioButton">
 
                 </RadioButton>

@@ -64,7 +64,7 @@
                     android:checked="true"
                     android:padding="10dp"
                     android:shadowColor="@color/black"
-                    android:text="@string/Ms"
+                    android:text="@string/Sriman"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton" />
@@ -75,7 +75,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mr"
+                    android:text="@string/Srimati"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton" />
@@ -86,7 +86,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/Mrs"
+                    android:text="@string/MrorMs"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:theme="@style/MyRadioButton">

@@ -445,7 +445,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
 
         if (TextUtils.isEmpty(relation.getText().toString()) && callAPi) {
             new CustomToast().Show_Toast(getActivity(), view,
-                    "relation is required");
+                    "Relation is required");
             callAPi = false;
         }
 
@@ -472,7 +472,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
 
             if (TextUtils.isEmpty(relationLast.getText().toString()) && callAPi) {
                 new CustomToast().Show_Toast(getActivity(), view,
-                        "relation is required");
+                        "Relation is required");
                 callAPi = false;
             }
         }
