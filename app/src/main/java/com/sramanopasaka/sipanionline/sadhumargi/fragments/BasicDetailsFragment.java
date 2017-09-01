@@ -457,7 +457,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         if (selectedId == -1 && callAPi) {
             radiogrp.requestFocus();
             radiogrp.requestFocusFromTouch();
-            Toast.makeText(getActivity(), "Please select the salution", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please select salutation", Toast.LENGTH_SHORT).show();
             callAPi = false;
         }
 

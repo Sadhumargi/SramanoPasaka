@@ -120,6 +120,9 @@ public class AchivementsActivity extends BaseActivity implements GUICallback {
         else if (achievementType.getSelectedItem() == null) {
             callApi = false;
             Toast.makeText(AchivementsActivity.this,"Please select your achievement type",Toast.LENGTH_SHORT).show();
+        }   else if (achievementYear.getText().toString()== null) {
+            callApi = false;
+            Toast.makeText(AchivementsActivity.this,"Please enter your achievement year",Toast.LENGTH_SHORT).show();
         }
         if(callApi) {
             showLoadingDialog();

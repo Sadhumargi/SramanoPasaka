@@ -18,7 +18,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 
-public class ResetPasswordActivity extends AppCompatActivity implements GUICallback {
+public class ResetPasswordActivity extends BaseActivity implements GUICallback {
 
     Toolbar toolbar;
 
@@ -111,6 +111,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements GUICallb
     }
     private void ResetPassword() {
 
+        showLoadingDialog();
             RequestProcessor requestProcessor = new RequestProcessor(ResetPasswordActivity.this);
             requestProcessor.passwordRecovery(edtEmailid.getText().toString(),edtMobileno.getText().toString(),
                     edtFirstname.getText().toString(), edtLastname.getText().toString());
@@ -120,7 +121,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements GUICallb
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
-
+hideLoadingDialog();
         if (guiResponse != null) {
             if (requestStatus.equals(RequestStatus.SUCCESS)) {
                 if (guiResponse instanceof PasswordRecoverResponse) {

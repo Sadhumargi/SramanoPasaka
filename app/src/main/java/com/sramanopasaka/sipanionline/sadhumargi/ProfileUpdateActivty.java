@@ -203,7 +203,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentTab + 1 < MAX_DETAILS) {
+                if (currentTab + 1 <= MAX_DETAILS) {
                     currentTab++;
                     showPages(currentTab);
                 } else
@@ -227,7 +227,7 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     }
 
     private void changeNextButtonVisibility(){
-        if (currentTab + 1 < MAX_DETAILS) {
+        if (currentTab + 1 <= MAX_DETAILS) {
             findViewById(R.id.nextButton).setVisibility(View.VISIBLE);
         }else{
             findViewById(R.id.nextButton).setVisibility(View.GONE);

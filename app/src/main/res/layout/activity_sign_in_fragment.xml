@@ -73,6 +73,7 @@
                 android:layout_below="@+id/txtinplayout1"
                 android:textColorHint="@color/white"
                 android:textStyle="normal"
+                app:passwordToggleEnabled="true"
                 app:hintTextAppearance="@style/edittext"
                 app:passwordToggleTint="#FFF">
 

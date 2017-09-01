@@ -58,7 +58,7 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
         try {
             actionBarUpdator = (ActionBarUpdator) getActivity();
             actionBarUpdator.onUpdateTitile(getString(R.string.password));
-        }catch (Exception ex){
+        } catch (Exception ex) {
 
         }
 
@@ -66,7 +66,7 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
     }
 
     @OnClick(R.id.button_reset)
-    public void changePassword(){
+    public void changePassword() {
         final String sPassword = PreferenceUtils.getPassword(getActivity());
         String cPassword = currentPassword.getText().toString();
         String nPassword = newPassword.getText().toString();
@@ -74,7 +74,7 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
         Boolean callAPi = true;
 
         if (TextUtils.isEmpty(cPassword)) {
-            currentPassword.setError("Please your the current password");
+            currentPassword.setError("Please enter your the current password");
             currentPassword.requestFocus();
             callAPi = false;
         }
@@ -85,27 +85,27 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
         }
         if (callAPi) {
             if ((currentPassword.getText().toString().length()) < 5) {
-                currentPassword.setError("Current Password should be atleast of 5 charactors");
+                currentPassword.setError("Current password should be atleast of 5 charactors");
                 currentPassword.requestFocus();
                 callAPi = false;
             }
             if (currentPassword.getText().toString().equals(newPassword.getText().toString())) {
-                newPassword.setError("Current and New Passwords sholuldn't be same");
+                newPassword.setError("Current and new password should not be same");
                 newPassword.requestFocus();
                 callAPi = false;
             }
 
             if ((newPassword.getText().toString().length()) < 5) {
-                newPassword.setError("New Password should be atleast of 5 charactors");
+                newPassword.setError("New password should be atleast of 5 charactors");
                 newPassword.requestFocus();
                 callAPi = false;
             }
         }
         if (callAPi) {
 
-            if(!TextUtils.isEmpty(sPassword)) {
+            if (!TextUtils.isEmpty(sPassword)) {
                 if (!cPassword.equalsIgnoreCase(sPassword)) {
-                    currentPassword.setError("current password is wrong");
+                    currentPassword.setError("Current password is wrong");
                     currentPassword.requestFocus();
                     callAPi = false;
                 }
@@ -141,8 +141,9 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
                     PasswordChangeResponse response = (PasswordChangeResponse) guiResponse;
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
-
+                            PreferenceUtils.setPassword(getActivity(), newPassword.getText().toString());
                             Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            getActivity().finish();
                         }
                     }
                 }

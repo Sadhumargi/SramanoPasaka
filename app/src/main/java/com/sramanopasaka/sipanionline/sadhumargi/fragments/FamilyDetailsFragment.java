@@ -443,13 +443,13 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             callAPi = false;
         }
 
-        if (TextUtils.isEmpty(relation.getText().toString())) {
+        if (TextUtils.isEmpty(relation.getText().toString()) && callAPi) {
             new CustomToast().Show_Toast(getActivity(), view,
                     "relation is required");
             callAPi = false;
         }
 
-        if (family.isChecked()) {
+        if (family.isChecked()  && callAPi) {
             if (nativeZone.getText().toString().length() == 0) {
                 nativeZone.setError("zone name is required");
                 nativeZone.requestFocus();
@@ -459,18 +459,18 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                 nativeZone.setError(null);
                 nativeZone.clearFocus();
             }
-            if (TextUtils.isEmpty(nativeSanghName.getText().toString())) {
+            if (TextUtils.isEmpty(nativeSanghName.getText().toString())  && callAPi) {
                 callAPi = false;
                 new CustomToast().Show_Toast(getActivity(), view,
                         "local sangh is required");
             }
-            if (TextUtils.isEmpty(basic_residence.getText().toString())) {
+            if (TextUtils.isEmpty(basic_residence.getText().toString()) && callAPi) {
                 callAPi = false;
                 new CustomToast().Show_Toast(getActivity(), view,
                         "current residence is required");
             }
 
-            if (TextUtils.isEmpty(relationLast.getText().toString())) {
+            if (TextUtils.isEmpty(relationLast.getText().toString()) && callAPi) {
                 new CustomToast().Show_Toast(getActivity(), view,
                         "relation is required");
                 callAPi = false;

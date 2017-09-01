@@ -156,7 +156,7 @@
     <string name="selectcity">*Select City</string>
     <string name="pincode">*Pin Code</string>
     <string name="Retype_password">*Retype Password</string>
-    <string name="terms_conditions">I agree to the Tems and Conditions</string>
+    <string name="terms_conditions">I agree to the Terms and Conditions</string>
     <string name="create_profile">CREATE PROFILE</string>
     <string name="go_ahead">Go Ahead</string>
 
@@ -354,7 +354,7 @@
     <string name="HeadofFamil">*Head Of Family</string>
     <string name="Relation">*Relationship??</string>
     <string name="SelectFamily">*Select Family Head</string>
-    <string name="ancestral_place">Do youh ave a family related to your ancestral place?</string>
+    <string name="ancestral_place">Do you have a family related to your ancestral place?</string>
 
     <string name="ProfileCreatedby">*Profile Created By</string>
 

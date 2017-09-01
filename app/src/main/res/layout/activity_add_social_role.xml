@@ -155,6 +155,7 @@
             <EditText
                 android:id="@+id/startyear"
                 android:editable="false"
+                android:focusableInTouchMode="false"
                 android:paddingStart="@dimen/extra_small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,6 +172,7 @@
             <EditText
                 android:id="@+id/endyear"
                 android:paddingStart="@dimen/extra_small"
+                android:focusableInTouchMode="false"
                 android:editable="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
