@@ -172,7 +172,7 @@ public class SocialRoleFragment extends BaseFragment implements GUICallback, Dat
 
     @Override
     public void delete(final SocialRole exams) {
-        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Exam", "Are you sure to delete this exam ?", new DialogInterface.OnClickListener() {
+        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Social Role", "Are you sure to delete this social role ?", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 LoginModel loginResponse = OfflineData.getLoginData();

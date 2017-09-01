@@ -79,15 +79,33 @@ public class AddExamActivity extends BaseActivity implements GUICallback {
     public void addExam() {
 
         boolean callApi = true;
+
+        if (TextUtils.isEmpty(year.getText().toString())) {
+            callApi = false;
+            year.setError("Please enter the exam year");
+            year.requestFocus();
+        }else{
+            year.setError(null);
+
+        }
+
         if (TextUtils.isEmpty(instituteName.getText().toString())) {
             callApi = false;
             instituteName.setError("Please enter the institute name");
             instituteName.requestFocus();
+        }else{
+            instituteName.setError(null);
+
         }
+
+
         if (TextUtils.isEmpty(examName.getText().toString())) {
             callApi = false;
             examName.setError("Please enter the exam name");
             examName.requestFocus();
+        }else{
+            examName.setError(null);
+
         }
 
         if(callApi) {

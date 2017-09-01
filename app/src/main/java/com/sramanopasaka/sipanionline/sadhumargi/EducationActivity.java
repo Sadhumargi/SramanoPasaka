@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Text;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddEducationResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
@@ -94,6 +95,24 @@ public class EducationActivity extends BaseActivity implements GUICallback{
         if (educationName.getSelectedItem() == null) {
             callApi = false;
             Toast.makeText(EducationActivity.this,"Please select your education name",Toast.LENGTH_SHORT).show();
+        }
+
+        if(TextUtils.isEmpty(educationyear.getText().toString())){
+            educationyear.setError("Education year is required");
+            educationyear.requestFocus();
+            callApi=false;
+        }else{
+
+            educationyear.setError(null);
+        }
+
+        if(TextUtils.isEmpty(educationScore.getText().toString())){
+            educationScore.setError("Marks is required");
+            educationScore.requestFocus();
+            callApi=false;
+        }else{
+
+            educationScore.setError(null);
         }
 
         if(callApi) {

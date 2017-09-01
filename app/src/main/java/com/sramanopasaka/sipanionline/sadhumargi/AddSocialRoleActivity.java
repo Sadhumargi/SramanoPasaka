@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -17,17 +18,24 @@ import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.GeneralDetailsFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
 
 import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.sramanopasaka.sipanionline.sadhumargi.R.id.view;
 
 
 public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
@@ -74,7 +82,7 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>संघ सम्बन्धी रुचि</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>\"सामाजिक पद\"</font>"));
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.org_role, android.R.layout.simple_spinner_item);
@@ -149,15 +157,8 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
     }
 
 
-      /*  @OnClick(R.id.year)
-        public void selectYear(){
-            DialogueUtils.showYearPicker(AddSocialRoleActivity.this, new DialogueListner() {
-                @Override
-                public void onYearSelected(String yearString) {
-                    year.setText(yearString);
-                }
-            });
-        }*/
+
+
 
     @OnClick(R.id.btn_Socialrole)
     public void addSocialRole() {

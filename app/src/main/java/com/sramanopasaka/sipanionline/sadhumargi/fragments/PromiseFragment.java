@@ -62,6 +62,8 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
     EditText special;
 
 
+
+
     private View view = null;
 
     public static PromiseFragment newInstance() {
@@ -73,6 +75,8 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
         view = inflater.inflate(R.layout.activity_rule_fragment, container, false);
 
         ButterKnife.bind(this, view);
+
+
         return view;
 
 
@@ -187,6 +191,7 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                             loadDharmikData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                special.setText(null);
                             } else {
                                 Toast.makeText(getActivity(), "Updated successfully", Toast.LENGTH_SHORT).show();
                             }
