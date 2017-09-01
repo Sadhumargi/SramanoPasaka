@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
@@ -29,11 +30,13 @@ public class RelationPickerDialog extends Dialog implements RelationPickerAdapte
     private List<Relations> zoneList = null;
     private Context context = null;
     private  RecyclerView zone_dialog_rv;
+    private String  title = null;
 
-    public RelationPickerDialog(@NonNull Context context, List<Relations> zoneList) {
+    public RelationPickerDialog(@NonNull Context context, List<Relations> zoneList,String title) {
         super(context);
         this.context=context;
         this.zoneList=zoneList;
+        this.title = title;
     }
 
     public void setRelationsChangeListner(RelationsChangeListener zoneChangeListner) {
@@ -52,11 +55,12 @@ public class RelationPickerDialog extends Dialog implements RelationPickerAdapte
 
     private void setupUI() {
         //mRlyDialog = (RelativeLayout) this.findViewById(R.id.dialog_rly);
-       // mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
+        AppCompatTextView mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
        // mEdtSearch = (AppCompatEditText) this.findViewById(R.id.search_edt);
        // mTvNoResult = (AppCompatTextView) this.findViewById(R.id.no_result_tv);
         zone_dialog_rv = (RecyclerView) this.findViewById(R.id.zone_dialog_rv);
         zone_dialog_rv.setLayoutManager(new LinearLayoutManager(context));
+        mTvTitle.setText(title);
     }
 
     private void setupData() {

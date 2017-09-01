@@ -182,6 +182,9 @@ private View view = null;
                         //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
 
                         PreferenceUtils.setPassword(getActivity(), sPassword);
+                        PreferenceUtils.setAppToken(getActivity(), loginResponse.getData().getAppToken());
+                        PreferenceUtils.setUserId(getActivity(), Integer.parseInt(loginResponse.getData().getId()));
+                        PreferenceUtils.setLastLoginTime(getActivity(),System.currentTimeMillis());
 
                         Toast.makeText(getActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), ProfileActivity.class);

@@ -191,6 +191,15 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         else
             showPages(currentTab);
 
+
+
+
+        LoginModel loginResponse = OfflineData.getLoginData();
+        if (loginResponse != null) {
+
+
+            profileName.setText(loginResponse.getFirstName());
+        }
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,14 +210,6 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                     findViewById(R.id.nextButton).setVisibility(View.GONE);
             }
         });
-
-
-        LoginModel loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null) {
-
-
-            profileName.setText(loginResponse.getFirstName());
-        }
 
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,6 +224,14 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
             }
         });
 
+    }
+
+    private void changeNextButtonVisibility(){
+        if (currentTab + 1 < MAX_DETAILS) {
+            findViewById(R.id.nextButton).setVisibility(View.VISIBLE);
+        }else{
+            findViewById(R.id.nextButton).setVisibility(View.GONE);
+        }
     }
 
     private void setViewColor(int index) {
@@ -546,6 +555,8 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 }
             });
         }
+
+        changeNextButtonVisibility();
     }
 
     protected void setFragment(Fragment fragment, String tag) {

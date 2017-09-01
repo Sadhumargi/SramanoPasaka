@@ -19,6 +19,9 @@ public class PreferenceUtils {
 
     private static final String PREFERECE_KEY_ID = "id";
 
+    private static final String KEY_LAST_LOGIN_TIME = "last_login_time";
+
+
 
     public static void setPassword(Context context,String password) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE).edit();
@@ -53,5 +56,17 @@ public class PreferenceUtils {
         return prefs.getString(PREFERECE_KEY_TOKEN, null);
     }
 
+
+
+    public static void setLastLoginTime(Context context, long millisecs) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE).edit();
+        editor.putLong(KEY_LAST_LOGIN_TIME , millisecs);
+        editor.commit();
+    }
+
+    public static long getLastLoginTime(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE);
+        return prefs.getLong(KEY_LAST_LOGIN_TIME , 0);
+    }
 
 }

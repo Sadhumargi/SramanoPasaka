@@ -76,7 +76,14 @@ public class  ProfileActivity extends AppCompatActivity {
         locationTxt = (TextView) findViewById(R.id.locationTxt);
 
 
+        try {
+            int currentTab = getIntent().getExtras().getInt("position");
+            Intent i = new Intent(ProfileActivity.this, ProfileUpdateActivty.class);
+            i.putExtra("position",currentTab);
+            startActivity(i);
+        } catch (Exception ex) {
 
+        }
 
 
 

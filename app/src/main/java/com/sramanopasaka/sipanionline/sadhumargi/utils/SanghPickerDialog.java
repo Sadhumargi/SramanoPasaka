@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
@@ -30,11 +31,13 @@ public class SanghPickerDialog extends Dialog implements SanghPickerAdapter.Call
     private List<LocalSangh> zoneList = null;
     private Context context = null;
     private  RecyclerView zone_dialog_rv;
+    private  String titleTxt= null;
 
-    public SanghPickerDialog(@NonNull Context context, List<LocalSangh> zoneList) {
+    public SanghPickerDialog(@NonNull Context context, List<LocalSangh> zoneList,String titleTxt) {
         super(context);
         this.context=context;
         this.zoneList=zoneList;
+        this.titleTxt = titleTxt;
     }
 
     public void setZoneChangeListner(SanghChangeListener zoneChangeListner) {
@@ -53,11 +56,12 @@ public class SanghPickerDialog extends Dialog implements SanghPickerAdapter.Call
 
     private void setupUI() {
         //mRlyDialog = (RelativeLayout) this.findViewById(R.id.dialog_rly);
-       // mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
+        AppCompatTextView mTvTitle = (AppCompatTextView) this.findViewById(R.id.title_tv);
        // mEdtSearch = (AppCompatEditText) this.findViewById(R.id.search_edt);
        // mTvNoResult = (AppCompatTextView) this.findViewById(R.id.no_result_tv);
         zone_dialog_rv = (RecyclerView) this.findViewById(R.id.zone_dialog_rv);
         zone_dialog_rv.setLayoutManager(new LinearLayoutManager(context));
+        mTvTitle.setText(titleTxt);
     }
 
     private void setupData() {

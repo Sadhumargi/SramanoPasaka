@@ -129,7 +129,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
                     processor.selectZoneList();
                 } else {
-                    final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList());
+                    final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList(),getString(R.string.anchal));
                     zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                         @Override
                         public void onZoneSelected(String zoneTxt, String id) {
@@ -153,7 +153,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                 if(!TextUtils.isEmpty(selectedAnchalId)) {
                     LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
                     if (localSanghResponse != null && localSanghResponse.getData() != null) {
-                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData());
+                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData(),getString(R.string.Sangh_Name));
                         sanghPickerDialog.setZoneChangeListner(new SanghChangeListener() {
                             @Override
                             public void onSanghSelected(String sangh, String id) {
@@ -186,7 +186,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                 if(!TextUtils.isEmpty(selectedAnchalId)) {
                     LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
                     if (localSanghResponse != null && localSanghResponse.getData() != null) {
-                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData());
+                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData(),getString(R.string.Current_residence));
                         sanghPickerDialog.setZoneChangeListner(new SanghChangeListener() {
                             @Override
                             public void onSanghSelected(String sangh, String id) {
@@ -330,7 +330,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         }
 
         if (zone.getText().toString().length() == 0) {
-            zone.setError("zone name is required");
+            zone.setError("Anchal name is required");
             zone.requestFocus();
             callAPi = false;
         } else {
@@ -372,7 +372,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.signUpContainer, familyDetailsFragment);
-          //  fragmentTransaction.addToBackStack("FamilyDetailsFragment");
+            fragmentTransaction.addToBackStack("FamilyDetailsFragment");
             fragmentTransaction.commit();
 
 
@@ -407,7 +407,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     if (response != null && response.getZoneList() != null && response.getZoneList().size() > 0) {
                         OfflineData.saveZoneResponse(response);
 
-                        final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), response.getZoneList());
+                        final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(), response.getZoneList(),getString(R.string.anchal));
                         zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                             @Override
                             public void onZoneSelected(String zoneTxt, String id) {
