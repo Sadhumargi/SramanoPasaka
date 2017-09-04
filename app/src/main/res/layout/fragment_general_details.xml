@@ -98,7 +98,7 @@
 
             <EditText
                 android:id="@+id/first_name"
-                android:digits="abcdefghijklmnopqurstuvwxyz."
+                android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
@@ -122,7 +122,7 @@
 
             <EditText
                 android:id="@+id/last_name"
-                android:digits="abcdefghijklmnopqurstuvwxyz."
+                android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"

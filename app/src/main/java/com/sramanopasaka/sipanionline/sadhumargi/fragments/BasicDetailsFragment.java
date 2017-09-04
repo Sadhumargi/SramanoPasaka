@@ -1,12 +1,8 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,27 +13,20 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.internal.ObjectConstructor;
 import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
-import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.request.BasicDetailsRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
@@ -369,9 +358,9 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
                             Log.e("----", "success");
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "some thing went wrong", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, "some thing went wrong");
                             }
                         }
                     }
@@ -409,20 +398,23 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
                     UpdateBasicDetailsResponse response = (UpdateBasicDetailsResponse) guiResponse;
                     if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Profile updated successfully!");
                         }
                         //Moving to the next page.
                         tabselectionListner.onSelectNextTab();
                     } else {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                         }
                     }
                 }
+            }else{
+                new CustomToast().showErrorToast(getActivity(), view,
+                        "Please check your internet connection.");
             }
         }
     }
@@ -457,33 +449,38 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
         if (selectedId == -1 && callAPi) {
             radiogrp.requestFocus();
             radiogrp.requestFocusFromTouch();
-            Toast.makeText(getActivity(), "Please select salutation", Toast.LENGTH_SHORT).show();
+            new CustomToast().showErrorToast(getActivity(), view, "Please select salutation");
             callAPi = false;
         }
 
         if (guardianType.getSelectedItem() == null && callAPi) {
-            Toast.makeText(getActivity(), "Guardian Type is required", Toast.LENGTH_SHORT).show();
+            new CustomToast().showErrorToast(getActivity(), view, "Guardian type is required");
             guardianType.requestFocus();
             guardianType.requestFocusFromTouch();
             guardianType.requestFocus();
             callAPi = false;
         }
         if (Gender.getSelectedItem() == null && callAPi) {
-            Toast.makeText(getActivity(), "Gender is required", Toast.LENGTH_SHORT).show();
+            new CustomToast().showErrorToast(getActivity(), view, "Gender is required");
             Gender.requestFocus();
             // Gender.requestFocusFromTouch();
             callAPi = false;
         }
         if (bloodgrp.getSelectedItem() == null && callAPi) {
-            Toast.makeText(getActivity(), "Blood group is required", Toast.LENGTH_SHORT).show();
+            new CustomToast().showErrorToast(getActivity(), view, "Blood group is required");
             bloodgrp.requestFocus();
             bloodgrp.requestFocusFromTouch();
             callAPi = false;
         }
         if (maritual_status.getSelectedItem() == null && callAPi) {
-            Toast.makeText(getActivity(), "Marital status is required", Toast.LENGTH_SHORT).show();
+            new CustomToast().showErrorToast(getActivity(), view, "Marital status is required");
             maritual_status.requestFocus();
             maritual_status.requestFocusFromTouch();
+            callAPi = false;
+        }
+        if (maritual_status.getSelectedItem() != null && maritual_status.getSelectedItem().toString().equalsIgnoreCase("Married") && callAPi && TextUtils.isEmpty( marriedDate.getText().toString())){
+            marriedDate.setError("married date is required");
+            marriedDate.requestFocus();
             callAPi = false;
         }
 
@@ -553,6 +550,7 @@ public class BasicDetailsFragment extends BaseFragment implements GUICallback {
             lastName.requestFocus();
             callAPi = false;
         }
+
 
 
        /* if (maritual_status.getSelectedItem() != null && callAPi) {

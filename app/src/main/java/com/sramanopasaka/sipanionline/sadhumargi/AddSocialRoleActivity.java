@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -18,24 +17,18 @@ import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.GeneralDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
 
 import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.sramanopasaka.sipanionline.sadhumargi.R.id.view;
 
 
 public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
@@ -61,6 +54,9 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
 
     @Bind(R.id.radiogrp)
     RadioGroup radiogrp;
+
+    private  View view = null;
+    private DatePickerDialog endDatePickerDialog = null;
 
 
     @Override
@@ -103,9 +99,17 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
                         R.layout.org_level_selection,
                         this));
 
+
+
+        try {
+            view =  findViewById(android.R.id.content);
+        }catch (Exception ex){
+            view =  getWindow().getDecorView().findViewById(android.R.id.content);
+        }
+
         final Calendar myCalendar = Calendar.getInstance();
 
-        final DatePickerDialog.OnDateSetListener dateSelected = new DatePickerDialog.OnDateSetListener() {
+        final DatePickerDialog.OnDateSetListener startDateSelectionListner = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -113,6 +117,9 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
                 monthOfYear+=1;
 
                 startdate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+                endDatePickerDialog =  new DatePickerDialog(AddSocialRoleActivity.this, endDateSelectionListner, year, myCalendar.get(Calendar.MONTH),
+                        monthOfYear);
+               // endDatePickerDialog.getDatePicker().setMinDate();
             }
 
 
@@ -123,40 +130,43 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(AddSocialRoleActivity.this, dateSelected, myCalendar
+                new DatePickerDialog(AddSocialRoleActivity.this, startDateSelectionListner, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
             }
         });
-        final DatePickerDialog.OnDateSetListener endDateSelected = new DatePickerDialog.OnDateSetListener() {
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                monthOfYear+=1;
-
-                enddate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-            }
-
-
-
-        };
 
         enddate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(AddSocialRoleActivity.this, endDateSelected, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                if(TextUtils.isEmpty(startdate.getText().toString())){
+                    new CustomToast().showErrorToast(AddSocialRoleActivity.this,view,"Please select the start date first");
+                }else {
+
+                    endDatePickerDialog.show();
+                }
 
             }
         });
 
     }
 
+    private DatePickerDialog.OnDateSetListener endDateSelectionListner = new DatePickerDialog.OnDateSetListener() {
 
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            monthOfYear+=1;
+
+            enddate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+        }
+
+
+
+    };
 
 
 

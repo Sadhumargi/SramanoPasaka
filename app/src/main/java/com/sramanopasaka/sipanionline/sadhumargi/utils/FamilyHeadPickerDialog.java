@@ -32,11 +32,19 @@ public class FamilyHeadPickerDialog extends Dialog implements FamilyHeadPickerAd
     private  RecyclerView zone_dialog_rv;
     private String titleTxt = null;
 
+    public boolean isHasData() {
+        return hasData;
+    }
+
+    private boolean hasData = false;
+
     public FamilyHeadPickerDialog(@NonNull Context context, List<Family> zoneList,String titleTxt) {
         super(context);
         this.context=context;
         this.zoneList=zoneList;
         this.titleTxt = titleTxt;
+        if(zoneList!=null && zoneList.size()>0)
+            hasData = true;
     }
 
     public void setFamilyHeadChangeListner(FamilyHeadChangeListener zoneChangeListner) {

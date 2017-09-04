@@ -2,11 +2,8 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +82,7 @@ private View view = null;
 
                     //Toast.makeText(getActivity(), "Please enter a valid email/mobile number", Toast.LENGTH_LONG).show();
                     loginLayout.startAnimation(shakeAnimation);
-                    new CustomToast().Show_Toast(getActivity(), view,
+                    new CustomToast().showErrorToast(getActivity(), view,
                             "Please enter a valid email/mobile number");
 
                 } else {
@@ -98,7 +95,7 @@ private View view = null;
                             initiateAPI(loginRequest);
                         } else {
                             loginLayout.startAnimation(shakeAnimation);
-                            new CustomToast().Show_Toast(getActivity(), view,
+                            new CustomToast().showErrorToast(getActivity(), view,
                                     "Password should contain 5 - 12 characters");
                         }
 
@@ -112,13 +109,13 @@ private View view = null;
                         } else {
 
                             loginLayout.startAnimation(shakeAnimation);
-                            new CustomToast().Show_Toast(getActivity(), view,
+                            new CustomToast().showErrorToast(getActivity(), view,
                                     "Password should contain 5 - 12 characters");
                         }
 
                     } else {
                         loginLayout.startAnimation(shakeAnimation);
-                        new CustomToast().Show_Toast(getActivity(), view,
+                        new CustomToast().showErrorToast(getActivity(), view,
                                 "Please enter a valid email/mobile and password to login ");
                     }
                 }
@@ -203,11 +200,11 @@ private View view = null;
                     } else {
                         if (!TextUtils.isEmpty(loginResponse.getMessage())) {
                             loginLayout.startAnimation(shakeAnimation);
-                            new CustomToast().Show_Toast(getActivity(), view,
+                            new CustomToast().showErrorToast(getActivity(), view,
                                     loginResponse.getMessage());
                         } else {
                             loginLayout.startAnimation(shakeAnimation);
-                            new CustomToast().Show_Toast(getActivity(), view,
+                            new CustomToast().showErrorToast(getActivity(), view,
                                     "Invalid username/password");
                         }
                     }

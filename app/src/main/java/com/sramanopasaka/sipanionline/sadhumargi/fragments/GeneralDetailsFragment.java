@@ -1,56 +1,35 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.kofigyan.stateprogressbar.StateProgressBar;
-import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
-import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.RegisterProgressUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
-import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
-import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.CityPickerDialog;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
 import butterknife.Bind;
@@ -134,6 +113,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                         @Override
                         public void onZoneSelected(String zoneTxt, String id) {
                             zone.setText(zoneTxt);
+                            localSanghName.setText("");
+                            currentResidence.setText("");
                             selectedAnchalId = id;
                             zone.setError(null);
                             zonePickerDialog.dismiss();
@@ -173,7 +154,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                         }
                     }
                 }else{
-                    new CustomToast().Show_Toast(getActivity(), view,
+                    new CustomToast().showErrorToast(getActivity(), view,
                             "Please select anchal first");
                 }
 
@@ -205,7 +186,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                         }
                     }
                 }else{
-                    new CustomToast().Show_Toast(getActivity(), view,
+                    new CustomToast().showErrorToast(getActivity(), view,
                             "Please select anchal first");
                 }
 
