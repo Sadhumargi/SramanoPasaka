@@ -1,10 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
+
 /**
  * Created by sipani001 on 17/8/17.
  */
 
-public class City {
+public class City implements Listable {
 
 
     String city_id;
@@ -44,4 +46,9 @@ public class City {
 
     String state_id;
     String anchal_id;
+
+    @Override
+    public String getLabel() {
+        return city_name;
+    }
 }

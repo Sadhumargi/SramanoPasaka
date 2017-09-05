@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.FamilyHeadChangeListener;
@@ -30,12 +32,16 @@ import com.sramanopasaka.sipanionline.sadhumargi.listener.RelationsChangeListene
 import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Family;
+import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Relations;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.FamilyHeadPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.RelationPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -51,20 +57,22 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
 
     private View view = null;
 
-    private FamilyHeadPickerDialog familyHeadPickerDialog = null;
-    private FamilyHeadPickerDialog nativefamilyPickerDialog = null;
-    private RelationPickerDialog relationPickerDialog = null;
-    private RelationPickerDialog nativerelationPickerDialog = null;
     private RegistrationPojo registrationPojo = null;
 
     @Bind(R.id.family_head)
-    EditText familyHead;
+    ClickToSelectEditText<Family> familyHead;
+
+    @Bind(R.id.textInputLayoutHeadOfFamily)
+    TextInputLayout textInputLayoutHeadOfFamily;
+
+    @Bind(R.id.textInputLayoutRelations)
+    TextInputLayout textInputLayoutRelations;
 
     @Bind(R.id.relation)
-    EditText relation;
+    ClickToSelectEditText<Relations> relation;
 
     @Bind(R.id.relationLast)
-    EditText relationLast;
+    ClickToSelectEditText<Relations> relationLast;
 
     @Bind(R.id.familyLayout)
     LinearLayout familyLayout;
@@ -73,13 +81,25 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
     CheckBox family;
 
     @Bind(R.id.native_zone)
-    EditText nativeZone;
+    ClickToSelectEditText nativeZone;
+
+    @Bind(R.id.textInputLayoutNativeZone)
+    TextInputLayout textInputLayoutNativeZone;
+
+    @Bind(R.id.textInputLayoutNativeSangh)
+    TextInputLayout textInputLayoutNativeSangh;
+
+    @Bind(R.id.textInputLayoutNativeFamily)
+    TextInputLayout textInputLayoutNativeFamily;
 
     @Bind(R.id.native_sangh_name)
-    EditText nativeSanghName;
+    ClickToSelectEditText<LocalSangh> nativeSanghName;
+
+    @Bind(R.id.textInputLayoutNativeRelations)
+    TextInputLayout textInputLayoutNativeRelations;
 
     @Bind(R.id.native_family)
-    EditText basic_residence;
+    ClickToSelectEditText<Family> basic_residence;
 
     private String selectedNativeZoneId = null;
     private String selectedNativeSanghId = null;
@@ -107,6 +127,10 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
         super.onActivityCreated(savedInstanceState);
         StateProgressBar step_view = (StateProgressBar) view.findViewById(R.id.step_view);
         step_view.setStateDescriptionData(descriptionData);
+        showFamilyHeadUi(null);
+        showRelationUi(null);
+        showNativeFamilyHeadUi(null);
+        showNativeRelationUi(null);
         try {
             registrationPojo = getArguments().getParcelable("DATA");
             RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
@@ -116,97 +140,50 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             Log.e("----", registrationPojo + "");
         } catch (Exception ex) {
         }
-        /*familyHead.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Family relations = (Family) adapterView.getItemAtPosition(i);
-                if (relations != null) {
-                    selectedFamilyId = relations.getId();
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
-        familyHead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (familyHeadPickerDialog != null) {
-                    familyHeadPickerDialog.setCancelable(true);
-                    if (familyHeadPickerDialog.isHasData())
-                        familyHeadPickerDialog.show();
-                    else
-                        new CustomToast().showErrorToast(getActivity(), view, "No families associated with this");
-                } else {
-                    try {
-                        registrationPojo = getArguments().getParcelable("DATA");
-                        RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
-
-                        showLoadingDialog();
-                        requestProcessor.selectFamily(registrationPojo.getLocalSanghId(), registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
-                        Log.e("----", registrationPojo + "");
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        });
-
-        relation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (relationPickerDialog != null) {
-                    relationPickerDialog.setCancelable(true);
-                    relationPickerDialog.show();
-                } else {
-                    try {
-                        registrationPojo = getArguments().getParcelable("DATA");
-                        RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
-
-                        showLoadingDialog();
-                        requestProcessor.selectFamily(registrationPojo.getLocalSanghId(), registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
-                        Log.e("----", registrationPojo + "");
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        });
-        relationLast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nativerelationPickerDialog != null) {
-                    nativerelationPickerDialog.setCancelable(true);
-                    nativerelationPickerDialog.show();
-                } else {
-                    try {
-                        registrationPojo = getArguments().getParcelable("DATA");
-                        RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
-
-                        showLoadingDialog();
-                        requestProcessor.selectFamily(selectedNativeSanghId, registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
-                        Log.e("----", registrationPojo + "");
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        });
-
 
         family.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+
                     familyLayout.setVisibility(View.VISIBLE);
+                    ZoneListResponse zoneListResponse = OfflineData.getZoneList();
+                    if (zoneListResponse == null) {
+                        RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
+                        processor.selectZoneList();
+                    } else {
+
+                        nativeZone.setItems(zoneListResponse.getZoneList());
+                        nativeZone.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Zone>() {
+                            @Override
+                            public void onItemSelectedListener(Zone item, int selectedIndex) {
+                                nativeZone.setText(item.getLabel());
+                                nativeSanghName.setText("");
+                                basic_residence.setText("");
+                                selectedNativeZoneId = item.getAnchal_id();
+                                nativeZone.setError(null);
+                                showLoadingDialog();
+                                RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
+                                processor.getLocalSanghList(item.getAnchal_id());
+                            }
+
+                            @Override
+                            public void onNoDataSet() {
+                                showLoadingDialog();
+                                RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
+                                processor.selectZoneList();
+                            }
+                        });
+
+                    }
+
                 } else {
                     familyLayout.setVisibility(View.GONE);
                 }
             }
         });
 
-        nativeZone.setOnClickListener(new View.OnClickListener() {
+       /* nativeZone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -233,177 +210,117 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                 }
 
             }
-        });
+        });*/
 
-        nativeSanghName.setOnClickListener(new View.OnClickListener() {
+        nativeSanghName.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<LocalSangh>() {
             @Override
-            public void onClick(View view) {
-                if (!TextUtils.isEmpty(selectedNativeZoneId)) {
-                    LocalSanghResponse localSanghResponse = OfflineData.getLocalSanghList();
-                    if (localSanghResponse != null && localSanghResponse.getData() != null) {
-                        final SanghPickerDialog sanghPickerDialog = new SanghPickerDialog(getActivity(), localSanghResponse.getData(), getString(R.string.Sangh_Name));
-                        sanghPickerDialog.setZoneChangeListner(new SanghChangeListener() {
-                            @Override
-                            public void onSanghSelected(String sangh, String id) {
-                                nativeSanghName.setText(sangh);
-                                selectedNativeSanghId = id;
-                                sanghPickerDialog.dismiss();
-
-                                showLoadingDialog();
-                                RequestProcessor requestProcessor = new RequestProcessor(new GUICallback() {
-                                    @Override
-                                    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
-                                        hideLoadingDialog();
-                                        if (guiResponse != null) {
-                                            if (requestStatus.equals(RequestStatus.SUCCESS)) {
-                                                if (guiResponse instanceof FamilyResponse) {
-
-                                                    FamilyResponse familyResponse = (FamilyResponse) guiResponse;
-                                                    if (familyResponse != null) {
-
-                                                        if (familyResponse.getFamilies() != null) {
-                                                            nativefamilyPickerDialog = new FamilyHeadPickerDialog(getActivity(), familyResponse.getFamilies(), getString(R.string.Basic_residence_family));
-                                                            nativefamilyPickerDialog.setFamilyHeadChangeListner(new FamilyHeadChangeListener() {
-                                                                @Override
-                                                                public void onFamilyHeadSelected(String family, String id) {
-                                                                    basic_residence.setText(family);
-                                                                    selectedNativeFamilyId = id;
-                                                                    nativefamilyPickerDialog.dismiss();
-                                                                }
-                                                            });
-                                                        }
-
-                                                        if (familyResponse.getRelations() != null) {
-                                                            nativerelationPickerDialog = new RelationPickerDialog(getActivity(), familyResponse.getRelations(), getString(R.string.Relation));
-                                                            nativerelationPickerDialog.setRelationsChangeListner(new RelationsChangeListener() {
-                                                                @Override
-                                                                public void onRelationSelected(String family, String id) {
-                                                                    relationLast.setText(family);
-                                                                    nativerelationPickerDialog.dismiss();
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                });
-                                requestProcessor.selectFamily(selectedNativeSanghId, registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
-                            }
-                        });
-                        sanghPickerDialog.show();
-
-                    } else {
-                        if (!TextUtils.isEmpty(selectedNativeZoneId)) {
-                            RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
-                            processor.getLocalSanghList(selectedNativeZoneId);
-                        } else {
-                            Log.e("----", "please select anchal");
-                        }
-                    }
-                } else {
-                    new CustomToast().showErrorToast(getActivity(), view,
-                            "Please select anchal first");
-                }
+            public void onItemSelectedListener(LocalSangh item, int selectedIndex) {
 
             }
+
+            @Override
+            public void onNoDataSet() {
+
+                new CustomToast().showErrorToast(getActivity(),view,"Please select native zone first");
+            }
         });
+          nativeSanghName.setItems(null);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getActivity(), android.R.layout.simple_spinner_dropdown_item, new String[]{""});
 
 
-        basic_residence.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nativefamilyPickerDialog != null) {
-                    nativefamilyPickerDialog.setCancelable(true);
-                    if (nativefamilyPickerDialog.isHasData())
-                        nativefamilyPickerDialog.show();
-                    else
-                        new CustomToast().showErrorToast(getActivity(), view, "No families associated with this");
-                } else {
-                    try {
-                        registrationPojo = getArguments().getParcelable("DATA");
-                        showLoadingDialog();
-                        RequestProcessor requestProcessor = new RequestProcessor(new GUICallback() {
-                            @Override
-                            public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
-                                hideLoadingDialog();
-                                if (guiResponse != null) {
-                                    if (requestStatus.equals(RequestStatus.SUCCESS)) {
-                                        if (guiResponse instanceof FamilyResponse) {
-
-                                            FamilyResponse familyResponse = (FamilyResponse) guiResponse;
-                                            if (familyResponse != null) {
-
-
-                                                if (familyResponse.getFamilies() != null) {
-                                                    nativefamilyPickerDialog = new FamilyHeadPickerDialog(getActivity(), familyResponse.getFamilies(), getString(R.string.Basic_residence_family));
-                                                    nativefamilyPickerDialog.setFamilyHeadChangeListner(new FamilyHeadChangeListener() {
-                                                        @Override
-                                                        public void onFamilyHeadSelected(String family, String id) {
-                                                            basic_residence.setText(family);
-                                                            selectedNativeFamilyId = id;
-                                                            nativefamilyPickerDialog.dismiss();
-                                                        }
-                                                    });
-                                                }
-
-                                                if (familyResponse.getRelations() != null) {
-                                                    nativerelationPickerDialog = new RelationPickerDialog(getActivity(), familyResponse.getRelations(), getString(R.string.Relation));
-                                                    nativerelationPickerDialog.setRelationsChangeListner(new RelationsChangeListener() {
-                                                        @Override
-                                                        public void onRelationSelected(String family, String id) {
-                                                            relationLast.setText(family);
-                                                            nativerelationPickerDialog.dismiss();
-                                                        }
-                                                    });
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                        requestProcessor.selectFamily(selectedNativeSanghId, registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        });
-
     }
 
     private void showFamilyHeadUi(ArrayList<Family> familyList) {
 
-        familyHeadPickerDialog = new FamilyHeadPickerDialog(getActivity(), familyList, getString(R.string.HeadofFamil));
-        familyHeadPickerDialog.setFamilyHeadChangeListner(new FamilyHeadChangeListener() {
+
+
+        familyHead.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Family>() {
             @Override
-            public void onFamilyHeadSelected(String family, String id) {
-                familyHead.setText(family);
-                selectedFamilyId = id;
-                familyHeadPickerDialog.dismiss();
+            public void onItemSelectedListener(Family item, int selectedIndex) {
+                familyHead.setText(String.format("%s %s", item.getCode(), item.getFirst_name()));
+                selectedFamilyId = item.getId();
+                textInputLayoutHeadOfFamily.setError(null);
+            }
+
+            @Override
+            public void onNoDataSet() {
+                new CustomToast().showErrorToast(getActivity(), view, "No families associated with this");
+                RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
+                showLoadingDialog();
+                requestProcessor.selectFamily(registrationPojo.getLocalSanghId(), registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
             }
         });
-
+        familyHead.setItems(familyList);
 
     }
 
     private void showRelationUi(final ArrayList<Relations> relations) {
 
-        relationPickerDialog = new RelationPickerDialog(getActivity(), relations, getString(R.string.Relation));
-        relationPickerDialog.setRelationsChangeListner(new RelationsChangeListener() {
+
+
+        relation.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Relations>() {
             @Override
-            public void onRelationSelected(String family, String id) {
-                relation.setText(family);
-                selectedRelationId = id;
-                relationPickerDialog.dismiss();
+            public void onItemSelectedListener(Relations item, int selectedIndex) {
+                relation.setText(item.getRelation());
+                selectedRelationId = item.getId();
+                textInputLayoutRelations.setError(null);
+            }
+
+            @Override
+            public void onNoDataSet() {
+                new CustomToast().showErrorToast(getActivity(), view, "No relations found");
+                RequestProcessor requestProcessor = new RequestProcessor(FamilyDetailsFragment.this);
+                showLoadingDialog();
+                requestProcessor.selectFamily(registrationPojo.getLocalSanghId(), registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
             }
         });
+        relation.setItems(relations);
+
     }
 
+
+    private void showNativeFamilyHeadUi(ArrayList<Family> familyList) {
+
+
+
+        basic_residence.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Family>() {
+            @Override
+            public void onItemSelectedListener(Family item, int selectedIndex) {
+                basic_residence.setText(item.getLabel());
+                selectedNativeFamilyId = item.getId();
+            }
+
+            @Override
+            public void onNoDataSet() {
+
+                new CustomToast().showErrorToast(getActivity(),view,"Please select local sangh first");
+            }
+        });
+        basic_residence.setItems(familyList);
+
+    }
+
+    private void showNativeRelationUi(final ArrayList<Relations> relations) {
+
+
+
+        relationLast.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Relations>() {
+            @Override
+            public void onItemSelectedListener(Relations item, int selectedIndex) {
+                relationLast.setText(item.getLabel());
+            }
+
+            @Override
+            public void onNoDataSet() {
+                new CustomToast().showErrorToast(getActivity(),view,"Please select family first");
+            }
+        });
+        relationLast.setItems(relations);
+
+    }
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
         hideLoadingDialog();
@@ -421,55 +338,126 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                     LocalSanghResponse response = (LocalSanghResponse) guiResponse;
                     if (response != null && response.getData() != null && response.getData().size() > 0) {
                         OfflineData.saveLocalSanghResponse(response);
+                        nativeSanghName.setItems(response.getData());
+                        nativeSanghName.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<LocalSangh>() {
+                            @Override
+                            public void onItemSelectedListener(LocalSangh item, int selectedIndex) {
 
+                                nativeSanghName.setText(item.getLabel());
+                                selectedNativeSanghId = item.getId();
+
+                                showLoadingDialog();
+                                RequestProcessor requestProcessor = new RequestProcessor(new GUICallback() {
+                                    @Override
+                                    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+                                        hideLoadingDialog();
+                                        if (guiResponse != null) {
+                                            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+                                                if (guiResponse instanceof FamilyResponse) {
+
+                                                    FamilyResponse familyResponse = (FamilyResponse) guiResponse;
+                                                    if (familyResponse != null) {
+
+                                                        if (familyResponse.getFamilies() != null) {
+
+
+
+                                                            showNativeFamilyHeadUi(familyResponse.getFamilies());
+
+                                                        }
+
+                                                        if (familyResponse.getRelations() != null) {
+                                                            showNativeRelationUi(familyResponse.getRelations());
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                                requestProcessor.selectFamily(selectedNativeSanghId, registrationPojo.getFirstName(), registrationPojo.getLastName(), registrationPojo.getCity());
+                            }
+
+                            @Override
+                            public void onNoDataSet() {
+                                showLoadingDialog();
+                                RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
+                                processor.selectZoneList();
+                            }
+                        });
 
                     }
                 }
+            } else {
+                new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
+                showFamilyHeadUi(null);
             }
+        } else {
+            new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
         }
     }
 
     @OnClick(R.id.go_ahead)
     public void goAhead() {
         boolean callAPi = true;
+
         if (TextUtils.isEmpty(familyHead.getText().toString())) {
-            new CustomToast().showErrorToast(getActivity(), view,
-                    "Family head is required");
+            textInputLayoutHeadOfFamily.setError("Family head is required");
+            familyHead.requestFocus();
             callAPi = false;
+        } else {
+
+            textInputLayoutHeadOfFamily.setError(null);
         }
 
-        if (TextUtils.isEmpty(relation.getText().toString()) && callAPi) {
-            new CustomToast().showErrorToast(getActivity(), view,
-                    "Relation is required");
+        if (TextUtils.isEmpty(relation.getText().toString())) {
+            textInputLayoutRelations.setError("Relation is required");
+            relation.requestFocus();
             callAPi = false;
+        } else {
+
+            textInputLayoutRelations.setError(null);
         }
+
 
         if (family.isChecked() && callAPi) {
-            if (nativeZone.getText().toString().length() == 0) {
-                nativeZone.setError("zone name is required");
+            if (TextUtils.isEmpty(nativeZone.getText().toString())) {
+                textInputLayoutNativeZone.setError("zone name is required");
                 nativeZone.requestFocus();
                 callAPi = false;
             } else {
 
-                nativeZone.setError(null);
+                textInputLayoutNativeZone.setError(null);
                 nativeZone.clearFocus();
             }
             if (TextUtils.isEmpty(nativeSanghName.getText().toString()) && callAPi) {
                 callAPi = false;
-                new CustomToast().showErrorToast(getActivity(), view,
-                        "local sangh is required");
+                textInputLayoutNativeSangh.setError("local sangh is required");
+                nativeSanghName.requestFocus();
+            } else {
+
+                textInputLayoutNativeSangh.setError(null);
+                nativeSanghName.clearFocus();
             }
             if (TextUtils.isEmpty(basic_residence.getText().toString()) && callAPi) {
                 callAPi = false;
-                new CustomToast().showErrorToast(getActivity(), view,
-                        "current residence is required");
+                textInputLayoutNativeFamily.setError("current residence is required");
+                basic_residence.requestFocus();
+            } else {
+                textInputLayoutNativeFamily.setError(null);
+                basic_residence.clearFocus();
+            }
+            if (TextUtils.isEmpty(relationLast.getText().toString()) && callAPi) {
+                callAPi = false;
+                textInputLayoutNativeRelations.setError("relation is required");
+                relationLast.requestFocus();
+            } else {
+                textInputLayoutNativeRelations.setError(null);
+                relationLast.clearFocus();
             }
 
-            if (TextUtils.isEmpty(relationLast.getText().toString()) && callAPi) {
-                new CustomToast().showErrorToast(getActivity(), view,
-                        "Relation is required");
-                callAPi = false;
-            }
+
         }
 
 

@@ -1,10 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
+
 /**
  * Created by sipani001 on 28/8/17.
  */
 
-public class Family {
+public class Family implements Listable {
 
     String id=null;
 
@@ -196,5 +198,10 @@ public class Family {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public String getLabel() {
+        return  String.format("%s %s", code,first_name);
     }
 }

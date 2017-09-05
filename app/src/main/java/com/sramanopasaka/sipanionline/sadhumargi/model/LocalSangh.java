@@ -1,10 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
+
 /**
  * Created by sipani001 on 29/8/17.
  */
 
-public class LocalSangh {
+public class LocalSangh implements Listable{
 
     private String id=null;
     private String branch_name=null;
@@ -98,4 +100,8 @@ public class LocalSangh {
     private String country_id=null;
     private String is_active=null;
 
+    @Override
+    public String getLabel() {
+        return branch_name;
+    }
 }

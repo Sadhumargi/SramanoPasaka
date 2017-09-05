@@ -1,12 +1,14 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
+
 /**
  * Name    :   pranavjdev
  * Date   : 8/28/17
  * Email : pranavjaydev@gmail.com
  */
 
-public class Relations {
+public class Relations implements Listable {
 
     String relation_id=null;
     String relation_label_en=null;
@@ -53,5 +55,10 @@ public class Relations {
 
     public void setRelation_label_hi(String relation_label_hi) {
         this.relation_label_hi = relation_label_hi;
+    }
+
+    @Override
+    public String getLabel() {
+        return relation;
     }
 }

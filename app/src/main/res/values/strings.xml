@@ -345,6 +345,7 @@
     <string name="current_password">*वर्तमान पासवर्ड</string>
     <string name="New_password">*नवीन पासवर्ड</string>
     <string name="Reset_password">पासवर्ड परिवर्तित करे</string>
+    <string name="salutation">*Salutation</string>
 
     <string name="MobileNo.">Mobile Number</string>
     <string name="Emailid_resetpass">Email id</string>

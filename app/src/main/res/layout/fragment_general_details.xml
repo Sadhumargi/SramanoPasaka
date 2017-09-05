@@ -46,21 +46,21 @@
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
-            <RadioGroup
+            <!--<RadioGroup
 
                 android:id="@+id/radiogrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fab_margin"
-                android:weightSum="3"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="3">
 
                 <RadioButton
                     android:id="@+id/radio_ms"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
+                    android:layout_weight="1"
                     android:checked="true"
                     android:padding="10dp"
                     android:shadowColor="@color/black"
@@ -72,8 +72,8 @@
                 <RadioButton
                     android:id="@+id/radio_mr"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:padding="10dp"
                     android:text="@string/Srimati"
                     android:textColor="@color/white"
@@ -83,8 +83,8 @@
                 <RadioButton
                     android:id="@+id/radio_mrs"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:padding="10dp"
                     android:text="@string/MrorMs"
                     android:textColor="@color/white"
@@ -93,71 +93,57 @@
 
                 </RadioButton>
 
-            </RadioGroup>
+            </RadioGroup>-->
 
-
-            <EditText
-                android:id="@+id/first_name"
-                android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/firstname"
-                android:imeOptions="actionNext"
-                android:inputType="text|textPersonName"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:paddingLeft="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-
-
-
-            <EditText
-                android:id="@+id/last_name"
-                android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/lastname"
-                android:inputType="text|none"
-                android:paddingLeft="@dimen/dimen_10"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayoutSalutation"
                 android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/salutation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/salutation"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutFirstName"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/zone"
+                    android:id="@+id/first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/radiogrp"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:background="@drawable/edt_border"
-                    android:hint="@string/anchal"
-                    android:editable="false"
-                    android:focusableInTouchMode="false"
+
+                    android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="@string/firstname"
+                    android:imeOptions="actionNext"
+                    android:inputType="text|textPersonName|textNoSuggestions"
                     android:maxLength="50"
                     android:paddingBottom="@dimen/dimen_10"
                     android:paddingLeft="@dimen/dimen_10"
-                    android:maxLines="1"
+                    android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/orange"
                     android:textCursorDrawable="@drawable/cursor_drawable"
@@ -165,73 +151,148 @@
                     android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 
-            <!-- <Spinner
-                 android:id="@+id/local_sangh_name"
-                 style="@style/spinner_style"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_margin="@dimen/fab_margin"
 
-                 />
- -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutLastName"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/local_sangh_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/Sangh_Name"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:paddingLeft="@dimen/dimen_10"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="@string/selectcity"
-                android:paddingLeft="@dimen/dimen_10"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                <EditText
+                    android:id="@+id/last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+                    android:digits="abcdefghijklmnopqurstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="@string/lastname"
+                    android:inputType="text|none|textNoSuggestions"
+                    android:maxLength="50"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/district"
+
+
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutAnchal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="Select District"
-                android:maxLength="40"
-                android:paddingLeft="@dimen/dimen_10"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:layout_margin="@dimen/fab_margin"
+
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/zone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/anchal"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutLocalSangh"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/local_sangh_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Sangh_Name"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:inputType="textNoSuggestions"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutCity"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/selectcity"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:inputType="textNoSuggestions"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+                    android:hint="Select District"
+                    android:imeOptions="actionNext"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
+            </android.support.design.widget.TextInputLayout>
+
+
 
             <!--  <Spinner
                   style="@style/spinner_style"
@@ -242,25 +303,32 @@
 
                   />-->
 
-            <EditText
-                android:id="@+id/currentResidence"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutCurrentResident"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
                 android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/Current_residence"
-                android:editable="false"
-                android:maxLength="50"
-                android:focusableInTouchMode="false"
-                android:paddingBottom="@dimen/dimen_10"
-                android:paddingLeft="@dimen/dimen_10"
-                android:maxLines="1"
-                android:textColor="@color/white"
+
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/currentResidence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Current_residence"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:inputType="textNoSuggestions"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </android.support.design.widget.TextInputLayout>
+
 
             <Button
                 android:id="@+id/goAhead"
