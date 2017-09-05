@@ -159,7 +159,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 boolean callAPi = true;
 
                 if (!termsCheckBox.isChecked()) {
-                    Toast.makeText(getActivity()sudo git pull origin w, "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
                     callAPi = false;
                 }
 

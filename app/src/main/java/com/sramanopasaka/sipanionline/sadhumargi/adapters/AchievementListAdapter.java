@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,8 @@ public class AchievementListAdapter extends RecyclerView.Adapter<AchievementList
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Achievements model = list.get(position);
         holder.txtAddressTag.setText(model.getAchievement_sector());
-        holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + model.getAchievement_detail() + ", " + model.getAchievement_year());
+        String achievementDetails = TextUtils.isEmpty(model.getAchievement_detail()) ? "" : model.getAchievement_detail() + ", " ;
+        holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + achievementDetails+ model.getAchievement_year());
 
     }
 

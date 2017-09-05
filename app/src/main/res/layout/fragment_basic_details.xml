@@ -104,7 +104,8 @@
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
 
             <EditText
                 android:id="@+id/last_name"
@@ -122,7 +123,8 @@
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
 
 
             <LinearLayout
@@ -145,11 +147,12 @@
                     android:id="@+id/guardianName"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
                     android:layout_below="@+id/radiogrp"
                     android:layout_margin="@dimen/fab_margin"
                     android:layout_weight=".6"
                     android:background="@drawable/border_basicdetails"
-                    android:maxLength="200"
+                    android:maxLength="50"
                     android:textColor="@color/black"
                     android:textColorHint="@color/Basic_details"
                     android:textCursorDrawable="@drawable/cursor_basicdetails"
@@ -479,7 +482,8 @@
                 android:textColorHint="@color/Basic_details"
                 android:textCursorDrawable="@drawable/cursor_basicdetails"
                 android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
 
             <Button
                 android:id="@+id/create_profile"
