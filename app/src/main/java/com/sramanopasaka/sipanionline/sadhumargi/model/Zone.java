@@ -1,10 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
+
 /**
  * Created by sipani001 on 28/8/17.
  */
 
-public class Zone {
+public class Zone implements Listable{
 
     private String anchal_id=null;
 
@@ -35,4 +37,8 @@ public class Zone {
     private String name=null;
     private String display_order=null;
 
+    @Override
+    public String getLabel() {
+        return name;
+    }
 }

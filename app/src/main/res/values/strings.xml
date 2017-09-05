@@ -64,6 +64,7 @@
     <string name="sanghistory">साधुमार्गी संघ इतिहास</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close">close</string>
 
     <string name="title_activity_books_pages">BooksPages</string>
     <string name="title_activity_vihar_list_adapter">ViharListAdapter</string>
@@ -472,18 +473,18 @@
     <array name="head_of_family_relation">
 
         <item>Self स्वयं</item>
-        <item>Grand	Father दादा</item>
-        <item>Grand	Mother दादी</item>
-        <item>Maternal Grand Father	नाना</item>
-        <item>Maternal Grand Mother	नानी</item>
-        <item>Father पिता </item>
-        <item>Mother माता </item>
-        <item>Elder	Brother बड़ा भाई 	</item>
+        <item>Grand Father दादा</item>
+        <item>Grand Mother दादी</item>
+        <item>Maternal Grand Father नाना</item>
+        <item>Maternal Grand Mother नानी</item>
+        <item>Father पिता</item>
+        <item>Mother माता</item>
+        <item>Elder Brother बड़ा भाई</item>
         <item>Younger Brother छोटा भाई</item>
         <item>Husband\'s elder brother जेठ</item>
-        <item>Husband\'s	younger brother देवर</item>
+        <item>Husband\'s younger brother देवर</item>
         <item>Elder Sister बड़ी बहन</item>
-        <item>Younger Sister छोटी बहन </item>
+        <item>Younger Sister छोटी बहन</item>
         <item>Husband पति</item>
         <item>Wife पत्नी</item>
         <item>Son पुत्र</item>
@@ -491,12 +492,12 @@
         <item>Granddaughter पोत्रि</item>
         <item>Maternal Grandson दोहिता</item>
         <item>Maternal Granddaughter दोहिता</item>
-        <item>Uncle	चाचा </item>
-        <item>Aunt चाची </item>
+        <item>Uncle चाचा</item>
+        <item>Aunt चाची</item>
         <item>Maternal Uncle मामा</item>
-        <item>Maternal Aunt मामी </item>
+        <item>Maternal Aunt मामी</item>
         <item>Cousin Brother चचेरा भाई</item>
-        <item>Cousin Sister चचेरी बहन </item>
+        <item>Cousin Sister चचेरी बहन</item>
 
     </array>
 
@@ -508,6 +509,17 @@
     </array>
 
     <string name="home">होम</string>
+
+    <string name="mobile_info">
+        <![CDATA[
+<html>
+ <head></head>
+ <body style="text-align:justify;">
+ You will get your password through SMS in your given mobile number for the first time, Please enter the mobile number properly
+ </body>
+</html>
+]]>
+    </string>
 
 
 </resources>

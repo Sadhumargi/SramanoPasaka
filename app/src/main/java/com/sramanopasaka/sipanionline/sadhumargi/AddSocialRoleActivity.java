@@ -23,6 +23,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerA
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.DateTimeUtils;
 
 import java.util.Calendar;
 
@@ -116,9 +117,12 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
                                   int dayOfMonth) {
                 monthOfYear+=1;
 
+               long minTime =  DateTimeUtils.dateToMillisecs(dayOfMonth+" "+ monthOfYear+" "+year);
                 startdate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
                 endDatePickerDialog =  new DatePickerDialog(AddSocialRoleActivity.this, endDateSelectionListner, year, myCalendar.get(Calendar.MONTH),
                         monthOfYear);
+                endDatePickerDialog.getDatePicker().setMinDate(minTime);
+                endDatePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                // endDatePickerDialog.getDatePicker().setMinDate();
             }
 
@@ -130,9 +134,11 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(AddSocialRoleActivity.this, startDateSelectionListner, myCalendar
+                DatePickerDialog picker =   new DatePickerDialog(AddSocialRoleActivity.this, startDateSelectionListner, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                picker.getDatePicker().setMaxDate(System.currentTimeMillis());
+                picker.show();
 
             }
         });

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
@@ -111,6 +113,9 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     @Bind(R.id.age)
     EditText age;
 
+    @Bind(R.id.mobileInfo)
+    TextView mobileInfo;
+
     String[] descriptionData = {"Basic", "Family", "Personal"};
 
     private View view = null;
@@ -137,6 +142,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
         }
 
+        mobileInfo.setText(Html.fromHtml(getString(R.string.mobile_info)));
+
         final Calendar myCalendar = Calendar.getInstance();
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -158,14 +165,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                 boolean callAPi = true;
 
-                if (!termsCheckBox.isChecked()) {
-                    Toast.makeText(getActivity()sudo git pull origin w, "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
-                    callAPi = false;
-                }
-
-
                 if (profileCreatedby.getSelectedItem() == null && callAPi) {
-                    Toast.makeText(getActivity(), "Profile Created by is required", Toast.LENGTH_SHORT).show();
+                    new CustomToast().showErrorToast(getActivity(),view,"Profile Created by is required");
                     profileCreatedby.requestFocus();
                     // Gender.requestFocusFromTouch();
                     callAPi = false;
@@ -280,37 +281,42 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
                 if (gender.getSelectedItem() == null && callAPi) {
-                    Toast.makeText(getActivity(), "Gender is required", Toast.LENGTH_SHORT).show();
+                    new CustomToast().showErrorToast(getActivity(),view,"Gender is required");
                     gender.requestFocus();
                     // Gender.requestFocusFromTouch();
                     callAPi = false;
                 }
 
-
-                if (ageCheckBox.isChecked() && age.getText().toString().length() == 0) {
-                    age.setError("age is required");
-                    age.requestFocus();
-                    callAPi = false;
-                } else {
-                    age.setError(null);
-                }
-
                 if (!ageCheckBox.isChecked() && bDate.getText().toString().length() == 0) {
                     bDate.setError("Birthdate is required");
                     bDate.requestFocus();
+                    bDate.requestFocusFromTouch();
                     callAPi = false;
                 } else {
                     bDate.setError(null);
+                    bDate.setError(null);
+                }
+                if (ageCheckBox.isChecked() && age.getText().toString().length() == 0) {
+                    age.setError("age is required");
+                    age.requestFocus();
+                    age.requestFocusFromTouch();
+                    callAPi = false;
+                } else {
+                    age.setError(null);
+                    age.setError(null);
                 }
 
-
+                if (callAPi && !termsCheckBox.isChecked()) {
+                    new CustomToast().showErrorToast(getActivity(),view,"Please accept the terms and condtions");
+                    callAPi = false;
+                }
 
                 if (callAPi) {
                     RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);
 
                     if (ageCheckBox.isChecked())
                         bDate.setText("");
-                    else{
+                    else {
                         age.setText("0");
                     }
 
@@ -438,6 +444,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    age.setError(null);
                     age.setVisibility(View.VISIBLE);
                 } else {
                     age.setVisibility(View.GONE);
@@ -517,9 +524,9 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                         } else {
                             if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(),view,loginResponse.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(),view,"Invalid username/password");
                             }
                         }
                     }
@@ -531,8 +538,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                             //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
 
-                            PreferenceUtils.setLastLoginTime(getActivity(),System.currentTimeMillis());
-                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+                            PreferenceUtils.setLastLoginTime(getActivity(), System.currentTimeMillis());
+                            new CustomToast().showInformationToast(getActivity(),view,"Success");
 
                             Intent i = new Intent(getActivity(), ProfileActivity.class);
                             i.putExtra("position", 8);
@@ -540,9 +547,9 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             getActivity().finish();
                         } else {
                             if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(),view,loginResponse.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(),view,"Invalid username/password");
                             }
                         }
                     }

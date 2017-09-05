@@ -44,6 +44,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
@@ -73,8 +74,9 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:orientation="horizontal"
                     android:paddingBottom="@dimen/dimen_10">
 
@@ -104,13 +106,13 @@
                 <EditText
                     android:id="@+id/age"
                     android:layout_width="0dp"
-                    android:layout_margin="@dimen/fab_margin"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:layout_weight="4"
                     android:background="@drawable/edt_border"
-                    android:focusableInTouchMode="false"
-                    android:inputType="number"
+                    android:layout_gravity="center_vertical"
                     android:hint="@string/age"
+                    android:inputType="number"
                     android:maxLength="3"
                     android:paddingBottom="@dimen/dimen_10"
                     android:singleLine="true"
@@ -119,7 +121,6 @@
                     android:textCursorDrawable="@drawable/cursor_drawable"
                     android:textSize="@dimen/large"
                     android:textStyle="normal" />
-
 
             </LinearLayout>
 
@@ -191,20 +192,19 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/mobileInfo"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="@dimen/fab_margin"
                 android:layout_marginRight="@dimen/fab_margin"
                 android:layout_marginBottom="@dimen/fab_margin"
-                android:textSize="@dimen/small_text_12"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="[ You will get your password through SMS in your given mobile number for the first time, Please enter the mobile number properly]"
+                android:textSize="@dimen/small_text_12"
+
                 android:layout_height="wrap_content" />
 
 
             <EditText
                 android:id="@+id/email"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$^*()_+{}[]\,./;:'1234567890"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radiogrp"
