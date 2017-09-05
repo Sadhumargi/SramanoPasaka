@@ -128,14 +128,13 @@ hideLoadingDialog();
                     PasswordRecoverResponse response = (PasswordRecoverResponse) guiResponse;
                     if (response != null)
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
-                            
 
                             if (response.getEmail()) {
 
                                 Toast.makeText(this,"Account information sent to your registered email id!", Toast.LENGTH_SHORT).show();
                             }else if(response.getMobile()){
 
-                                Toast.makeText(this, "\"Account information sent to your registered mobile via SMS!\"", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Account information sent to your registered mobile via SMS!", Toast.LENGTH_SHORT).show();
 
                             }
 

@@ -135,6 +135,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         android:id="@+id/special"
         android:layout_margin="@dimen/fab_margin"
         android:paddingBottom="@dimen/dimen_10"

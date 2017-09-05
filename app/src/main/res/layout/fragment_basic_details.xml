@@ -454,7 +454,7 @@
                 android:background="@drawable/border_basicdetails"
                 android:hint="@string/Alternativeno."
                 android:inputType="number"
-                android:maxLength="10"
+                android:maxLength="11"
                 android:paddingBottom="@dimen/dimen_10"
                 android:paddingLeft="@dimen/medium"
                 android:textColor="@color/black"

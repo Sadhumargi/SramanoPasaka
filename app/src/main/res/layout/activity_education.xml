@@ -56,7 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:paddingLeft="@dimen/small"
-        android:digits="abcdefghijklmnopqrstuvwxyz ."
         android:background="@drawable/border_basicdetails"
         android:hint="@string/Description"
         android:paddingBottom="@dimen/dimen_10"
@@ -103,7 +102,7 @@
 
     <EditText
         android:editable="false"
-        android:digits="abcdefghijklmnopqrstuvwxyz."
+        android:focusableInTouchMode="false"
         android:id="@+id/educationyear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

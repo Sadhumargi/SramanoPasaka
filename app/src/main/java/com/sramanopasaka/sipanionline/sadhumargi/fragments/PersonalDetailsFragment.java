@@ -158,6 +158,12 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                 boolean callAPi = true;
 
+                if (!termsCheckBox.isChecked()) {
+                    Toast.makeText(getActivity()sudo git pull origin w, "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
+                    callAPi = false;
+                }
+
+
                 if (profileCreatedby.getSelectedItem() == null && callAPi) {
                     Toast.makeText(getActivity(), "Profile Created by is required", Toast.LENGTH_SHORT).show();
                     profileCreatedby.requestFocus();
@@ -280,27 +286,24 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     callAPi = false;
                 }
 
-                if (!ageCheckBox.isChecked() && bDate.getText().toString().length() == 0) {
-                    bDate.setError("Birthdate is required");
-                    bDate.requestFocus();
-                    callAPi = false;
-                } else {
-                    bDate.setError(null);
-                    bDate.setError(null);
-                }
+
                 if (ageCheckBox.isChecked() && age.getText().toString().length() == 0) {
                     age.setError("age is required");
                     age.requestFocus();
                     callAPi = false;
                 } else {
                     age.setError(null);
-                    age.setError(null);
                 }
 
-                if (callAPi && !termsCheckBox.isChecked()) {
-                    Toast.makeText(getActivity(), "Please accept the terms and condtions", Toast.LENGTH_SHORT).show();
+                if (!ageCheckBox.isChecked() && bDate.getText().toString().length() == 0) {
+                    bDate.setError("Birthdate is required");
+                    bDate.requestFocus();
                     callAPi = false;
+                } else {
+                    bDate.setError(null);
                 }
+
+
 
                 if (callAPi) {
                     RequestProcessor requestProcessor = new RequestProcessor(PersonalDetailsFragment.this);

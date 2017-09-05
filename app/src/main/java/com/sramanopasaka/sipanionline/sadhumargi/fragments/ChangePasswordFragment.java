@@ -2,6 +2,7 @@ package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,28 +79,35 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
             currentPassword.requestFocus();
             callAPi = false;
         }
-        if (TextUtils.isEmpty(nPassword)) {
-            newPassword.setError("Please enter a new password");
-            newPassword.requestFocus();
-            callAPi = false;
-        }
+
         if (callAPi) {
+
             if ((currentPassword.getText().toString().length()) < 5) {
-                currentPassword.setError("Current password should be atleast of 5 charactors");
+                currentPassword.setError("Current password should be atleast of 5 characters");
                 currentPassword.requestFocus();
                 callAPi = false;
             }
+
+
+            if ((newPassword.getText().toString().length()) < 5) {
+                newPassword.setError("New password should be atleast of 5 characters");
+                newPassword.requestFocus();
+                callAPi = false;
+            }
+
+            if (TextUtils.isEmpty(nPassword)) {
+                newPassword.setError("New password is required");
+                newPassword.requestFocus();
+                callAPi = false;
+            }
+
             if (currentPassword.getText().toString().equals(newPassword.getText().toString())) {
                 newPassword.setError("Current and new password should not be same");
                 newPassword.requestFocus();
                 callAPi = false;
             }
 
-            if ((newPassword.getText().toString().length()) < 5) {
-                newPassword.setError("New password should be atleast of 5 charactors");
-                newPassword.requestFocus();
-                callAPi = false;
-            }
+
         }
         if (callAPi) {
 

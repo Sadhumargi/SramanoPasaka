@@ -368,7 +368,7 @@
     <string name="relation">*Relation</string>
     <string name="workercode">*Unique code issued to volunteer </string>
 
-    <string name="No_birth_date">Do not know the date of birth?</string>
+    <string name="No_birth_date">Don\'t know the date of birth?</string>
     <string name="age">*Age</string>
     <string name="Post">*Post</string>
 

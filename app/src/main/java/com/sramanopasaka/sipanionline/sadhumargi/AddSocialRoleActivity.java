@@ -78,7 +78,7 @@ public class AddSocialRoleActivity extends BaseActivity implements GUICallback {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>\"सामाजिक पद\"</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>सामाजिक पद</font>"));
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.org_role, android.R.layout.simple_spinner_item);
