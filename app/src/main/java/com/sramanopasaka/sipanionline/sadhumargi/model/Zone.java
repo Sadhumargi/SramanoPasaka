@@ -1,5 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
+
 import com.sramanopasaka.sipanionline.sadhumargi.listener.Listable;
 
 /**
@@ -36,7 +37,6 @@ public class Zone implements Listable{
 
     private String name=null;
     private String display_order=null;
-
     @Override
     public String getLabel() {
         return name;
