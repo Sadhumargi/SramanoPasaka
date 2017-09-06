@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -137,6 +138,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             @Override
             public void onItemSelectedListener(Salutation item, int selectedIndex) {
                 salutation.setText(item.getLabel());
+                textInputLayoutSalutation.setError(null);
+                salutation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
 
             @Override
@@ -160,6 +163,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                     localSanghName.setText("");
                     currentResidence.setText("");
                     selectedAnchalId = item.getAnchal_id();
+                    textInputLayoutAnchal.setError(null);
+                    anchalTxt.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
 
                     RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
                     processor.getLocalSanghList(item.getAnchal_id());
@@ -178,6 +183,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             public void onItemSelectedListener(LocalSangh item, int selectedIndex) {
                 localSanghName.setText(item.getBranch_name());
                 selectedLocalSanghId = item.getId();
+                localSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                textInputLayoutLocalSangh.setError(null);
             }
 
             @Override
@@ -193,6 +200,8 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             @Override
             public void onItemSelectedListener(LocalSangh item, int selectedIndex) {
                 currentResidence.setText(item.getBranch_name());
+                currentResidence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                textInputLayoutCurrentResident.setError(null);
             }
 
             @Override
@@ -215,6 +224,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
                 public void onItemSelectedListener(City item, int selectedIndex) {
                     sCity.setText(item.getCity_name());
                     textInputLayoutCity.setError(null);
+                    sCity.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                 }
 
                 @Override
@@ -237,9 +247,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             textInputLayoutSalutation.setError("salutation is required");
             salutation.requestFocus();
             callAPi = false;
+            salutation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
         } else {
             salutation.clearFocus();
             textInputLayoutSalutation.setError(null);
+            salutation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
         }
 
 
@@ -247,7 +259,9 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             textInputLayoutCity.setError("City name is required");
             sCity.requestFocus();
             callAPi = false;
+            sCity.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
         } else {
+            sCity.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             sCity.clearFocus();
             textInputLayoutCity.setError(null);
         }
@@ -276,17 +290,20 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             textInputLayoutAnchal.setError("Anchal name is required");
             anchalTxt.requestFocus();
             callAPi = false;
+            anchalTxt.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
         } else {
 
             textInputLayoutAnchal.setError(null);
+            anchalTxt.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             anchalTxt.clearFocus();
         }
         if (localSanghName.getText().toString().length() == 0) {
             textInputLayoutLocalSangh.setError("localSangh name is required");
             localSanghName.requestFocus();
+            localSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
-
+            localSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             textInputLayoutLocalSangh.setError(null);
             localSanghName.clearFocus();
         }
@@ -294,9 +311,10 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         if (currentResidence.getText().toString().length() == 0) {
             textInputLayoutCurrentResident.setError("localSangh name is required");
             currentResidence.requestFocus();
+            currentResidence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
-
+            currentResidence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             textInputLayoutCurrentResident.setError(null);
             currentResidence.clearFocus();
         }

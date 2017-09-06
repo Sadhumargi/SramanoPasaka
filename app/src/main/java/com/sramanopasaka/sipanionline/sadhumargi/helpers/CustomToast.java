@@ -57,7 +57,7 @@ public class CustomToast {
 		// Get TextView id and set error
 		TextView text = (TextView) layout.findViewById(R.id.toast_error);
 		text.setText(info);
-		text.setCompoundDrawablesWithIntrinsicBounds(R.drawable.toast_error, 0, 0, 0);
+		text.setCompoundDrawablesWithIntrinsicBounds(R.drawable.toast_info, 0, 0, 0);
 
 		Toast toast = new Toast(context);// Get Toast Context
 		toast.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL, 0, 0);// Set

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -165,6 +166,9 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                                 showLoadingDialog();
                                 RequestProcessor processor = new RequestProcessor(FamilyDetailsFragment.this);
                                 processor.getLocalSanghList(item.getAnchal_id());
+                                textInputLayoutNativeZone.setError(null);
+                                nativeZone.clearFocus();
+                                nativeZone.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                             }
 
                             @Override
@@ -243,6 +247,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
                 familyHead.setText(String.format("%s %s", item.getCode(), item.getFirst_name()));
                 selectedFamilyId = item.getId();
                 textInputLayoutHeadOfFamily.setError(null);
+                familyHead.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
 
             @Override
@@ -266,6 +271,8 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             public void onItemSelectedListener(Relations item, int selectedIndex) {
                 relation.setText(item.getRelation());
                 selectedRelationId = item.getId();
+                textInputLayoutRelations.setError(null);
+                relation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                 textInputLayoutRelations.setError(null);
             }
 
@@ -291,6 +298,8 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             public void onItemSelectedListener(Family item, int selectedIndex) {
                 basic_residence.setText(item.getLabel());
                 selectedNativeFamilyId = item.getId();
+                textInputLayoutNativeFamily.setError(null);
+                basic_residence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
 
             @Override
@@ -311,6 +320,8 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             @Override
             public void onItemSelectedListener(Relations item, int selectedIndex) {
                 relationLast.setText(item.getLabel());
+                textInputLayoutNativeRelations.setError(null);
+                relationLast.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
 
             @Override
@@ -345,6 +356,8 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
 
                                 nativeSanghName.setText(item.getLabel());
                                 selectedNativeSanghId = item.getId();
+                                nativeSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                                textInputLayoutNativeSangh.setError(null);
 
                                 showLoadingDialog();
                                 RequestProcessor requestProcessor = new RequestProcessor(new GUICallback() {
@@ -405,18 +418,21 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
         if (TextUtils.isEmpty(familyHead.getText().toString())) {
             textInputLayoutHeadOfFamily.setError("Family head is required");
             familyHead.requestFocus();
+            familyHead.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
 
             textInputLayoutHeadOfFamily.setError(null);
+            familyHead.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
         }
 
         if (TextUtils.isEmpty(relation.getText().toString())) {
             textInputLayoutRelations.setError("Relation is required");
             relation.requestFocus();
+            relation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
-
+            relation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             textInputLayoutRelations.setError(null);
         }
 
@@ -425,36 +441,43 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
             if (TextUtils.isEmpty(nativeZone.getText().toString())) {
                 textInputLayoutNativeZone.setError("zone name is required");
                 nativeZone.requestFocus();
+                nativeZone.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                 callAPi = false;
             } else {
 
                 textInputLayoutNativeZone.setError(null);
                 nativeZone.clearFocus();
+                nativeZone.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
             if (TextUtils.isEmpty(nativeSanghName.getText().toString()) && callAPi) {
                 callAPi = false;
                 textInputLayoutNativeSangh.setError("local sangh is required");
                 nativeSanghName.requestFocus();
+                nativeSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             } else {
-
+                nativeSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                 textInputLayoutNativeSangh.setError(null);
                 nativeSanghName.clearFocus();
             }
             if (TextUtils.isEmpty(basic_residence.getText().toString()) && callAPi) {
                 callAPi = false;
                 textInputLayoutNativeFamily.setError("current residence is required");
+                basic_residence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                 basic_residence.requestFocus();
             } else {
                 textInputLayoutNativeFamily.setError(null);
+                basic_residence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                 basic_residence.clearFocus();
             }
             if (TextUtils.isEmpty(relationLast.getText().toString()) && callAPi) {
                 callAPi = false;
                 textInputLayoutNativeRelations.setError("relation is required");
                 relationLast.requestFocus();
+                relationLast.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             } else {
                 textInputLayoutNativeRelations.setError(null);
                 relationLast.clearFocus();
+                relationLast.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             }
 
 

@@ -165,7 +165,7 @@ public class ChangePasswordFragment extends BaseFragment implements GUICallback 
                     if (response != null) {
                         if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
                             PreferenceUtils.setPassword(getActivity(), newPassword.getText().toString());
-                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
+                            new CustomToast().showInformationToast(getActivity(), view, response.getMessage());
                             getActivity().finish();
                         }
                     }
