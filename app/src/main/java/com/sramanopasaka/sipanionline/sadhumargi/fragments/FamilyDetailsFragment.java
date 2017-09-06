@@ -244,7 +244,7 @@ public class FamilyDetailsFragment extends BaseFragment implements GUICallback {
         familyHead.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Family>() {
             @Override
             public void onItemSelectedListener(Family item, int selectedIndex) {
-                familyHead.setText(String.format("%s %s", item.getCode(), item.getFirst_name()));
+                familyHead.setText(item.getLabel());
                 selectedFamilyId = item.getId();
                 textInputLayoutHeadOfFamily.setError(null);
                 familyHead.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));

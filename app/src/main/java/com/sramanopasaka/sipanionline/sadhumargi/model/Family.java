@@ -30,7 +30,15 @@ public class Family implements Listable {
     String mem_count=null;
     String landline=null;
     String code=null;
+    String display_label = null;
 
+    public String getDisplay_label() {
+        return display_label;
+    }
+
+    public void setDisplay_label(String display_label) {
+        this.display_label = display_label;
+    }
 
     public String getId() {
         return id;
@@ -202,6 +210,6 @@ public class Family implements Listable {
 
     @Override
     public String getLabel() {
-        return  String.format("%s %s", code,first_name);
+        return  display_label;
     }
 }

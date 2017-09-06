@@ -44,158 +44,166 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/i_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/i_birthdate"
                 android:textColorHint="@color/white"
                 android:textStyle="normal"
                 app:hintTextAppearance="@style/edittext"
-                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
-                >
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout">
 
-            <EditText
-                android:id="@+id/birth_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="@string/birthdate"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="@dimen/large"
-                android:textStyle="normal"
-                android:paddingLeft="@dimen/dimen_10"/>
+                <EditText
+                    android:id="@+id/birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/birthdate"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/fab_margin"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/dimen_10">
+                android:orientation="horizontal">
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:orientation="horizontal"
+
                     android:paddingBottom="@dimen/dimen_10">
 
                     <CheckBox
+                        android:layout_alignParentLeft="true"
                         android:id="@+id/no_birth_date"
                         android:layout_width="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:theme="@style/MyCheckBox" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_toRightOf="@+id/no_birth_date"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/radiogrp"
-                        android:layout_gravity="center"
                         android:layout_margin="@dimen/fab_margin"
-                        android:layout_weight="4"
-                        android:paddingBottom="@dimen/dimen_10"
+                        android:layout_centerVertical="true"
                         android:text="@string/No_birth_date"
                         android:textColor="@color/white"
                         android:textSize="@dimen/large"
                         android:textStyle="normal" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:id="@+id/i_age"
-                    android:layout_weight="4"
-                    android:textColorHint="@color/white"
-                    android:textStyle="normal"
-                    app:hintTextAppearance="@style/edittext">
-
-                <EditText
-                    android:id="@+id/age"
+android:visibility="gone"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:layout_weight="4"
                     android:layout_gravity="center_vertical"
-                    android:hint="@string/age"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textCursorDrawable="@drawable/cursor_drawable"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                    android:textColorHint="@color/orange"
+                    android:layout_margin="@dimen/fab_margin">
+
+                    <EditText
+                        android:id="@+id/age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:hint="@string/age"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
 
-            <!--     <Spinner
-                     android:id="@+id/gender"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_below="@+id/radiogrp"
-                     android:layout_margin="@dimen/fab_margin"
-                     android:background="@drawable/edt_border"
-                     android:hint="Gender"
-                     android:paddingBottom="@dimen/dimen_10"
-                     android:singleLine="true"
-                     android:editable="false"
-                     android:textColor="@color/white"
-                     android:textColorHint="@color/white"
-                     android:textCursorDrawable="@drawable/cursor_drawable"
-                     android:textSize="@dimen/large"
-                     android:textStyle="normal" />-->
-            <android.support.design.widget.TextInputLayout
+            <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
+                android:id="@+id/i_gender"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+                app:errorTextAppearance="@style/error_appearance"
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Gender"
+                    android:background="@drawable/edt_border"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
+           <!-- <android.support.design.widget.TextInputLayout
+                android:id="@+id/i_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/i_gender"
                 android:textColorHint="@color/white"
                 android:textStyle="normal"
                 app:hintTextAppearance="@style/edittext">
 
-            <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
-                android:id="@+id/gender"
-                android:editable="false"
-                android:hint="@string/Gender"
-                android:textColorHint="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:textColor="@color/white"
-                />
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:editable="false"
+                    android:hint="@string/Gender"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
 
-            </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>-->
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/countryCodeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/fab_margin"
-                    android:paddingBottom="@dimen/fab_margin"
                     android:paddingLeft="2dp"
+                    android:layout_centerVertical="true"
                     android:paddingRight="2dp"
-                    android:paddingTop="@dimen/fab_margin"
                     android:text="+91"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
@@ -203,22 +211,123 @@
 
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/mobnumber"
+                    android:layout_toRightOf="@+id/countryCodeTxt"
+                    android:layout_width="match_parent"
+                    app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                    android:textColorHint="@color/orange"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:errorTextAppearance="@style/error_appearance"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/mobile_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/radiogrp"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:hint="@string/mobile_number"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
+
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/mobileInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                    android:id="@+id/mobnumber"
-                    android:textColorHint="@color/white"
-                    android:textStyle="normal"
-                    app:hintTextAppearance="@style/edittext">
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_marginRight="@dimen/fab_margin"
+                android:text="@string/hint"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text_12"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/emailid"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+                app:errorTextAppearance="@style/error_appearance"
+                android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/mobile_number"
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/radiogrp"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:digits="abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^*()_+"
+                    android:hint="@string/email_id"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="100"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
+                android:id="@+id/i_country"
+                android:layout_width="match_parent"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
+                android:layout_margin="@dimen/fab_margin"
+                app:errorTextAppearance="@style/error_appearance"
+                android:layout_height="wrap_content">
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_country"
+                    android:background="@drawable/edt_border"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
+<!--
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/i_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                android:textStyle="normal"
+                app:hintTextAppearance="@style/edittext">
+
+
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/radiogrp"
                     android:layout_margin="@dimen/fab_margin"
-                    android:hint="@string/mobile_number"
-                    android:inputType="number"
-                    android:maxLength="10"
+                    android:drawableEnd="@drawable/downarrow"
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/select_country"
+                    android:maxLength="40"
                     android:paddingBottom="@dimen/dimen_10"
                     android:singleLine="true"
                     android:textColor="@color/white"
@@ -227,220 +336,168 @@
                     android:textSize="@dimen/large"
                     android:textStyle="normal" />
 
-
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/mobileInfo"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/fab_margin"
-                android:layout_marginRight="@dimen/fab_margin"
-                android:layout_marginBottom="@dimen/fab_margin"
-                android:textColor="@color/white"
-                android:textSize="@dimen/small_text_12"
-                android:textStyle="bold"
-                 android:text="@string/hint"
-                android:layout_height="wrap_content" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/emailid"
-                android:textColorHint="@color/white"
-                android:textStyle="normal"
-                app:hintTextAppearance="@style/edittext">
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:digits="abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^*()_+"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/email_id"
-                android:inputType="textEmailAddress"
-                android:maxLength="100"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-        </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/i_country"
-                android:textColorHint="@color/white"
-                android:textStyle="normal"
-                app:hintTextAppearance="@style/edittext">
+            </android.support.design.widget.TextInputLayout>-->
 
 
-            <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
-                android:id="@+id/country"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="@string/select_country"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                 android:id="@+id/i_state"
-                android:textColorHint="@color/white"
-                android:textStyle="normal"
-                app:hintTextAppearance="@style/edittext">
-
-            <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
-                android:id="@+id/state"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="@string/select_state"
-                android:maxLength="60"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                app:errorTextAppearance="@style/error_appearance"
+                android:layout_height="wrap_content">
 
-            </android.support.design.widget.TextInputLayout>
+                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                    android:id="@+id/state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_state"
+                    android:background="@drawable/edt_border"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal"/>
+            </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
+
+
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/i_pincode"
-                android:textColorHint="@color/white"
-                android:textStyle="normal"
-                app:hintTextAppearance="@style/edittext">
-
-
-            <EditText
-                android:id="@+id/pincode"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/pincode"
-                android:inputType="number"
-                android:maxLength="6"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:layout_height="wrap_content">
 
+                <EditText
+                    android:id="@+id/pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+
+                    android:hint="@string/pincode"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:maxLength="6"
+                    android:paddingBottom="@dimen/dimen_10"
+
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/i_post"
-                android:textColorHint="@color/white"
-                android:textStyle="normal"
-                app:hintTextAppearance="@style/edittext">
-
-
-            <EditText
-                android:id="@+id/post"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
-                android:hint="@string/Post"
-                android:inputType="textCapCharacters"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radiogrp"
+
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                    android:hint="@string/Post"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="40"
+                    android:paddingBottom="@dimen/dimen_10"
+
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/orange"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/large"
+                    android:textStyle="normal" />
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+
+
+
+
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:id="@+id/profilecreateby"
-                    android:textColorHint="@color/white"
-                    android:textStyle="normal"
-                    app:hintTextAppearance="@style/edittext">
-
-                <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
-                    android:id="@+id/profile_created_by"
-                    android:textColorHint="@color/white"
-                    android:editable="false"
-                    android:text="@string/ProfileCreatedby"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/fab_margin" />
+                    app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                    android:textColorHint="@color/orange"
+                    android:layout_margin="@dimen/fab_margin"
+                    app:errorTextAppearance="@style/error_appearance">
+
+                    <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
+                        android:id="@+id/profile_created_by"
+                        android:text="@string/ProfileCreatedby"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edt_border"
+                        android:inputType="textNoSuggestions"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        android:paddingBottom="@dimen/dimen_10"
+                        android:paddingLeft="@dimen/dimen_10"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/orange"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:id="@+id/i_workercode"
-                    android:textColorHint="@color/white"
-                    android:textStyle="normal"
-                    app:hintTextAppearance="@style/edittext">
-
-
-                <EditText
-                    android:id="@+id/work_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/radiogrp"
+                    android:visibility="gone"
+                    android:layout_toRightOf="@+id/profilecreateby"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
+                    android:textColorHint="@color/orange"
                     android:layout_margin="@dimen/fab_margin"
-                    android:hint="@string/workercode"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textCursorDrawable="@drawable/cursor_drawable"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+                    android:layout_height="wrap_content">
 
+                    <EditText
+                        android:id="@+id/work_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/radiogrp"
+
+                        android:hint="@string/workercode"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:paddingBottom="@dimen/dimen_10"
+
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/orange"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/large"
+                        android:textStyle="normal" />
                 </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
+
+
+            </RelativeLayout>
 
 
             <LinearLayout

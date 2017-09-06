@@ -213,9 +213,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutprofilecreatedby.setError("Profile Created by is required" );
                     profileCreatedby.requestFocus();
                     profileCreatedby.requestFocusFromTouch();
+                    profileCreatedby.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     callAPi = false;
                 }else{
-
+                    profileCreatedby.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                     textinputlayoutprofilecreatedby.setError(null);
                 }
 
@@ -277,10 +278,11 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                 if (sState.getText().toString().length() == 0) {
                     textinputlayoutstate.setError("State name is required");
+                    sState.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     sState.requestFocus();
                     callAPi = false;
                 } else {
-
+                    sState.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                     textinputlayoutstate.setError(null);
                 }
 
@@ -288,9 +290,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 if (sCountry.getText().toString().length() == 0) {
                     textinputlayoutcountry.setError("Country name is required");
                     sCountry.requestFocus();
+                    sCountry.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     callAPi = false;
                 } else {
-
+                    sCountry.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                     textinputlayoutcountry.setError(null);
                 }
 
@@ -337,9 +340,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutgender.setError("Gender is required");
                     gender.requestFocus();
                     gender.requestFocusFromTouch();
+                    gender.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     callAPi = false;
                 }else {
-
+                    gender.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                     textinputlayoutgender.setError(null);
                     textinputlayoutgender.setError(null);
                 }
@@ -359,7 +363,6 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     age.requestFocusFromTouch();
                     callAPi = false;
                 } else {
-                    textinputlayoutage.setError(null);
                     textinputlayoutage.setError(null);
                 }
 
@@ -446,6 +449,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             sState.setText(state);
                             sState.setError(null);
                             statePickerDialog.dismiss();
+                            sState.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                            textinputlayoutstate.setError(null);
                         }
                     });
                     statePickerDialog.show();
@@ -527,12 +532,15 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             @Override
             public void onItemSelectedListener(ProfileCreatedBy item, int selectedIndex) {
                 profileCreatedby.setText(item.getLabel());
+                profileCreatedby.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                textinputlayoutprofilecreatedby.setError(null);
 
                 if (item != null) {
-                    if (item.toString().equalsIgnoreCase("volunteer"))
-                        valunteerCode.setVisibility(View.VISIBLE);
+                    if (item.getLabel
+                            ().equalsIgnoreCase("volunteer"))
+                        textinputlayoutworkercode.setVisibility(View.VISIBLE);
                     else
-                        valunteerCode.setVisibility(View.GONE);
+                        textinputlayoutworkercode.setVisibility(View.GONE);
                 }
             }
             @Override
@@ -546,10 +554,12 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
 
         gender.setItems(genderList);
-        profileCreatedby.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<ProfileCreatedBy>() {
+        gender.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Gender>() {
             @Override
-            public void onItemSelectedListener(ProfileCreatedBy item, int selectedIndex) {
-                profileCreatedby.setText(item.getLabel());
+            public void onItemSelectedListener(Gender item, int selectedIndex) {
+                gender.setText(item.getLabel());
+                gender.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                textinputlayoutgender.setError(null);
             }
 
             @Override
