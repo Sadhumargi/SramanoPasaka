@@ -47,13 +47,13 @@
             android:orientation="vertical">
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                 android:id="@+id/textInputLayoutHeadOfFamily"
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
-
+                app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
                 <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -63,6 +63,7 @@
                     android:hint="@string/HeadofFamil"
                     android:inputType="textNoSuggestions"
                     android:maxLength="50"
+                    android:background="@drawable/edt_border"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
                     android:paddingLeft="@dimen/dimen_10"
@@ -71,16 +72,16 @@
                     android:textCursorDrawable="@drawable/cursor_drawable"
                     android:textSize="@dimen/large"
                     android:textStyle="normal"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                 android:id="@+id/textInputLayoutRelations"
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
-
+                app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
                 <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -90,6 +91,7 @@
                     android:hint="@string/Relation"
                     android:inputType="textNoSuggestions"
                     android:maxLength="50"
+                    android:background="@drawable/edt_border"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
                     android:paddingLeft="@dimen/dimen_10"
@@ -98,7 +100,7 @@
                     android:textCursorDrawable="@drawable/cursor_drawable"
                     android:textSize="@dimen/large"
                     android:textStyle="normal"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
 
@@ -142,13 +144,13 @@
                     android:orientation="vertical">
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                         android:id="@+id/textInputLayoutNativeZone"
                         android:layout_width="match_parent"
                         app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                         android:textColorHint="@color/orange"
                         android:layout_margin="@dimen/fab_margin"
-
+                        app:errorTextAppearance="@style/error_appearance"
                         android:layout_height="wrap_content">
 
                         <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -159,6 +161,7 @@
                             android:inputType="textNoSuggestions"
                             android:maxLength="50"
                             android:maxLines="1"
+                            android:background="@drawable/edt_border"
                             android:paddingBottom="@dimen/dimen_10"
                             android:paddingLeft="@dimen/dimen_10"
                             android:textColor="@color/white"
@@ -166,16 +169,16 @@
                             android:textCursorDrawable="@drawable/cursor_drawable"
                             android:textSize="@dimen/large"
                             android:textStyle="normal"/>
-                    </android.support.design.widget.TextInputLayout>
+                    </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                         android:id="@+id/textInputLayoutNativeSangh"
                         android:layout_width="match_parent"
                         app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                         android:textColorHint="@color/orange"
                         android:layout_margin="@dimen/fab_margin"
-
+                        app:errorTextAppearance="@style/error_appearance"
                         android:layout_height="wrap_content">
 
                         <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -186,6 +189,7 @@
                             android:inputType="textNoSuggestions"
                             android:maxLength="50"
                             android:maxLines="1"
+                            android:background="@drawable/edt_border"
                             android:paddingBottom="@dimen/dimen_10"
                             android:paddingLeft="@dimen/dimen_10"
                             android:textColor="@color/white"
@@ -193,17 +197,17 @@
                             android:textCursorDrawable="@drawable/cursor_drawable"
                             android:textSize="@dimen/large"
                             android:textStyle="normal"/>
-                    </android.support.design.widget.TextInputLayout>
+                    </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                         android:id="@+id/textInputLayoutNativeFamily"
                         android:layout_width="match_parent"
                         app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                         android:textColorHint="@color/orange"
                         android:layout_margin="@dimen/fab_margin"
-
+                        app:errorTextAppearance="@style/error_appearance"
                         android:layout_height="wrap_content">
 
                         <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -214,6 +218,7 @@
                             android:inputType="textNoSuggestions"
                             android:maxLength="50"
                             android:maxLines="1"
+                            android:background="@drawable/edt_border"
                             android:paddingBottom="@dimen/dimen_10"
                             android:paddingLeft="@dimen/dimen_10"
                             android:textColor="@color/white"
@@ -221,16 +226,16 @@
                             android:textCursorDrawable="@drawable/cursor_drawable"
                             android:textSize="@dimen/large"
                             android:textStyle="normal"/>
-                    </android.support.design.widget.TextInputLayout>
+                    </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
                         android:id="@+id/textInputLayoutNativeRelations"
                         android:layout_width="match_parent"
                         app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                         android:textColorHint="@color/orange"
                         android:layout_margin="@dimen/fab_margin"
-
+                        app:errorTextAppearance="@style/error_appearance"
                         android:layout_height="wrap_content">
 
                         <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -240,6 +245,7 @@
                             android:hint="@string/Relation"
                             android:inputType="textNoSuggestions"
                             android:maxLength="50"
+                            android:background="@drawable/edt_border"
                             android:maxLines="1"
                             android:paddingBottom="@dimen/dimen_10"
                             android:paddingLeft="@dimen/dimen_10"
@@ -248,7 +254,7 @@
                             android:textCursorDrawable="@drawable/cursor_drawable"
                             android:textSize="@dimen/large"
                             android:textStyle="normal"/>
-                    </android.support.design.widget.TextInputLayout>
+                    </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
 
 
                 </LinearLayout>

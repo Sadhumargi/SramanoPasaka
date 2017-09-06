@@ -187,8 +187,16 @@
     </style>
 
     <style name="MyMaterialTheme.Base.Design.TextInputLayout" parent="Widget.Design.TextInputLayout">
-        <item name="colorControlActivated">#ffffff</item>
-        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="android:textColorHint">#ffdd43</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#ffdd43</item>
+    </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#FF5733</item>
+       <!-- <item name="android:textSize">12sp</item>-->
     </style>
 
     <!--<style name="Widget.Design.TextInputLayout" parent="MyMaterialTheme.Base">
