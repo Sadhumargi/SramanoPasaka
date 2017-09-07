@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
+
 import android.util.AttributeSet;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.EditText;
 
@@ -82,7 +84,9 @@ public class ClickToSelectEditText<T extends Listable> extends EditText {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                ContextThemeWrapper cw = new ContextThemeWrapper( view.getContext(), R.style.AlertDialogTheme );
+                //AlertDialog.Builder b = new AlertDialog.Builder( cw );
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialogTheme);
                 builder.setTitle(mHint);
                 builder.setItems(mListableItems, new DialogInterface.OnClickListener() {
                     @Override
@@ -95,6 +99,7 @@ public class ClickToSelectEditText<T extends Listable> extends EditText {
                     }
                 });
                 builder.setPositiveButton(R.string.close, null);
+
                 builder.create().show();
             }
         });

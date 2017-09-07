@@ -18,6 +18,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
@@ -51,7 +52,6 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
 
     @Bind(R.id.vishesh_gyan)
     CheckBox vishesh_gyan;
-
 
 
     public static KnowledgeFragment newInstance() {
@@ -132,20 +132,115 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
         }
     }
 
+    private boolean isAnyChanges() {
+        boolean isChange = false;
+        DharmicData dharmicData = OfflineData.getDharmikData();
+        if (dharmicData != null) {
+            if (dharmicData.getKnowledge() != null) {
+                if (samayik.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getSamayik()) && dharmicData.getKnowledge().getSamayik().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getSamayik()) && dharmicData.getKnowledge().getSamayik().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (navkar_mantra.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getNavkar_mantra()) && dharmicData.getKnowledge().getNavkar_mantra().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getNavkar_mantra()) && dharmicData.getKnowledge().getNavkar_mantra().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (pratikraman.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getPratikraman()) && dharmicData.getKnowledge().getPratikraman().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getPratikraman()) && dharmicData.getKnowledge().getPratikraman().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (bol_thokde.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getBol_thokde()) && dharmicData.getKnowledge().getBol_thokde().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getBol_thokde()) && dharmicData.getKnowledge().getBol_thokde().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (shastra_gyan.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getShastra_gyan()) && dharmicData.getKnowledge().getShastra_gyan().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getShastra_gyan()) && dharmicData.getKnowledge().getShastra_gyan().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (vishesh_gyan.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getVishesh_gyan()) && dharmicData.getKnowledge().getVishesh_gyan().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getKnowledge().getVishesh_gyan()) && dharmicData.getKnowledge().getVishesh_gyan().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+            } else {
+                if (samayik.isChecked()) {
+                    isChange = true;
+                }
+                if (navkar_mantra.isChecked()) {
+                    isChange = true;
+                }
+                if (pratikraman.isChecked()) {
+                    isChange = true;
+                }
+                if (bol_thokde.isChecked()) {
+                    isChange = true;
+                }
+                if (shastra_gyan.isChecked()) {
+                    isChange = true;
+                }
+                if (vishesh_gyan.isChecked()) {
+                    isChange = true;
+                }
+            }
+
+        } else {
+            if (samayik.isChecked()) {
+                isChange = true;
+            }
+            if (navkar_mantra.isChecked()) {
+                isChange = true;
+            }
+            if (pratikraman.isChecked()) {
+                isChange = true;
+            }
+            if (bol_thokde.isChecked()) {
+                isChange = true;
+            }
+            if (shastra_gyan.isChecked()) {
+                isChange = true;
+            }
+            if (vishesh_gyan.isChecked()) {
+                isChange = true;
+            }
+        }
+        return isChange;
+    }
+
     @OnClick(R.id.updateKnowledge)
     public void updateKnowledge() {
 
-        LoginModel loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null) {
-            showLoadingDialog();
+        if (isAnyChanges()) {
+            LoginModel loginResponse = OfflineData.getLoginData();
+            if (loginResponse != null) {
+                showLoadingDialog();
 
-            RequestProcessor requestProcessor = new RequestProcessor(KnowledgeFragment.this);
-            requestProcessor.updateKnowledge(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(navkar_mantra.isChecked()), String.valueOf(samayik.isChecked()),
-                    String.valueOf(pratikraman.isChecked()), String.valueOf(bol_thokde.isChecked()), String.valueOf(shastra_gyan.isChecked()),
-                    String.valueOf(vishesh_gyan.isChecked()));
+                RequestProcessor requestProcessor = new RequestProcessor(KnowledgeFragment.this);
+                requestProcessor.updateKnowledge(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(navkar_mantra.isChecked()), String.valueOf(samayik.isChecked()),
+                        String.valueOf(pratikraman.isChecked()), String.valueOf(bol_thokde.isChecked()), String.valueOf(shastra_gyan.isChecked()),
+                        String.valueOf(vishesh_gyan.isChecked()));
 
+            }
+        } else {
+            new CustomToast().showErrorToast(getActivity(), view, "Please select your knowledges and try again");
         }
-
 
     }
 
@@ -164,20 +259,20 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
                             dharmikActivity.loadDharmikData();*/
                             loadDharmikData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Updated successfully", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, "Updated successfully");
                             }
 
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                             }
                         }
                     }
-                }else if (guiResponse instanceof DharmikDetailsResponse) {
+                } else if (guiResponse instanceof DharmikDetailsResponse) {
                     DharmikDetailsResponse response = (DharmikDetailsResponse) guiResponse;
                     if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
                         OfflineData.saveDharmicResponse(response.getData());
@@ -186,14 +281,14 @@ public class KnowledgeFragment extends BaseFragment implements GUICallback, Data
                         showDataUi();
                     } else {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                         }
                     }
                 }
             } else {
-                Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
             }
         }
     }
