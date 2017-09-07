@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/white"
                 android:textStyle="normal"
+                app:errorTextAppearance="@style/error_appearance"
                 app:hintTextAppearance="@style/edittext"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout">
 
@@ -114,11 +115,13 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/i_age"
-android:visibility="gone"
+                    app:errorTextAppearance="@style/error_appearance"
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
+                    style="@style/error_appearance"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
                     android:layout_margin="@dimen/fab_margin">
@@ -130,6 +133,7 @@ android:visibility="gone"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/fab_margin"
                         android:hint="@string/age"
+                        android:paddingLeft="@dimen/extra_small"
                         android:inputType="number"
                         android:maxLength="3"
                         android:singleLine="true"
@@ -160,6 +164,7 @@ android:visibility="gone"
                     android:background="@drawable/edt_border"
                     android:inputType="textNoSuggestions"
                     android:maxLength="50"
+                    android:layout_margin="@dimen/fab_margin"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
                     android:paddingLeft="@dimen/dimen_10"
@@ -192,13 +197,14 @@ android:visibility="gone"
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/fab_margin">
 
                 <TextView
                     android:layout_alignParentLeft="true"
                     android:id="@+id/countryCodeTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/fab_margin"
                     android:paddingLeft="2dp"
@@ -216,7 +222,7 @@ android:visibility="gone"
                     android:layout_width="match_parent"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
-                    android:layout_margin="@dimen/fab_margin"
+
                     app:errorTextAppearance="@style/error_appearance"
                     android:layout_height="wrap_content">
 
@@ -227,6 +233,7 @@ android:visibility="gone"
                         android:layout_below="@+id/radiogrp"
                         android:layout_margin="@dimen/fab_margin"
                         android:hint="@string/mobile_number"
+                        android:paddingLeft="0dp"
                         android:inputType="number"
                         android:maxLength="10"
                         android:singleLine="true"
@@ -258,7 +265,8 @@ android:visibility="gone"
                 android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
                 app:errorTextAppearance="@style/error_appearance"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <EditText
                     android:id="@+id/email"
@@ -373,6 +381,7 @@ android:visibility="gone"
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
+                app:errorTextAppearance="@style/error_appearance"
                 android:layout_margin="@dimen/fab_margin"
                 android:layout_height="wrap_content">
 
@@ -402,6 +411,7 @@ android:visibility="gone"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
                 android:layout_margin="@dimen/fab_margin"
+                app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
                 <EditText

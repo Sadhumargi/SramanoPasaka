@@ -37,6 +37,6 @@ public class Salutation implements Listable {
 
     @Override
     public String getLabel() {
-        return english +"/"+hindi+"("+english+")";
+        return english +"/"+hindi;
     }
 }

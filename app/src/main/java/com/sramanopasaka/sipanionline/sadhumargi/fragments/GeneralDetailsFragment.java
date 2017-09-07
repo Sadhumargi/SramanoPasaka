@@ -97,6 +97,9 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
     @Bind(R.id.textInputLayoutSalutation)
     TextInputLayout textInputLayoutSalutation;
 
+    @Bind(R.id.textInputLayoutDistrict)
+    TextInputLayout textInputLayoutDistrict;
+
     @Bind(R.id.salutation)
     ClickToSelectEditText<Salutation> salutation;
 
@@ -131,7 +134,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
 
         salutationList.add(new Salutation("Mr.","Shree"));
         salutationList.add(new Salutation("Mrs.","Shrimati"));
-        salutationList.add(new Salutation("Mis.","Kumari"));
+        salutationList.add(new Salutation("Ms.","Kumari"));
 
         salutation.setItems(salutationList);
         salutation.setOnItemSelectedListener(new ClickToSelectEditText.OnItemSelectedListener<Salutation>() {
@@ -244,7 +247,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         boolean callAPi = true;
 
         if (salutation.getText().toString().length() == 0) {
-            textInputLayoutSalutation.setError("salutation is required");
+            textInputLayoutSalutation.setError("Salutation is required");
             salutation.requestFocus();
             callAPi = false;
             salutation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
@@ -252,6 +255,17 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             salutation.clearFocus();
             textInputLayoutSalutation.setError(null);
             salutation.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+        }
+
+        if (district.getText().toString().length() == 0) {
+            textInputLayoutDistrict.setError("District name is required");
+            //district.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
+            district.requestFocus();
+            callAPi = false;
+        } else {
+            textInputLayoutDistrict.setError(null);
+            //district.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+            district.clearFocus();
         }
 
 
@@ -269,10 +283,12 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         if (lastName.getText().toString().length() == 0) {
             textInputLayoutLastName.setError("Last name is required");
             lastName.requestFocus();
+            //textInputLayoutLastName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
 
             textInputLayoutLastName.setError(null);
+            lastName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             lastName.clearFocus();
         }
 
@@ -280,9 +296,11 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             textInputLayoutFirstName.setError("First name is required");
             firstName.requestFocus();
             callAPi = false;
+            //firstName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
         } else {
 
             textInputLayoutFirstName.setError(null);
+            //firstName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
             firstName.clearFocus();
         }
 
@@ -298,7 +316,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             anchalTxt.clearFocus();
         }
         if (localSanghName.getText().toString().length() == 0) {
-            textInputLayoutLocalSangh.setError("localSangh name is required");
+            textInputLayoutLocalSangh.setError("Local Sangh name is required");
             localSanghName.requestFocus();
             localSanghName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
@@ -309,7 +327,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
         }
 
         if (currentResidence.getText().toString().length() == 0) {
-            textInputLayoutCurrentResident.setError("localSangh name is required");
+            textInputLayoutCurrentResident.setError("Current Residence name is required");
             currentResidence.requestFocus();
             currentResidence.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
@@ -318,6 +336,10 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             textInputLayoutCurrentResident.setError(null);
             currentResidence.clearFocus();
         }
+
+
+
+
 
        /* int selectedId = radiogrp.getCheckedRadioButtonId();
         if (selectedId == -1 && callAPi) {

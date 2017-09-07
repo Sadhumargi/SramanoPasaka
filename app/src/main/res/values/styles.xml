@@ -196,7 +196,7 @@
 
     <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">#FF5733</item>
-       <!-- <item name="android:textSize">12sp</item>-->
+        <item name="android:textSize">12sp</item>
     </style>
 
     <!--<style name="Widget.Design.TextInputLayout" parent="MyMaterialTheme.Base">

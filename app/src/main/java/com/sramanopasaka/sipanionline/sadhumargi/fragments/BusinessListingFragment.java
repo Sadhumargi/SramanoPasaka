@@ -177,7 +177,7 @@ public class BusinessListingFragment extends BaseFragment implements GUICallback
 
     @Override
     public void delete(final Business address) {
-        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Business", "Are you sure to delete this Business ?", new DialogInterface.OnClickListener() {
+        DialogueUtils.showDialogOKCancel(getActivity(), "Delete Business Experience", "Are you sure to delete this Business Experience ?", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 LoginModel loginResponse = OfflineData.getLoginData();

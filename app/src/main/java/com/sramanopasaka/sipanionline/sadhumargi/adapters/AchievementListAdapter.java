@@ -49,8 +49,16 @@ public class AchievementListAdapter extends RecyclerView.Adapter<AchievementList
     public void onBindViewHolder(final AddressListViewHolder holder, int position) {
         final Achievements model = list.get(position);
         holder.txtAddressTag.setText(model.getAchievement_sector());
-        String achievementDetails = TextUtils.isEmpty(model.getAchievement_detail()) ? "" : model.getAchievement_detail() + ", " ;
-        holder.txtAddress.setText(model.getAchievement_level() + ", " + model.getAchievement_type() + ", " + achievementDetails+ model.getAchievement_year());
+        //String achievementDetails = TextUtils.isEmpty(model.getAchievement_detail()) ? "" : model.getAchievement_detail() + ", " ;
+
+        String achivementDetails= "";
+        if(!TextUtils.isEmpty(model.getAchievement_level()))
+            achivementDetails = model.getAchievement_level();
+        if(!TextUtils.isEmpty(model.getAchievement_type()))
+            achivementDetails+=", " + model.getAchievement_type();
+        if(!TextUtils.isEmpty(model.getAchievement_year()) && !model.getAchievement_year().equalsIgnoreCase("0"))
+            achivementDetails+=", " + model.getAchievement_year();
+        holder.txtAddress.setText(achivementDetails);
 
     }
 
