@@ -21,6 +21,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
@@ -60,8 +61,6 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
 
     @Bind(R.id.special)
     EditText special;
-
-
 
 
     private View view = null;
@@ -158,19 +157,140 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
         }
     }
 
+    private boolean isAnyChanges() {
+        boolean isChange = false;
+        DharmicData dharmicData = OfflineData.getDharmikData();
+        if (dharmicData != null) {
+            if (dharmicData.getPromises() != null) {
+                if (chovihar.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getChovihar()) && dharmicData.getPromises().getChovihar().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getChovihar()) && dharmicData.getPromises().getChovihar().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (navkar_mantra.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getNavkar_mantra()) && dharmicData.getPromises().getNavkar_mantra().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getNavkar_mantra()) && dharmicData.getPromises().getNavkar_mantra().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (swadhyay.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSwadhyay()) && dharmicData.getPromises().getSwadhyay().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSwadhyay()) && dharmicData.getPromises().getSwadhyay().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (sant_darshan.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSant_darshan()) && dharmicData.getPromises().getSant_darshan().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSant_darshan()) && dharmicData.getPromises().getSant_darshan().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (samayik.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSamayik()) && dharmicData.getPromises().getSamayik().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getSamayik()) && dharmicData.getPromises().getSamayik().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (navkarsi.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getNavkarsi()) && dharmicData.getPromises().getNavkarsi().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getNavkarsi()) && dharmicData.getPromises().getNavkarsi().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (pratikraman.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getPratikraman()) && dharmicData.getPromises().getPratikraman().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getPratikraman()) && dharmicData.getPromises().getPratikraman().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (others.isChecked()) {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getOthers()) && dharmicData.getPromises().getOthers().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(dharmicData.getPromises().getOthers()) && dharmicData.getPromises().getOthers().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+            } else {
+                if (chovihar.isChecked()) {
+                    isChange = true;
+                }
+                if (navkar_mantra.isChecked()) {
+                    isChange = true;
+                }
+                if (swadhyay.isChecked()) {
+                    isChange = true;
+                }
+                if (sant_darshan.isChecked()) {
+                    isChange = true;
+                }
+                if (samayik.isChecked()) {
+                    isChange = true;
+                }
+                if (navkarsi.isChecked()) {
+                    isChange = true;
+                }
+                if (pratikraman.isChecked()) {
+                    isChange = true;
+                }
+                if (others.isChecked()) {
+                    isChange = true;
+                }
+            }
+
+        } else {
+            if (chovihar.isChecked()) {
+                isChange = true;
+            }
+            if (navkar_mantra.isChecked()) {
+                isChange = true;
+            }
+            if (swadhyay.isChecked()) {
+                isChange = true;
+            }
+            if (sant_darshan.isChecked()) {
+                isChange = true;
+            }
+            if (samayik.isChecked()) {
+                isChange = true;
+            }
+            if (navkarsi.isChecked()) {
+                isChange = true;
+            }
+            if (pratikraman.isChecked()) {
+                isChange = true;
+            }
+            if (others.isChecked()) {
+                isChange = true;
+            }
+        }
+        return isChange;
+    }
+
     @OnClick(R.id.updatePromises)
     public void updatePromises() {
 
-        LoginModel loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null) {
-            showLoadingDialog();
+        if (isAnyChanges()) {
 
-            RequestProcessor requestProcessor = new RequestProcessor(PromiseFragment.this);
-            requestProcessor.updatePromises(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(navkar_mantra.isChecked()), String.valueOf(swadhyay.isChecked()),
-                    String.valueOf(sant_darshan.isChecked()), String.valueOf(samayik.isChecked()), String.valueOf(navkarsi.isChecked()),
-                    String.valueOf(pratikraman.isChecked()), String.valueOf(chovihar.isChecked()), String.valueOf(others.isChecked()), special.getText().toString());
+            LoginModel loginResponse = OfflineData.getLoginData();
+            if (loginResponse != null) {
+                showLoadingDialog();
+
+                RequestProcessor requestProcessor = new RequestProcessor(PromiseFragment.this);
+                requestProcessor.updatePromises(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(navkar_mantra.isChecked()), String.valueOf(swadhyay.isChecked()),
+                        String.valueOf(sant_darshan.isChecked()), String.valueOf(samayik.isChecked()), String.valueOf(navkarsi.isChecked()),
+                        String.valueOf(pratikraman.isChecked()), String.valueOf(chovihar.isChecked()), String.valueOf(others.isChecked()), special.getText().toString());
+            }
+        } else {
+            new CustomToast().showErrorToast(getActivity(), view, "Please select your promises and try again");
         }
-
 
     }
 
@@ -190,21 +310,21 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
 */
                             loadDharmikData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, response.getMessage());
                                 special.setText(null);
                             } else {
-                                Toast.makeText(getActivity(), "Updated successfully", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, "Updated successfully");
                             }
 
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, "Something went wrong");
                             }
                         }
                     }
-                }else if (guiResponse instanceof DharmikDetailsResponse) {
+                } else if (guiResponse instanceof DharmikDetailsResponse) {
                     DharmikDetailsResponse response = (DharmikDetailsResponse) guiResponse;
                     if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
                         OfflineData.saveDharmicResponse(response.getData());
@@ -213,14 +333,14 @@ public class PromiseFragment extends BaseFragment implements GUICallback, DataUp
                         showDataUi();
                     } else {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Something went wrong");
                         }
                     }
                 }
             } else {
-                Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
             }
         }
     }

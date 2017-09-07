@@ -298,6 +298,14 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
 
+                if (emailId.getText().toString().length() == 0) {
+                    textinputlayoutemail.setError("Email id number is required");
+                    emailId.requestFocus();
+                    callAPi = false;
+                }else {
+
+                    textinputlayoutemail.setError(null);
+                }
                 if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
                     textinputlayoutemail.setError("Email id is not valid");
                     emailId.requestFocus();
@@ -307,15 +315,15 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutemail.setError(null);
                 }
 
-
-                if (emailId.getText().toString().length() == 0) {
-                    textinputlayoutemail.setError("Email id number is required");
-                    emailId.requestFocus();
+                if (pNumber.getText().toString().length() == 0) {
+                    textinputlayoutmobilenumber.setError("Mobile number is required");
+                    pNumber.requestFocus();
                     callAPi = false;
                 }else {
 
-                    textinputlayoutemail.setError(null);
+                    textinputlayoutmobilenumber.setError(null);
                 }
+
 
                 if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length() < 5)) {
                     textinputlayoutmobilenumber.setError("Mobile number is not valid");
@@ -327,14 +335,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
 
-                if (pNumber.getText().toString().length() == 0) {
-                    textinputlayoutmobilenumber.setError("Mobile number is required");
-                    pNumber.requestFocus();
-                    callAPi = false;
-                }else {
 
-                    textinputlayoutmobilenumber.setError(null);
-                }
 
                 if (gender.getText().toString().length() == 0 ) {
                     textinputlayoutgender.setError("Gender is required");
@@ -354,7 +355,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     bDate.requestFocusFromTouch();
                     callAPi = false;
                 } else {
-                    ageCheckBox.setChecked(false);
+                  //  ageCheckBox.setChecked(false);
                     textinputlayoutbithdate.setError(null);
                     textinputlayoutbithdate.setError(null);
                 }
@@ -507,6 +508,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    bDate.setText("");
                     textinputlayoutage.setError(null);
                     textinputlayoutage.setVisibility(View.VISIBLE);
                 } else {

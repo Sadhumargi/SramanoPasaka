@@ -14,6 +14,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
@@ -282,25 +283,441 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
         }
     }
 
+    private boolean isAnyChanges() {
+        boolean isChange = false;
+        SanghData sanghData = OfflineData.getSanghData();
+        if (sanghData != null) {
+            if (sanghData.getHobbies() != null) {
+                if (org_planning.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgPlanning()) && sanghData.getHobbies().getOrgPlanning().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgPlanning()) && sanghData.getHobbies().getOrgPlanning().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (org_comp_operator.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgCompOperator()) && sanghData.getHobbies().getOrgCompOperator().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgCompOperator()) && sanghData.getHobbies().getOrgCompOperator().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (org_project_operation.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgProjectOperation()) && sanghData.getHobbies().getOrgProjectOperation().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgProjectOperation()) && sanghData.getHobbies().getOrgProjectOperation().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (org_fund_raise.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgFundRaise()) && sanghData.getHobbies().getOrgFundRaise().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgFundRaise()) && sanghData.getHobbies().getOrgFundRaise().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (org_migration_prg.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgMigrationPrg()) && sanghData.getHobbies().getOrgMigrationPrg().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgMigrationPrg()) && sanghData.getHobbies().getOrgMigrationPrg().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (org_oration_trainer.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgOrationTrainer()) && sanghData.getHobbies().getOrgOrationTrainer().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgOrationTrainer()) && sanghData.getHobbies().getOrgOrationTrainer().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (org_management_phones.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgManagementPhones()) && sanghData.getHobbies().getOrgManagementPhones().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getOrgManagementPhones()) && sanghData.getHobbies().getOrgManagementPhones().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (rel_medical_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelMedicalService()) && sanghData.getHobbies().getRelMedicalService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelMedicalService()) && sanghData.getHobbies().getRelMedicalService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_vihar_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelViharService()) && sanghData.getHobbies().getRelViharService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelViharService()) && sanghData.getHobbies().getRelViharService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_gochary_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelGocharyService()) && sanghData.getHobbies().getRelGocharyService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelGocharyService()) && sanghData.getHobbies().getRelGocharyService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_jap_tap_cordination.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelJapTapCordination()) && sanghData.getHobbies().getRelJapTapCordination().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelJapTapCordination()) && sanghData.getHobbies().getRelJapTapCordination().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (rel_swadhyai_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelSwadhyaiService()) && sanghData.getHobbies().getRelSwadhyaiService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelSwadhyaiService()) && sanghData.getHobbies().getRelSwadhyaiService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_kar_sewa.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelKarSewa()) && sanghData.getHobbies().getRelKarSewa().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelKarSewa()) && sanghData.getHobbies().getRelKarSewa().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_shivir_management.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelShivirManagement()) && sanghData.getHobbies().getRelShivirManagement().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelShivirManagement()) && sanghData.getHobbies().getRelShivirManagement().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_writeup.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelWriteup()) && sanghData.getHobbies().getRelWriteup().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelWriteup()) && sanghData.getHobbies().getRelWriteup().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (rel_drawing.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelDrawing()) && sanghData.getHobbies().getRelDrawing().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelDrawing()) && sanghData.getHobbies().getRelDrawing().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_self_learning.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelSelfLearning()) && sanghData.getHobbies().getRelSelfLearning().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelSelfLearning()) && sanghData.getHobbies().getRelSelfLearning().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (rel_teaching.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelTeaching()) && sanghData.getHobbies().getRelTeaching().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelTeaching()) && sanghData.getHobbies().getRelTeaching().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (rel_branch.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelBranch()) && sanghData.getHobbies().getRelBranch().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getRelBranch()) && sanghData.getHobbies().getRelBranch().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_human_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialHumanService()) && sanghData.getHobbies().getSocialHumanService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialHumanService()) && sanghData.getHobbies().getSocialHumanService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_education_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialEducationService()) && sanghData.getHobbies().getSocialEducationService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialEducationService()) && sanghData.getHobbies().getSocialEducationService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_medical_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialMedicalService()) && sanghData.getHobbies().getSocialMedicalService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialMedicalService()) && sanghData.getHobbies().getSocialMedicalService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_veg_publicity.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialVegPublicity()) && sanghData.getHobbies().getSocialVegPublicity().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialVegPublicity()) && sanghData.getHobbies().getSocialVegPublicity().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_lit_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialLitService()) && sanghData.getHobbies().getSocialLitService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialLitService()) && sanghData.getHobbies().getSocialLitService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_water_kiosk_service.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialWaterKioskService()) && sanghData.getHobbies().getSocialWaterKioskService().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialWaterKioskService()) && sanghData.getHobbies().getSocialWaterKioskService().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (social_web_handling.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialWebHandling()) && sanghData.getHobbies().getSocialWebHandling().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialWebHandling()) && sanghData.getHobbies().getSocialWebHandling().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+                if (social_speech.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialSpeech()) && sanghData.getHobbies().getSocialSpeech().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialSpeech()) && sanghData.getHobbies().getSocialSpeech().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (social_drug_rehab.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialDrugRehab()) && sanghData.getHobbies().getSocialDrugRehab().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getHobbies().getSocialDrugRehab()) && sanghData.getHobbies().getSocialDrugRehab().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+            }else{
+                if (org_planning.isChecked()) {
+                        isChange = true;
+                }
+                if (org_comp_operator.isChecked()) {
+                        isChange = true;
+                }
+                if (org_project_operation.isChecked()) {
+                        isChange = true;
+                }
+                if (org_fund_raise.isChecked()) {
+                        isChange = true;
+                }
+                if (org_migration_prg.isChecked()) {
+                        isChange = true;
+                }
+                if (org_oration_trainer.isChecked()) {
+                        isChange = true;
+                }
+
+                if (org_management_phones.isChecked()) {
+                        isChange = true;
+                }
+
+                if (rel_medical_service.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_vihar_service.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_gochary_service.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_jap_tap_cordination.isChecked()) {
+                        isChange = true;
+                }
+
+                if (rel_swadhyai_service.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_kar_sewa.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_shivir_management.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_writeup.isChecked()) {
+                        isChange = true;
+                }
+
+                if (rel_drawing.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_self_learning.isChecked()) {
+                        isChange = true;
+                }
+                if (rel_teaching.isChecked()) {
+                        isChange = true;
+                }
+
+                if (rel_branch.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_human_service.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_education_service.isChecked()) {
+                        isChange = true;
+                }
+                if (social_medical_service.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_veg_publicity.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_lit_service.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_water_kiosk_service.isChecked()) {
+                        isChange = true;
+                }
+                if (social_web_handling.isChecked()) {
+                        isChange = true;
+                }
+
+                if (social_speech.isChecked()) {
+                        isChange = true;
+                }
+                if (social_drug_rehab.isChecked()) {
+                        isChange = true;
+                }
+            }
+
+        }else{
+            if (org_planning.isChecked()) {
+                isChange = true;
+            }
+            if (org_comp_operator.isChecked()) {
+                isChange = true;
+            }
+            if (org_project_operation.isChecked()) {
+                isChange = true;
+            }
+            if (org_fund_raise.isChecked()) {
+                isChange = true;
+            }
+            if (org_migration_prg.isChecked()) {
+                isChange = true;
+            }
+            if (org_oration_trainer.isChecked()) {
+                isChange = true;
+            }
+
+            if (org_management_phones.isChecked()) {
+                isChange = true;
+            }
+
+            if (rel_medical_service.isChecked()) {
+                isChange = true;
+            }
+            if (rel_vihar_service.isChecked()) {
+                isChange = true;
+            }
+            if (rel_gochary_service.isChecked()) {
+                isChange = true;
+            }
+            if (rel_jap_tap_cordination.isChecked()) {
+                isChange = true;
+            }
+
+            if (rel_swadhyai_service.isChecked()) {
+                isChange = true;
+            }
+            if (rel_kar_sewa.isChecked()) {
+                isChange = true;
+            }
+            if (rel_shivir_management.isChecked()) {
+                isChange = true;
+            }
+            if (rel_writeup.isChecked()) {
+                isChange = true;
+            }
+
+            if (rel_drawing.isChecked()) {
+                isChange = true;
+            }
+            if (rel_self_learning.isChecked()) {
+                isChange = true;
+            }
+            if (rel_teaching.isChecked()) {
+                isChange = true;
+            }
+
+            if (rel_branch.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_human_service.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_education_service.isChecked()) {
+                isChange = true;
+            }
+            if (social_medical_service.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_veg_publicity.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_lit_service.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_water_kiosk_service.isChecked()) {
+                isChange = true;
+            }
+            if (social_web_handling.isChecked()) {
+                isChange = true;
+            }
+
+            if (social_speech.isChecked()) {
+                isChange = true;
+            }
+            if (social_drug_rehab.isChecked()) {
+                isChange = true;
+            }
+        }
+        return isChange;
+    }
+
     @OnClick(R.id.updateHobby)
     public void updateHobby() {
 
-        LoginModel loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null) {
-            showLoadingDialog();
+        if(isAnyChanges()) {
+            LoginModel loginResponse = OfflineData.getLoginData();
+            if (loginResponse != null) {
+                showLoadingDialog();
 
-            RequestProcessor requestProcessor = new RequestProcessor(HobbyFragment.this);
-            requestProcessor.updateHobbies(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(org_planning.isChecked()), String.valueOf(org_comp_operator.isChecked()),
-                    String.valueOf(org_project_operation.isChecked()), String.valueOf(org_fund_raise.isChecked()), String.valueOf(org_migration_prg.isChecked()),
-                    String.valueOf(org_oration_trainer.isChecked()), String.valueOf(org_management_phones.isChecked()), String.valueOf(rel_medical_service.isChecked()),
-                    String.valueOf(rel_vihar_service.isChecked()), String.valueOf(rel_gochary_service.isChecked()), String.valueOf(rel_jap_tap_cordination.isChecked()),
-                    String.valueOf(rel_swadhyai_service.isChecked()), String.valueOf(rel_kar_sewa.isChecked()), String.valueOf(rel_shivir_management.isChecked()),
-                    String.valueOf(rel_writeup.isChecked()), String.valueOf(rel_drawing.isChecked()), String.valueOf(rel_self_learning.isChecked()),
-                    String.valueOf(rel_teaching.isChecked()), String.valueOf(rel_branch.isChecked()), String.valueOf(social_human_service.isChecked()),
-                    String.valueOf(social_education_service.isChecked()), String.valueOf(social_medical_service.isChecked()),
-                    String.valueOf(social_veg_publicity.isChecked()), String.valueOf(social_lit_service.isChecked()),
-                    String.valueOf(social_water_kiosk_service.isChecked()), String.valueOf(social_web_handling.isChecked()),
-                    String.valueOf(social_speech.isChecked()), String.valueOf(social_drug_rehab.isChecked()));
+                RequestProcessor requestProcessor = new RequestProcessor(HobbyFragment.this);
+                requestProcessor.updateHobbies(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(org_planning.isChecked()), String.valueOf(org_comp_operator.isChecked()),
+                        String.valueOf(org_project_operation.isChecked()), String.valueOf(org_fund_raise.isChecked()), String.valueOf(org_migration_prg.isChecked()),
+                        String.valueOf(org_oration_trainer.isChecked()), String.valueOf(org_management_phones.isChecked()), String.valueOf(rel_medical_service.isChecked()),
+                        String.valueOf(rel_vihar_service.isChecked()), String.valueOf(rel_gochary_service.isChecked()), String.valueOf(rel_jap_tap_cordination.isChecked()),
+                        String.valueOf(rel_swadhyai_service.isChecked()), String.valueOf(rel_kar_sewa.isChecked()), String.valueOf(rel_shivir_management.isChecked()),
+                        String.valueOf(rel_writeup.isChecked()), String.valueOf(rel_drawing.isChecked()), String.valueOf(rel_self_learning.isChecked()),
+                        String.valueOf(rel_teaching.isChecked()), String.valueOf(rel_branch.isChecked()), String.valueOf(social_human_service.isChecked()),
+                        String.valueOf(social_education_service.isChecked()), String.valueOf(social_medical_service.isChecked()),
+                        String.valueOf(social_veg_publicity.isChecked()), String.valueOf(social_lit_service.isChecked()),
+                        String.valueOf(social_water_kiosk_service.isChecked()), String.valueOf(social_web_handling.isChecked()),
+                        String.valueOf(social_speech.isChecked()), String.valueOf(social_drug_rehab.isChecked()));
+            }
+        }else{
+            new CustomToast().showErrorToast(getActivity(), view, "Please select your hobbies and try again");
         }
 
 
@@ -322,16 +739,16 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
 */
                             loadSanghData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Updated successfully", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, "Updated successfully");
                             }
 
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                             }
                         }
                     }
@@ -344,14 +761,14 @@ public class HobbyFragment extends BaseFragment implements GUICallback, DataUpda
                         showDataUi();
                     } else {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                         }
                     }
                 }
             } else {
-                Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
             }
         }
     }

@@ -14,9 +14,11 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.DataUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.DharmicData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.SanghData;
 
@@ -45,13 +47,13 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
     @Bind(R.id.others)
     CheckBox others;
 
-
+    private View view = null;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.activity_services_fragment,container,false);
+        view = inflater.inflate(R.layout.activity_services_fragment, container, false);
 
         ButterKnife.bind(this, view);
         return view;
@@ -85,7 +87,7 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
                     arthse.setChecked(true);
                 else
                     arthse.setChecked(false);
-                if (!TextUtils.isEmpty(sanghData.getServices().getService_office()) &&sanghData.getServices().getService_office().equalsIgnoreCase("1"))
+                if (!TextUtils.isEmpty(sanghData.getServices().getService_office()) && sanghData.getServices().getService_office().equalsIgnoreCase("1"))
                     apnerupke.setChecked(true);
 
                 if (!TextUtils.isEmpty(sanghData.getServices().getService_others()) && sanghData.getServices().getService_others().equalsIgnoreCase("1"))
@@ -97,19 +99,113 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
         }
     }
 
+    private boolean isAnyChanges() {
+        boolean isChange = false;
+        SanghData sanghData = OfflineData.getSanghData();
+        if (sanghData != null) {
+            if (sanghData.getServices() != null) {
+                if (samayse.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_time()) && sanghData.getServices().getService_time().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_time()) && sanghData.getServices().getService_time().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (anubavse.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_experience()) && sanghData.getServices().getService_experience().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_experience()) && sanghData.getServices().getService_experience().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (vicharose.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_thoughts()) && sanghData.getServices().getService_thoughts().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_thoughts()) && sanghData.getServices().getService_thoughts().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (arthse.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_money()) && sanghData.getServices().getService_money().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_money()) && sanghData.getServices().getService_money().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (apnerupke.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_office()) && sanghData.getServices().getService_office().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_office()) && sanghData.getServices().getService_office().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+                if (others.isChecked()) {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_others()) && sanghData.getServices().getService_others().equalsIgnoreCase("0"))
+                        isChange = true;
+                } else {
+                    if (!TextUtils.isEmpty(sanghData.getServices().getService_others()) && sanghData.getServices().getService_others().equalsIgnoreCase("1"))
+                        isChange = true;
+                }
+
+            }else {
+                if (samayse.isChecked()) {
+                    isChange = true;
+                }
+                if (anubavse.isChecked()) {
+                    isChange = true;
+                }
+                if (vicharose.isChecked()) {
+                    isChange = true;
+                }
+                if (arthse.isChecked()) {
+                    isChange = true;
+                }
+                if (apnerupke.isChecked()) {
+                    isChange = true;
+                }
+                if (others.isChecked()) {
+                    isChange = true;
+                }
+            }
+
+        } else {
+            if (samayse.isChecked()) {
+                isChange = true;
+            }
+            if (anubavse.isChecked()) {
+                isChange = true;
+            }
+            if (vicharose.isChecked()) {
+                isChange = true;
+            }
+            if (arthse.isChecked()) {
+                isChange = true;
+            }
+            if (apnerupke.isChecked()) {
+                isChange = true;
+            }
+            if (others.isChecked()) {
+                isChange = true;
+            }
+        }
+        return isChange;
+    }
+
     @OnClick(R.id.updateServices)
     public void updateServices() {
+        if (isAnyChanges()) {
+            LoginModel loginResponse = OfflineData.getLoginData();
+            if (loginResponse != null) {
+                showLoadingDialog();
 
-        LoginModel loginResponse = OfflineData.getLoginData();
-        if (loginResponse != null) {
-            showLoadingDialog();
-
-            RequestProcessor requestProcessor = new RequestProcessor(ServicesFragment.this);
-            requestProcessor.updateServices(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(samayse.isChecked()),String.valueOf(arthse.isChecked()),
-                    String.valueOf(apnerupke.isChecked()),String.valueOf(anubavse.isChecked()), String.valueOf(vicharose.isChecked()),
-                    String.valueOf(others.isChecked()));
+                RequestProcessor requestProcessor = new RequestProcessor(ServicesFragment.this);
+                requestProcessor.updateServices(loginResponse.getId(), loginResponse.getAppToken(), String.valueOf(samayse.isChecked()), String.valueOf(arthse.isChecked()),
+                        String.valueOf(apnerupke.isChecked()), String.valueOf(anubavse.isChecked()), String.valueOf(vicharose.isChecked()),
+                        String.valueOf(others.isChecked()));
+            }
+        } else {
+            new CustomToast().showErrorToast(getActivity(), view, "Please select your services and try again");
         }
-
 
     }
 
@@ -129,20 +225,20 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
 */
                             loadSanghData();
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Updated successfully", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showInformationToast(getActivity(), view, "Updated successfully");
                             }
 
                         } else {
                             if (!TextUtils.isEmpty(response.getMessage())) {
-                                Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                             } else {
-                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                             }
                         }
                     }
-                }else if (guiResponse instanceof SanghDetailsResponse) {
+                } else if (guiResponse instanceof SanghDetailsResponse) {
                     SanghDetailsResponse response = (SanghDetailsResponse) guiResponse;
                     if (!TextUtils.isEmpty(response.getStatus()) && response.getStatus().equalsIgnoreCase("success")) {
                         OfflineData.saveSanghResponse(response.getData());
@@ -151,14 +247,14 @@ public class ServicesFragment extends BaseFragment implements GUICallback, DataU
                         showDataUi();
                     } else {
                         if (!TextUtils.isEmpty(response.getMessage())) {
-                            Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, response.getMessage());
                         } else {
-                            Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                            new CustomToast().showErrorToast(getActivity(), view, "Something went wrong!");
                         }
                     }
                 }
             } else {
-                Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                new CustomToast().showErrorToast(getActivity(), view, "Please check your internet connection");
             }
         }
     }
