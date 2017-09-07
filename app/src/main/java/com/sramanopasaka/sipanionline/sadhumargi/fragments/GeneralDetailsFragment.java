@@ -263,9 +263,10 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             district.requestFocus();
             callAPi = false;
         } else {
+            district.clearFocus();
             textInputLayoutDistrict.setError(null);
             //district.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
-            district.clearFocus();
+
         }
 
 
@@ -286,10 +287,10 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             //textInputLayoutLastName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
             callAPi = false;
         } else {
-
+            lastName.clearFocus();
             textInputLayoutLastName.setError(null);
             lastName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
-            lastName.clearFocus();
+
         }
 
         if (firstName.getText().toString().length() == 0) {
@@ -298,10 +299,10 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             callAPi = false;
             //firstName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
         } else {
-
+            firstName.clearFocus();
             textInputLayoutFirstName.setError(null);
             //firstName.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
-            firstName.clearFocus();
+
         }
 
         if (anchalTxt.getText().toString().length() == 0) {

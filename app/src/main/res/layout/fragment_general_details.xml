@@ -129,7 +129,7 @@
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 app:errorTextAppearance="@style/error_appearance"
                 android:textColorHint="@color/orange"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/margin"
                 android:layout_height="wrap_content">
 
                 <EditText
@@ -158,7 +158,7 @@
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 app:errorTextAppearance="@style/error_appearance"
                 android:textColorHint="@color/orange"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/margin"
                 android:layout_height="wrap_content">
 
                 <EditText
@@ -275,7 +275,7 @@
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
                 app:errorTextAppearance="@style/error_appearance"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/margin"
 
                 android:layout_height="wrap_content">
 

@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/white"
                 android:textStyle="normal"
+                android:layout_margin="@dimen/fab_margin"
                 app:errorTextAppearance="@style/error_appearance"
                 app:hintTextAppearance="@style/edittext"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout">
@@ -62,13 +63,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/radiogrp"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"                    android:drawableEnd="@android:drawable/ic_menu_my_calendar"
                     android:editable="false"
                     android:focusableInTouchMode="false"
                     android:hint="@string/birthdate"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_10"
+
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -86,7 +88,7 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6"
+                    android:layout_weight="5"
                     android:orientation="horizontal"
 
                     android:paddingBottom="@dimen/dimen_10">
@@ -116,26 +118,25 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/i_age"
                     app:errorTextAppearance="@style/error_appearance"
-                    android:visibility="gone"
                     android:layout_width="0dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    style="@style/error_appearance"
+                    android:visibility="gone"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4.78"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
-                    android:layout_margin="@dimen/fab_margin">
+                    android:layout_margin="@dimen/small"
+                    android:paddingBottom="@dimen/fab_margin">
 
                     <EditText
                         android:id="@+id/age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/fab_margin"
+                        android:visibility="visible"
                         android:hint="@string/age"
-                        android:paddingLeft="@dimen/extra_small"
+                        android:paddingBottom="@dimen/fab_margin"
+
                         android:inputType="number"
-                        android:maxLength="3"
+                        android:maxLength="2"
                         android:singleLine="true"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"
@@ -152,7 +153,7 @@
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/small_text"
                 app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
@@ -164,10 +165,12 @@
                     android:background="@drawable/edt_border"
                     android:inputType="textNoSuggestions"
                     android:maxLength="50"
-                    android:layout_margin="@dimen/fab_margin"
+
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_10"
+
                     android:textColor="@color/white"
                     android:textColorHint="@color/orange"
                     android:textCursorDrawable="@drawable/cursor_drawable"
@@ -206,11 +209,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/fab_margin"
+
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     android:paddingLeft="2dp"
                     android:layout_centerVertical="true"
-                    android:paddingRight="2dp"
-                    android:text="+91"
+
+                    android:text="+91-"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:textStyle="normal" />
@@ -222,7 +227,8 @@
                     android:layout_width="match_parent"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
-
+                    android:paddingLeft="2dp"
+                    android:layout_margin="@dimen/small"
                     app:errorTextAppearance="@style/error_appearance"
                     android:layout_height="wrap_content">
 
@@ -231,7 +237,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/radiogrp"
-                        android:layout_margin="@dimen/fab_margin"
+
+                        android:layout_marginTop="@dimen/fab_margin"
+                        android:layout_marginBottom="@dimen/fab_margin"
                         android:hint="@string/mobile_number"
                         android:paddingLeft="0dp"
                         android:inputType="number"
@@ -252,8 +260,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/fab_margin"
-                android:layout_marginLeft="@dimen/fab_margin"
-                android:layout_marginRight="@dimen/fab_margin"
+                android:layout_marginLeft="@dimen/small_text_12"
+                android:layout_marginRight="@dimen/small_text_12"
                 android:text="@string/hint"
                 android:textColor="@color/white"
                 android:textSize="@dimen/small_text_12"
@@ -266,6 +274,7 @@
                 android:layout_margin="@dimen/fab_margin"
                 app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content"
+                app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 >
 
                 <EditText
@@ -273,13 +282,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/radiogrp"
-                    android:layout_margin="@dimen/fab_margin"
+
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     android:digits="abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^*()_+"
                     android:hint="@string/email_id"
                     android:inputType="textEmailAddress"
                     android:maxLength="100"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_10"
+
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -294,7 +305,7 @@
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/small_text_12"
                 app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
@@ -306,9 +317,11 @@
                     android:background="@drawable/edt_border"
                     android:inputType="textNoSuggestions"
                     android:maxLength="50"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_10"
+
                     android:textColor="@color/white"
                     android:textColorHint="@color/orange"
                     android:textCursorDrawable="@drawable/cursor_drawable"
@@ -352,7 +365,7 @@
                 android:layout_width="match_parent"
                 app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                 android:textColorHint="@color/orange"
-                android:layout_margin="@dimen/fab_margin"
+                android:layout_margin="@dimen/small_text_12"
                 app:errorTextAppearance="@style/error_appearance"
                 android:layout_height="wrap_content">
 
@@ -366,7 +379,10 @@
                     android:maxLength="50"
                     android:maxLines="1"
                     android:paddingBottom="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_10"
+
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
+
                     android:textColor="@color/white"
                     android:textColorHint="@color/orange"
                     android:textCursorDrawable="@drawable/cursor_drawable"
@@ -396,6 +412,8 @@
                     android:imeOptions="actionNext"
                     android:maxLength="6"
                     android:paddingBottom="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
 
                     android:singleLine="true"
                     android:textColor="@color/white"
@@ -425,6 +443,8 @@
                     android:inputType="textCapCharacters"
                     android:maxLength="40"
                     android:paddingBottom="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginBottom="@dimen/fab_margin"
 
                     android:singleLine="true"
                     android:textColor="@color/white"
@@ -453,7 +473,7 @@
                     android:layout_height="match_parent"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
-                    android:layout_margin="@dimen/fab_margin"
+                    android:layout_margin="@dimen/small_text_12"
                     app:errorTextAppearance="@style/error_appearance">
 
                     <com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText
@@ -466,7 +486,7 @@
                         android:maxLength="50"
                         android:maxLines="1"
                         android:paddingBottom="@dimen/dimen_10"
-                        android:paddingLeft="@dimen/dimen_10"
+
                         android:textColor="@color/white"
                         android:textColorHint="@color/orange"
                         android:textCursorDrawable="@drawable/cursor_drawable"
@@ -513,9 +533,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/fab_margin">
 
                 <CheckBox
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/termsCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"

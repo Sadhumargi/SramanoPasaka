@@ -354,6 +354,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     bDate.requestFocusFromTouch();
                     callAPi = false;
                 } else {
+                    ageCheckBox.setChecked(false);
                     textinputlayoutbithdate.setError(null);
                     textinputlayoutbithdate.setError(null);
                 }
@@ -560,6 +561,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 gender.setText(item.getLabel());
                 gender.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                 textinputlayoutgender.setError(null);
+
+
             }
 
             @Override
