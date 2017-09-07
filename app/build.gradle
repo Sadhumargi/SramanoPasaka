@@ -120,6 +120,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'com.kofigyan.stateprogressbar:stateprogressbar:0.0.6'
+
+    compile 'com.github.esafirm.android-image-picker:imagepicker:1.+'
+    // for experimental rx picker
+    compile 'com.github.esafirm.android-image-picker:rximagepicker:1.+'
 }
 
 

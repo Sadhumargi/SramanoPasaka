@@ -31,6 +31,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.ImageCompressionAsyncTask;
 import com.sramanopasaka.sipanionline.sadhumargi.model.ProfileImage;
@@ -40,6 +42,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -55,6 +58,7 @@ public class UploadPhotoFragment extends BaseFragment {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final int REQUEST_PICK_GALLERY = 3;
+    private static final int REQUEST_CODE_PICKER = 5;
     private static final int CAPTURE_PICTURE_REQUESTCODE = 2222;
     private String tempfileName = "avatar.jpg";
     public static final String IMAGE_DIRECTORY_NAME = "Sadhumargi";
@@ -79,7 +83,7 @@ public class UploadPhotoFragment extends BaseFragment {
         view.findViewById(R.id.uploadPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] items = new String[]{"Take Photo", "Choose From Library"};
+               /* String[] items = new String[]{"Take Photo", "Choose From Library"};
                 DialogueUtils.showSingleChoiceDialog(getActivity(), R.string.add_photo, items, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
@@ -92,7 +96,23 @@ public class UploadPhotoFragment extends BaseFragment {
                             dialog.dismiss();
                         }
                     }
-                });
+                });*/
+
+                ImagePicker.create(getActivity())
+                        .returnAfterFirst(true) // set whether pick or camera action should return immediate result or not. For pick image only work on single mode
+                        .folderMode(true) // folder mode (false by default)
+                        .folderTitle(getString(R.string.app_name)) // folder selection title
+                        .imageTitle("Tap to select") // image selection title
+                        .single() // single mode
+                        //.multi() // multi mode (default mode)
+                        //.limit(10) // max images can be selected (99 by default)
+                        .showCamera(true) // show camera or not (true by default)
+                        .imageDirectory("Camera") // directory name for captured image  ("Camera" folder by default)
+                        //.origin(images) // original selected images, used in multi mode
+                        //.theme(R.style.CustomImagePickerTheme) // must inherit ef_BaseTheme. please refer to sample
+                        .enableLog(false) // disabling log
+                        //.imageLoader(new GrayscaleImageLoder()) // custom image loader, must be serializeable
+                        .start(REQUEST_CODE_PICKER); // start image picker activity with request code
             }
         });
 
@@ -323,7 +343,22 @@ public class UploadPhotoFragment extends BaseFragment {
 
 
                 }
+            }else if (requestCode == REQUEST_CODE_PICKER && resultCode == getActivity().RESULT_OK && data != null) {
+                ArrayList<Image> images = (ArrayList<Image>) ImagePicker.getImages(data);
+                if(images!=null && images.size()>0) {
+                    ImageCompressionAsyncTask imageCompressionAsyncTask = new ImageCompressionAsyncTask(getActivity(), 196, 196);
+                    imageCompressionAsyncTask.setOnImageCompressed(new ImageCompressionAsyncTask.OnImageCompressed() {
+                        @Override
+                        public void onCompressedImage(ProfileImage profileImage) {
+                            UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
+                            Log.e("Image---",""+profileImage.imageString);
+                        }
+                    });
+                    imageCompressionAsyncTask.execute("file:////" + images.get(0).getPath());
+                    Log.e("----", "" + images.get(0).getPath());
+                }
             }
+
         }
     }
 

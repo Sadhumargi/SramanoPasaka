@@ -1,5 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -593,4 +594,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     public void onUpdateTitile(String title) {
         titleTxt.setText(title);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.contentPanel);
+        fragment.onActivityResult(requestCode, resultCode, data);
+    }
+
+
 }

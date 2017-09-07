@@ -5,35 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.vision.text.Text;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
 import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
-import com.sramanopasaka.sipanionline.sadhumargi.ProfileUpdateActivty;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
@@ -43,15 +35,12 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
-import com.sramanopasaka.sipanionline.sadhumargi.helpers.NothingSelectedSpinnerAdapter;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Gender;
 import com.sramanopasaka.sipanionline.sadhumargi.model.ProfileCreatedBy;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Salutation;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.StatePickerDialog;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.ValidationUtils;
@@ -75,6 +64,9 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
     @Bind(R.id.birth_date)
     EditText bDate;
+
+    @Bind(R.id.ageLayout)
+    RelativeLayout ageLayout;
 
     @Bind(R.id.i_birthdate)
     TextInputLayout textinputlayoutbithdate;
@@ -152,7 +144,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
     CheckBox ageCheckBox;
 
     @Bind(R.id.age)
-    EditText age;
+    EditText ageTxt;
 
     @Bind(R.id.mobileInfo)
     TextView mobileInfo;
@@ -209,13 +201,14 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
                 boolean callAPi = true;
 
-                if (profileCreatedby.getText().toString().length() == 0) {
+                if (TextUtils.isEmpty(profileCreatedby.getText().toString())||profileCreatedby.getText().toString().equalsIgnoreCase("*Profile Created By")) {
                     textinputlayoutprofilecreatedby.setError("Profile Created by is required" );
                     profileCreatedby.requestFocus();
                     profileCreatedby.requestFocusFromTouch();
                     profileCreatedby.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     callAPi = false;
                 }else{
+                    Log.e("----",""+profileCreatedby.getText().toString());
                     profileCreatedby.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
                     textinputlayoutprofilecreatedby.setError(null);
                 }
@@ -297,8 +290,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutcountry.setError(null);
                 }
 
-                if (valunteerCode.getText().toString().length() == 0) {
-                    textinputlayoutworkercode.setError("Country name is required");
+                if (profileCreatedby.getText().toString()!=null && profileCreatedby.getText().toString().equalsIgnoreCase("volunteer") && valunteerCode.getText().toString().length() == 0) {
+                    textinputlayoutworkercode.setError("volunteer code is required");
                     valunteerCode.requestFocus();
                     //valunteerCode.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
                     callAPi = false;
@@ -309,12 +302,19 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
 
                 if (emailId.getText().toString().length() == 0) {
-                    textinputlayoutemail.setError("Email id number is required");
+                    textinputlayoutemail.setError("Email id is required");
                     emailId.requestFocus();
                     callAPi = false;
                 }else {
 
-                    textinputlayoutemail.setError(null);
+                    if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
+                        textinputlayoutemail.setError("Email id is not valid");
+                        emailId.requestFocus();
+                        callAPi = false;
+                    } else {
+
+                        textinputlayoutemail.setError(null);
+                    }
                 }
 
                 if (pNumber.getText().toString().length() == 0) {
@@ -323,28 +323,21 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     callAPi = false;
                 }else {
 
-                    textinputlayoutmobilenumber.setError(null);
+                    if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length() < 5)) {
+                        textinputlayoutmobilenumber.setError("Mobile number is not valid");
+                        pNumber.requestFocus();
+                        callAPi = false;
+                    } else {
+
+                        textinputlayoutmobilenumber.setError(null);
+                    }
                 }
 
 
-                if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
-                    textinputlayoutemail.setError("Email id is not valid");
-                    emailId.requestFocus();
-                    callAPi = false;
-                } else {
-
-                    textinputlayoutemail.setError(null);
-                }
 
 
-                if (!ValidationUtils.isValidMobile(pNumber.getText().toString()) || (pNumber.getText().toString().length() < 5)) {
-                    textinputlayoutmobilenumber.setError("Mobile number is not valid");
-                    pNumber.requestFocus();
-                    callAPi = false;
-                } else {
 
-                    textinputlayoutmobilenumber.setError(null);
-                }
+
 
 
 
@@ -371,10 +364,10 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutbithdate.setError(null);
                     textinputlayoutbithdate.setError(null);
                 }
-                if (ageCheckBox.isChecked() && age.getText().toString().length() == 0) {
+                if (ageCheckBox.isChecked() && ageTxt.getText().toString().length() == 0) {
                     textinputlayoutage.setError("age is required");
-                    age.requestFocus();
-                    age.requestFocusFromTouch();
+                    ageTxt.requestFocus();
+                    ageTxt.requestFocusFromTouch();
                     callAPi = false;
                 } else {
                     textinputlayoutage.setError(null);
@@ -392,12 +385,12 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     if (ageCheckBox.isChecked())
                         bDate.setText("");
                     else {
-                        age.setText("0");
+                        ageTxt.setText("0");
                     }
 
                     showLoadingDialog();
                     requestProcessor.doRegister(registrationPojo.getAnchalId(), registrationPojo.getLocalSanghId(), registrationPojo.getFamilyId(), registrationPojo.getRelationId(), registrationPojo.getSaluation(), registrationPojo.getFirstName(), registrationPojo.getLastName()
-                            , post.getText().toString(), registrationPojo.getCity(), registrationPojo.getDistrict(), sState.getText().toString(), sCountry.getText().toString(), pNumber.getText().toString(), bDate.getText().toString(), Integer.parseInt(age.getText().toString()), gender.getText().toString(),
+                            , post.getText().toString(), registrationPojo.getCity(), registrationPojo.getDistrict(), sState.getText().toString(), sCountry.getText().toString(), pNumber.getText().toString(), bDate.getText().toString(), Integer.parseInt(ageTxt.getText().toString()), gender.getText().toString(),
                             emailId.getText().toString(), pinCode.getText().toString(), profileCreatedby.getText().toString(), valunteerCode.getText().toString());
                 }
 
@@ -515,23 +508,33 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
 
         });*/
 
-       // age.setVisibility(View.GONE);
+       // ageTxt.setVisibility(View.GONE);
 
         ageCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    ageLayout.setVisibility(View.VISIBLE);
                     bDate.setText("");
                     textinputlayoutage.setError(null);
-                    textinputlayoutage.setVisibility(View.VISIBLE);
+
                 } else {
-                    textinputlayoutage.setVisibility(View.GONE);
+                    ageLayout.setVisibility(View.GONE);
                 }
+                updateAgeTxt();
             }
         });
 
         return view;
 
+    }
+
+    private void updateAgeTxt(){
+        if(ageCheckBox.isChecked()){
+            ageLayout.setVisibility(View.VISIBLE);
+        }else{
+            ageLayout.setVisibility(View.GONE);
+        }
     }
 
 
