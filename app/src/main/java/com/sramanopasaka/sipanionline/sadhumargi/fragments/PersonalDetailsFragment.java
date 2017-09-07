@@ -354,7 +354,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     bDate.requestFocusFromTouch();
                     callAPi = false;
                 } else {
-                    ageCheckBox.setChecked(false);
+
                     textinputlayoutbithdate.setError(null);
                     textinputlayoutbithdate.setError(null);
                 }
