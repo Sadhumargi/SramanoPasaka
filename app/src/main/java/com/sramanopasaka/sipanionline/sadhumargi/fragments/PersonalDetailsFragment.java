@@ -297,20 +297,22 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                     textinputlayoutcountry.setError(null);
                 }
 
+                if (valunteerCode.getText().toString().length() == 0) {
+                    textinputlayoutworkercode.setError("Country name is required");
+                    valunteerCode.requestFocus();
+                    //valunteerCode.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_error_border));
+                    callAPi = false;
+                } else {
+                    //valunteerCode.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
+                    textinputlayoutworkercode.setError(null);
+                }
+
 
                 if (emailId.getText().toString().length() == 0) {
                     textinputlayoutemail.setError("Email id number is required");
                     emailId.requestFocus();
                     callAPi = false;
                 }else {
-
-                    textinputlayoutemail.setError(null);
-                }
-                if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
-                    textinputlayoutemail.setError("Email id is not valid");
-                    emailId.requestFocus();
-                    callAPi = false;
-                } else {
 
                     textinputlayoutemail.setError(null);
                 }
@@ -322,6 +324,16 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }else {
 
                     textinputlayoutmobilenumber.setError(null);
+                }
+
+
+                if (!ValidationUtils.isValidMail(emailId.getText().toString())) {
+                    textinputlayoutemail.setError("Email id is not valid");
+                    emailId.requestFocus();
+                    callAPi = false;
+                } else {
+
+                    textinputlayoutemail.setError(null);
                 }
 
 
@@ -367,6 +379,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 } else {
                     textinputlayoutage.setError(null);
                 }
+
 
                 if (callAPi && !termsCheckBox.isChecked()) {
                     new CustomToast().showErrorToast(getActivity(),view,"Please accept the terms and condtions");

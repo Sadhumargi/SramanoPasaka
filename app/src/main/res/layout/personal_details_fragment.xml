@@ -208,17 +208,18 @@
                     android:id="@+id/countryCodeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/ambilwarna_hueWidth"
 
-                    android:layout_marginTop="@dimen/fab_margin"
-                    android:layout_marginBottom="@dimen/fab_margin"
+
+
                     android:paddingLeft="2dp"
-                    android:layout_centerVertical="true"
 
                     android:text="+91-"
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:layout_alignLeft="@id/mobile_number"
+                   />
 
 
                 <android.support.design.widget.TextInputLayout
@@ -503,6 +504,7 @@
                     android:layout_width="match_parent"
                     app:theme="@style/MyMaterialTheme.Base.Design.TextInputLayout"
                     android:textColorHint="@color/orange"
+                    app:errorTextAppearance="@style/error_appearance"
                     android:layout_margin="@dimen/fab_margin"
                     android:layout_height="wrap_content">
 
