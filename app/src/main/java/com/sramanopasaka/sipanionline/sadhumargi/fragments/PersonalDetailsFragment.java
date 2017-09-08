@@ -187,6 +187,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
+                ageCheckBox.setChecked(false);
                 monthOfYear += 1;
 //2017-08-16
                 bDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
@@ -355,7 +356,7 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                 }
 
                 if (!ageCheckBox.isChecked() && bDate.getText().toString().length() == 0) {
-                    textinputlayoutbithdate.setError("Birthdate is required");
+                    textinputlayoutbithdate.setError("Birth date is required");
                     bDate.requestFocus();
                     bDate.requestFocusFromTouch();
                     callAPi = false;
