@@ -17,6 +17,9 @@ public class PreferenceUtils {
 
     private static final String PREFERECE_KEY_TOKEN = "token";
 
+    private static final String PREFERECE_KEY_PROFILE_IMAGE_ID = "profile_image";
+    private static final String PREFERECE_KEY_PROFILE_IMAGE_URL = "profile_image_url";
+
     private static final String PREFERECE_KEY_ID = "id";
 
     private static final String KEY_LAST_LOGIN_TIME = "last_login_time";
@@ -56,7 +59,27 @@ public class PreferenceUtils {
         return prefs.getString(PREFERECE_KEY_TOKEN, null);
     }
 
+    public static void setProfileImageId(Context context,String token) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE).edit();
+        editor.putString(PREFERECE_KEY_PROFILE_IMAGE_ID, token);
+        editor.commit();
+    }
 
+    public static String getProfileImageId(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE);
+        return prefs.getString(PREFERECE_KEY_PROFILE_IMAGE_ID, null);
+    }
+
+    public static void setProfileImageUrl(Context context,String token) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE).edit();
+        editor.putString(PREFERECE_KEY_PROFILE_IMAGE_URL, token);
+        editor.commit();
+    }
+
+    public static String getProfileImageUrl(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE);
+        return prefs.getString(PREFERECE_KEY_PROFILE_IMAGE_URL, null);
+    }
 
     public static void setLastLoginTime(Context context, long millisecs) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PREFERNCE_NAME, context.MODE_PRIVATE).edit();

@@ -33,11 +33,24 @@ import android.widget.Toast;
 
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
+import com.squareup.picasso.Picasso;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.ImageCompressionAsyncTask;
+import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.ProfileImage;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.FileUtils;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,13 +59,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+
 /**
  * Name    :   pranavjdev
  * Date   : 8/10/17
  * Email : pranavjaydev@gmail.com
  */
 
-public class UploadPhotoFragment extends BaseFragment {
+public class UploadPhotoFragment extends BaseFragment implements GUICallback{
     private Uri imageCaptureFile;
     private View view = null;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
@@ -79,6 +96,13 @@ public class UploadPhotoFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         photo = (ImageView) view.findViewById(R.id.photo);
+
+
+        if (!TextUtils.isEmpty(PreferenceUtils.getProfileImageUrl(getActivity())) && !TextUtils.isEmpty(PreferenceUtils.getProfileImageId(getActivity()))) {
+            Picasso.with(getActivity()).load(PreferenceUtils.getProfileImageUrl(getActivity())+"/"+PreferenceUtils.getProfileImageId(getActivity())).placeholder(R.drawable.profilemg)// Place holder image from drawable folder
+                    .error(R.drawable.profilemg).resize(150, 150).centerCrop()
+                    .into(photo);
+        }
 
         view.findViewById(R.id.uploadPhoto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -352,9 +376,21 @@ public class UploadPhotoFragment extends BaseFragment {
                         public void onCompressedImage(ProfileImage profileImage) {
                             UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
                             Log.e("Image---",""+profileImage.imageString);
+                            //File file = new File("file:////" + images.get(0).getPath());
+                            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), new byte[]{profileImage.image});
+                            MultipartBody.Part imageFileBody = MultipartBody.Part.createFormData("userfile", "profileImage", requestBody);
+                            RequestProcessor requestProcessor = new RequestProcessor(UploadPhotoFragment.this);
+                            requestProcessor.uploadProfilePicture(imageFileBody);
                         }
                     });
                     imageCompressionAsyncTask.execute("file:////" + images.get(0).getPath());
+                   try {
+
+                   }catch (Exception ex){
+                       new CustomToast().showErrorToast(getActivity(),view,"This file is not supported, please select ");
+                   }
+
+
                     Log.e("----", "" + images.get(0).getPath());
                 }
             }
@@ -366,4 +402,17 @@ public class UploadPhotoFragment extends BaseFragment {
         photo.setImageBitmap(bitmap);
     }
 
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        if (guiResponse != null) {
+            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+
+
+
+            }else{
+                new CustomToast().showErrorToast(getActivity(),view,"Please check your internet connection");
+            }
+
+        }
+    }
 }

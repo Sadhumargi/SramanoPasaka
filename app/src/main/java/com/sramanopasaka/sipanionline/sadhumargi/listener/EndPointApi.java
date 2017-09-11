@@ -26,6 +26,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ProfilePictureUploadResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
@@ -42,12 +43,15 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.http.GET;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -287,5 +291,9 @@ public interface EndPointApi {
 
     @GET("api/branches")
     Call<LocalSanghResponse> getLocalSanghList(@Query("anchal") String Id);
+
+    @Multipart
+    @POST("members/profile_pic_base64")
+    Call<ProfilePictureUploadResponse> uploadProfilePicture(@Part MultipartBody.Part imageFile);
 
 }

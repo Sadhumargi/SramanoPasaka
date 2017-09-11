@@ -41,7 +41,7 @@ public class SignInFragment extends BaseFragment implements GUICallback {
     private TabselectionListner tabselectionListner = null;
     ProgressDialog pg;
     private static Animation shakeAnimation;
-private View view = null;
+    private View view = null;
     String sPassword;
     private LinearLayout loginLayout = null;
 
@@ -62,7 +62,6 @@ private View view = null;
         btnSignup = (Button) view.findViewById(R.id.button_create_profile);
         shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
                 R.anim.shake);
-
 
 
         // creating an shared Preference file for the information to be stored
@@ -191,8 +190,9 @@ private View view = null;
                         PreferenceUtils.setPassword(getActivity(), sPassword);
                         PreferenceUtils.setAppToken(getActivity(), loginResponse.getData().getAppToken());
                         PreferenceUtils.setUserId(getActivity(), Integer.parseInt(loginResponse.getData().getId()));
-                        PreferenceUtils.setLastLoginTime(getActivity(),System.currentTimeMillis());
-
+                        PreferenceUtils.setLastLoginTime(getActivity(), System.currentTimeMillis());
+                        PreferenceUtils.setProfileImageUrl(getActivity(), loginResponse.getProfile_base());
+                        PreferenceUtils.setProfileImageId(getActivity(), loginResponse.getData().getProfilePic());
                         Toast.makeText(getActivity(), "Login Successfuly", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), ProfileActivity.class);
                         startActivity(i);

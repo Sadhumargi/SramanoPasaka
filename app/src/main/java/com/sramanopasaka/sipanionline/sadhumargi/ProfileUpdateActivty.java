@@ -12,6 +12,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.plus.model.people.Person;
+import com.squareup.picasso.Picasso;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.AchievementListingFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.BasicDetailsFragment;
@@ -35,6 +37,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 
 import org.w3c.dom.Text;
 
@@ -71,6 +74,8 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
     private ImageView dharmikImage = null;
     private ImageView sanghImage = null;
     private ImageView passwordImage = null;
+
+    private ImageView profileImage = null;
 
 
     private View basicRight = null;
@@ -116,6 +121,10 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
         dharmikView = (RelativeLayout) findViewById(R.id.dharmikView);
         sanghView = (RelativeLayout) findViewById(R.id.sanghView);
         passwordView = (RelativeLayout) findViewById(R.id.passwordView);
+
+        profileImage = (ImageView) findViewById(R.id.profileImage);
+
+
         bgViews.add(basicDetaisView);
         bgViews.add(uploadPhotoView);
         bgViews.add(contactDetailsView);
@@ -224,6 +233,12 @@ public class ProfileUpdateActivty extends AppCompatActivity implements Tabselect
                 finish();
             }
         });
+
+        if (!TextUtils.isEmpty(PreferenceUtils.getProfileImageUrl(this)) && !TextUtils.isEmpty(PreferenceUtils.getProfileImageId(this))) {
+            Picasso.with(this).load(PreferenceUtils.getProfileImageUrl(this)+"/"+PreferenceUtils.getProfileImageId(this)).placeholder(R.drawable.profilemg)// Place holder image from drawable folder
+                    .error(R.drawable.profilemg).resize(40, 40).centerCrop()
+                    .into(profileImage);
+        }
 
     }
 

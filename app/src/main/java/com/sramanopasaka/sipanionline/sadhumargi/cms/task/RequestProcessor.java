@@ -22,6 +22,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListRespons
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ProfilePictureUploadResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
@@ -61,6 +62,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -1350,6 +1352,42 @@ public class RequestProcessor {
             @Override
             public void onFailure(Call<LocalSanghResponse> call, Throwable t) {
 
+
+                guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+            }
+        });
+
+
+    }
+
+    public void uploadProfilePicture(MultipartBody.Part imageFile) {
+
+
+
+        EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
+
+
+
+        endPointApi.uploadProfilePicture(imageFile).enqueue(new Callback<ProfilePictureUploadResponse>() {
+            @Override
+            public void onResponse(Call<ProfilePictureUploadResponse> call, Response<ProfilePictureUploadResponse> response) {
+
+
+                Log.e("Response message=", "" + response.message());
+
+
+
+                if (response.body() != null) {
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                }else
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+
+            }
+
+            @Override
+            public void onFailure(Call<ProfilePictureUploadResponse> call, Throwable t) {
+
+                Log.e("---","erroe"+t.getMessage());
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
             }

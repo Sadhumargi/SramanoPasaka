@@ -666,7 +666,8 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                             OfflineData.saveLoginResponse(loginResponse.getData());
 
                             //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
-
+                            PreferenceUtils.setProfileImageUrl(getActivity(), loginResponse.getProfile_base());
+                            PreferenceUtils.setProfileImageId(getActivity(), loginResponse.getData().getProfilePic());
                             PreferenceUtils.setLastLoginTime(getActivity(), System.currentTimeMillis());
                             new CustomToast().showInformationToast(getActivity(),view,"Success");
 
