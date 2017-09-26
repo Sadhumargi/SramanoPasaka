@@ -15,12 +15,12 @@ public class GridItem implements Comparator<GridItem> {
     }
 
     private String logoid;
-    private int karyakarni_id;
-    public int getKaryakarni_id() {
+    private String karyakarni_id;
+    public String getKaryakarni_id() {
         return karyakarni_id;
     }
 
-    public void setKaryakarni_id(int karyakarni_id) {
+    public void setKaryakarni_id(String karyakarni_id) {
         this.karyakarni_id = karyakarni_id;
     }
 
@@ -60,7 +60,7 @@ public class GridItem implements Comparator<GridItem> {
 
         return 0;
     }
-    public int compareTo(GridItem compareFruit) {
+    /*public int compareTo(GridItem compareFruit) {
 
         int compareQuantity = ((GridItem) compareFruit).getKaryakarni_id();
 
@@ -70,7 +70,7 @@ public class GridItem implements Comparator<GridItem> {
         //descending order
         //return compareQuantity - this.quantity;
 
-    }
+    }*/
 
 
   /*  public String getTitle() {

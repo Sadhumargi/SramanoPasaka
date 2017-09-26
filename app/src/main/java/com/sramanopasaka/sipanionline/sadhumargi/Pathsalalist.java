@@ -4,23 +4,19 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.Html;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
@@ -416,4 +412,7 @@ public class Pathsalalist extends AppCompatActivity  {
             "in_charge_number": "9414777424",
             "in_charge_email": "",
             "grade": "उपलब्ध नहीं*/
+
+
+    /*Signature:65e2dc9815be3ccf6bd3f942b3571bc9*/
 

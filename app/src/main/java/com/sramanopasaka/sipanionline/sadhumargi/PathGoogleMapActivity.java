@@ -45,7 +45,8 @@ public class PathGoogleMapActivity extends AppCompatActivity implements OnMapRea
     GoogleMap mGoogleMap;
     MarkerOptions markerOptions;
     Location location;
-Button dir;
+    Button dir;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +91,7 @@ Button dir;
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-       // mGoogleMap.setMyLocationEnabled(true);
-
+        // mGoogleMap.setMyLocationEnabled(true);
 
 
     }
@@ -101,6 +101,16 @@ Button dir;
 
         mGoogleMap = googleMap;
         // Enabling MyLocation Layer of Google Map
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         googleMap.setMyLocationEnabled(true);
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.getUiSettings().setCompassEnabled(true);

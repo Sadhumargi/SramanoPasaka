@@ -89,12 +89,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Gathividhi"
+            android:name=".GathividhiActivity"
             android:label="@string/ic3"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Vihar"
+            android:name=".ViharActivity"
             android:label="@string/title_activity_vihar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

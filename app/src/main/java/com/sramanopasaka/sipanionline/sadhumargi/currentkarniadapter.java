@@ -9,20 +9,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.CurrentKaryakarniModel;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class currentkarniadapter extends RecyclerView.Adapter<currentkarniadapter.ViewHolder>  {
 
     // Declare Variables
     Context context;
     LayoutInflater inflater;
-    ArrayList<HashMap<String, String>> data;
+    //ArrayList<HashMap<String, String>> data;
+
+    CurrentKaryakarniModel resultp=null;
+    ArrayList<CurrentKaryakarniModel> data;
     ImageLoader imageLoader;
-    HashMap<String, String> resultp= new HashMap<String, String>();
+    //HashMap<String, String> resultp= new HashMap<String, String>();
 
     public currentkarniadapter(Context context,
-                            ArrayList<HashMap<String, String>> arraylist) {
+                               ArrayList<CurrentKaryakarniModel> arraylist) {
         this.context = context;
         data = arraylist;
         imageLoader = new ImageLoader(context);
@@ -54,13 +58,13 @@ public class currentkarniadapter extends RecyclerView.Adapter<currentkarniadapte
         viewHolder.txt_kr_city.setTypeface(type);
 
         // Capture position and set results to the TextViews
-        viewHolder.txt_kr_name.setText(resultp.get(CurrentKaryakarni.KAR_NAME));
-        viewHolder.txt_kr_designation.setText(resultp.get(CurrentKaryakarni.KR_DESIGNATION));
-        viewHolder.txt_kr_region.setText(resultp.get(CurrentKaryakarni.KR_REGION));
-        viewHolder.txt_kr_city.setText(resultp.get(CurrentKaryakarni.KR_CITY));
-        viewHolder.txt_kr_phone.setText(resultp.get(CurrentKaryakarni.KR_PHONE));
+        viewHolder.txt_kr_name.setText(resultp.getMem_name());
+        viewHolder.txt_kr_designation.setText(resultp.getDesgn());
+        viewHolder.txt_kr_region.setText(resultp.getRegion());
+        viewHolder.txt_kr_city.setText(resultp.getCity());
+        viewHolder.txt_kr_phone.setText(resultp.getPhone());
 
-        imageLoader.DisplayImage(resultp.get(CurrentKaryakarni.KR_IMG_LINK), viewHolder.image);
+        imageLoader.DisplayImage(resultp.getImg_link(), viewHolder.image);
         // Capture ListView item click
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

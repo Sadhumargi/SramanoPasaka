@@ -1,20 +1,17 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.SignInFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.SignUpFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
@@ -28,7 +25,8 @@ public class SigninActivity extends AppCompatActivity implements TabselectionLis
     ViewPager viewPager;
     TabLayout tabLayout;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
+    //@RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 
 import java.util.Collections;
@@ -26,6 +25,7 @@ import butterknife.OnClick;
  */
 
 public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdapter.EducationListViewHolder> {
+
     private List<Education> list = Collections.emptyList();
     private Context context;
     private EducationListAdapter.EditDeleteActionListener listener;

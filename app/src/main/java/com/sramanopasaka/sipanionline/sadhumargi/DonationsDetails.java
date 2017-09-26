@@ -1,21 +1,18 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -23,25 +20,27 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DonationsDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class DonationsDetails extends AppCompatActivity {
+public class DonationsDetails extends BaseActivity implements GUICallback {
 
-    private static final String TAG_DONATE_ID = "data";
+    /*private static final String TAG_DONATE_ID = "data";
     JSONParser jParser1 = new JSONParser();
-    JSONArray cast1 = null;
+    JSONArray cast1 = null;*/
     Button submit;
-   String url3= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/donatedetails.php";
+ //  String url3= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/donatedetails.php";
+
+
+    Context context;
+
+    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.DonationsDetails> arraylist;
 
     TextView txt_name,txt_type_name,txt_details;
     EditText txt_amount;
@@ -88,11 +87,61 @@ public class DonationsDetails extends AppCompatActivity {
         txt_details.setTypeface(type,Typeface.BOLD);
         txt_name.setTypeface(type,Typeface.BOLD);
 
-       new Remote().execute();
+        Bundle is=getIntent().getExtras();
+        int a1= is.getInt("donate_id");
+        final String s1=is.getString("dhan_name1");
+
+      // new Remote().execute();
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getDonationsDetails(a1);
+        showLoadingDialog();
 
     }
 
-    final class Remote extends AsyncTask<Void, Void, Void> {
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                DonationsDetailsResponse response= (DonationsDetailsResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getData()!=null && response.getData().size()>0){
+
+                        arraylist=response.getData();
+
+                        //   txt_type_name.setText(s1);
+                        txt_name.setText(arraylist.get(0).getDonate_name());
+                        txt_details.setText(arraylist.get(0).getDonate_details());
+                        submit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int s1= Integer.parseInt(txt_amount.getText().toString());
+                                Intent pay=new Intent(DonationsDetails.this,Payment.class);
+                                startActivity(pay);
+
+                            }
+                        });
+                        makeTextViewResizable(txt_details, 3, "और देखो", true);
+
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+   /* final class Remote extends AsyncTask<Void, Void, Void> {
         ProgressDialog pg = null;
 
         @Override
@@ -172,7 +221,7 @@ public class DonationsDetails extends AppCompatActivity {
             pg.dismiss();
         }
 
-    }
+    }*/
 
 //To show min lines of info and hideing rest os lines by giving a dropdown option to read more lines.
     public void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiTextNews;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,9 +21,11 @@ import java.util.ArrayList;
 public class TextNewsAdapter extends  RecyclerView.Adapter<TextNewsAdapter.ViewHolder> {
 
 
-    private ArrayList<TextGetSetter> android;
+    //private ArrayList<TextGetSetter> android;
+
+    private ArrayList<GathividhiTextNews> android;
     Context context;
-    public TextNewsAdapter(Context context,ArrayList<TextGetSetter> android) {
+    public TextNewsAdapter(Context context, ArrayList<GathividhiTextNews> android) {
         this.android = android;
         this.context=context;
     }
@@ -44,10 +48,10 @@ public class TextNewsAdapter extends  RecyclerView.Adapter<TextNewsAdapter.ViewH
         viewHolder.tv_details.setTypeface(type);
         viewHolder.tv_details.setTypeface(type,Typeface.BOLD);
 
-        viewHolder.tv_title.setText(android.get(i).getTitle());
-        viewHolder.tv_details.setText(android.get(i).getDetails());
+        viewHolder.tv_title.setText(android.get(i).getText_news_title());
+        viewHolder.tv_details.setText(android.get(i).getText_news_details());
         viewHolder.tv_date.setText(android.get(i).getDate());
-        String url1=android.get(i).getDetails().toString();
+        String url1=android.get(i).getText_news_details().toString();
         try {
             // Create a URL for the desired page
             URL url = new URL(url1);

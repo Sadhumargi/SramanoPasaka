@@ -14,6 +14,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.RamSahitya;
+
 import java.util.ArrayList;
 
 public class TwoFragAdapter extends RecyclerView.Adapter<TwoFragAdapter.ViewHolder> implements Filterable {
@@ -21,15 +23,16 @@ public class TwoFragAdapter extends RecyclerView.Adapter<TwoFragAdapter.ViewHold
     // Declare Variables
     Context context;
     LayoutInflater inflater;
-    ArrayList<TwoFragGetSetter> data;
+   // ArrayList<TwoFragGetSetter> data;
     ImageLoader imageLoader;
-    private ArrayList<TwoFragGetSetter> androidlist;
+   // private ArrayList<TwoFragGetSetter> androidlist;
     private ArrayList<TwoFragGetSetter> android2;
+    private  ArrayList<RamSahitya> arraylist=null;
 
     public TwoFragAdapter(Context context,
-                          ArrayList<TwoFragGetSetter> arraylist) {
+                          ArrayList<RamSahitya> arraylist) {
         this.context = context;
-        androidlist = arraylist;
+        this.arraylist=arraylist;
         imageLoader = new ImageLoader(context);
     }
     @Override
@@ -48,8 +51,8 @@ public class TwoFragAdapter extends RecyclerView.Adapter<TwoFragAdapter.ViewHold
         Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
         viewHolder.tv_date.setTypeface(type);
         viewHolder.tv_date.setTypeface(type,Typeface.BOLD);
-        viewHolder.tv_date.setText(androidlist.get(i).getDate());
-        String url2=androidlist.get(i).getImglink().toString();
+        viewHolder.tv_date.setText(arraylist.get(i).getTitle());
+        String url2=arraylist.get(i).getImg_link().toString();
         imageLoader.DisplayImage(url2, viewHolder.image);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +65,7 @@ public class TwoFragAdapter extends RecyclerView.Adapter<TwoFragAdapter.ViewHold
                 {
                     String a1=viewHolder.tv_date.getText().toString();
                     Intent i1 = new Intent(context, WebviewSahitya.class);
-                    i1.putExtra("BookTitle",androidlist.get(i).getId());
+                    i1.putExtra("BookTitle",arraylist.get(i).getRam_sah_id());
                     i1.putExtra("BookType","R");
                     context.startActivity(i1);
                 }
@@ -81,7 +84,7 @@ public class TwoFragAdapter extends RecyclerView.Adapter<TwoFragAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return androidlist.size();
+        return arraylist.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

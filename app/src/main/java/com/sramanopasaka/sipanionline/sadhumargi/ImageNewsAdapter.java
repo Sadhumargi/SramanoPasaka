@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiImageNews;
+
 import java.util.ArrayList;
 
 public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.ViewHolder> {
@@ -18,10 +20,12 @@ public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.Vie
     LayoutInflater inflater;
    // ArrayList<ImageNewsGetSetter> data;
     ImageLoader imageLoader;
-    private ArrayList<ImageNewsGetSetter> android;
+    //private ArrayList<ImageNewsGetSetter> android;
+
+    private ArrayList<GathividhiImageNews> android;
 
     public ImageNewsAdapter(Context context,
-                            ArrayList<ImageNewsGetSetter> arraylist) {
+                            ArrayList<GathividhiImageNews> arraylist) {
         this.context = context;
         android = arraylist;
         imageLoader = new ImageLoader(context);
@@ -46,10 +50,10 @@ public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.Vie
 
         imageLoader = new ImageLoader(context);
 
-        viewHolder.tv_title.setText(android.get(i).getImgtitle());
-        viewHolder.tv_date.setText(android.get(i).getImgdate());
+        viewHolder.tv_title.setText(android.get(i).getImg_text_title());
+        viewHolder.tv_date.setText(android.get(i).getDate());
 
-        String url1 = android.get(i).getImglink().toString();
+        String url1 = android.get(i).getImg_link().toString();
 
         imageLoader.DisplayImage(url1, viewHolder.image);
 

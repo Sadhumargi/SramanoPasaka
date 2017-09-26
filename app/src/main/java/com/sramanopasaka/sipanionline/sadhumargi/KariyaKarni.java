@@ -1,14 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
@@ -18,25 +16,30 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.KaryakarniList;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class KariyaKarni extends ActionBarActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
+public class KariyaKarni extends BaseActivity implements ConnectivityReceiver.ConnectivityReceiverListener ,GUICallback {
 
-    private static final String TAG = KariyaKarni.class.getSimpleName();
+   // private static final String TAG = KariyaKarni.class.getSimpleName();
     private GridView mGridView;
     private ProgressBar mProgressBar;
-    ProgressDialog pg;
+   // ProgressDialog pg;
 
     private GridViewAdapter mGridAdapter;
-    private ArrayList<GridItem> mGridData;
+    private ArrayList<KaryakarniList> mGridData=null;
+    private ArrayList<KaryakarniList> arrayList;
+    Context context;
 
-    private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/karyakarnigroups.php";
+   // private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/karyakarnigroups.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +81,14 @@ public class KariyaKarni extends ActionBarActivity implements ConnectivityReceiv
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                GridItem item = (GridItem) parent.getItemAtPosition(position);
+               // KaryakarniList item = (KaryakarniList) parent.getItemAtPosition(position);
 
                 final boolean isConnected=ConnectivityReceiver.isConnected();
 
                 if(isConnected)
                 {
                     Intent intent = new Intent(KariyaKarni.this, DetailsActivity.class);
-                    intent.putExtra("karyakarni_id",item.getKaryakarni_id());
+                    intent.putExtra("karyakarni_id",arrayList.get(position).getKaryakarni_id());
                     startActivity(intent);
                 }
                 else
@@ -101,7 +104,11 @@ public class KariyaKarni extends ActionBarActivity implements ConnectivityReceiv
         });
 
         //Start download
-        new AsyncHttpTask().execute();
+        //new AsyncHttpTask().execute();
+
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getKaryakarniList();
+        showLoadingDialog();
 
     }
     @Override
@@ -159,7 +166,57 @@ public class KariyaKarni extends ActionBarActivity implements ConnectivityReceiv
         super.onDestroy();
 
     }
-    //Downloading data asynchronously
+
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                KaryakarniListResponse response= (KaryakarniListResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getData()!=null && response.getData().size()>0){
+
+                        arrayList=response.getData();
+
+                        KaryakarniList item;
+                        item = new KaryakarniList();
+
+                        for (int i=0;i<response.getData().size();i++){
+
+                            item.setKaryakarni_id(arrayList.get(i).getKaryakarni_id());
+                            item.setGrp_karkarni_name(arrayList.get(i).getGrp_karkarni_name());
+                            item.setGrp_karkarni_place(arrayList.get(i).getGrp_karkarni_place());
+                            item.setGrp_karkarni_imglink(arrayList.get(i).getGrp_karkarni_imglink());
+                            item.setLogo_id(arrayList.get(i).getLogo_id());
+                            mGridData.add(i,item);
+                          Collections.sort(mGridData, item);
+
+                        }
+                        mGridAdapter.setGridData(arrayList);
+
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+
+  /*  //Downloading data asynchronously
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
 
         @Override
@@ -217,5 +274,5 @@ public class KariyaKarni extends ActionBarActivity implements ConnectivityReceiv
            // mProgressBar.setVisibility(View.GONE);
             pg.dismiss();
         }
-    }
+    }*/
 }

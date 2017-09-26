@@ -3,18 +3,16 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -22,8 +20,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PravachanResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
@@ -32,12 +34,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 
-public class Pravachan extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
+public class Pravachan extends BaseActivity implements ConnectivityReceiver.ConnectivityReceiverListener,GUICallback {
 
     private RecyclerView recyclerView;
-    private ArrayList<PravachanGetSetter> arraylist;
+    //private ArrayList<PravachanGetSetter> arraylist;
+
+    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan> arraylist;
     private PravachanAdapter adapter;
     LayoutInflater inflater;
     Context context=this;
@@ -84,14 +87,76 @@ public class Pravachan extends AppCompatActivity implements ConnectivityReceiver
         recyclerView = (RecyclerView)findViewById(R.id.pr_recycler_view);
         recyclerView.setHasFixedSize(true);
 
+        mLayoutManager = new LinearLayoutManager(context);
+        // use a linear layout manager
+        recyclerView.setLayoutManager(mLayoutManager);
+
         ActionBar actionbar = this.getSupportActionBar();
         actionbar.setTitle(Html.fromHtml("<font color='#000000'>प्रवचन</font>"));
 
-        new Remote().execute();
+        RequestProcessor processor=new RequestProcessor(Pravachan.this);
+        processor.getPravachanList();
+        showLoadingDialog();
+
+        //new Remote().execute();
 
     }
 
-    private class Remote extends AsyncTask<String,Void,Integer>
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+        hideLoadingDialog();
+        if (guiResponse != null) {
+
+            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+
+                //guiResponse has the response
+
+                PravachanResponse pravachanResponse = (PravachanResponse) guiResponse;
+                if (pravachanResponse != null) {
+
+                    if (pravachanResponse.getData()!=null && pravachanResponse.getData().size() > 0) {
+                        {
+
+                            arraylist = pravachanResponse.getData();
+
+                            Collections.sort(arraylist, new Comparator<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan>() {
+
+                                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+                                public int compare(com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan lhs, com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan rhs) {
+
+                                    try {
+                                        return df.parse(rhs.getDate()).compareTo(
+                                                df.parse(lhs.getDate()));
+
+                                    } catch (ParseException e) {
+                                        throw new IllegalArgumentException(e);
+                                    }
+                                }
+                            });
+
+                            adapter = new PravachanAdapter(Pravachan.this, arraylist);
+                            recyclerView.setAdapter(adapter);
+
+
+                        }
+
+                    } else {
+                        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    /*private class Remote extends AsyncTask<String,Void,Integer>
     {
 
         @Override
@@ -194,15 +259,16 @@ public class Pravachan extends AppCompatActivity implements ConnectivityReceiver
             mProgressDialog.dismiss();
         }
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onDestroy(){
         super.onDestroy();
         if ( mProgressDialog!=null && mProgressDialog.isShowing() ){
             mProgressDialog.cancel();
         }
-    }
+    }*/
+
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {

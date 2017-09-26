@@ -1,51 +1,39 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Ebook;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.TreeMap;
+import java.util.List;
 
-public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
+public class Ebooks extends BaseActivity implements ConnectivityReceiver.ConnectivityReceiverListener ,GUICallback {
     EditText ts;
    // ImageView cal_pc;
     int day;
@@ -54,7 +42,7 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
     Context context;
     public static String url="http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/Ebooks.php";
     JSONArray jsonarray = null;
-    private ArrayList<EbookGetSetter> arraylist;
+    private ArrayList<Ebook> arraylist;
     ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
@@ -62,12 +50,18 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
     TextView days;
     Button reset;
     View v;
-  /*  static final String[] Months = new String[] { "Jan", "Feb",
+
+    List<Ebook> list;
+
+
+    /*  static final String[] Months = new String[] { "Jan", "Feb",
             "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
             "Oct", "Nov", "Dec" };
     static int monthno;
     static String yearno;
    static String totaldate;*/
+
+
     TextView emptyView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,18 +101,31 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         //  checkConnection();
-        new Remote().execute();
+       // new Remote().execute();
+
         recyclerView = (RecyclerView)findViewById(R.id.ebooks_recycler_view);
 
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+
         reset=(Button)findViewById(R.id.reset);
 
         ActionBar actionbar = this.getSupportActionBar();
         actionbar.setTitle(Html.fromHtml("<font color='#000000'>श्रमणोपासक </font>"));
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+
+        RequestProcessor processor=new RequestProcessor(Ebooks.this);
+        processor.getEbookList();
+        showLoadingDialog();
+
+
+
+
+
+
+
 
         //String dayOfWeek = getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK));
 
@@ -235,7 +242,7 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
         String message;
         int color;
         if (isConnected) {
-            message = "Good! Connected to Internet";
+            message = "Good! Connected to internet";
             color = Color.WHITE;
         } else {
             message = "Sorry! Not connected to internet";
@@ -250,7 +257,7 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
         textView.setTextColor(color);
         snackbar.show();
     }
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
 
@@ -260,9 +267,9 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
         super.onResume();
         // register connection status listener
         MyApplication.getInstance().setConnectivityListener(this);
-    }
+    }*/
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
     }
@@ -271,6 +278,35 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
     protected void onDestroy() {
         super.onDestroy();
 
+    }*/
+
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        hideLoadingDialog();
+         if(guiResponse!=null){
+
+             if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                 //guiResponse has the response
+
+                 EbookResponse ebookResponse = (EbookResponse)guiResponse;
+                 if(ebookResponse!=null){
+
+                     if(ebookResponse.getData()!=null && ebookResponse.getData().size()>0)
+                     {
+
+                         arraylist=ebookResponse.getData();
+                         adapter = new EbookAdapter(Ebooks.this, arraylist);
+                         recyclerView.setAdapter(adapter);
+                     }else{
+                         Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show();}
+
+                 }else{
+                     Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}
+             }else{
+             Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();}
+         }else{
+             Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();}
     }
    /* private String getDayOfWeek(int value) {
         String day = "";
@@ -380,7 +416,10 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
         return super.onOptionsItemSelected(item);
     }*/
 
-    class Remote extends AsyncTask<Void,Void,Void>
+
+
+
+   /* class Remote extends AsyncTask<Void,Void,Void>
     {
         ProgressDialog pg;
 
@@ -417,9 +456,9 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
                     imgs.setImglink(jsonobject.getString("img_link"));
                     imgs.setDate(jsonobject.getString("date"));
 
-                  /*  map.put("book_id", jsonobject.getString("book_id"));
+                  *//*  map.put("book_id", jsonobject.getString("book_id"));
                     map.put("img_link", jsonobject.getString("img_link"));
-                    map.put("date", jsonobject.getString("date"));*/
+                    map.put("date", jsonobject.getString("date"));*//*
 
                     arraylist.add(imgs);
                 }
@@ -458,5 +497,5 @@ public class Ebooks extends AppCompatActivity implements ConnectivityReceiver.Co
 
         }
     }
-
+*/
 }

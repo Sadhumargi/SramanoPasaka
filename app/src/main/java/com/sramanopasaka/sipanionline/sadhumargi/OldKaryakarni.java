@@ -1,12 +1,9 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,18 +12,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.OldKaryakarniResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.OldKaryakarniModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class OldKaryakarni extends Fragment {
+public class OldKaryakarni extends BaseFragment implements GUICallback {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,10 +35,13 @@ public class OldKaryakarni extends Fragment {
     private String mParam1;
     private String mParam2;
 Context context;
-    private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/old_karyakarni_mem.php";
-    JSONParser jParser1 = new JSONParser();
-    JSONArray cast1 = null;
-    ArrayList<HashMap<String, String>> arraylist;
+    //private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/old_karyakarni_mem.php";
+   // JSONParser jParser1 = new JSONParser();
+   // JSONArray cast1 = null;
+   // ArrayList<HashMap<String, String>> arraylist;
+
+    ArrayList<OldKaryakarniModel> arraylist;
+
     static String KR_NO = "old_mem_id";
     static String KAR_NAME = "mem_name";
     static String KR_IMG_LINK = "img_link";
@@ -73,12 +74,58 @@ Context context;
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        new Remote().execute();
+        //new Remote().execute();
+
+        Intent in = getActivity().getIntent();
+        final String karyakarniid = in.getStringExtra("karyakarni_id");
+
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getOldKaryakarniList(karyakarniid);
+        showLoadingDialog();
 
         return view;
     }
 
-    final class Remote extends AsyncTask<Void,Void,Void>
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                OldKaryakarniResponse response= (OldKaryakarniResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getPages()!=null && response.getPages().size()>0){
+
+                        arraylist=response.getPages();
+
+                        recyclerView.setHasFixedSize(true);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                        recyclerView.setLayoutManager(layoutManager);
+                        // Pass the results into ListViewAdapter.java
+                        adapter = new oldkarniadapter(getActivity(), arraylist);
+                        // Set the adapter to the ListView
+                        recyclerView.setAdapter(adapter);
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /*final class Remote extends AsyncTask<Void,Void,Void>
     {
         ProgressDialog pg = null;
 
@@ -99,11 +146,11 @@ Context context;
             try {
                 arraylist = new ArrayList<HashMap<String, String>>();
 
-               /* SharedPreferences sharedPreferences = getActivity().getPreferences(getActivity().MODE_PRIVATE);
-                int savedPref = sharedPreferences.getString().getInt("karyakarni_id1", -1);*/
+               *//* SharedPreferences sharedPreferences = getActivity().getPreferences(getActivity().MODE_PRIVATE);
+                int savedPref = sharedPreferences.getString().getInt("karyakarni_id1", -1);*//*
 
                 Intent in = getActivity().getIntent();
-                final int karyakarniname = in.getIntExtra("karyakarni_id", -1);
+                final String karyakarniname = in.getStringExtra("karyakarni_id");
 
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("karyakarni_id", String.valueOf(karyakarniname)));
@@ -152,7 +199,7 @@ Context context;
             pg.dismiss();
         }
     }
-
+*/
 
     static class UserViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txt_kr_name,txt_kr_designation,txt_kr_region,txt_kr_city,txt_kr_phone;

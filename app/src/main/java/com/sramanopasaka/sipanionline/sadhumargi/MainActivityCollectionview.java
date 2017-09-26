@@ -17,7 +17,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -30,7 +29,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.gson.Gson;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 
 public class MainActivityCollectionview extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener{
@@ -213,7 +211,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
             // ft1.commit();
             if(isConnected)
             {
-                Intent in=new Intent(this,Gathividhi.class);
+                Intent in=new Intent(this,GathividhiActivity.class);
                 startActivity(in);
             }
             else

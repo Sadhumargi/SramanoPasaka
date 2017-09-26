@@ -8,21 +8,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sramanopasaka.sipanionline.sadhumargi.BusinessActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.EducationActivity;
-import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.adapters.EducationListAdapter;
-import com.sramanopasaka.sipanionline.sadhumargi.adapters.EducationListAdapter;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
@@ -30,7 +24,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.ActionBarUpdator;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
@@ -142,7 +135,7 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
                             if (!TextUtils.isEmpty(response.getMessage())) {
                                 Toast.makeText(getActivity(), response.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "some thing went wrong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -170,9 +163,6 @@ public class EducationListingFragment extends BaseFragment implements GUICallbac
             }
         }
     }
-
-
-
 
     @Override
     public void delete(final Education education) {

@@ -14,6 +14,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.NanenshSahitya;
+
 import java.util.ArrayList;
 
 public class ThreeFragAdapter extends RecyclerView.Adapter<ThreeFragAdapter.ViewHolder> implements Filterable {
@@ -23,13 +25,12 @@ public class ThreeFragAdapter extends RecyclerView.Adapter<ThreeFragAdapter.View
     LayoutInflater inflater;
     ArrayList<ThreeFragGetSetter> data;
     ImageLoader imageLoader;
-    private ArrayList<ThreeFragGetSetter> androidlist;
-    private ArrayList<ThreeFragGetSetter> android2;
+    private  ArrayList<NanenshSahitya> arrayList;
 
     public ThreeFragAdapter(Context context,
-                          ArrayList<ThreeFragGetSetter> arraylist) {
+                            ArrayList<NanenshSahitya> arraylist) {
         this.context = context;
-        androidlist = arraylist;
+        arrayList = arraylist;
         imageLoader = new ImageLoader(context);
     }
     @Override
@@ -48,9 +49,14 @@ public class ThreeFragAdapter extends RecyclerView.Adapter<ThreeFragAdapter.View
         Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
         viewHolder.tv_date.setTypeface(type);
         viewHolder.tv_date.setTypeface(type,Typeface.BOLD);
-        viewHolder.tv_date.setText(androidlist.get(i).getTitle());
-        String url2=androidlist.get(i).getImglink().toString();
-        imageLoader.DisplayImage(url2, viewHolder.image);
+        viewHolder.tv_date.setText(arrayList.get(i).getTitle());
+
+        if(arrayList.get(i)!=null){
+            String url2=arrayList.get(i).getImg_link();
+            imageLoader.DisplayImage(url2, viewHolder.image);
+        }
+
+
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +68,7 @@ public class ThreeFragAdapter extends RecyclerView.Adapter<ThreeFragAdapter.View
                 {
                     String a1=viewHolder.tv_date.getText().toString();
                     Intent i1 = new Intent(context, WebviewSahitya.class);
-                    i1.putExtra("BookTitle",androidlist.get(i).getId());
+                    i1.putExtra("BookTitle",arrayList.get(i).getNane_sah_id());
                     i1.putExtra("BookType","N");
                     context.startActivity(i1);
                 }
@@ -81,7 +87,7 @@ public class ThreeFragAdapter extends RecyclerView.Adapter<ThreeFragAdapter.View
 
     @Override
     public int getItemCount() {
-        return androidlist.size();
+        return arrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

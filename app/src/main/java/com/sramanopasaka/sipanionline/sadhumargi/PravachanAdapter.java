@@ -17,10 +17,12 @@ import java.util.ArrayList;
 public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.ViewHolder> {
 
 
-    private ArrayList<PravachanGetSetter> androidlst;
+   // private ArrayList<PravachanGetSetter> androidlst;
+
+    private ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan> arraylist;
     Context context;
-    public PravachanAdapter(Context context,ArrayList<PravachanGetSetter> android) {
-        this.androidlst = android;
+    public PravachanAdapter(Context context, ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan> android) {
+        this.arraylist = android;
         this.context=context;
     }
     @Override
@@ -39,10 +41,10 @@ public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.View
 
         viewHolder.tv_title.setTypeface(type);
         viewHolder.tv_title.setTypeface(type,Typeface.BOLD);
-        viewHolder.tv_title.setText(androidlst.get(i).getTitle());
-        viewHolder.tv_date.setText(androidlst.get(i).getDate());
+        viewHolder.tv_title.setText(arraylist.get(i).getTitle());
+        viewHolder.tv_date.setText(arraylist.get(i).getDate());
 
-        Log.e("success","Demo"+androidlst.get(0).getTitle().toString());
+        Log.e("success","Demo"+arraylist.get(0).getTitle().toString());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +56,7 @@ public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.View
                 if(isConnected)
                 {
                      Intent i1 = new Intent(context, WebviewPravachan.class);
-                     i1.putExtra("BookTitle",androidlst.get(i).getDate());
+                     i1.putExtra("BookTitle",arraylist.get(i).getDate());
                     i1.putExtra("BookType", "P");
                      context.startActivity(i1);
 
@@ -75,7 +77,7 @@ public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.View
 
     @Override
     public int getItemCount() {
-        return androidlst.size();
+        return arraylist.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

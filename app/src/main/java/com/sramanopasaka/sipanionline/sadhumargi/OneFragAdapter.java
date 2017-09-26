@@ -15,6 +15,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.SahityaFragmentOne;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -29,12 +31,16 @@ public class OneFragAdapter extends RecyclerView.Adapter<OneFragAdapter.ViewHold
     LayoutInflater inflater;
     ArrayList<OneFragGetSetter> data;
     ImageLoader imageLoader;
-    private ArrayList<OneFragGetSetter> androidlist;
+   // private ArrayList<OneFragGetSetter> androidlist;
     private ArrayList<OneFragGetSetter> android2;
+
+    ArrayList<SahityaFragmentOne> androidlist;
+
+
 
 
     public OneFragAdapter(Context context,
-                        ArrayList<OneFragGetSetter> arraylist) {
+                          ArrayList<SahityaFragmentOne> arraylist) {
         this.context = context;
         androidlist = arraylist;
         imageLoader = new ImageLoader(context);
@@ -55,8 +61,8 @@ public class OneFragAdapter extends RecyclerView.Adapter<OneFragAdapter.ViewHold
         Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
         viewHolder.tv_date.setTypeface(type);
         viewHolder.tv_date.setTypeface(type, Typeface.BOLD);
-        viewHolder.tv_date.setText(androidlist.get(i).getDate());
-        String url2=androidlist.get(i).getImglink().toString();
+        viewHolder.tv_date.setText(androidlist.get(i).getTitle());
+        String url2=androidlist.get(i).getImg_link().toString();
         imageLoader.DisplayImage(url2, viewHolder.image);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +72,7 @@ public class OneFragAdapter extends RecyclerView.Adapter<OneFragAdapter.ViewHold
 
                 if(isConnected)
                 {
-                    String encode=androidlist.get(i).getId();
+                    String encode=androidlist.get(i).getSang_book_id();
                     try {
                         String query = URLEncoder.encode(encode, "utf-8");
                         Log.e("Encode values","Success///"+query);

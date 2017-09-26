@@ -2,12 +2,9 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +12,8 @@ import android.widget.TextView;
 
 import com.sramanopasaka.sipanionline.sadhumargi.listener.OnLoadMoreListener;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.zip.Inflater;
-
-import static com.sramanopasaka.sipanionline.sadhumargi.Vihar.a1;
 
 public class PathsalalistAdapter extends RecyclerView.Adapter<PathsalalistAdapter.ViewHolder> {
 

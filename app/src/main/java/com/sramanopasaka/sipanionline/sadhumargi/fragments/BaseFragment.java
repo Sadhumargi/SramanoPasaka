@@ -24,7 +24,7 @@ public class BaseFragment extends Fragment {
                 };
                 mProgressDialog.setCancelable(false);
                 mProgressDialog.setCanceledOnTouchOutside(false);
-                mProgressDialog.setMessage("please wait");
+                mProgressDialog.setMessage("Please wait");
                 mProgressDialog.show();
             } else {
                 if (!mProgressDialog.isShowing()) {

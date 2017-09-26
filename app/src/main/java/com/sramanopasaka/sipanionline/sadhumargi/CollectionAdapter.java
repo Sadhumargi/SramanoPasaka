@@ -91,7 +91,7 @@ public class CollectionAdapter extends BaseAdapter {
                     }
                     else if(position==3)
                     {
-                        Intent i1=new Intent(ctx,Vihar.class);
+                        Intent i1=new Intent(ctx,ViharActivity.class);
                         ctx.startActivity(i1);
 
                     }
@@ -114,7 +114,7 @@ public class CollectionAdapter extends BaseAdapter {
                     }
                     else if(position==7)
                     {
-                        Intent i1=new Intent(ctx,Gathividhi.class);
+                        Intent i1=new Intent(ctx,GathividhiActivity.class);
                         ctx.startActivity(i1);
 
                     }

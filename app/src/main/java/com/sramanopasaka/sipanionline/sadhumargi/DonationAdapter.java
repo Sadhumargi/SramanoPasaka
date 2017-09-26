@@ -19,14 +19,16 @@ public class DonationAdapter extends  RecyclerView.Adapter<DonationAdapter.ViewH
     // Declare Variables
     Context context;
     LayoutInflater inflater;
-    ArrayList<HashMap<String, String>> data;
+   // ArrayList<HashMap<String, String>> data;
     ImageLoader imageLoader;
     HashMap<String, String> resultp= new HashMap<String, String>();
 
+    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations> data=new ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations>();
+
     public DonationAdapter(Context context,
-                           ArrayList<HashMap<String, String>> arraylist) {
+                           ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations> arraylist) {
         this.context = context;
-        data = arraylist;
+        this.data = arraylist;
         imageLoader = new ImageLoader(context);
     }
 
@@ -47,13 +49,13 @@ public class DonationAdapter extends  RecyclerView.Adapter<DonationAdapter.ViewH
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
 
-        resultp = data.get(i);
+        //resultp = data.get(i);
         // Capture position and set results to the TextViews
 
         Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
 
         viewHolder.txt_path_name.setTypeface(type,Typeface.BOLD);
-        viewHolder.txt_path_name.setText(resultp.get(Donations.KAR_NAME));
+        viewHolder.txt_path_name.setText(data.get(i).getTypes_donations());
 
         // Capture ListView item click
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +63,13 @@ public class DonationAdapter extends  RecyclerView.Adapter<DonationAdapter.ViewH
             @Override
             public void onClick(View arg0) {
 
-                resultp = data.get(i);
+               // resultp = data.get(i);
 
-                int a1= Integer.parseInt(resultp.get(Donations.KR_NO));
+                int a1= Integer.parseInt(data.get(i).getDonate_id());
                 Intent i1 = new Intent(context, DonationsDetails.class);
                 Bundle b = new Bundle();
                 b.putInt("donate_id",a1);
-                b.putString("dhan_name1",resultp.get(Donations.KAR_NAME));
+                b.putString("dhan_name1",data.get(i).getTypes_donations());
                 i1.putExtras(b);
                 context.startActivity(i1);
 

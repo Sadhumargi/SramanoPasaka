@@ -1,22 +1,14 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.android.gms.vision.text.Text;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -24,15 +16,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 
-import static android.R.attr.id;
-import static com.sramanopasaka.sipanionline.sadhumargi.JSONParser.is;
-import static com.sramanopasaka.sipanionline.sadhumargi.R.id.txt_details;
-import static com.sramanopasaka.sipanionline.sadhumargi.Vihar.a1;
+import static com.sramanopasaka.sipanionline.sadhumargi.ViharActivity.a1;
 
 /**
  * Created by sipani001 on 30/6/17.
@@ -67,8 +54,6 @@ public class PthsalaDetailsFragment extends Fragment {
     TextView tv_Name;
     TextView tv_incharge;
 
-
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
 

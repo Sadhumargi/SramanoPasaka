@@ -1,13 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.listener;
 
 import com.google.gson.JsonObject;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
@@ -15,44 +8,60 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAddressResponse
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddEducationResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddExamResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteBusinessResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteEducationResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteExamResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteSocialRoleResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DharmikDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DonationsDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DonationsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiImageNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiVideoNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ProfilePictureUploadResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NanenshSahityaResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.NativeFamilyResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.OldKaryakarniResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PasswordChangeResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PravachanDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.PravachanResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RamSahityaResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SahithyaFragmentOneDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SahithyaFragmentOneResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SanghDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateBasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateHobbiesResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ViharResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
-import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
-import com.sramanopasaka.sipanionline.sadhumargi.model.LoginModel;
-import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
 
 import java.util.List;
 
-import okhttp3.MultipartBody;
-import retrofit2.http.GET;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Multipart;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -292,8 +301,57 @@ public interface EndPointApi {
     @GET("api/branches")
     Call<LocalSanghResponse> getLocalSanghList(@Query("anchal") String Id);
 
-    @Multipart
-    @POST("members/profile_pic_base64")
-    Call<ProfilePictureUploadResponse> uploadProfilePicture(@Part MultipartBody.Part imageFile);
+     @POST("phpfiles/Ebooks.php")
+     Call<EbookResponse> getEbookList();
 
+
+    @POST("phpfiles/pravachan.php")
+    Call<PravachanResponse> getPravachanList();
+
+    @GET("phpfiles/sk.php")
+    Call<PravachanDetailsResponse> getPravachanDetails(@Query ("BookTitle")String title,@Query ("BookType")String type);
+
+    @GET("phpfiles/bk1.php")
+    Call<EbookDetailsResponse> getEbookDetails(@Query ("Edition")String edition, @Query ("PageNo")String pageno);
+
+    @POST("phpfiles/sangsahitya.php")
+    Call<SahithyaFragmentOneResponse> getSahityaListOne();
+
+    @GET("phpfiles/sk.php")
+    Call<SahithyaFragmentOneDetailsResponse> getSahityaListOneDetails(@Query("BookTitle")String title,@Query("BookType")String type );
+
+    @POST("phpfiles/ramsahitya.php")
+    Call<RamSahityaResponse> getRamSahityaList();
+
+    @POST("phpfiles/naneshsahitya.php")
+    Call<NanenshSahityaResponse> getNanenshSahityaList();
+
+    @POST("phpfiles/gurus.php")
+    Call<ViharResponse> getViharList();
+
+    @POST("phpfiles/donations.php")
+    Call<DonationsResponse> getDonationsList();
+
+    @GET("phpfiles/donatedetails.php")
+    Call<DonationsDetailsResponse> getDonationDetails(@Query("donate_id") int donate_id);
+
+
+    @POST("phpfiles/karyakarnigroups.php")
+    Call<KaryakarniListResponse> getKaryakarniList();
+
+    @GET("phpfiles/current_karyakarni_mem.php")
+    Call<CurrentKaryakarniResponse> getCurrentKaryakarniList(@Query("karyakarni_id") String Karyakarni_Id);
+
+    @GET("phpfiles/old_karyakarni_mem.php")
+    Call<OldKaryakarniResponse> getOldKaryakarniList(@Query("karyakarni_id") String Karyakarni_Id);
+
+    @POST("phpfiles/textnews.php")
+    Call<GathividhiTextNewsResponse> getTextNewsList();
+
+    @POST("phpfiles/imagesnews.php")
+    Call<GathividhiImageNewsResponse> geImageNewsList();
+
+    @POST("phpfiles/videosnews.php")
+    Call<GathividhiVideoNewsResponse> geVideoNewsList();
 }
+

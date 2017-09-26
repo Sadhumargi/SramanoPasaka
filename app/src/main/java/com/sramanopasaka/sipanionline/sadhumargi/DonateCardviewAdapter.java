@@ -48,7 +48,7 @@ public class DonateCardviewAdapter extends  RecyclerView.Adapter<DonateCardviewA
 
         resultp = data.get(i);
         // Capture position and set results to the TextViews
-        viewHolder.txt_path_name.setText(resultp.get(Donations.KAR_NAME));
+      //  viewHolder.txt_path_name.setText(resultp.get(Donations.KAR_NAME));
 
         // Capture ListView item click
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +58,11 @@ public class DonateCardviewAdapter extends  RecyclerView.Adapter<DonateCardviewA
 
                 resultp = data.get(i);
 
-                int a1= Integer.parseInt(resultp.get(Donations.KR_NO));
+              //  int a1= Integer.parseInt(resultp.get(Donations.KR_NO));
                 Intent i1 = new Intent(context, DonationsDetails.class);
                 Bundle b = new Bundle();
-                b.putInt("donate_id",a1);
-                b.putString("dhan_name1",resultp.get(Donations.KAR_NAME));
+               // b.putInt("donate_id",a1);
+              //  b.putString("dhan_name1",resultp.get(Donations.KAR_NAME));
                 i1.putExtras(b);
                 context.startActivity(i1);
 

@@ -1,16 +1,12 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,19 +17,22 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by sipani001 on 1/10/16.
  */
-public class WebviewEbook  extends AppCompatActivity {
+public class WebviewEbook  extends BaseActivity implements GUICallback {
 
     private WebView WebView1;
     static int PageNo=0;
@@ -75,18 +74,73 @@ public class WebviewEbook  extends AppCompatActivity {
 
       /*  WebView1.clearCache(true);
         WebView1.clearHistory();*/
-        WebView1.getSettings().setJavaScriptEnabled(true);
+        /*WebView1.getSettings().setJavaScriptEnabled(true);
         WebView1.getSettings().setSupportZoom(true);
         WebView1.getSettings().setBuiltInZoomControls(true);
         WebView1.getSettings().setDisplayZoomControls(true);
         WebView1.getSettings().setLoadWithOverviewMode(true);
         WebView1.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        new Remote().execute();
+        new Remote().execute();*/
+
+
+        Intent in = getIntent();
+        final String edition = in.getStringExtra("Edition");
+
+        final ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("Edition",edition));
+        nameValuePairs.add(new BasicNameValuePair("PageNo",String.valueOf(PageNo)));
+
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getEbookDetails(edition,String.valueOf(PageNo));
+        showLoadingDialog();
 
     }
 
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        hideLoadingDialog();
+        if(guiResponse!=null){
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
 
-    class Remote extends AsyncTask<Void,Void,Void>
+                EbookDetailsResponse response= (EbookDetailsResponse) guiResponse;
+
+                if(response!=null){
+
+                    if(response.getPages()!=null && response.getPages().size()>0){
+
+                        String a1=response.getPages().get(0).getTxt_file();
+
+                        WebView1.getSettings().setJavaScriptEnabled(true);
+                        WebView1.getSettings().setSupportZoom(true);
+                        WebView1.getSettings().setBuiltInZoomControls(true);
+                        WebView1.getSettings().setDisplayZoomControls(true);
+                        WebView1.getSettings().setLoadWithOverviewMode(true);
+                        WebView1.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+
+                        WebView1.setWebViewClient(new WebViewClient());
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            WebView1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+                        }
+                        else {
+                            WebView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+                        }
+                        WebView1.setVerticalScrollBarEnabled(true);
+                        WebView1.loadUrl(a1);
+
+                        PreferenceManager.getDefaultSharedPreferences(WebviewEbook.this).edit().putString("CurrentPage", a1).commit();
+
+
+                    }
+                }else {
+                    Toast.makeText(this, "RequestStatus Failed", Toast.LENGTH_SHORT).show();}
+            }else {
+                Toast.makeText(this, "RequestStatus Failed", Toast.LENGTH_SHORT).show();}
+        }else {
+            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();}
+    }
+
+
+   /* class Remote extends AsyncTask<Void,Void,Void>
     {
 
         ProgressDialog pg;
@@ -176,7 +230,7 @@ public class WebviewEbook  extends AppCompatActivity {
             pg.dismiss();
 
         }
-    }
+    }*/
 
   /*  public class myWebClient extends WebViewClient
     {

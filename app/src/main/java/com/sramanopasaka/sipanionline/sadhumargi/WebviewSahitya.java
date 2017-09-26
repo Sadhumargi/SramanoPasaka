@@ -2,11 +2,9 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
@@ -17,22 +15,24 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.SahithyaFragmentOneDetailsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static com.sramanopasaka.sipanionline.sadhumargi.R.id.webView;
 
 /**
  * Created by sipani001 on 1/10/16.
  */
-public class WebviewSahitya  extends AppCompatActivity {
+public class WebviewSahitya  extends BaseActivity implements GUICallback {
 
     private WebView WebView1;
     static int PageNo=0;
@@ -92,12 +92,72 @@ public class WebviewSahitya  extends AppCompatActivity {
 
 
         //Load url in WebView1
-        new Remote().execute();
+       // new Remote().execute();
+
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getSahityaListOneDetails(title,type);
+        showLoadingDialog();
 
 
     }
 
-    class Remote extends AsyncTask<Void,Void,Void>
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                SahithyaFragmentOneDetailsResponse response= (SahithyaFragmentOneDetailsResponse) guiResponse;
+
+                if(response!=null){
+
+                    if(response.getPages()!=null && response.getPages().size()>0){
+
+                        String a1=response.getPages().get(0).getTxt_file();
+
+                        WebView1.setWebViewClient(new WebViewClient());
+
+                        WebView1.getSettings().setJavaScriptEnabled(true);
+
+           /* WebView1.clearHistory();
+            WebView1.clearCache(true);*/
+
+                        WebView1.getSettings().setBuiltInZoomControls(true);
+                        WebView1.getSettings().setDisplayZoomControls(true);
+                        WebView1.getSettings().setLoadWithOverviewMode(false);
+                        WebView1.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            WebView1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+                        }
+                        else {
+                            WebView1.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+                        }
+                        WebView1.setWebViewClient(new WebViewClient() {
+                            @Override
+                            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                                Log.e("WEB_VIEW_TEST", "error code:" + errorCode);
+                                super.onReceivedError(view, errorCode, description, failingUrl);
+                            }
+                        });
+                        WebView1.loadUrl(a1);
+
+                    }
+                }else{
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+
+            }else {
+                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /*class Remote extends AsyncTask<Void,Void,Void>
     {
 
         ProgressDialog pg;
@@ -156,8 +216,8 @@ public class WebviewSahitya  extends AppCompatActivity {
 
             WebView1.getSettings().setJavaScriptEnabled(true);
 
-           /* WebView1.clearHistory();
-            WebView1.clearCache(true);*/
+           *//* WebView1.clearHistory();
+            WebView1.clearCache(true);*//*
 
             WebView1.getSettings().setBuiltInZoomControls(false);
             WebView1.getSettings().setDisplayZoomControls(false);
@@ -181,5 +241,5 @@ public class WebviewSahitya  extends AppCompatActivity {
 
         }
     }
-
+*/
 }

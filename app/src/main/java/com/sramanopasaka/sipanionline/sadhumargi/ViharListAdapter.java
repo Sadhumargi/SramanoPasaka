@@ -15,42 +15,47 @@ import android.widget.Filterable;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.sramanopasaka.sipanionline.sadhumargi.model.Vihar;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.TreeMap;
 
 public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.ViewHolder> implements Filterable{
 
     // Declare Variables
     Context context;
     LayoutInflater inflater;
-    ArrayList<TreeMap<String, String>> data;
-    ArrayList<TreeMap<String, String>> data1;
-    List<ViharGetSetter> data2;
-    List<ViharGetSetter> data3;
+   // ArrayList<TreeMap<String, String>> data;
+    //ArrayList<TreeMap<String, String>> data1;
+   // List<ViharGetSetter> data2;
+   // List<ViharGetSetter> data3;
     ImageLoader imageLoader;
-    TreeMap<String, String> resultp= new TreeMap<String, String>();
+   // TreeMap<String, String> resultp= new TreeMap<String, String>();
+
+    Vihar resultp=null;
+    ArrayList<Vihar> data;
+    ArrayList<Vihar> data1;
     HashMap<String, String> resultp1= new HashMap<String, String>();
 
-    public ViharListAdapter(Context context,
-                            ArrayList<TreeMap<String, String>> arraylist) {
-        this.context = context;
-        data = new ArrayList<TreeMap<String, String>>(arraylist);
-        this.data1 = new ArrayList<>();
-        this.data1.addAll(data);
+    public ViharListAdapter(ViharActivity activity, ArrayList<Vihar> arraylist) {
+
+        context=activity;
+        data=arraylist;
+        data1=data;
         imageLoader = new ImageLoader(context);
     }
-   /* public ViharListAdapter(Context context,
-                            ArrayList<ViharGetSetter> arraylist) {
-        this.context = context;
-        data2 = arraylist;
-        this.data3 = new ArrayList<>();
-        this.data3.addAll(data2);
-        imageLoader = new ImageLoader(context);
-    }
-*/
+
+
+    /* public ViharListAdapter(Context context,
+                             ArrayList<ViharGetSetter> arraylist) {
+         this.context = context;
+         data2 = arraylist;
+         this.data3 = new ArrayList<>();
+         this.data3.addAll(data2);
+         imageLoader = new ImageLoader(context);
+     }
+ */
     @Override
     public long getItemId(int position) {
         return 0;
@@ -85,25 +90,25 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
         //viewHolder.txt_assist_name1.setTextSize(22);
         //viewHolder.txt_assist_name2.setTextSize(22);
        // viewHolder.txt_assist_name3.setTextSize(22);
-       
+
         viewHolder.txt_gsname.setTextSize(22);
         viewHolder.txt_attender.setTextSize(22);
         viewHolder.txt_attender_chief.setTextSize(22);
 
 
         //  txt_gsno.setText(resultp.get(Vihar.GS_NO));
-        viewHolder.txt_gsname.setText(Html.fromHtml(resultp.get(Vihar.GS_NAME)));
-        viewHolder.txt_vihar_location.setText(resultp.get(Vihar.GS_vihar_location));
-        viewHolder.txt_attender.setText(Html.fromHtml(resultp.get(Vihar.GS_ATTENDER_NAME)));
-        viewHolder.txt_attender_chief.setText(Html.fromHtml(resultp.get(Vihar.GS_ATTENDER_CHIEF_NAME)));
-        viewHolder.txt_attender_phono.setText(resultp.get(Vihar.GS_ATTENDER_PHONE));
-        viewHolder.txt_phone_no.setText(resultp.get(Vihar.GS_PHONE_NO));
-        viewHolder.txt_km.setText(resultp.get(Vihar.GS_KM)+"km's");
+        viewHolder.txt_gsname.setText(Html.fromHtml(resultp.getGuru_name()));
+        viewHolder.txt_vihar_location.setText(resultp.getGuru_location());
+        viewHolder.txt_attender.setText(Html.fromHtml(resultp.getGuru_attender_name()));
+        viewHolder.txt_attender_chief.setText(Html.fromHtml(resultp.getGuru_chief_attender()));
+        viewHolder.txt_attender_phono.setText(resultp.getGuru_att_phone());
+        viewHolder.txt_phone_no.setText(resultp.getGuru_phone());
+        viewHolder.txt_km.setText(resultp.getGuru_dis()+"km's");
 
 
-        viewHolder.txt_assist_name.setText(resultp.get(Vihar.GS_ASSIST_NAME));
+        viewHolder.txt_assist_name.setText(resultp.getGuru_assist_name());
 
-        String assistname[]=resultp.get(Vihar.GS_ASSIST_NAME).split(",");
+        String assistname[]=resultp.getGuru_assist_name().split(",");
 
         int lnth= assistname.length;
         String names="";
@@ -150,11 +155,11 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
                 // Get the position
                 resultp = data.get(i);
 
-                String sra1=resultp.get(Vihar.GS_MY_LAT);
-                String srb1=resultp.get(Vihar.GS_MY_LNG);
+                String sra1=resultp.getGuru_lat();
+                String srb1=resultp.getGuru_lng();
 
-                String desa1=resultp.get(Vihar.GS_LAT);
-                String desb1=resultp.get(Vihar.GS_LNG);
+                String desa1=resultp.getGuru_lat();
+                String desb1=resultp.getGuru_lng();
 
                 double src1=Double.parseDouble(sra1);
                 double src2=Double.parseDouble(srb1);
@@ -228,18 +233,18 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
     // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        ArrayList<TreeMap<String, String>> filteredArrayVenues = new ArrayList<TreeMap<String, String>>();
+        ArrayList<Vihar>filteredArrayVenues = new ArrayList<Vihar>();
         data.clear();
         if (charText.length() == 0) {
             data.addAll(data1);
         } else {
 
             for (int index = 0; index < data.size(); index++) {
-                TreeMap<String, String> dataVenues = data.get(index);
+                Vihar dataVenues = data.get(index);
 
-                if (dataVenues.get(Vihar.GS_NAME).toString().contains(charText.toString())) {
+                if (dataVenues.getGuru_name().toString().contains(charText.toString())) {
                     filteredArrayVenues.add(dataVenues);
-                } else if (dataVenues.get(Vihar.GS_vihar_location).toString().contains(charText.toString())) {
+                } else if (dataVenues.getGuru_location().toString().contains(charText.toString())) {
                     filteredArrayVenues.add(dataVenues);
                 }
 
@@ -283,7 +288,7 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
             protected FilterResults performFiltering(CharSequence constraint) {
 
                 FilterResults results = new FilterResults();
-                ArrayList<TreeMap<String, String>> filteredArrayVenues = new ArrayList<TreeMap<String, String>>();
+                ArrayList<Vihar>filteredArrayVenues = new ArrayList<Vihar>();
 
                 if (constraint == null || constraint.length() == 0) {
                     results.count = data.size();
@@ -291,13 +296,13 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
                 } else {
                     constraint = constraint.toString();
                     for (int index = 0; index < data.size(); index++) {
-                        TreeMap<String, String> dataVenues = data.get(index);
+                        Vihar dataVenues = data.get(index);
 
-                        if(dataVenues.get(Vihar.GS_vihar_location).toString().contains(constraint.toString()))
+                        if(dataVenues.getGuru_location().toString().contains(constraint.toString()))
                         {
                             filteredArrayVenues.add(dataVenues);
                         }
-                        else if(dataVenues.get(Vihar.GS_NAME).toString().contains(constraint.toString()))
+                        else if(dataVenues.getGuru_name().toString().contains(constraint.toString()))
                         {
                             filteredArrayVenues.add(dataVenues);
                         }
@@ -318,7 +323,7 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
             protected void publishResults(CharSequence constraint,
                                           FilterResults results) {
 
-                data = (ArrayList<TreeMap<String, String>>) results.values;
+                data = (ArrayList<Vihar>) results.values;
                 if (results.count == 0)
                     notifyDataSetChanged();
             }

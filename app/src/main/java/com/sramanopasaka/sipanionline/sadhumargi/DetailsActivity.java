@@ -71,13 +71,13 @@ public class DetailsActivity extends AppCompatActivity  {
         }
 
         Intent mIntent = getIntent();
-        int intValue = mIntent.getIntExtra("karyakarni_id",-1);
-        Log.e("karyakarni_id","///////"+intValue);
+        String sValue = mIntent.getStringExtra("karyakarni_id");
+        Log.e("karyakarni_id","///////"+sValue);
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("karyakarni_id", intValue);
-        editor.putInt("karyakarni_id1", intValue);
+        editor.putString("karyakarni_id", sValue);
+        editor.putString("karyakarni_id1", sValue);
         editor.commit();
 
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#fd5708"));
@@ -91,7 +91,6 @@ public class DetailsActivity extends AppCompatActivity  {
         adapter.addFragment(new CurrentKaryakarni(), "वर्तमान  कार्यसमिति");
         adapter.addFragment(new OldKaryakarni(), "पूर्वा अध्यक्ष");
       //  new Remote().execute();
-
 
         viewPager.setAdapter(adapter);
     }
@@ -137,7 +136,7 @@ public class DetailsActivity extends AppCompatActivity  {
             super.onPreExecute();
             pg = new ProgressDialog(DetailsActivity.this);
             pg.setIndeterminate(true);
-            pg.setMessage("Please Wait While Loading....");
+            pg.setMessage("Please wait....");
             pg.show();
             pg.setCancelable(false);
 

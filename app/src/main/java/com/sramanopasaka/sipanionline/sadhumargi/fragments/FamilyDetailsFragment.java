@@ -1,7 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.kofigyan.stateprogressbar.StateProgressBar;
@@ -27,22 +25,14 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.FamilyHeadChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.RelationsChangeListener;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.SanghChangeListener;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.ZoneChangeListener;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Family;
 import com.sramanopasaka.sipanionline.sadhumargi.model.LocalSangh;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RegistrationPojo;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Relations;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.FamilyHeadPickerDialog;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.RelationPickerDialog;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.SanghPickerDialog;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
-import org.w3c.dom.Text;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 

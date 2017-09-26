@@ -65,6 +65,7 @@ android {
         staging {
             buildConfigField 'String', 'MEMBER_API', '"http://members.sadhumargi.com/"'
             buildConfigField 'String', 'AUTH_API', '"http://api.sabsjs.org/"'
+            buildConfigField 'String',  'EBOOK_API','"http://shriabsjainsangh.sipanionline.com/sramanopasaka/"'
         }
         production {
             buildConfigField 'String', 'HOST', '"http://members.sabsjs.org/app/"'
@@ -125,6 +126,7 @@ dependencies {
     compile 'com.github.esafirm.android-image-picker:imagepicker:1.+'
     // for experimental rx picker
     compile 'com.github.esafirm.android-image-picker:rximagepicker:1.+'
+    compile 'org.jetbrains:annotations-java5:15.0'
 }
 
 

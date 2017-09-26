@@ -230,7 +230,6 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/large"
                     android:textStyle="normal"
-                    android:layout_alignLeft="@id/mobile_number"
                    />
 
 

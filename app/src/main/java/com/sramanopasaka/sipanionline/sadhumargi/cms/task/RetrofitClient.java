@@ -17,6 +17,8 @@ public class RetrofitClient {
 
     private static Retrofit memberRetrofit = null;
 
+    private static Retrofit ebookRetrofit=null;
+
     public static Retrofit getAuthClient() {
 
 
@@ -59,6 +61,27 @@ public class RetrofitClient {
             Log.e("--Base Url--",""+BuildConfig.MEMBER_API);
         }
         return memberRetrofit;
+    }
+
+    public static Retrofit getEbookClient() {
+
+
+        if (ebookRetrofit == null) {
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor).build();
+            Gson gson = new GsonBuilder().create();
+            ebookRetrofit = new Retrofit.Builder()
+                    .baseUrl(BuildConfig.EBOOK_API)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+
+            Log.e("--Base Url--",""+BuildConfig.EBOOK_API);
+        }
+        return ebookRetrofit;
     }
 
 

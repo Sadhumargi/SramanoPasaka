@@ -1,6 +1,5 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,23 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.sramanopasaka.sipanionline.sadhumargi.listener.OnLoadMoreListener;
+import com.sramanopasaka.sipanionline.sadhumargi.model.Ebook;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> implements Filterable {
+public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder>  {
 
-    // Declare Variables
+   /* Declare Variables
     Context context;
     LayoutInflater inflater;
     ArrayList<EbookGetSetter> data;
@@ -44,35 +37,49 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
         this.data = new ArrayList<EbookGetSetter>();
         this.data.addAll(androidlist);
 
+    }*/
+
+
+    private ArrayList<Ebook> arraylist;
+    Context context;
+
+    ImageLoader imageLoader;
+
+    public EbookAdapter(Context context, ArrayList<Ebook> arraylist) {
+
+        this.context=context;
+        this.arraylist=arraylist;
+        imageLoader = new ImageLoader(context);
+
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
-
-
         View view1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_ebook_adapter, parent, false);
-
         ViewHolder view=new ViewHolder(view1);
-
         return view;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        viewHolder.tv_date.setText(androidlist.get(i).getDate());
-        final String id = String.valueOf(androidlist.get(i).getId());
-        String url2=androidlist.get(i).getImglink();
-        imageLoader.DisplayImage(url2, viewHolder.image);
+       // Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
+        final Ebook model = arraylist.get(position);
+
+        holder.tv_date.setText(model.getDate());
+        final String id = String.valueOf(model.getBook_id());
+        String url2=model.getImg_link();
+        imageLoader.DisplayImage(url2, holder.image);
 
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final boolean isConnected=ConnectivityReceiver.isConnected();
                 if(isConnected)
                 {
-                    String a1=viewHolder.tv_date.getText().toString();
+                    String a1=holder.tv_date.getText().toString();
                     Intent i1 = new Intent(context, WebviewEbook.class);
                     i1.putExtra("Edition",id);
                     context.startActivity(i1);
@@ -93,13 +100,18 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return androidlist.size();
+        return arraylist == null ? 0 : arraylist.size();
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    /*@Override
     public Filter getFilter() {
         return null;
-    }
+    }*/
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -107,14 +119,14 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
         CircleImageView image;
 
 
-        public ProgressBar progressBar;
+     //   public ProgressBar progressBar;
 
         public ViewHolder(View view) {
             super(view);
 
             tv_date = (TextView)view.findViewById(R.id.ebook_txt_date);
             image=(CircleImageView)view.findViewById(R.id.ebook_image);
-            progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar1);
+         //   progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar1);
 
             }
 
@@ -122,11 +134,11 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
     }
 
     // Filter Class
-    public void filter(String charText) {
+   /* public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        androidlist.clear();
+        list.clear();
         if (charText.length() == 0) {
-            androidlist.addAll(data);
+            list.addAll(data);
         }
         else
         {
@@ -143,7 +155,7 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
             }
         }
         notifyDataSetChanged();
-    }
+    }*/
 
     }
 

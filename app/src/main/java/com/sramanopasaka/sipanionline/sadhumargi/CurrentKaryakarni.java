@@ -1,12 +1,9 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,26 +13,27 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.OnLoadMoreListener;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.model.CurrentKaryakarniModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-public class CurrentKaryakarni extends Fragment {
+public class CurrentKaryakarni extends BaseFragment implements GUICallback {
 
     Context context;
-    private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/current_karyakarni_mem.php";
-    JSONParser jParser1 = new JSONParser();
-    JSONArray cast1 = null;
-    ArrayList<HashMap<String, String>> arraylist;
+   // private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/current_karyakarni_mem.php";
+   // JSONParser jParser1 = new JSONParser();
+    //JSONArray cast1 = null;
+    //ArrayList<HashMap<String, String>> arraylist;
+
+    ArrayList<CurrentKaryakarniModel> arraylist;
     static String KR_NO = "new_mem_id";
     static String KAR_NAME = "mem_name";
     static String KR_IMG_LINK = "img_link";
@@ -45,7 +43,13 @@ public class CurrentKaryakarni extends Fragment {
     static String KR_PHONE = "phone";
     ListView listview;
     private RecyclerView recyclerView;
-    HashMap<String, String> resultp= new HashMap<String, String>();
+   // HashMap<String, String> resultp= new HashMap<String, String>();
+
+   //HashSet<CurrentKaryakarni> resultp= new HashSet<CurrentKaryakarni>();
+
+    CurrentKaryakarniModel resultp=null;
+
+
     ImageLoader imageLoader;
     currentkarniadapter adapter;
     //private OnFragmentInteractionListener mListener;
@@ -64,11 +68,56 @@ public class CurrentKaryakarni extends Fragment {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-       new Remote().execute();
+     //  new Remote().execute();
+
+        Intent in = getActivity().getIntent();
+        final String karyakarniId = in.getStringExtra("karyakarni_id");
+        RequestProcessor processor=new RequestProcessor(CurrentKaryakarni.this);
+        processor.getCurrentKaryakarniList(karyakarniId);
         return view;
     }
 
-        final class Remote extends AsyncTask<Void, Void, Void> {
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                CurrentKaryakarniResponse response= (CurrentKaryakarniResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getPages()!=null && response.getPages().size()>0){
+
+                        arraylist=response.getPages();
+
+                        recyclerView.setHasFixedSize(true);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                        recyclerView.setLayoutManager(layoutManager);
+                        // Pass the results into ListViewAdapter.java
+                        adapter = new currentkarniadapter(getActivity(), arraylist);
+                        // Set the adapter to the ListView
+                        recyclerView.setAdapter(adapter);
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    }
+
+    /*final class Remote extends AsyncTask<Void, Void, Void> {
             ProgressDialog pg = null;
 
             @Override
@@ -90,10 +139,10 @@ public class CurrentKaryakarni extends Fragment {
                     arraylist = new ArrayList<HashMap<String, String>>();
 
                     Intent in = getActivity().getIntent();
-                    final int karyakarniname = in.getIntExtra("karyakarni_id", -1);
+                    final String karyakarId = in.getStringExtra("karyakarni_id");
 
                     ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                    nameValuePairs.add(new BasicNameValuePair("karyakarni_id", String.valueOf(karyakarniname)));
+                    nameValuePairs.add(new BasicNameValuePair("karyakarni_id", karyakarniname));
 
                     final List<String> allNames1 = new ArrayList<String>();
                     JSONObject json1 = new JSONObject(String.valueOf(jParser1.makeHttpRequest(FEED_URL, "GET", nameValuePairs)));
@@ -140,7 +189,7 @@ public class CurrentKaryakarni extends Fragment {
             }
 
         }
-
+*/
 
     static class UserViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txt_kr_name,txt_kr_designation,txt_kr_region,txt_kr_city,txt_kr_phone;
@@ -229,13 +278,13 @@ public class CurrentKaryakarni extends Fragment {
                 resultp = arraylist.get(position);
                 UserViewHolder userViewHolder = (UserViewHolder) holder;
                 // Capture position and set results to the TextViews
-                userViewHolder.txt_kr_name.setText(resultp.get(CurrentKaryakarni.KAR_NAME));
-                userViewHolder.txt_kr_designation.setText(resultp.get(CurrentKaryakarni.KR_DESIGNATION));
-                userViewHolder.txt_kr_region.setText(resultp.get(CurrentKaryakarni.KR_REGION));
-                userViewHolder.txt_kr_city.setText(resultp.get(CurrentKaryakarni.KR_CITY));
-                userViewHolder.txt_kr_phone.setText(resultp.get(CurrentKaryakarni.KR_PHONE));
+                userViewHolder.txt_kr_name.setText(resultp.getMem_name());
+                userViewHolder.txt_kr_designation.setText(resultp.getDesgn());
+                userViewHolder.txt_kr_region.setText(resultp.getRegion());
+                userViewHolder.txt_kr_city.setText(resultp.getCity());
+                userViewHolder.txt_kr_phone.setText(resultp.getPhone());
 
-                imageLoader.DisplayImage(resultp.get(CurrentKaryakarni.KR_IMG_LINK), userViewHolder.image);
+                imageLoader.DisplayImage(resultp.getImg_link(), userViewHolder.image);
                 // Capture ListView item click
                 userViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

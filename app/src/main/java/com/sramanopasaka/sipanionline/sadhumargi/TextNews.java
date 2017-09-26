@@ -1,21 +1,21 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.fragments.BaseFragment;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiTextNews;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,19 +23,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 
 
-public class TextNews extends Fragment {
+public class TextNews extends BaseFragment implements GUICallback {
 
     private RecyclerView recyclerView;
-    private ArrayList<TextGetSetter> data;
+    //private ArrayList<TextGetSetter> data;
+
+    private ArrayList<GathividhiTextNews> arraylist;
     private TextNewsAdapter adapter;
     LayoutInflater inflater;
     Context context;
-    ProgressDialog mProgressDialog;
+    /*ProgressDialog mProgressDialog;
     JSONObject jsonobject;
-    JSONArray jsonarray;
+    JSONArray jsonarray;*/
     TextView emptyView;
     final String url = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/textnews.php";
     @Override
@@ -51,7 +52,12 @@ public class TextNews extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         emptyView=(TextView)vi.findViewById(R.id.emptyElement);
-        new Remote().execute();
+       // new Remote().execute();
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getGathividhiTextNewsList();
+        showLoadingDialog();
+
+
         boolean isConnected = ConnectivityReceiver.isConnected();
         if(isConnected)
         {
@@ -67,7 +73,57 @@ public class TextNews extends Fragment {
         return vi;
     }
 
-    private class Remote extends AsyncTask<String,Void,Integer>
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                GathividhiTextNewsResponse response= (GathividhiTextNewsResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getData()!=null && response.getData().size()>0){
+
+                        arraylist=response.getData();
+
+                        Collections.sort(arraylist, new Comparator<GathividhiTextNews>() {
+
+                            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                            public int compare(GathividhiTextNews lhs, GathividhiTextNews rhs) {
+
+                                try {
+                                    return df.parse(rhs.getDate()).compareTo(
+                                            df.parse(lhs.getDate()));
+
+                                } catch (ParseException e) {
+                                    throw new IllegalArgumentException(e);
+                                }
+                            }
+                        });
+                        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+                        llm.setOrientation(LinearLayoutManager.VERTICAL);
+                        recyclerView.setLayoutManager(llm);
+                        adapter = new TextNewsAdapter(getContext(),arraylist);
+                        recyclerView.setAdapter( adapter );
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /*private class Remote extends AsyncTask<String,Void,Integer>
     {
 
         @Override
@@ -163,5 +219,5 @@ public class TextNews extends Fragment {
         }
 
     }
-
+*/
 }

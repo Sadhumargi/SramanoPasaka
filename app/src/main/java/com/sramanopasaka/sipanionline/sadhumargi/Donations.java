@@ -1,12 +1,9 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -14,23 +11,26 @@ import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DonationsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Donations extends AppCompatActivity {
+public class Donations extends BaseActivity implements GUICallback {
 
     Context context;
-    private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/donations.php";
-    JSONParser jParser1 = new JSONParser();
-    JSONArray cast1 = null;
-    ArrayList<HashMap<String, String>> arraylist;
-    static String KR_NO = "Donate_id";
-    static String KAR_NAME = "Types_donations";
+   // private String FEED_URL = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/donations.php";
+   // JSONParser jParser1 = new JSONParser();
+    //JSONArray cast1 = null;
+    //ArrayList<HashMap<String, String>> arraylist;
+
+    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations> araaylist=null;
+    //static String KR_NO = "Donate_id";
+    //static String KAR_NAME = "Types_donations";
     private RecyclerView recyclerView;
     DonationAdapter adapter;
 
@@ -58,7 +58,12 @@ public class Donations extends AppCompatActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
 
-        new Remote().execute();
+       // new Remote().execute();
+
+        RequestProcessor processor=new RequestProcessor(this);
+        processor.getDonationsList();
+        showLoadingDialog();
+
 
         recyclerView = (RecyclerView)findViewById(R.id.donate_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -71,7 +76,45 @@ public class Donations extends AppCompatActivity {
 
     }
 
-    final class Remote extends AsyncTask<Void, Void, Void> {
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
+
+        hideLoadingDialog();
+
+        if(guiResponse!=null){
+
+            if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                DonationsResponse response= (DonationsResponse) guiResponse;
+                if(response!=null){
+
+                    if(response.getData()!=null && response.getData().size()>0){
+
+                        araaylist=response.getData();
+
+                        recyclerView.setHasFixedSize(true);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+                        recyclerView.setLayoutManager(layoutManager);
+                        // Pass the results into ListViewAdapter.java
+                        adapter = new DonationAdapter(Donations.this, araaylist);
+                        // Set the adapter to the ListView
+                        recyclerView.setAdapter(adapter);
+                    }else{
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /*final class Remote extends AsyncTask<Void, Void, Void> {
         ProgressDialog pg = null;
 
         @Override
@@ -128,6 +171,6 @@ public class Donations extends AppCompatActivity {
             pg.dismiss();
         }
 
-    }
+    }*/
 
 }
