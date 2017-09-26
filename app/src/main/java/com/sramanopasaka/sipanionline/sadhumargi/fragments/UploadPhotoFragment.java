@@ -1,20 +1,15 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -22,12 +17,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,33 +27,16 @@ import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
 import com.squareup.picasso.Picasso;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ZoneListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
-import com.sramanopasaka.sipanionline.sadhumargi.helpers.ClickToSelectEditText;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.CustomToast;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.ImageCompressionAsyncTask;
-import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.ProfileImage;
-import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.DialogueUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.FileUtils;
 import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 /**
  * Name    :   pranavjdev
@@ -377,10 +352,10 @@ public class UploadPhotoFragment extends BaseFragment implements GUICallback{
                             UploadPhotoFragment.this.changeProfilerPicture(profileImage.image);
                             Log.e("Image---",""+profileImage.imageString);
                             //File file = new File("file:////" + images.get(0).getPath());
-                            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), new byte[]{profileImage.image});
+                            /*RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), new byte[]{profileImage.image});
                             MultipartBody.Part imageFileBody = MultipartBody.Part.createFormData("userfile", "profileImage", requestBody);
                             RequestProcessor requestProcessor = new RequestProcessor(UploadPhotoFragment.this);
-                            requestProcessor.uploadProfilePicture(imageFileBody);
+                            requestProcessor.uploadProfilePicture(imageFileBody);*/
                         }
                     });
                     imageCompressionAsyncTask.execute("file:////" + images.get(0).getPath());

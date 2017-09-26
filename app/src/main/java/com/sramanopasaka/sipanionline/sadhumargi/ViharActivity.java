@@ -380,7 +380,7 @@ public class ViharActivity extends BaseActivity implements
                     Log.e("filterlist", "???????" + query);
                    // final ArrayList<TreeMap<String, String>> filteredList = new ArrayList<TreeMap<String, String>>();
 
-                    ArrayList<Vihar> filteredList=null;
+                    ArrayList<Vihar> filteredList=new ArrayList<>();
 
                     for (int i = 0; i < arraylist.size(); i++) {
 
@@ -388,6 +388,7 @@ public class ViharActivity extends BaseActivity implements
                         final String name = arraylist.get(i).getGuru_name().toLowerCase();
                         final String phone = arraylist.get(i).getGuru_phone().toLowerCase();
                         final String phone2 = arraylist.get(i).getGuru_att_phone().toLowerCase();
+
                         if (location.contains(query) || name.contains(query) || phone.contains(query) || phone2.contains(query)) {
 
                             filteredList.add(arraylist.get(i));
@@ -396,7 +397,7 @@ public class ViharActivity extends BaseActivity implements
                     }
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(ViharActivity.this));
-                    adapter = new ViharListAdapter(ViharActivity.this,arraylist);
+                    adapter = new ViharListAdapter(ViharActivity.this,filteredList);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();  // data set changed
                 }
