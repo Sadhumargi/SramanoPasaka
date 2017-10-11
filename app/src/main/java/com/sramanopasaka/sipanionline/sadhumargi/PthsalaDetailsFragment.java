@@ -41,7 +41,7 @@ public class PthsalaDetailsFragment extends Fragment {
     JSONObject jsonobject;
     JSONArray jsonarray;
     public  int current_pages = 1;
-    String FEED_URL="http://pathshala.sabsjs.org/api/schools/list";
+    String FEED_URL="http://pathshala.sadhumargi.com/api/schools/list";
     ArrayList<PathsalaGetSetter> arraylist=new ArrayList<PathsalaGetSetter>();
 
     TextView tv_code;
@@ -124,6 +124,7 @@ try{
 
         final String sign2=MD5(current_pages+""+""+""+"1a2ea8119addab5f196b6c8cf5baeaa9");
 
+
         Log.e("Signature","????????????"+sign2);
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -136,6 +137,7 @@ try{
 
 
         Log.e("Signature","????????????"+sign2);
+    //E/Signature: ????????????65e2dc9815be3ccf6bd3f942b3571bc9
 
         try {
 
