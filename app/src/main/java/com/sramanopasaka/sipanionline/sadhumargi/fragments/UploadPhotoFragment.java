@@ -98,10 +98,10 @@ public class UploadPhotoFragment extends BaseFragment implements GUICallback{
                 });*/
 
                 ImagePicker.create(getActivity())
-                        .returnAfterFirst(true) // set whether pick or camera action should return immediate result or not. For pick image only work on single mode
+//                        .returnAfterFirst(true) // set whether pick or camera action should return immediate result or not. For pick image only work on single mode
                         .folderMode(true) // folder mode (false by default)
-                        .folderTitle(getString(R.string.app_name)) // folder selection title
-                        .imageTitle("Tap to select") // image selection title
+//                        .folderTitle(getString(R.string.app_name)) // folder selection title
+//                        .imageTitle("Tap to select") // image selection title
                         .single() // single mode
                         //.multi() // multi mode (default mode)
                         //.limit(10) // max images can be selected (99 by default)
@@ -364,8 +364,6 @@ public class UploadPhotoFragment extends BaseFragment implements GUICallback{
                    }catch (Exception ex){
                        new CustomToast().showErrorToast(getActivity(),view,"This file is not supported, please select ");
                    }
-
-
                     Log.e("----", "" + images.get(0).getPath());
                 }
             }

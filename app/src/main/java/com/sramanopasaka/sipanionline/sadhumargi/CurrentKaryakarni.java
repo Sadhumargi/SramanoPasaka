@@ -54,7 +54,7 @@ public class CurrentKaryakarni extends BaseFragment implements GUICallback {
     currentkarniadapter adapter;
     //private OnFragmentInteractionListener mListener;
     public CurrentKaryakarni() {
-        // Required empty public constructor
+        // Required empty public constructors
     }
 
     @Override

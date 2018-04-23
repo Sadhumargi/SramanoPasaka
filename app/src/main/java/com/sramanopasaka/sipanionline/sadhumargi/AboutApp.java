@@ -39,7 +39,7 @@ public class AboutApp extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,7 @@ public class AboutApp extends AppCompatActivity  {
         }
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>अनुप्रयोग के बारे में</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>About App</font>"));
 
 
         WebView1.setWebViewClient(new WebViewClient());

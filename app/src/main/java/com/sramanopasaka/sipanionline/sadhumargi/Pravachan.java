@@ -82,7 +82,7 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
         });
 
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         recyclerView = (RecyclerView)findViewById(R.id.pr_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -92,7 +92,7 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
         recyclerView.setLayoutManager(mLayoutManager);
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>प्रवचन</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='##FFFFFF'>Pravachan</font>"));
 
         RequestProcessor processor=new RequestProcessor(Pravachan.this);
         processor.getPravachanList();
@@ -107,52 +107,57 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
 
         hideLoadingDialog();
-        if (guiResponse != null) {
 
-            if (requestStatus.equals(RequestStatus.SUCCESS)) {
+        try{
 
-                //guiResponse has the response
+            if (guiResponse != null) {
 
-                PravachanResponse pravachanResponse = (PravachanResponse) guiResponse;
-                if (pravachanResponse != null) {
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                    if (pravachanResponse.getData()!=null && pravachanResponse.getData().size() > 0) {
-                        {
+                    //guiResponse has the response
 
-                            arraylist = pravachanResponse.getData();
+                    PravachanResponse pravachanResponse = (PravachanResponse) guiResponse;
+                    if (pravachanResponse != null) {
 
-                            Collections.sort(arraylist, new Comparator<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan>() {
+                        if (pravachanResponse.getData() != null && pravachanResponse.getData().size() > 0) {
+                            {
 
-                                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                                arraylist = pravachanResponse.getData();
 
-                                public int compare(com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan lhs, com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan rhs) {
+                                Collections.sort(arraylist, new Comparator<com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan>() {
 
-                                    try {
-                                        return df.parse(rhs.getDate()).compareTo(
-                                                df.parse(lhs.getDate()));
+                                    DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
-                                    } catch (ParseException e) {
-                                        throw new IllegalArgumentException(e);
+                                    public int compare(com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan lhs, com.sramanopasaka.sipanionline.sadhumargi.model.Pravachan rhs) {
+
+                                        try {
+                                            return df.parse(rhs.getDate()).compareTo(
+                                                    df.parse(lhs.getDate()));
+
+                                        } catch (ParseException e) {
+                                            throw new IllegalArgumentException(e);
+                                        }
                                     }
-                                }
-                            });
+                                });
 
-                            adapter = new PravachanAdapter(Pravachan.this, arraylist);
-                            recyclerView.setAdapter(adapter);
+                                adapter = new PravachanAdapter(Pravachan.this, arraylist);
+                                recyclerView.setAdapter(adapter);
 
 
+                            }
+
+                        } else {
+                            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
-
                     } else {
                         Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
-            }
+                }
 
+        }catch(RuntimeException e){
+
+                    Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
         }
     }
 

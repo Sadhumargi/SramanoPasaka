@@ -28,6 +28,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListRespo
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiImageNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiVideoNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
@@ -104,7 +105,6 @@ public interface EndPointApi {
     @POST("app/achievements")
     Call<AchievementListResponse> getAchievementList(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
-
     @FormUrlEncoded
     @POST("app/businesses")
     Call<BusinessListResponse> getBusiness(@Field("member_id") String memberId, @Field("app_token") String appToken);
@@ -113,9 +113,6 @@ public interface EndPointApi {
     @POST("app/educations")
     Call<EducationListResponse> getEducation(@Field("member_id") String memberId, @Field("app_token") String appToken);
 
-
-
-
     @FormUrlEncoded
     @POST("app/dharmik")
     Call<DharmikDetailsResponse> getDharmikDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
@@ -123,7 +120,6 @@ public interface EndPointApi {
     @FormUrlEncoded
     @POST("app/sangh")
     Call<SanghDetailsResponse> getSanghDetails(@Field("member_id") String memberId, @Field("app_token") String appToken);
-
 
     @FormUrlEncoded
     @POST("app/basics")
@@ -345,13 +341,17 @@ public interface EndPointApi {
     @GET("phpfiles/old_karyakarni_mem.php")
     Call<OldKaryakarniResponse> getOldKaryakarniList(@Query("karyakarni_id") String Karyakarni_Id);
 
-    @POST("phpfiles/textnews.php")
-    Call<GathividhiTextNewsResponse> getTextNewsList();
+//    @POST("phpfiles/textnews.php")
+//    Call<GathividhiTextNewsResponse> getTextNewsList();
+//
+//    @POST("phpfiles/imagesnews.php")
+//    Call<GathividhiImageNewsResponse> geImageNewsList();
+//
+//    @POST("phpfiles/videosnews.php")
+//    Call<GathividhiVideoNewsResponse> geVideoNewsList();
 
-    @POST("phpfiles/imagesnews.php")
-    Call<GathividhiImageNewsResponse> geImageNewsList();
+    @POST("phpfiles/kathivithi.php")
+    Call<GathividhiResponse> getGathividhiList();
 
-    @POST("phpfiles/videosnews.php")
-    Call<GathividhiVideoNewsResponse> geVideoNewsList();
+
 }
-

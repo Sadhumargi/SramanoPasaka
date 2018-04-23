@@ -70,8 +70,8 @@ public class PathGoogleMapActivity extends AppCompatActivity implements OnMapRea
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>विहार</font>"));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Vihar</font>"));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         v2GetRouteDirection = new GMapV2GetRouteDirection();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

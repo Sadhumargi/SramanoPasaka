@@ -57,7 +57,7 @@ public class WebviewSahitya  extends BaseActivity implements GUICallback {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,15 +79,15 @@ public class WebviewSahitya  extends BaseActivity implements GUICallback {
 
         if(type.matches("S"))
         {
-            actionbar.setTitle(Html.fromHtml("<font color='#000000'>"+getResources().getString(R.string.sangsahitya)+"</font>"));
+            actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>"+getResources().getString(R.string.sangsahitya)+"</font>"));
         }
         else if(type.matches("R"))
         {
-            actionbar.setTitle(Html.fromHtml("<font color='#000000'>"+getResources().getString(R.string.ramsahitya)+"</font>"));
+            actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>"+getResources().getString(R.string.ramsahitya)+"</font>"));
         }
         else if(type.matches("N"))
         {
-            actionbar.setTitle(Html.fromHtml("<font color='#000000'>"+getResources().getString(R.string.naneshsahitya)+"</font>"));
+            actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>"+getResources().getString(R.string.naneshsahitya)+"</font>"));
         }
 
 

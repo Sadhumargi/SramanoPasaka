@@ -23,12 +23,12 @@
     <string name="title_activity_sahitya">साहित्य</string>
 
     <string name="title_activity_photo_gallery">गेलरी</string>
-    <string name="title_activity_vihar">विहार</string>
-    <string name="title_activity_pravachan">प्रवचन</string>
+    <string name="title_activity_vihar">Vihar</string>
+    <string name="title_activity_pravachan">Pravachan</string>
     <string name="title_activity_donations">दान</string>
-    <string name="title_activity_pathsala">पाठशाला</string>
+    <string name="title_activity_pathsala">Pathshala</string>
     <string name="title_activity_members">सदस्य</string>
-    <string name="title_activity_kariya_karni">कार्यकारिणी</string>
+    <string name="title_activity_kariya_karni">KaryaSamiti</string>
 
     <string name="name">नाम</string>
     <string name="designation">पद</string>
@@ -52,13 +52,13 @@
     <string name="date">तारीख</string>
     <string name="typeofexams">पाठशाला के प्रकार</string>
     <string name="typeofdonations">दान के प्रकार</string>
-    <string name="sangsahitya">संघ सहित्य</string>
-    <string name="ramsahitya">श्री राम उवाच </string>
-    <string name="naneshsahitya">नानेशवाणी</string>
+    <string name="sangsahitya">Sangha Sahitya</string>
+    <string name="ramsahitya">Ram Sahitya </string>
+    <string name="naneshsahitya">Naneshvani</string>
     <string name="donate_name">दान नाम  :</string>
     <string name="donate_details">दान विवरण  :</string>
     <string name="donate_amount">दान राशि  :</string>
-    <string name="make_donate">  दान कर  </string>
+    <string name="make_donate"> Pay Now </string>
     <string name="make_donate_name">दानी का नाम</string>
     <string name="make_donate_phone">दानी का फोन</string>
     <string name="sanghistory">साधुमार्गी संघ इतिहास</string>
@@ -83,6 +83,7 @@
     <string name="medium">Medium</string>
     <string name="long1">Long</string>
     <string name="text_size">Text Size</string>
+    <string name="loginregistraion">Login/Registration</string>
 
 
     <string-array name="ic_names">
@@ -106,9 +107,9 @@
     <string name="donate">उपहार</string>
     <string name="title_staff">अमला</string>
     <string name="title_students">छात्रों</string>
-    <string name="title_exams">परीक्षा</string>
+    <string name="title_exams">Pariksha</string>
     <string name="txt_exam_centers">परीक्षा केंद्र</string>
-    <string name="title_shivir">शिविर</string>
+    <string name="title_shivir">Shivira</string>
     <string name="edition_date">Edition</string>
     <string name="lbl_start_date">Start Date</string>
     <string name="lbl_end_date">End Date</string>
@@ -510,7 +511,7 @@
 
     </array>
 
-    <string name="home">होम</string>
+    <string name="home">Home</string>
 
 
  <string name="hint">

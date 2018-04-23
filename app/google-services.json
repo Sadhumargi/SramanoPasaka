@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "995082858127",
-    "firebase_url": "https://sramanopasaka-d4961.firebaseio.com",
-    "project_id": "sramanopasaka-d4961",
-    "storage_bucket": "sramanopasaka-d4961.appspot.com"
+    "project_number": "1028233675786",
+    "firebase_url": "https://sadhumargi-f2645.firebaseio.com",
+    "project_id": "sadhumargi-f2645",
+    "storage_bucket": "sadhumargi-f2645.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:995082858127:android:ff9b2c89f578186d",
+        "mobilesdk_app_id": "1:1028233675786:android:ff9b2c89f578186d",
         "android_client_info": {
           "package_name": "com.sramanopasaka.sipanionline.sadhumargi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "995082858127-23ajuatn032g9jlvrldgo63h7dqu5lu5.apps.googleusercontent.com",
+          "client_id": "1028233675786-d281n88gkdbbafe6hg4h4vk7ck5f12u0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.sramanopasaka.sipanionline.sadhumargi",
-            "certificate_hash": "7c46e7a0709c983045ca97a447d4e7cdb70fbb69"
+            "certificate_hash": "d242e98aab7102fea3450ac1e41fc10a64e39fbd"
           }
         },
         {
-          "client_id": "995082858127-3tjau6nne22j56lncb55d31nsskq0qdf.apps.googleusercontent.com",
+          "client_id": "1028233675786-c7t5pkk2qqsnltmumpasu89i66qjtn41.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBEBfAisaaSvif5sUvwmZAKqdSHKEkL2O8"
+          "current_key": "AIzaSyAbo3S0LEAn5UKEl2f68HH072ui5FOq1Z8"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "995082858127-3tjau6nne22j56lncb55d31nsskq0qdf.apps.googleusercontent.com",
+              "client_id": "1028233675786-c7t5pkk2qqsnltmumpasu89i66qjtn41.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,15 +28,16 @@ import java.util.ArrayList;
 public class ThreeFragment extends BaseFragment implements GUICallback {
 
     Context context;
-    public static String url="http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/naneshsahitya.php";
-   // public static String url2= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/EbookFilter.php";
+    public static String url = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/naneshsahitya.php";
+    // public static String url2= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/EbookFilter.php";
     JSONArray jsonarray = null;
-   // private ArrayList<ThreeFragGetSetter> arraylist;
-   // ListView listview;
+    // private ArrayList<ThreeFragGetSetter> arraylist;
+    // ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
-    ThreeFragAdapter adapter;
-TextView emptyView;
+    ThreeFragGridAdapter adapter;
+    TextView emptyView;
+    GridView gridView;
 
     ArrayList<NanenshSahitya> arrayList;
 
@@ -46,19 +48,20 @@ TextView emptyView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the style for this fragment
-        View view =  inflater.inflate(R.layout.fragment_three, container, false); //pass the correct style name for the fragment
+        View view = inflater.inflate(R.layout.fragment_three, container, false); //pass the correct style name for the fragment
+        gridView = view.findViewById(R.id.naneshSahityaGrid);
 
         //new Remote().execute();
 
-        RequestProcessor processor=new RequestProcessor(ThreeFragment.this);
+        RequestProcessor processor = new RequestProcessor(ThreeFragment.this);
         processor.getNanenshSahityaList();
         showLoadingDialog();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.threefrag_recycler_view);
-        emptyView = (TextView)view.findViewById(R.id.emptyElement);
+        recyclerView = (RecyclerView) view.findViewById(R.id.threefrag_recycler_view);
+        emptyView = (TextView) view.findViewById(R.id.emptyElement);
         return view;
     }
 
@@ -66,39 +69,43 @@ TextView emptyView;
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try {
+            if (guiResponse != null) {
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                NanenshSahityaResponse response= (NanenshSahityaResponse) guiResponse;
-                if(response!=null){
+                    NanenshSahityaResponse response = (NanenshSahityaResponse) guiResponse;
+                    if (response != null) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                        if (response.getData() != null && response.getData().size() > 0) {
 
-                        arrayList=response.getData();
+                            arrayList = response.getData();
 
-                        recyclerView.setHasFixedSize(true);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                        recyclerView.setLayoutManager(layoutManager);
-                        // Pass the results into ListViewAdapter.java
-                        adapter = new ThreeFragAdapter(getActivity(), arrayList);
-                        // Set the adapter to the ListView
-                        recyclerView.setAdapter(adapter);
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                        recyclerView.setHasFixedSize(true);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+//                        recyclerView.setLayoutManager(layoutManager);
+                            // Pass the results into ListViewAdapter.java
+                            adapter = new ThreeFragGridAdapter(getActivity(), arrayList);
+                            // Set the adapter to the ListView
+                            gridView.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
-        }
 
+        } catch (RuntimeException e) {
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+
+        }
     }
-    }
+}
+
 
     /*class Remote extends AsyncTask<Void,Void,Void>
     {

@@ -13,7 +13,7 @@
             android:id="@+id/toolpathsala"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/background"
+            android:background="@color/actionbar"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -21,7 +21,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
+            android:background="@color/actionbar"
             android:touchscreenBlocksFocus="false"
             app:tabGravity="fill"
             app:tabMode="fixed"
@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

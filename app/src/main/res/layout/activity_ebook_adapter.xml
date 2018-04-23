@@ -1,42 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     card_view:cardCornerRadius="5dp">
-    <RelativeLayout
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:weightSum="1"
+    android:padding="5dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+        <ImageView
+            android:id="@+id/ebook_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/ebook_txt_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/relativeLayout"
-        android:layout_margin="10dp">
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:layout_toEndOf="@+id/ebook_image"
+        android:text="fdsfdsfsdsfsfsdfds"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_weight="0.42" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ebook_image"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+</LinearLayout>
 
-        <TextView
-            android:id="@+id/ebook_txt_date"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="fdsfdsfsdsfsfsdfds"
-            android:layout_marginLeft="0dp"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/ebook_image"
-            android:textColor="#000000" />
+   </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
-
-</android.support.v7.widget.CardView>

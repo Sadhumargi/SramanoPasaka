@@ -1,6 +1,7 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,9 @@ import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DonationsResponse;
@@ -19,6 +23,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Donations extends BaseActivity implements GUICallback {
 
@@ -28,11 +33,20 @@ public class Donations extends BaseActivity implements GUICallback {
     //JSONArray cast1 = null;
     //ArrayList<HashMap<String, String>> arraylist;
 
-    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations> araaylist=null;
+    ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.Donations> arrayList=null;
+
+   public int [] imageId = { R.drawable.newdaanimage,
+                             R.drawable.newdaanimage2,
+                             R.drawable.newdaanimage3,
+                             R.drawable.newdaanimage4,
+                             R.drawable.newdaanimage5,
+                             R.drawable.newdaanimage6 };
+
     //static String KR_NO = "Donate_id";
     //static String KAR_NAME = "Types_donations";
-    private RecyclerView recyclerView;
+    //private RecyclerView recyclerView;
     DonationAdapter adapter;
+    public GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +70,7 @@ public class Donations extends BaseActivity implements GUICallback {
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
        // new Remote().execute();
 
@@ -64,54 +78,56 @@ public class Donations extends BaseActivity implements GUICallback {
         processor.getDonationsList();
         showLoadingDialog();
 
-
-        recyclerView = (RecyclerView)findViewById(R.id.donate_recycler_view);
-        recyclerView.setHasFixedSize(true);
+        gridView = findViewById(R.id.donate_grid_view);
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>दान</font>"));
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Donations.this);
-        recyclerView.setLayoutManager(layoutManager);
-
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Daan</font>"));
     }
+
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
 
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try{
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+            if(guiResponse!=null) {
 
-                DonationsResponse response= (DonationsResponse) guiResponse;
-                if(response!=null){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                    DonationsResponse response = (DonationsResponse) guiResponse;
+                    if (response != null) {
 
-                        araaylist=response.getData();
+                        if (response.getData() != null && response.getData().size() > 0) {
 
-                        recyclerView.setHasFixedSize(true);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                        recyclerView.setLayoutManager(layoutManager);
-                        // Pass the results into ListViewAdapter.java
-                        adapter = new DonationAdapter(Donations.this, araaylist);
-                        // Set the adapter to the ListView
-                        recyclerView.setAdapter(adapter);
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            arrayList = response.getData();
+
+                            MyAdapter myAdapter = new MyAdapter(this, R.layout.grid_item_layout, arrayList, imageId);
+                            gridView.setAdapter((ListAdapter) myAdapter);
+
+//                        recyclerView.setHasFixedSize(true);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+//                        recyclerView.setLayoutManager(layoutManager);
+                            // Pass the results into ListViewAdapter.java
+//                        adapter = new DonationAdapter(Donations.this, araaylist);
+                            // Set the adapter to the ListView
+                            //recyclerView.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
-        }
 
+        }catch (RuntimeException e){
+
+                Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*final class Remote extends AsyncTask<Void, Void, Void> {

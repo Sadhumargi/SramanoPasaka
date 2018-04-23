@@ -56,7 +56,7 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>पत्रिका</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Patrika</font>"));
 
       /*  WebView1.clearCache(true);
         WebView1.clearHistory();*/

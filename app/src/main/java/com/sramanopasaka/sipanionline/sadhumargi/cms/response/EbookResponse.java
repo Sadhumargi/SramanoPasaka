@@ -29,7 +29,6 @@ public class EbookResponse extends GUIResponse {
         this.statusCode = statusCode;
     }
 
-
     public ArrayList<Ebook> getData() {
         return data;
     }
@@ -39,8 +38,6 @@ public class EbookResponse extends GUIResponse {
     }
 
     private ArrayList<Ebook> data =null;
-
-
 
     @Override
     public boolean isStatus() {

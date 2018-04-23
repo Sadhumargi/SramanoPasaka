@@ -24,8 +24,7 @@ public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.Vie
 
     private ArrayList<GathividhiImageNews> android;
 
-    public ImageNewsAdapter(Context context,
-                            ArrayList<GathividhiImageNews> arraylist) {
+    public ImageNewsAdapter(Context context, ArrayList<GathividhiImageNews> arraylist) {
         this.context = context;
         android = arraylist;
         imageLoader = new ImageLoader(context);
@@ -42,7 +41,6 @@ public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.Vie
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-
 
         Typeface type = Typeface.createFromAsset(context.getAssets(),"fonts/KrutiDev010 .TTF");
         viewHolder.tv_title.setTypeface(type);
@@ -64,7 +62,7 @@ public class ImageNewsAdapter extends  RecyclerView.Adapter<ImageNewsAdapter.Vie
         return android.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_title,tv_details,tv_date;
         ImageView image,image2,image3,image4;
         public ViewHolder(View view) {

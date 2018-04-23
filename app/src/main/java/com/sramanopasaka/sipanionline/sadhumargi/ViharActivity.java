@@ -101,13 +101,13 @@ public class ViharActivity extends BaseActivity implements
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>विहार</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Vihar</font>"));
         recyclerView = (RecyclerView)findViewById(R.id.vihar_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ViharActivity.this);
         recyclerView.setLayoutManager(layoutManager);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         //ImageView imgSearch = (ImageView) findViewById(R.id.imgSearch);
         search=(EditText)findViewById(R.id.edit_srch_vihar);
@@ -164,8 +164,6 @@ public class ViharActivity extends BaseActivity implements
         }*/
     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -176,68 +174,71 @@ public class ViharActivity extends BaseActivity implements
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try {
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+            if (guiResponse != null) {
 
-                ViharResponse response= (ViharResponse) guiResponse;
-                if(response!=null){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                    ViharResponse response = (ViharResponse) guiResponse;
+                    if (response != null) {
 
-                      arraylist=response.getData();
+                        if (response.getData() != null && response.getData().size() > 0) {
+
+                            arraylist = response.getData();
+
+                            for (int i = 0; i < arraylist.size(); i++) {
+
+                                Location locationA = new Location("point A");
+                                locationA.setLatitude(latitude);
+                                locationA.setLongitude(longitude);
+                                Location locationB = new Location("point B");
+                                locationB.setLatitude(Double.parseDouble(arraylist.get(i).getGuru_lat()));
+                                locationB.setLongitude(Double.parseDouble(arraylist.get(i).getGuru_lng()));
+
+                                distance = locationA.distanceTo(locationB) / 1000;   //in km
+                                Log.e("Distance to", " kilometers " + distance);
+                                double dis = Double.parseDouble(new DecimalFormat("#####.##").format(distance));
+                                response.getData().get(i).setGuru_dis(String.valueOf(dis));
 
 
-
-                        for (int i=0;i<arraylist.size();i++) {
-
-                            Location locationA = new Location("point A");
-                            locationA.setLatitude(latitude);
-                            locationA.setLongitude(longitude);
-                            Location locationB = new Location("point B");
-                            locationB.setLatitude(Double.parseDouble(arraylist.get(i).getGuru_lat()));
-                            locationB.setLongitude(Double.parseDouble(arraylist.get(i).getGuru_lng()));
-
-                            distance = locationA.distanceTo(locationB) / 1000;   //in km
-                            Log.e("Distance to", " kilometers " + distance);
-                            double dis = Double.parseDouble(new DecimalFormat("#####.##").format(distance));
-                            response.getData().get(i).setGuru_dis(String.valueOf(dis));
-
-
-                        }
-
-                        Comparator<Vihar> distanceComparator = new Comparator<Vihar>() {
-
-                            @Override
-                            public int compare(Vihar d1, Vihar d2) {
-                                // Get the distance and compare the distance.
-                                Double distance1 = Double.parseDouble(d1.getGuru_dis());
-                                Double distance2 = Double.parseDouble(d2.getGuru_dis());
-
-                                return distance1.compareTo(distance2);
                             }
-                        };
+
+                            Comparator<Vihar> distanceComparator = new Comparator<Vihar>() {
+
+                                @Override
+                                public int compare(Vihar d1, Vihar d2) {
+                                    // Get the distance and compare the distance.
+                                    Double distance1 = Double.parseDouble(d1.getGuru_dis());
+                                    Double distance2 = Double.parseDouble(d2.getGuru_dis());
+
+                                    return distance1.compareTo(distance2);
+                                }
+                            };
 
 // And then sort it using collections.sort().
-                        Collections.sort(arraylist, distanceComparator);
+                            Collections.sort(arraylist, distanceComparator);
 
-                        adapter = new ViharListAdapter(ViharActivity.this,arraylist);
-                        // Set the adapter to the ListView
-                        recyclerView.setAdapter(adapter);
+                            adapter = new ViharListAdapter(ViharActivity.this, arraylist);
+                            // Set the adapter to the ListView
+                            recyclerView.setAdapter(adapter);
 
-                      addTextListener();
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            addTextListener();
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
-        }
+
+            }catch(RuntimeException e){
+                Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+
+            }
     }
 
     // DownloadJSON AsyncTask

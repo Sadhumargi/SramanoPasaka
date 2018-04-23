@@ -33,9 +33,9 @@ public class Payment extends AppCompatActivity {
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>दान</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Select a payment method</font>"));
     }
 }

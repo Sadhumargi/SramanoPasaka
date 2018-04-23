@@ -69,6 +69,7 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
 
         holder.tv_date.setText(model.getDate());
         final String id = String.valueOf(model.getBook_id());
+
         String url2=model.getImg_link();
         imageLoader.DisplayImage(url2, holder.image);
 

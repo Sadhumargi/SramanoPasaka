@@ -1,8 +1,11 @@
 package com.sramanopasaka.sipanionline.sadhumargi.cms.task;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
+import com.sramanopasaka.sipanionline.sadhumargi.MainActivityCollectionview;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
@@ -31,6 +34,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListRespo
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiImageNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiVideoNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
@@ -79,13 +83,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Name    :   pranavjdev
+ * Name    : pranavjdev
  * Date   : 8/9/17
  * Email : pranavjaydev@gmail.com
  */
 
 public class RequestProcessor {
     private GUICallback guiCallback = null;
+    Context context;
 
     public RequestProcessor(GUICallback guiCallback) {
         this.guiCallback = guiCallback;
@@ -93,8 +98,6 @@ public class RequestProcessor {
     }
 
     public void doLogin(JsonObject jsonObject) {
-
-
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
@@ -138,17 +141,13 @@ public class RequestProcessor {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
 
-
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
             }
         });
 
-
     }
 
     public void doLoginWithToken(JsonObject jsonObject) {
-
-
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
@@ -174,14 +173,11 @@ public class RequestProcessor {
             }
         });
 
-
     }
 
     public void doRegister(String anchalId,String loca_Sangh_Id, String familyId, String relation_Id,String salution,String first_Name,
                            String last_Name,String post,String city,String district,String state,String country,String mobile,String birth_day,
                            int age,String gender, String email_address,String pincode,String profile_Created_By,String refcode) {
-
-
 
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
@@ -578,8 +574,6 @@ public class RequestProcessor {
                                 String samayik, String pratikraman,
                                 String bol_thokde, String shastra_gyan,
                                 String vishesh_gyan) {
-
-
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
 
 
@@ -591,43 +585,30 @@ public class RequestProcessor {
 
                 Log.e("Response message=", "" + response.message());
 
-
                 if (response.body() != null)
                     guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
                 else
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
-
             }
 
             @Override
             public void onFailure(Call<UpdateKnowledgeResponse> call, Throwable t) {
-
-
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
             }
         });
-
-
     }
-
 
     public void addAchievemetns(String memberId, String token, Achievements data) {
 
-
-
         EndPointApi endPointApi = RetrofitClient.getMemberClient().create(EndPointApi.class);
-
-
 
         endPointApi.addAchievements(memberId,token,"add",data.getAchievement_sector(),data.getAchievement_level(),data.getAchievement_type(),data.getAchievement_detail(),
                 data.getAchievement_year()).enqueue(new Callback<AddAchievementResponse>() {
+
             @Override
             public void onResponse(Call<AddAchievementResponse> call, Response<AddAchievementResponse> response) {
 
-
                 Log.e("Response message=", "" + response.message());
-
-
 
                 if (response.body() != null)
                     guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
@@ -638,7 +619,6 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<AddAchievementResponse> call, Throwable t) {
-
 
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
             }
@@ -1440,22 +1420,15 @@ public class RequestProcessor {
 
     public void getPravachanDetails(String title, String type) {
 
-
-
         EndPointApi endPointApi = RetrofitClient.getEbookClient().create(EndPointApi.class);
-
-
 
         endPointApi.getPravachanDetails(title,type).enqueue(new Callback<PravachanDetailsResponse>() {
             @Override
             public void onResponse(Call<PravachanDetailsResponse> call, Response<PravachanDetailsResponse> response) {
 
-
                 Log.e("Response message=", "" + response.message());
 
                 Log.e("Response body=", "" + response.body());
-
-
 
                 if (response.body() != null) {
                     guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
@@ -1466,8 +1439,6 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<PravachanDetailsResponse> call, Throwable t) {
-
-
                 guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
             }
         });
@@ -1504,6 +1475,7 @@ public class RequestProcessor {
 
     public void getSahityaListOne() {
 
+
         EndPointApi endPointApi = RetrofitClient.getEbookClient().create(EndPointApi.class);
 
         endPointApi.getSahityaListOne().enqueue(new Callback<SahithyaFragmentOneResponse>() {
@@ -1514,6 +1486,7 @@ public class RequestProcessor {
                 Log.e("Response message=", "" + response.message());
 
                 Log.e("Response body=", "" + response.body());
+
 
 
 
@@ -1631,7 +1604,6 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
@@ -1659,7 +1631,6 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
@@ -1687,7 +1658,6 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
@@ -1726,8 +1696,6 @@ public class RequestProcessor {
             }
         });
     }
-
-
     public void getCurrentKaryakarniList(String karyakarni_Id){
 
         EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
@@ -1772,7 +1740,6 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
@@ -1783,13 +1750,12 @@ public class RequestProcessor {
             }
         });
     }
-
-    public void getGathividhiTextNewsList(){
+    public void getGathividhiList(){
 
         EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
-        endPointApi.getTextNewsList().enqueue(new Callback<GathividhiTextNewsResponse>() {
+        endPointApi.getGathividhiList().enqueue(new Callback<GathividhiResponse>() {
             @Override
-            public void onResponse(Call<GathividhiTextNewsResponse> call, Response<GathividhiTextNewsResponse> response) {
+            public void onResponse(Call<GathividhiResponse> call, Response<GathividhiResponse> response) {
 
                 Log.e("Response message", " "+response.message());
 
@@ -1800,75 +1766,99 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
-            public void onFailure(Call<GathividhiTextNewsResponse> call, Throwable t) {
-
+            public void onFailure(Call<GathividhiResponse> call, Throwable t) {
                 guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
 
             }
         });
     }
 
-    public void getGathividhiImageNewsList(){
+//    public void getGathividhiTextNewsList(){
+//
+//        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
+//        endPointApi.getTextNewsList().enqueue(new Callback<GathividhiTextNewsResponse>() {
+//            @Override
+//            public void onResponse(Call<GathividhiTextNewsResponse> call, Response<GathividhiTextNewsResponse> response) {
+//
+//                Log.e("Response message", " "+response.message());
+//
+//                Log.e ("Response body", " "+response.body());
+//
+//                if(response.body()!=null){
+//                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+//                }else{
+//                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GathividhiTextNewsResponse> call, Throwable t) {
+//
+//                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
+//
+//            }
+//        });
+//    }
 
-        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
-        endPointApi.geImageNewsList().enqueue(new Callback<GathividhiImageNewsResponse>() {
-            @Override
-            public void onResponse(Call<GathividhiImageNewsResponse> call, Response<GathividhiImageNewsResponse> response) {
-
-                Log.e("Response message", " "+response.message());
-
-                Log.e ("Response body", " "+response.body());
-
-                if(response.body()!=null){
-                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
-                }else{
-                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<GathividhiImageNewsResponse> call, Throwable t) {
-
-                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
-
-            }
-        });
-    }
-
-    public void getGathividhiVideoNewsList(){
-
-        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
-        endPointApi.geVideoNewsList().enqueue(new Callback<GathividhiVideoNewsResponse>() {
-            @Override
-            public void onResponse(Call<GathividhiVideoNewsResponse> call, Response<GathividhiVideoNewsResponse> response) {
-
-                Log.e("Response message", " "+response.message());
-
-                Log.e ("Response body", " "+response.body());
-
-                if(response.body()!=null){
-                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
-                }else{
-                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<GathividhiVideoNewsResponse> call, Throwable t) {
-
-                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
-
-            }
-        });
-    }
-
-
+//    public void getGathividhiImageNewsList(){
+//
+//        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
+//        endPointApi.geImageNewsList().enqueue(new Callback<GathividhiImageNewsResponse>() {
+//            @Override
+//            public void onResponse(Call<GathividhiImageNewsResponse> call, Response<GathividhiImageNewsResponse> response) {
+//
+//                Log.e("Response message", " "+response.message());
+//
+//                Log.e ("Response body", " "+response.body());
+//
+//                if(response.body()!=null){
+//                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+//                }else{
+//                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GathividhiImageNewsResponse> call, Throwable t) {
+//
+//                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
+//
+//            }
+//        });
+//    }
+//
+//    public void getGathividhiVideoNewsList(){
+//
+//        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);
+//        endPointApi.geVideoNewsList().enqueue(new Callback<GathividhiVideoNewsResponse>() {
+//            @Override
+//            public void onResponse(Call<GathividhiVideoNewsResponse> call, Response<GathividhiVideoNewsResponse> response) {
+//
+//                Log.e("Response message", " "+response.message());
+//
+//                Log.e ("Response body", " "+response.body());
+//
+//                if(response.body()!=null){
+//                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+//                }else{
+//                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GathividhiVideoNewsResponse> call, Throwable t) {
+//
+//                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
+//
+//            }
+//        });
+//    }
 
     public String convertStreamToString(InputStream inputStream) {
         BufferedReader reader = null;

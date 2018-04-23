@@ -64,7 +64,7 @@ public class VideoNewsFragment extends BaseFragment implements GUICallback {
         //new Remote().execute();
 
         RequestProcessor processor=new RequestProcessor(this);
-        processor.getGathividhiVideoNewsList();
+//        processor.getGathividhiVideoNewsList();
         showLoadingDialog();
 
         return vi;
@@ -268,7 +268,7 @@ public class VideoNewsFragment extends BaseFragment implements GUICallback {
 
                     for(int i=0;i<arrayList.size();i++)
                     {
-                        String s1=arrayList.get(i).getVideo_link().toString();
+                      String s1=arrayList.get(i).getVideo_link().toString();
                         allNames1.add(s1);
                         String s2=arrayList.get(i).getVideo_title().toString();
                         allNames2.add(s2);
@@ -283,7 +283,6 @@ public class VideoNewsFragment extends BaseFragment implements GUICallback {
                     //this is for video title
                     for(int i3=0;i3<video_title.length;i3++)
                     {
-
                         //Title of video are displyed on at the bottom in aviewgropu cardview
                         holder.title.setText(video_title[position]);
                     }

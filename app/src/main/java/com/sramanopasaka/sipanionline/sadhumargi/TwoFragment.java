@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,9 +36,10 @@ public class TwoFragment extends BaseFragment implements GUICallback {
     ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
-    TwoFragAdapter adapter;
+    TwoFragGridAdapter adapter;
     ImageLoader imageLoader;
     TextView emptyView;
+    GridView gridView;
 
     private ArrayList<RamSahitya> arrayList;
 
@@ -49,7 +51,7 @@ public class TwoFragment extends BaseFragment implements GUICallback {
                              Bundle savedInstanceState) {
         // Inflate the style for this fragment
         View view =  inflater.inflate(R.layout.fragment_two, container, false); //pass the correct style name for the fragment
-
+        gridView = view.findViewById(R.id.ramSahityaGrid);
         //new Remote().execute();
         RequestProcessor processor=new RequestProcessor(TwoFragment.this);
         processor.getRamSahityaList();
@@ -58,11 +60,13 @@ public class TwoFragment extends BaseFragment implements GUICallback {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.twofrag_recycler_view);
         emptyView = (TextView)view.findViewById(R.id.emptyElement);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(layoutManager);
+
+//        recyclerView = (RecyclerView)view.findViewById(R.id.twofrag_recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+//        recyclerView.setLayoutManager(layoutManager);
+
         return view;
     }
 
@@ -71,35 +75,38 @@ public class TwoFragment extends BaseFragment implements GUICallback {
 
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try {
+            if (guiResponse != null) {
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                RamSahityaResponse response= (RamSahityaResponse) guiResponse;
-                if(response!=null){
+                    RamSahityaResponse response = (RamSahityaResponse) guiResponse;
+                    if (response != null) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                        if (response.getData() != null && response.getData().size() > 0) {
 
-                        arrayList=response.getData();
-
-
-                        // Pass the results into ListViewAdapter.java
-                        adapter = new TwoFragAdapter(getActivity(), arrayList);
-                        // Set the adapter to the ListView
-                        recyclerView.setAdapter(adapter);
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            arrayList = response.getData();
+                            // Pass the results into ListViewAdapter.java
+                            adapter = new TwoFragGridAdapter(getActivity(), arrayList);
+                            // Set the adapter to the ListView
+                            gridView.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
-        }
 
+            }
+
+        } catch (RuntimeException e) {
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+
+
+        }
     }
 
    /* class Remote extends AsyncTask<Void,Void,Void>

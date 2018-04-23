@@ -1,5 +1,4 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +14,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.DisplayMetrics;
@@ -22,39 +23,86 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Adapter;
 import android.widget.GridView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
+import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
+import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiModel;
+import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiTextNews;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.MyFirebaseInstanceIdService;
 
-public class MainActivityCollectionview extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener{
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import static java.security.AccessController.getContext;
+
+public class MainActivityCollectionview extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener, GUICallback{
 
     GridView gv;
+
     Context context;
-    public String [] iconlist={"स्रामनोपसक","साहित्य","प्रवचन","विहार","पाठशाला","दान","सदस्य","गति विधि","कार्यसमिति"};
-    public static int [] iconImages={R.drawable.circle1,R.drawable.circle2,R.drawable.circle3,R.drawable.circle4,R.drawable.pathsala,R.drawable.circle6,R.drawable.circle7,R.drawable.circle8,R.drawable.circle9,};
+    public ArrayList namelist = new ArrayList<>(Arrays.asList("Pravachan","Vihar","Daan","Pathshala","Patrika","Sahitya","Karyasamiti"));
+    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.pravachan,R.drawable.vihar,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni));
+
     private AdView mAdView;
     private NavigationView navigationView = null;
+
+    RecyclerView horisontalRecyclerview;
+
+    HorizontalAdapter horizontalAdapter;
+    RecyclerView verticalRecyclerView;
+
+    VerticalAdapter verticalAdapter;
+    ArrayList<GathividhiModel> gathiVidhiList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity_collectionview);
 
+        horizontalAdapter = new HorizontalAdapter(MainActivityCollectionview.this,iconlist,namelist);
+//        verticalAdapter = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
 
-        gv = (GridView) findViewById(R.id.coll_grid);
+//      gv = (GridView) findViewById(R.id.coll_grid);
+//      gv.setAdapter(new CollectionAdapter(MainActivityCollectionview.this, iconlist, iconImages));
 
-        gv.setAdapter(new CollectionAdapter(MainActivityCollectionview.this, iconlist, iconImages));
+        horisontalRecyclerview = (RecyclerView) findViewById(R.id.hor_recyclerview);
+        verticalRecyclerView = (RecyclerView) findViewById(R.id.ver_recyclerview);
+
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(MainActivityCollectionview.this, LinearLayoutManager.HORIZONTAL, false);
+        horisontalRecyclerview.setLayoutManager(horizontalLayoutManager);
+        horisontalRecyclerview.setAdapter(horizontalAdapter);
+
+        LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(this);
+        verticalRecyclerView.setLayoutManager(verticalLayoutManager);
 
         mAdView = (AdView) findViewById(R.id.adView4);
         AdRequest adRequest1 = new AdRequest.Builder()
                 .build();
 
-       mAdView.loadAd(adRequest1);
+        mAdView.loadAd(adRequest1);
 
+        RequestProcessor processor = new RequestProcessor(MainActivityCollectionview.this);
+        processor.getGathividhiList();
+        showLoadingDialog();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -70,17 +118,16 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
-        toggle.setHomeAsUpIndicator(R.drawable.menu);
+        toggle.setHomeAsUpIndicator(R.drawable.menuimage);
         toggle.syncState();
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>साधुमार्गी</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sadhumargi</font>"));
 
         // Set the ActionBar title font size
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         checkConnection();
-
 
         ///////////
 
@@ -89,19 +136,22 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         Log.e("-------","densityDpi"+densityDpi);
         Log.e("-------","density"+getResources().getDisplayMetrics().density);
 
+//        new MyFirebaseInstanceIdService();
 
     }
-
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
 
     }
+
     // Showing the status in Snackbar
     public void showSnack(boolean isConnected) {
+
         String message;
         int color;
+
         if (isConnected) {
             message = "Good! Connected to Internet";
             color = Color.WHITE;
@@ -118,7 +168,6 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         textView.setTextColor(color);
         snackbar.show();
 
-
     }
 
     // Method to manually check connection status
@@ -130,7 +179,6 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
     @Override
@@ -142,17 +190,13 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
 
         // register connection status listener
         MyApplication.getInstance().setConnectivityListener(MainActivityCollectionview.this);
-
-
-
         Menu menu = navigationView.getMenu();
         MenuItem loginItem = menu.findItem(R.id.nav_8);
         if(OfflineData.getLoginData()!=null){
             loginItem.setTitle("प्रोफाइल");
         }else{
-            loginItem.setTitle("सदस्य लॉगिन / रजिस्ट्रेशन");
+            loginItem.setTitle("Login/Registration");
         }
-
     }
 
     @Override
@@ -160,6 +204,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         if (mAdView != null) {
             mAdView.pause();
         }
+        System.gc();
         super.onPause();
         // unregisterReceiver(networkReceiver);
     }
@@ -170,8 +215,8 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         if (mAdView != null) {
             mAdView.destroy();
         }
-
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -179,7 +224,6 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-
         }
     }
 
@@ -200,25 +244,26 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         FragmentManager fm1 = MainActivityCollectionview.this
                 .getSupportFragmentManager();
         FragmentTransaction ft1 = fm1.beginTransaction();
+
         if (id == R.id.nav_1) {
 
             Intent in=new Intent(this,MainActivityCollectionview.class);
             startActivity(in);
 
-        } else if (id == R.id.nav_2) {
-            frag = new PhotoGallery();
-            //ft1.replace(R.id.drawer_layout, frag);
-            // ft1.commit();
-            if(isConnected)
-            {
-                Intent in=new Intent(this,GathividhiActivity.class);
-                startActivity(in);
-            }
-            else
-            {
-                //Toast.makeText(getBaseContext(),"No Internet",Toast.LENGTH_SHORT).show();
-                showSnack(isConnected);
-            }
+//        } else if (id == R.id.nav_2) {
+//            frag = new PhotoGallery();
+//            //ft1.replace(R.id.drawer_layout, frag);
+//            // ft1.commit();
+//            if(isConnected)
+//            {
+//                Intent in=new Intent(this,MainActivityCollectionview.class);
+//                startActivity(in);
+//            }
+//            else
+//            {
+//                //Toast.makeText(getBaseContext(),"No Internet",Toast.LENGTH_SHORT).show();
+//                showSnack(isConnected);
+//            }
 
         } /*else if (id == R.id.nav_3) {
 
@@ -267,7 +312,7 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
 
             Menu menu = navigationView.getMenu();
             MenuItem logoutItem = menu.findItem(R.id.nav_8);
-            if(logoutItem.getTitle().toString().equalsIgnoreCase("सदस्य लॉगिन / रजिस्ट्रेशन")) {
+            if(logoutItem.getTitle().toString().equalsIgnoreCase("Login/Registration")) {
 
                 if (isConnected) {
                     Intent i = new Intent(MainActivityCollectionview.this, SigninActivity.class);
@@ -290,5 +335,57 @@ public class MainActivityCollectionview extends AppCompatActivity implements Nav
         return true;
     }
 
+    @Override
+    public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
 
-}
+           hideLoadingDialog();
+
+        try{
+
+            if(guiResponse!=null){
+
+                if(requestStatus.equals(RequestStatus.SUCCESS)){
+
+                    GathividhiResponse response= (GathividhiResponse) guiResponse;
+                    if(response!=null){
+
+                        if(response.getData()!=null && response.getData().size()>0){
+
+                            gathiVidhiList=response.getData();
+
+//                            Collections.sort(gathiVidhiList, new Comparator<GathividhiModel>() {
+//
+//                                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//                                public int compare(GathividhiTextNews lhs, GathividhiTextNews rhs) {
+//
+//                                    try {
+//                                        return df.parse(rhs.getDate()).compareTo(
+//                                                df.parse(lhs.getDate()));
+//
+//                                    } catch (ParseException e) {
+//                                        throw new IllegalArgumentException(e);
+//                                    }
+//                                }
+//                            });
+
+                            verticalAdapter = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
+                            verticalRecyclerView.setAdapter(verticalAdapter);
+                        }else{
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }catch (RuntimeException e){
+            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
+        }
+    }
+
+

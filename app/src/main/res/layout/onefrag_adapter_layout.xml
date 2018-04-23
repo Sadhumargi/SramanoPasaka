@@ -7,7 +7,8 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     card_view:cardCornerRadius="5dp">
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -17,26 +18,24 @@
 
         <ImageView
             android:id="@+id/onefrag_image"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/onefrag_txt_date"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textAlignment="center"
             android:text="fdsfdsfsdsfsfsdfds"
             android:layout_marginLeft="0dp"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/onefrag_image" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

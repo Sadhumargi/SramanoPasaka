@@ -42,7 +42,7 @@ public class WebViewHistory extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class WebViewHistory extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>संघ इतिहास</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sangh History</font>"));
 
 
         WebView1.setWebViewClient(new WebViewClient());

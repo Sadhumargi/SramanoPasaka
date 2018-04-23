@@ -9,6 +9,12 @@ public class Donations {
     private String Donate_id=null;
     private String Types_donations=null;
 
+    public Donations(int imageArray) {
+        this.imageArray = imageArray;
+    }
+
+    private int imageArray = 0;
+
     public String getDonate_id() {
         return Donate_id;
     }

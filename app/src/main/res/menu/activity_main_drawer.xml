@@ -4,19 +4,17 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_1"
-
             android:title="@string/home"
             />
 
-        <item
-            android:id="@+id/nav_2"
+        <!--<item-->
+            <!--android:id="@+id/nav_2"-->
 
-            android:title="फोटो गैलेरी " />
+            <!--android:title="Photo Gallery" />-->
 
        <!-- <item
             android:id="@+id/nav_3"
-
-            android:title="पूर्व अध्यक्षगण" />
+         android:title="पूर्व अध्यक्षगण" />
 
         <item
             android:id="@+id/nav_4"
@@ -24,22 +22,24 @@
             android:title="वर्तमान कार्यकारिणी" />-->
         <item
             android:id="@+id/nav_5"
-
-            android:title="संघ इतिहास " />
+            android:title="Sangh History" />
         <item
             android:id="@+id/nav_6"
-
-            android:title="अनुप्रयोग के बारे में " />
+            android:title="About App" />
 
         <item
             android:id="@+id/nav_7"
-
-            android:title="हमसे सम्पर्क करे" />
+            android:title="Contact Us" />
 
         <item
 
             android:id="@+id/nav_8"
             android:title="सदस्य लॉगिन / रजिस्ट्रेशन"/>
+
+        <item
+
+            android:id="@+id/nav_9"
+            android:title="App Feedback"/>
 
 
     </group>

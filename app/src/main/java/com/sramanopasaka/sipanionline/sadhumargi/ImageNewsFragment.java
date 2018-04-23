@@ -56,7 +56,7 @@ public class ImageNewsFragment extends BaseFragment implements GUICallback{
         //new Remote().execute();
 
         RequestProcessor processor=new RequestProcessor(this);
-        processor.getGathividhiImageNewsList();
+//        processor.getGathividhiImageNewsList();
         showLoadingDialog();
         return vi;
 

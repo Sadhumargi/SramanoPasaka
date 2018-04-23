@@ -4,9 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="statusbarcolor">#531309</color>
-
     <color name="sliding_menu">#999292</color>
-    <color name="main_bg">#F1E9DD</color>
+    <color name="main_bg">#ebebeb</color>
     <color name="dark_text_color">#2D1C03</color>
     <color name="light_text_color">#F1E9DD</color>
     <color name="selected_slider_item_color">#AE936A</color>
@@ -15,19 +14,15 @@
     <color name="orange">#fbf7f6</color>
     <color name="tabTransparent">#10ffffff</color>
     <color name="black">#040303</color>
-    <color name="actionbar">#f5ecc9</color>
+    <color name="actionbar">#f05858</color>
+    <color name="appbar">#ebebeb</color>
     <color name="background">#da5617</color>
     <color name="legacy_pressed_highlight"> #fffeaa0c</color>
-    <color name="backgroundorange">#ffff8800</color>
+    <color name="backgroundorange">#ffcc00</color>
     <color name="Pathsala_background">#e1e1e1</color>
     <color name="Basic_details">#a1a6aa</color>
     <color name="update_profile">#358753</color>
-
     <color name="profile_status_color">#DC492A</color>
     <color name="profile_action_bar_color">#FD542F</color>
-
-
-
-
 
 </resources>

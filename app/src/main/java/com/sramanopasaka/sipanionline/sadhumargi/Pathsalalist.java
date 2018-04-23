@@ -41,7 +41,7 @@ public class Pathsalalist extends AppCompatActivity  {
     JSONObject jsonobject;
     JSONArray jsonarray;
     public int current_pages = 1;
-    String FEED_URL = "http://pathshala.sabsjs.org/api/schools/list";
+    String FEED_URL = "http://pathshala.sadhumargi.com/api/schools/list";
     ArrayList<PathsalaGetSetter> arraylist = new ArrayList<PathsalaGetSetter>();
 
     LinearLayoutManager mLayoutManager;

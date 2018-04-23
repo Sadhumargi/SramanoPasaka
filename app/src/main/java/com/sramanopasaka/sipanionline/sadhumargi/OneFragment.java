@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,11 +37,13 @@ public class OneFragment extends BaseFragment implements GUICallback {
     ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
-    OneFragAdapter adapter;
+//    OneFragAdapter adapter;
     private TextView emptyView;
     ConnectivityReceiver.ConnectivityReceiverListener ctx;
 
     ArrayList<SahityaFragmentOne> arrayList;
+    GridView gridView;
+    OneFragGridAdapter adapter;
 
     public OneFragment() {
         // Required empty public constructor
@@ -50,7 +53,9 @@ public class OneFragment extends BaseFragment implements GUICallback {
                              Bundle savedInstanceState) {
         // Inflate the style for this fragment
         View view =  inflater.inflate(R.layout.fragment_one, container, false); //pass the correct style name for the fragment
-        recyclerView = (RecyclerView)view.findViewById(R.id.onefrag_recycler_view);
+        gridView  = view.findViewById(R.id.sanghSahityaGrid);
+
+//        recyclerView = (RecyclerView)view.findViewById(R.id.onefrag_recycler_view);
 
         emptyView=(TextView)view.findViewById(R.id.emptyElement);
 
@@ -58,14 +63,14 @@ public class OneFragment extends BaseFragment implements GUICallback {
 
         if(isConnected)
         {
-           // new Remote().execute();
+           // new Remote().execute();cal
             RequestProcessor processor=new RequestProcessor(OneFragment.this);
             processor.getSahityaListOne();
             showLoadingDialog();
         }
         else
         {
-            recyclerView.setVisibility(View.GONE);
+            gridView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
         }
 
@@ -80,35 +85,42 @@ public class OneFragment extends BaseFragment implements GUICallback {
 
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try {
+            if (guiResponse != null) {
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                SahithyaFragmentOneResponse response= (SahithyaFragmentOneResponse) guiResponse;
-                if(response!=null){
+                    SahithyaFragmentOneResponse response = (SahithyaFragmentOneResponse) guiResponse;
+                    if (response != null) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                        if (response.getData() != null && response.getData().size() > 0) {
 
-                        arrayList=response.getData();
+                            arrayList = response.getData();
 
-                        recyclerView.setHasFixedSize(true);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-                        recyclerView.setLayoutManager(layoutManager);
-                        // Pass the results into ListViewAdapter.java
-                        adapter = new OneFragAdapter(getActivity(), arrayList);
-                        // Set the adapter to the ListView
-                        recyclerView.setAdapter(adapter);
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                        recyclerView.setHasFixedSize(true);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+//                        recyclerView.setLayoutManager(layoutManager);
+                            // Pass the results into ListViewAdapter.java
+
+                            adapter = new OneFragGridAdapter(getActivity(), arrayList);
+                            // Set the adapter to the ListView
+                            gridView.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+
             }
-        }else{
+        }catch(RuntimeException e){
+
             Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
         }
 
     }
@@ -201,4 +213,3 @@ public class OneFragment extends BaseFragment implements GUICallback {
 
         }
     }*/
-}

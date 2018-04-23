@@ -54,7 +54,7 @@ public class TextNews extends BaseFragment implements GUICallback {
         emptyView=(TextView)vi.findViewById(R.id.emptyElement);
        // new Remote().execute();
         RequestProcessor processor=new RequestProcessor(this);
-        processor.getGathividhiTextNewsList();
+//        processor.getGathividhiTextNewsList();
         showLoadingDialog();
 
 

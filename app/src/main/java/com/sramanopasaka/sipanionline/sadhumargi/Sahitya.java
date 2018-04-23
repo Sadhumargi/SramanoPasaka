@@ -30,6 +30,7 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
     private ViewPager viewPager;
     BroadcastReceiver networkReceiver;
     @SuppressLint("NewApi")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +58,14 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>साहित्य</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sahitya</font>"));
 
         //
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#fd5708"));
-        tabLayout.setSelectedTabIndicatorHeight((int) (3 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#000000"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
+        tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
+        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
        // checkConnection();
     }
 
@@ -72,11 +73,10 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
     private void setupViewPager(ViewPager viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "संघ सहित्य");
-        adapter.addFragment(new TwoFragment(),"श्री राम उवाच");
-        adapter.addFragment(new ThreeFragment(), "नानेशवाणी");
+        adapter.addFragment(new OneFragment(), getResources().getString(R.string.sangsahitya));
+        adapter.addFragment(new TwoFragment(), getResources().getString(R.string.ramsahitya));
+        adapter.addFragment(new ThreeFragment(), getResources().getString(R.string.naneshsahitya));
         viewPager.setAdapter(adapter);
-
     }
 
     @Override
@@ -139,7 +139,6 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
 
         @Override
         public Fragment getItem(int position) {
-
             return mFragmentList.get(position);
         }
 
@@ -152,7 +151,6 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
         public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
-
         }
 
         @Override

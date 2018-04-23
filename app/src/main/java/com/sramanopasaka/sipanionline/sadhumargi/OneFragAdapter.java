@@ -36,9 +36,6 @@ public class OneFragAdapter extends RecyclerView.Adapter<OneFragAdapter.ViewHold
 
     ArrayList<SahityaFragmentOne> androidlist;
 
-
-
-
     public OneFragAdapter(Context context,
                           ArrayList<SahityaFragmentOne> arraylist) {
         this.context = context;

@@ -54,9 +54,9 @@ public class DetailsActivity extends AppCompatActivity  {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>कार्यसमिति</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Karya Samiti</font>"));
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -82,14 +82,14 @@ public class DetailsActivity extends AppCompatActivity  {
 
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#fd5708"));
         tabLayout.setSelectedTabIndicatorHeight((int) (3 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#000000"), Color.parseColor("#000000"));
+        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CurrentKaryakarni(), "वर्तमान  कार्यसमिति");
-        adapter.addFragment(new OldKaryakarni(), "पूर्वा अध्यक्ष");
+        adapter.addFragment(new CurrentKaryakarni(), "Varthmana Karyasamiti");
+        adapter.addFragment(new OldKaryakarni(), "Purva Adyakasha");
       //  new Remote().execute();
 
         viewPager.setAdapter(adapter);

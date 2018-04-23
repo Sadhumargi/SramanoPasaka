@@ -82,18 +82,19 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         }
         ActionBar actionbar = this.getSupportActionBar();
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>पाठशाला</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Pathshala</font>"));
 
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#fffeaa0c"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
         tabLayout.setSelectedTabIndicatorHeight((int) (2 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+
     }
     private void setupViewPager(ViewPager viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new SchoolFragment(), getResources().getString(R.string.title_activity_pathsala));
-        adapter.addFragment(new ShivirFragment(),getResources().getString(R.string.title_shivir));
-        adapter.addFragment(new ExamsFragment(),getResources().getString(R.string.title_exams));
+        adapter.addFragment(new ShivirFragment(),getResources().getString(R.string.title_shivir).toLowerCase());
+        adapter.addFragment(new ExamsFragment(),getResources().getString(R.string.title_exams).toLowerCase());
 
         viewPager.setAdapter(adapter);
 

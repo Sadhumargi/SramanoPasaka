@@ -14,8 +14,10 @@ import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,13 +48,13 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
     ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
-    EbookAdapter adapter;
+    EbookCustomGrid adapter;
     TextView days;
     Button reset;
+    GridView gridView;
     View v;
 
     List<Ebook> list;
-
 
     /*  static final String[] Months = new String[] { "Jan", "Feb",
             "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
@@ -60,7 +62,6 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
     static int monthno;
     static String yearno;
    static String totaldate;*/
-
 
     TextView emptyView;
     @Override
@@ -103,29 +104,22 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
         //  checkConnection();
        // new Remote().execute();
 
-        recyclerView = (RecyclerView)findViewById(R.id.ebooks_recycler_view);
+        gridView = findViewById(R.id.ebookGrid);
 
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView = (RecyclerView)findViewById(R.id.ebooks_recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
 
-
-        reset=(Button)findViewById(R.id.reset);
+//        reset=(Button)findViewById(R.id.reset);
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>श्रमणोपासक </font>"));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sramanopasaka</font>"));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         RequestProcessor processor=new RequestProcessor(Ebooks.this);
         processor.getEbookList();
         showLoadingDialog();
-
-
-
-
-
-
-
 
         //String dayOfWeek = getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK));
 
@@ -283,30 +277,40 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {
         hideLoadingDialog();
-         if(guiResponse!=null){
 
-             if(requestStatus.equals(RequestStatus.SUCCESS)){
+        try{
 
-                 //guiResponse has the response
+            if(guiResponse!=null){
 
-                 EbookResponse ebookResponse = (EbookResponse)guiResponse;
-                 if(ebookResponse!=null){
+                if(requestStatus.equals(RequestStatus.SUCCESS)){
 
-                     if(ebookResponse.getData()!=null && ebookResponse.getData().size()>0)
-                     {
+                    //guiResponse has the response
 
-                         arraylist=ebookResponse.getData();
-                         adapter = new EbookAdapter(Ebooks.this, arraylist);
-                         recyclerView.setAdapter(adapter);
-                     }else{
-                         Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show();}
+                    EbookResponse ebookResponse = (EbookResponse)guiResponse;
+                    if(ebookResponse!=null){
 
-                 }else{
-                     Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}
-             }else{
-             Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();}
-         }else{
-             Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();}
+                        if(ebookResponse.getData()!=null && ebookResponse.getData().size()>0)
+                        {
+
+                            arraylist=ebookResponse.getData();
+                            adapter = new EbookCustomGrid(Ebooks.this, arraylist);
+                            gridView.setAdapter(adapter);
+
+//                         recyclerView.setAdapter(adapter);
+                        }else{
+                            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}
+
+                    }else{
+                        Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();}
+                }else{
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}
+            }
+
+        }catch (RuntimeException e){
+
+            Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
+        }
+
     }
    /* private String getDayOfWeek(int value) {
         String day = "";

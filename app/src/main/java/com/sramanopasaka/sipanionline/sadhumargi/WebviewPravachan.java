@@ -58,7 +58,7 @@ public class WebviewPravachan extends BaseActivity implements GUICallback {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class WebviewPravachan extends BaseActivity implements GUICallback {
         }
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>प्रवचन</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>प्रवचन</font>"));
 
         Intent in = getIntent();
         String title = in.getStringExtra("BookTitle");

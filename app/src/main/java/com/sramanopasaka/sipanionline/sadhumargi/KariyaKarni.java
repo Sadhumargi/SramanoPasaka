@@ -60,7 +60,7 @@ public class KariyaKarni extends BaseActivity implements ConnectivityReceiver.Co
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -68,14 +68,12 @@ public class KariyaKarni extends BaseActivity implements ConnectivityReceiver.Co
             window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>कार्यसमिति</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Karya Samiti</font>"));
 
         //Initialize with empty data
         mGridData = new ArrayList<>();
         mGridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, mGridData);
         mGridView.setAdapter(mGridAdapter);
-
-
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -99,7 +97,6 @@ public class KariyaKarni extends BaseActivity implements ConnectivityReceiver.Co
                     textView.setTextColor(Color.RED);
                     snackbar1.show();
                 }
-
             }
         });
 
@@ -173,47 +170,49 @@ public class KariyaKarni extends BaseActivity implements ConnectivityReceiver.Co
 
         hideLoadingDialog();
 
-        if(guiResponse!=null){
+        try{
 
-            if(requestStatus.equals(RequestStatus.SUCCESS)){
+            if(guiResponse!=null) {
 
-                KaryakarniListResponse response= (KaryakarniListResponse) guiResponse;
-                if(response!=null){
+                if (requestStatus.equals(RequestStatus.SUCCESS)) {
 
-                    if(response.getData()!=null && response.getData().size()>0){
+                    KaryakarniListResponse response = (KaryakarniListResponse) guiResponse;
+                    if (response != null) {
 
-                        arrayList=response.getData();
+                        if (response.getData() != null && response.getData().size() > 0) {
 
-                        KaryakarniList item;
-                        item = new KaryakarniList();
+                            arrayList = response.getData();
 
-                        for (int i=0;i<response.getData().size();i++){
+                            KaryakarniList item;
+                            item = new KaryakarniList();
 
-                            item.setKaryakarni_id(arrayList.get(i).getKaryakarni_id());
-                            item.setGrp_karkarni_name(arrayList.get(i).getGrp_karkarni_name());
-                            item.setGrp_karkarni_place(arrayList.get(i).getGrp_karkarni_place());
-                            item.setGrp_karkarni_imglink(arrayList.get(i).getGrp_karkarni_imglink());
-                            item.setLogo_id(arrayList.get(i).getLogo_id());
-                            mGridData.add(i,item);
-                          Collections.sort(mGridData, item);
+                            for (int i = 0; i < response.getData().size(); i++) {
 
+                                item.setKaryakarni_id(arrayList.get(i).getKaryakarni_id());
+                                item.setGrp_karkarni_name(arrayList.get(i).getGrp_karkarni_name());
+                                item.setGrp_karkarni_place(arrayList.get(i).getGrp_karkarni_place());
+                                item.setGrp_karkarni_imglink(arrayList.get(i).getGrp_karkarni_imglink());
+                                item.setLogo_id(arrayList.get(i).getLogo_id());
+                                mGridData.add(i, item);
+                                Collections.sort(mGridData, item);
+
+                            }
+                            mGridAdapter.setGridData(arrayList);
+                        } else {
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
-                        mGridAdapter.setGridData(arrayList);
-
-                    }else{
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(context, "No data", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
+
+        }catch (RuntimeException e){
+
+                Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
   /*  //Downloading data asynchronously

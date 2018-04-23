@@ -34,6 +34,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/txt_title_text"
             android:text="fesfsfgsgsgsg"
+            android:textColor="@color/ef_grey"
             android:textSize="18sp" />
 
         <TextView

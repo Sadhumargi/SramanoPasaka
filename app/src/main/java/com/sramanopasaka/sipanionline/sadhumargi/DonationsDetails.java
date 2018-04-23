@@ -37,7 +37,6 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
     Button submit;
  //  String url3= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/donatedetails.php";
 
-
     Context context;
 
     ArrayList<com.sramanopasaka.sipanionline.sadhumargi.model.DonationsDetails> arraylist;
@@ -53,8 +52,8 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#000000'>दान</font>"));
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_btn);
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Uphaar</font>"));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

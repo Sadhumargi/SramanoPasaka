@@ -51,7 +51,7 @@ public class TextNewsAdapter extends  RecyclerView.Adapter<TextNewsAdapter.ViewH
         viewHolder.tv_title.setText(android.get(i).getText_news_title());
         viewHolder.tv_details.setText(android.get(i).getText_news_details());
         viewHolder.tv_date.setText(android.get(i).getDate());
-        String url1=android.get(i).getText_news_details().toString();
+        String url1 = android.get(i).getText_news_details().toString();
         try {
             // Create a URL for the desired page
             URL url = new URL(url1);
