@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.text.Text;
 
@@ -55,19 +56,21 @@ public class ShivirAdapter extends RecyclerView.Adapter<ShivirAdapter.ViewHolder
 
                 if((i)==0)
                 {
-
-                    Intent in=new Intent(context, Upcoming_Shivir.class);
-                    context.startActivity(in);
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                    Intent in=new Intent(context, Upcoming_Shivir.class);
+//                    context.startActivity(in);
                 }else
                 if(i==1)
                 {
-                    Intent in=new Intent(context, Past_Shivir.class);
-                    context.startActivity(in);
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                    Intent in=new Intent(context, Past_Shivir.class);
+//                    context.startActivity(in);
                 }else
                 if(i==2) {
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
 
-                    Intent in=new Intent(context, Shivir_Registration.class);
-                    context.startActivity(in);
+//                    Intent in=new Intent(context, Shivir_Registration.class);
+//                    context.startActivity(in);
                 }
             }
         });

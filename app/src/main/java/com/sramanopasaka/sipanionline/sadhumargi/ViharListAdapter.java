@@ -102,7 +102,7 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
         viewHolder.txt_attender.setText(Html.fromHtml(resultp.getGuru_attender_name()));
         viewHolder.txt_attender_chief.setText(Html.fromHtml(resultp.getGuru_chief_attender()));
         viewHolder.txt_attender_phono.setText(resultp.getGuru_att_phone());
-         viewHolder.txt_phone_no.setText(resultp.getGuru_phone());
+//        viewHolder.txt_phone_no.setText(resultp.getGuru_phone());
         viewHolder.txt_km.setText(resultp.getGuru_dis()+"km's");
 
 

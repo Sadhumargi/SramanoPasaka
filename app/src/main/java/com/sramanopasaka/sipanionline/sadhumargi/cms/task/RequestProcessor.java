@@ -89,6 +89,7 @@ import retrofit2.Response;
  */
 
 public class RequestProcessor {
+
     private GUICallback guiCallback = null;
     Context context;
 

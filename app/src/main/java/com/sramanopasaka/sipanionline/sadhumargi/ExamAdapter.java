@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,7 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.tv_exam.setText(data[position]);
+        Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
 
     }
 

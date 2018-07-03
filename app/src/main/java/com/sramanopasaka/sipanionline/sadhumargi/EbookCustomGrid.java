@@ -84,7 +84,7 @@ class EbookCustomGrid  extends BaseAdapter{
                 final boolean isConnected=ConnectivityReceiver.isConnected();
                 if(isConnected)
                 {
-//                    String a1= viewGroup.txtDate.getText().toString();
+//                  String a1= viewGroup.txtDate.getText().toString();
                     Intent i1 = new Intent(context, WebviewEbook.class);
                     i1.putExtra("Edition",model.getBook_id());
                     context.startActivity(i1);

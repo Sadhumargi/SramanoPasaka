@@ -66,6 +66,7 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+
        // checkConnection();
     }
 
@@ -76,6 +77,7 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
         adapter.addFragment(new OneFragment(), getResources().getString(R.string.sangsahitya));
         adapter.addFragment(new TwoFragment(), getResources().getString(R.string.ramsahitya));
         adapter.addFragment(new ThreeFragment(), getResources().getString(R.string.naneshsahitya));
+        adapter.addFragment(new FragmentFour(),getResources().getString(R.string.AgamandTatva));
         viewPager.setAdapter(adapter);
     }
 

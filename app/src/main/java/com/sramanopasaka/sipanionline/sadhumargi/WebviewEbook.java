@@ -1,18 +1,25 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -44,14 +51,20 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
     ArrayList<String> arraylist;
     private ProgressBar progressBar;
     String a1="";
+
+    Button toolBarBtn;
+    DownloadManager downloadManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
         WebView1 = (WebView) findViewById(R.id.webView);
-
        // WebView1.setWebViewClient(new WebViewClient());
+
+//        toolBarBtn = findViewById(R.id.toolbarbtn);
+
         progressBar=(ProgressBar)findViewById(R.id.progressBar2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
@@ -108,7 +121,7 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
 
                     if(response.getPages()!=null && response.getPages().size()>0){
 
-                        String a1=response.getPages().get(0).getTxt_file();
+                        final String a1=response.getPages().get(0).getTxt_file();
 
                         WebView1.getSettings().setJavaScriptEnabled(true);
                         WebView1.getSettings().setSupportZoom(true);
@@ -118,6 +131,8 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
                         WebView1.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
                         WebView1.setWebViewClient(new WebViewClient());
+
+
                         if (Build.VERSION.SDK_INT >= 19) {
                             WebView1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                         }
@@ -126,6 +141,49 @@ public class WebviewEbook  extends BaseActivity implements GUICallback {
                         }
                         WebView1.setVerticalScrollBarEnabled(true);
                         WebView1.loadUrl(a1);
+
+//                      WebView webview = new WebView(context);
+                        WebView1.setWebViewClient(new WebViewClient()
+                        {
+                            @Override
+                            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                super.onPageStarted(view, url, favicon);
+
+                                Log.d("WebView", "your current url when webpage loading.." + url);
+                            }
+
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                Log.d("WebView", "your current url when webpage loading.. finish" + url);
+                                super.onPageFinished(view, url);
+                            }
+
+                            @Override
+                            public void onLoadResource(WebView view, String url) {
+                                // TODO Auto-generated method stub
+                                super.onLoadResource(view, url);
+                            }
+                            @Override
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                System.out.println("when you click on any interlink on webview that time you got url :-" + url);
+                                return super.shouldOverrideUrlLoading(view, url);
+                            }
+                        });
+
+//                        toolBarBtn.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//
+//                                downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//                                Uri uri = Uri.parse(a1);
+//                                DownloadManager.Request request =new DownloadManager.Request(uri);
+//                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//                                Long reference = downloadManager.enqueue(request);
+//
+//
+//                                Toast.makeText(getBaseContext(), "Button in toolbar clicked", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
 
                         PreferenceManager.getDefaultSharedPreferences(WebviewEbook.this).edit().putString("CurrentPage", a1).commit();
 

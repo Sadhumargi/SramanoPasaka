@@ -115,12 +115,15 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
                         //   txt_type_name.setText(s1);
                         txt_name.setText(arraylist.get(0).getDonate_name());
                         txt_details.setText(arraylist.get(0).getDonate_details());
+                        
                         submit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                int s1= Integer.parseInt(txt_amount.getText().toString());
-                                Intent pay=new Intent(DonationsDetails.this,Payment.class);
-                                startActivity(pay);
+
+                                Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                                int s1= Integer.parseInt(txt_amount.getText().toString());
+//                                Intent pay=new Intent(DonationsDetails.this,Payment.class);
+//                                startActivity(pay);
 
                             }
                         });
