@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -60,13 +61,12 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
 
     Context context;
     public ArrayList namelist = new ArrayList<>(Arrays.asList("Pravachan","Vihar","Daan","Pathshala","Patrika","Sahitya","Karyasamiti"));
-    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.pravachan,R.drawable.vihar,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni));
+    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.circle3,R.drawable.circle4,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni));
 
     private AdView mAdView;
     private NavigationView navigationView = null;
 
     RecyclerView horisontalRecyclerview;
-
     HorizontalAdapter horizontalAdapter;
     RecyclerView verticalRecyclerView;
 
@@ -79,7 +79,7 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         setContentView(R.layout.activity_main_activity_collectionview);
 
         horizontalAdapter = new HorizontalAdapter(MainActivityCollectionview.this,iconlist,namelist);
-//        verticalAdapter = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
+//      verticalAdapter = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
 
 //      gv = (GridView) findViewById(R.id.coll_grid);
 //      gv.setAdapter(new CollectionAdapter(MainActivityCollectionview.this, iconlist, iconImages));
@@ -118,11 +118,14 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
-        toggle.setHomeAsUpIndicator(R.drawable.menuimage);
+//        toggle.setHomeAsUpIndicator(R.drawable.menuimage);
+
+
         toggle.syncState();
 
         ActionBar actionbar = this.getSupportActionBar();
         actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sadhumargi</font>"));
+        toolbar.setNavigationIcon(R.drawable.menuimage);
 
         // Set the ActionBar title font size
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -174,8 +177,8 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
     private void checkConnection() {
         boolean isConnected = ConnectivityReceiver.isConnected();
         showSnack(isConnected);
-
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -386,6 +389,6 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         }
 
         }
-    }
+}
 
 

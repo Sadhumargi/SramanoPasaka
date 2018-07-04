@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.OldKaryakarni"
-    android:background="@color/background">
+    android:background="@color/Pathsala_background">
 
     <!-- TODO: Update blank fragment style -->
 

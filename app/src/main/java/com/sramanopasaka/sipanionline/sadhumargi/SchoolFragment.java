@@ -1,6 +1,4 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
-
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -42,18 +40,13 @@ public class SchoolFragment extends Fragment {
 
     //public TextView text_school,text_staff,text_students,text_exams,text_exam_centers;
 
-    RecyclerView recyclerView;
-    PathsalaAdapter adapter;
     Context context;
-
-    public int [] arraylist={R.string.School_list,R.string.Registration,};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_school, container, false); //pass the correct style name for the fragment
-        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
 
         /*View view=inflater.inflate(R.layout.fragment_school,container,false);
         text_school=(TextView)view.findViewById(R.id.txt_schools);
@@ -62,102 +55,9 @@ public class SchoolFragment extends Fragment {
         text_exams=(TextView)view.findViewById(R.id.txt_exams);
         text_exam_centers=(TextView)view.findViewById(R.id.txt_centers);*/
 
-        new Remote().execute();
         return view;
-
-
     }
-
-    class Remote extends AsyncTask<Void,Void,Void>
-    {
-        ProgressDialog pg=null;
-        private AdapterView.OnItemClickListener mListener=null;
-        GestureDetector mGestureDetector;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pg=new ProgressDialog(getActivity());
-            pg.setIndeterminate(true);
-            pg.setMessage("Please Wait While Loading....");
-            pg.show();
-            pg.setCancelable(false);
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            /*// Create an array
-            arraylist = new ArrayList<>();
-            // Retrieve JSON Objects from the given URL address
-            jsonobject = JSONfunctions
-                    .getJSONfromURL(url);
-
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-                    if(jsonobject!=null)
-                    {
-                        try {
-                            // Locate the array name in JSON
-                            jsonarray = jsonobject.getJSONArray("data");
-
-                            if(jsonarray!=null)
-                            {
-                                for (int i = 0; i < jsonarray.length(); i++) {
-                                    HashMap<String, String> map = new HashMap<String, String>();
-                                    jsonobject = jsonarray.getJSONObject(i);
-
-                                    OneFragGetSetter imgs=new OneFragGetSetter();
-                                    imgs.setId(jsonobject.getString("sang_book_id"));
-                                    imgs.setImglink(jsonobject.getString("img_link"));
-                                    imgs.setDate(jsonobject.getString("title"));
-                                    arraylist.add(imgs);
-                                }
-                            }
-                            else
-                            {
-                                recyclerView.setVisibility(View.GONE);
-                                emptyView.setVisibility(View.VISIBLE);
-                                Toast.makeText(getContext(),"No Data",Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                        catch (JSONException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                    else
-                    {
-                        recyclerView.setVisibility(View.GONE);
-                        emptyView.setVisibility(View.VISIBLE);
-
-                    }
-                }*/
-           // });
-
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            recyclerView.setHasFixedSize(true);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-            recyclerView.setLayoutManager(layoutManager);
-            // Pass the results into ListViewAdapter.java
-            adapter = new PathsalaAdapter(getActivity(), arraylist);
-            // Set the adapter to the ListView
-            recyclerView.setAdapter(adapter);
-
-            pg.dismiss();
-
-        }
     }
-
-
 
     /*@Override
     public void onClick(View v) {
@@ -192,13 +92,9 @@ public class SchoolFragment extends Fragment {
                 
                 break;
         }
-
-
    }
-
     void showtoast()
     {
         Toast.makeText(getContext(),"Please Wiat we are Updating Soon",Toast.LENGTH_SHORT).show();
     }
 */
-}

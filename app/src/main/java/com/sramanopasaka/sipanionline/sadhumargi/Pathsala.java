@@ -1,3 +1,4 @@
+
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.content.Context;
@@ -20,9 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-
 import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +50,6 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pathsala);
 
-
         if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -70,7 +68,6 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
             public void onClick(View v) {
                 onBackPressed();
             }
-
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,26 +81,31 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Pathshala</font>"));
 
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
-        tabLayout.setSelectedTabIndicatorHeight((int) (2 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05858"));
+        tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
+        tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.pathshala_1);
+        tabLayout.getTabAt(1).setIcon(R.drawable.pathshala_2);
+        tabLayout.getTabAt(2).setIcon(R.drawable.pathshala_3);
     }
+
     private void setupViewPager(ViewPager viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new SchoolFragment(), getResources().getString(R.string.title_activity_pathsala));
-        adapter.addFragment(new ShivirFragment(),getResources().getString(R.string.title_shivir).toLowerCase());
-        adapter.addFragment(new ExamsFragment(),getResources().getString(R.string.title_exams).toLowerCase());
+        adapter.addFragment(new ShivirFragment(),getResources().getString(R.string.title_shivir));
+        adapter.addFragment(new ExamsFragment(),getResources().getString(R.string.title_exams));
 
         viewPager.setAdapter(adapter);
-
     }
+
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
-
     }
+
     // Showing the status in Snackbar
     private void showSnack(boolean isConnected) {
         String message;
@@ -164,7 +166,6 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
 
         @Override
         public Fragment getItem(int position) {
-
             return mFragmentList.get(position);
         }
 
@@ -176,7 +177,6 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
-
         }
 
         @Override

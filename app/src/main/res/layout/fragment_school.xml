@@ -1,99 +1,163 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Pathsala_background"
+
    >
-
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:paddingTop="5dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bangalore"
+            android:id="@+id/tvCity1"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
+        </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rajastan"
+            android:id="@+id/tvCity2"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
 
-    <!-- <TextView
-        android:id="@+id/txt_centers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_exams"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:background="@android:color/holo_orange_dark"
-        android:paddingBottom="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:text="@string/txt_exam_centers"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity3"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity4"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity5"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity6"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity7"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity8"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
 
-    <TextView
-        android:id="@+id/txt_exams"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_students"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:background="@android:color/holo_orange_dark"
-        android:paddingBottom="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:text="@string/title_exams"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity9"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
 
-    <TextView
-        android:id="@+id/txt_students"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_staffs"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:background="@android:color/holo_orange_dark"
-        android:paddingBottom="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:text="@string/title_students"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity10"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
 
-    <TextView
-        android:id="@+id/txt_staffs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_schools"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:background="@android:color/holo_orange_dark"
-        android:paddingBottom="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:text="@string/title_staff"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity11"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
 
-    <TextView
-        android:id="@+id/txt_schools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:background="@android:color/holo_orange_dark"
-        android:paddingBottom="@dimen/dimen_10"
-        android:paddingEnd="@dimen/dimen_10"
-        android:paddingStart="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:text="@string/title_activity_pathsala"
-        android:textColor="@color/white"
-        android:textSize="24sp" /> -->
-</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delhi"
+            android:id="@+id/tvCity12"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+

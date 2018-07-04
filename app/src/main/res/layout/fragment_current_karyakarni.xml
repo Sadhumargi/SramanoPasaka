@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.CurrentKaryakarni"
     android:id="@+id/reltcu"
+    android:background="@color/Pathsala_background"
    >
 
     <!-- TODO: Update blank fragment style -->

@@ -24,14 +24,12 @@ public class PathsalaAdapter extends RecyclerView.Adapter<PathsalaAdapter.ViewHo
     ImageLoader imageLoader;
     String [] result;
 
-
     public PathsalaAdapter(Context context,
                            int[] arraylist) {
         this.context = context;
         data = arraylist;
         imageLoader = new ImageLoader(context);
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,7 +47,6 @@ public class PathsalaAdapter extends RecyclerView.Adapter<PathsalaAdapter.ViewHo
 
 //        result[position]=(data[position]);
 
-
         // Capture ListView item click
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -65,14 +62,15 @@ public class PathsalaAdapter extends RecyclerView.Adapter<PathsalaAdapter.ViewHo
 
                 if((position)==0)
                 {
-                   // Toast.makeText(context, "Hi", Toast.LENGTH_SHORT).show();
-                    Intent in=new Intent(context, Pathsalalist.class);
-                    context.startActivity(in);
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                    Intent in=new Intent(context, Pathsalalist.class);
+//                    context.startActivity(in);
                 }else
                 if(position==1)
                 {
-                    Intent in=new Intent(context, Pathsala_Registration.class);
-                    context.startActivity(in);
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                    Intent in=new Intent(context, Pathsala_Registration.class);
+//                    context.startActivity(in);
                 }
                 /*else if(position==2)
                 {
@@ -132,10 +130,7 @@ public class PathsalaAdapter extends RecyclerView.Adapter<PathsalaAdapter.ViewHo
 
         public ViewHolder(View vi) {
             super(vi);
-
             tv_menu=(TextView)vi.findViewById(R.id.tv_pathasala_menu);
-
-
         }
     }
 }
