@@ -60,8 +60,8 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
     GridView gv;
 
     Context context;
-    public ArrayList namelist = new ArrayList<>(Arrays.asList("Pravachan","Vihar","Daan","Pathshala","Patrika","Sahitya","Karyasamiti"));
-    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.circle3,R.drawable.circle4,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni));
+    public ArrayList namelist = new ArrayList<>(Arrays.asList("Pravachan","Vihar","Daan","Pathshala","Patrika","Sahitya","Karyasamiti","Thiti"));
+    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.circle3,R.drawable.circle4,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni,R.drawable.shricalender));
 
     private AdView mAdView;
     private NavigationView navigationView = null;

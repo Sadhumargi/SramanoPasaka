@@ -8,6 +8,7 @@
         <item name="android:textStyle">bold</item>
         <item name="actionMenuTextColor">@color/black</item>
         <item name="android:textColor">@color/black</item>
+        <item name="colorPrimaryDark">@color/statusbarcolor</item>
     </style>
 
     <style name="OverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
@@ -86,12 +87,8 @@
     </style>
     <!--toggle text-->
     <style  name= "edittext" parent="AppTheme">
-
         <item name="android:textColor">@color/white</item>
        <item name="android:textSize">@dimen/large</item>
-
-
-
     </style>
     <style name="MyRadioButton" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/white</item>
@@ -117,7 +114,7 @@
 
     <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="colorPrimary">@color/background</item>
         <item name="colorPrimaryDark">@color/statusbarcolor</item>
         <item name="colorAccent">@color/colorAccent</item>

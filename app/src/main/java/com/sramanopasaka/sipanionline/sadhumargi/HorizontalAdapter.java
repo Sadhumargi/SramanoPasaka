@@ -101,6 +101,11 @@ class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.MyViewHol
                         Intent i1=new Intent(context,KariyaKarni.class);
                         context.startActivity(i1);
                     }
+                    else if(position==7)
+                    {
+                        Intent i1=new Intent(context,CalenderActivity.class);
+                        context.startActivity(i1);
+                    }
                 }
                 else
                 {
