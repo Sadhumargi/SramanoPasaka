@@ -49,17 +49,14 @@ public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.View
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 boolean isConnected = ConnectivityReceiver.isConnected();
 
                 if(isConnected)
                 {
                      Intent i1 = new Intent(context, WebviewPravachan.class);
                      i1.putExtra("BookTitle",arraylist.get(i).getDate());
-                    i1.putExtra("BookType", "P");
+                     i1.putExtra("BookType", "P");
                      context.startActivity(i1);
-
                 }
                 else
                 {

@@ -2,10 +2,8 @@ package com.sramanopasaka.sipanionline.sadhumargi.cms.task;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-import com.sramanopasaka.sipanionline.sadhumargi.MainActivityCollectionview;
 import com.sramanopasaka.sipanionline.sadhumargi.PasswordRecoverResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AchievementListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddAchievementResponse;
@@ -17,6 +15,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CalenderResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
@@ -33,10 +32,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiImageNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiVideoNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
@@ -1771,6 +1767,32 @@ public class RequestProcessor {
 
             @Override
             public void onFailure(Call<GathividhiResponse> call, Throwable t) {
+                guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
+
+            }
+        });
+    }
+
+    public void getCalenderList(String latitude,String longitude,String startDate, String endDate ){
+
+        EndPointApi endPointApi =RetrofitClient.getCalenderClient().create(EndPointApi.class);
+        endPointApi.getCalenderList(latitude,longitude,startDate,endDate).enqueue(new Callback<CalenderResponse>() {
+            @Override
+            public void onResponse(Call<CalenderResponse> call, Response<CalenderResponse> response) {
+
+                Log.e("Response message", " "+response.message());
+
+                Log.e ("Response body", " "+response.body());
+
+                if(response.body()!=null){
+                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                }else{
+                    guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CalenderResponse> call, Throwable t) {
                 guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
 
             }

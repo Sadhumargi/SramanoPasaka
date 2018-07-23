@@ -66,6 +66,7 @@ android {
             buildConfigField 'String', 'MEMBER_API', '"http://members.sadhumargi.com/"'
             buildConfigField 'String', 'AUTH_API', '"http://api.sabsjs.org/"'
             buildConfigField 'String', 'EBOOK_API', '"http://shriabsjainsangh.sipanionline.com/sramanopasaka/"'
+            buildConfigField 'String', 'PACHCHAKKHAN_API', '"http://pachchakkhan.cloudapp.net/"'
         }
         production {
             buildConfigField 'String', 'HOST', '"http://members.sabsjs.org/app/"'
@@ -119,6 +120,7 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'info.hoang8f:android-segmented:1.0.6'
+    compile 'com.android.support:support-v4:26.1.0'
     testCompile 'junit:junit:4.12'
 
     compile 'com.kofigyan.stateprogressbar:stateprogressbar:0.0.6'
@@ -128,6 +130,7 @@ dependencies {
     compile 'com.github.esafirm.android-image-picker:rximagepicker:1.+'
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'com.google.firebase:firebase-core:12.0.1'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

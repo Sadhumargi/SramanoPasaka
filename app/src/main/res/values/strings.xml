@@ -378,6 +378,11 @@
     <string name="age">*Age</string>
     <string name="Post">*Post</string>
 
+    <string name="Calender">Shri Jain Calender</string>
+    <string name="Month">Month View</string>
+    <string name="DayView">Day View</string>
+    <string name="Rashifal">Rashifal</string>
+
 
     <array name="business_type">
         <item>Student</item>
@@ -521,6 +526,26 @@
   properly ]
 
  </string>
+
+    <string name="Date">Date</string>
+
+    <string name="time">Time</string>
+
+    <string name="Sunrise">Sunrise</string>
+    <string name="Sunset">Sunset</string>
+    <string name="Navkarsi">Navkarsi</string>
+    <string name="Porsi">Porsi</string>
+    <string name="Sadhporsi">Sadhporsi</string>
+    <string name="Purimaddha">Purimaddha</string>
+    <string name="Avadhha">Avadhha</string>
+
+    <string name="Udveg">Udveg</string>
+    <string name="Chal">Chal</string>
+    <string name="Labh">Labh</string>
+    <string name="Amrit">Amrit</string>
+    <string name="Kaal">Kaal</string>
+    <string name="Shubh">Shubh</string>
+    <string name="Rog">Rog</string>
 
 
 </resources>

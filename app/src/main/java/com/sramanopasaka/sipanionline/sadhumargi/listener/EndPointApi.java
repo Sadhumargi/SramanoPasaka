@@ -12,6 +12,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CalenderResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
@@ -27,10 +28,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EbookResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.EducationListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyMembersResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.FamilyResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiImageNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiVideoNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.KaryakarniListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LocalSanghResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
@@ -63,6 +61,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -231,7 +230,6 @@ public interface EndPointApi {
     @POST("app/add_remove_role")
     Call<DeleteSocialRoleResponse> deleteSocialRole(@Field("member_id") String memberId, @Field("app_token") String appToken, @Field("method") String method, @Field("role_id") String role_id);
 
-
     @GET("api/states")
     Call<List<State>> getStateList();
 
@@ -331,7 +329,6 @@ public interface EndPointApi {
     @GET("phpfiles/donatedetails.php")
     Call<DonationsDetailsResponse> getDonationDetails(@Query("donate_id") int donate_id);
 
-
     @POST("phpfiles/karyakarnigroups.php")
     Call<KaryakarniListResponse> getKaryakarniList();
 
@@ -340,6 +337,11 @@ public interface EndPointApi {
 
     @GET("phpfiles/old_karyakarni_mem.php")
     Call<OldKaryakarniResponse> getOldKaryakarniList(@Query("karyakarni_id") String Karyakarni_Id);
+
+    @GET("api/v1/application/pachchakkhanTime/{latitude}/{longitude}/{startDate}/{endDate}")
+    Call<CalenderResponse> getCalenderList(@Path("latitude") String latitude,
+                                           @Path("longitude") String longitude, @Path("startDate")String startDate,
+                                           @Path("endDate") String endDate);
 
 //    @POST("phpfiles/textnews.php")
 //    Call<GathividhiTextNewsResponse> getTextNewsList();
@@ -352,6 +354,5 @@ public interface EndPointApi {
 
     @POST("phpfiles/kathivithi.php")
     Call<GathividhiResponse> getGathividhiList();
-
 
 }

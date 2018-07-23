@@ -1,7 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -94,7 +93,6 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
         RequestProcessor processor=new RequestProcessor(this);
         processor.getDonationsDetails(a1);
         showLoadingDialog();
-
     }
 
     @Override

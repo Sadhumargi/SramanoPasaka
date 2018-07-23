@@ -320,10 +320,15 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".CalenderActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme.Base"/>
+        <!-- <activity android:name=".fragments.MonthFragment" /> -->
+        <!-- <activity android:name=".fragments.DayFragment" /> -->
+        <!-- <activity android:name=".fragments.HoroscopeFragment" /> -->
 
+        <activity
+            android:name=".CalenderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base"></activity>
+        <activity android:name=".adapters.CalenderAdapter"></activity>
     </application>
 
 </manifest>

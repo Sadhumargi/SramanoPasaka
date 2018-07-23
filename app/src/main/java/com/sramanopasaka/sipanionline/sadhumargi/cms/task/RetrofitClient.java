@@ -19,6 +19,8 @@ public class RetrofitClient {
 
     private static Retrofit ebookRetrofit=null;
 
+    private static Retrofit calenderRetrofit=null;
+
     public static Retrofit getAuthClient() {
 
 
@@ -82,6 +84,27 @@ public class RetrofitClient {
             Log.e("--Base Url--",""+BuildConfig.EBOOK_API);
         }
         return ebookRetrofit;
+    }
+
+    public static Retrofit getCalenderClient() {
+
+
+        if (calenderRetrofit == null) {
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(interceptor).build();
+            Gson gson = new GsonBuilder().create();
+            calenderRetrofit = new Retrofit.Builder()
+                    .baseUrl(BuildConfig.PACHCHAKKHAN_API)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+
+            Log.e("--Base Url--",""+BuildConfig.PACHCHAKKHAN_API);
+        }
+        return calenderRetrofit;
     }
 
 
