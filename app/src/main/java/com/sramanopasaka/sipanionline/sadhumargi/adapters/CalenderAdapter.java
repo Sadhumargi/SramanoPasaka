@@ -66,13 +66,13 @@ public class CalenderAdapter extends RecyclerView.Adapter<CalenderAdapter.ViewHo
             sadhaporsiTxt = (TextView) itemView.findViewById(R.id.sadhporsi_txt);
             purimadhaTxt = (TextView) itemView.findViewById(R.id.purimaddha_txt);
             avadhhaTxt = (TextView) itemView.findViewById(R.id.avadhha_txt);
-            udvegTxt = (TextView) itemView.findViewById(R.id.udveg_txt);
-            chalTxt = (TextView) itemView.findViewById(R.id.chal_txt);
-            labhTxt = (TextView) itemView.findViewById(R.id.labh_txt);
-            amritTxt = (TextView) itemView.findViewById(R.id.amrit_txt);
-            kaalTxt = (TextView) itemView.findViewById(R.id.kaal_txt);
-            shubhTxt = (TextView) itemView.findViewById(R.id.shubh_txt);
-            rogTxt = (TextView) itemView.findViewById(R.id.rog_txt);
+//            udvegTxt = (TextView) itemView.findViewById(R.id.udveg_txt);
+//            chalTxt = (TextView) itemView.findViewById(R.id.chal_txt);
+//            labhTxt = (TextView) itemView.findViewById(R.id.labh_txt);
+//            amritTxt = (TextView) itemView.findViewById(R.id.amrit_txt);
+//            kaalTxt = (TextView) itemView.findViewById(R.id.kaal_txt);
+//            shubhTxt = (TextView) itemView.findViewById(R.id.shubh_txt);
+//            rogTxt = (TextView) itemView.findViewById(R.id.rog_txt);
             porsiTxt = (TextView) itemView.findViewById(R.id.porsi_txt);
 
         }

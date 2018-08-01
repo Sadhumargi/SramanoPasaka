@@ -1,7 +1,6 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,30 +9,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.sramanopasaka.sipanionline.sadhumargi.CalenderActivity;
-import com.sramanopasaka.sipanionline.sadhumargi.ConnectivityReceiver;
-import com.sramanopasaka.sipanionline.sadhumargi.GpsStatusDetector;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
 import static com.google.android.gms.plus.PlusOneDummyView.TAG;
 
 
-public class MonthFragment extends BaseFragment implements ConnectivityReceiver.ConnectivityReceiverListener
-         {
+public class MonthFragment extends BaseFragment  {
 
-    Context context;
     private TabselectionListner tabselectionListner = null;
     private String selectedDate;
-    GpsStatusDetector gpsStatusDetector;
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        final View view  = inflater.inflate(R.layout.fragment_calndrmonth,container,false);
+        final View view = inflater.inflate(R.layout.fragment_calndrmonth, container, false);
+
+        Toast.makeText(getActivity(), "Please select a date", Toast.LENGTH_SHORT).show();
 
         CalendarView calendarView = view.findViewById(R.id.calender_view);
 
@@ -41,41 +37,37 @@ public class MonthFragment extends BaseFragment implements ConnectivityReceiver.
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
 
+
                 if ((tabselectionListner != null)) {
 
-                        selectedDate = (year+"-"+month+"-"+dayOfMonth);
-                        Log.i(TAG, "onSelectedDayChange: "+selectedDate);
+                    int correctMonth = month+1;
 
-                    String TabOfFragmentB = ((CalenderActivity)getActivity()).getTabFragmentB();
+                    selectedDate = (year + "-" + correctMonth + "-" + dayOfMonth);
+                    Log.i(TAG, "onSelectedDayChange: " + selectedDate);
 
-//                    Toast.makeText(getActivity(),
-//                            "text sent to Fragment B:\n " + TabOfFragmentB,
-//                            Toast.LENGTH_LONG).show();
+                    String TabOfFragmentB = ((CalenderActivity) getActivity()).getTabFragmentB();
 
-                        tabselectionListner.onSelectTab(1);
-
-                    DayFragment fragmentB = (DayFragment)getActivity()
+                    final DayFragment dayFragment = (DayFragment) getActivity()
                             .getSupportFragmentManager()
                             .findFragmentByTag(TabOfFragmentB);
-                    fragmentB.b_updateText(selectedDate);
+
+                    dayFragment.b_updateText(selectedDate);
+
+                    tabselectionListner.onSelectTab(1);
                 }
             }
 
         });
-
-        return  view;
+        return view;
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         tabselectionListner = (TabselectionListner) getActivity();
     }
-
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-
-    }
-
 }
+
+
+
+

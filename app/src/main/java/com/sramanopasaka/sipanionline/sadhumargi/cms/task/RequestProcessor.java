@@ -61,6 +61,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.model.Achievements;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Address;
 import com.sramanopasaka.sipanionline.sadhumargi.model.BasicDetailsData;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Business;
+import com.sramanopasaka.sipanionline.sadhumargi.model.CalenderModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Education;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Exams;
@@ -1776,29 +1777,32 @@ public class RequestProcessor {
     public void getCalenderList(String latitude,String longitude,String startDate, String endDate ){
 
         EndPointApi endPointApi =RetrofitClient.getCalenderClient().create(EndPointApi.class);
-        endPointApi.getCalenderList(latitude,longitude,startDate,endDate).enqueue(new Callback<CalenderResponse>() {
-            @Override
-            public void onResponse(Call<CalenderResponse> call, Response<CalenderResponse> response) {
 
+        endPointApi.getCalenderList(latitude,longitude,startDate,endDate).enqueue(new Callback<List<CalenderModel>>() {
+            @Override
+            public void onResponse(Call<List<CalenderModel>> call, Response<List<CalenderModel>> response) {
                 Log.e("Response message", " "+response.message());
 
                 Log.e ("Response body", " "+response.body());
 
                 if(response.body()!=null){
-                    guiCallback.onRequestProcessed(response.body(), GUICallback.RequestStatus.SUCCESS);
+                    CalenderResponse calenderResponse = new CalenderResponse();
+                    calenderResponse.setData(response.body());
+                    guiCallback.onRequestProcessed(calenderResponse, GUICallback.RequestStatus.SUCCESS);
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
             }
 
             @Override
-            public void onFailure(Call<CalenderResponse> call, Throwable t) {
+            public void onFailure(Call<List<CalenderModel>> call, Throwable t) {
                 guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
-
             }
         });
-    }
 
+
+    }
+//Go back and come again to this page from phone ok
 //    public void getGathividhiTextNewsList(){
 //
 //        EndPointApi endPointApi =RetrofitClient.getEbookClient().create(EndPointApi.class);

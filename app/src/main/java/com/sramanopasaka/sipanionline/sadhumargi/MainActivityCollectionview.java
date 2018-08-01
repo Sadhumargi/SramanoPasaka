@@ -9,12 +9,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,36 +22,23 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GathividhiTextNewsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiModel;
-import com.sramanopasaka.sipanionline.sadhumargi.model.GathividhiTextNews;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.MyFirebaseInstanceIdService;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivityCollectionview extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,ConnectivityReceiver.ConnectivityReceiverListener, GUICallback{
 
@@ -61,7 +46,7 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
 
     Context context;
     public ArrayList namelist = new ArrayList<>(Arrays.asList("Pravachan","Vihar","Daan","Pathshala","Patrika","Sahitya","Karyasamiti","Thiti"));
-    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.circle3,R.drawable.circle4,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni,R.drawable.shricalender));
+    public ArrayList iconlist = new ArrayList<>(Arrays.asList (R.drawable.circle3,R.drawable.circle4,R.drawable.daan,R.drawable.pathsala,R.drawable.ebook,R.drawable.newsahitya,R.drawable.karyakarni,R.drawable.calendarimage));
 
     private AdView mAdView;
     private NavigationView navigationView = null;

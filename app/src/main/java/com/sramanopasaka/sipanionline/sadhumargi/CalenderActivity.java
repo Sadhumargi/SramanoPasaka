@@ -41,7 +41,6 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
         return TabFragmentB;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +81,6 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05858"));
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
-
 
     }
     private void setupViewPager(ViewPager viewPager) {

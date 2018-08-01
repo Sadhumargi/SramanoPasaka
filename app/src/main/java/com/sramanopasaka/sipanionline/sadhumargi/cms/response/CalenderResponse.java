@@ -2,13 +2,13 @@ package com.sramanopasaka.sipanionline.sadhumargi.cms.response;
 
 import com.sramanopasaka.sipanionline.sadhumargi.model.CalenderModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CalenderResponse extends GUIResponse {
 
     private String status = null;
     private boolean statusCode = false;
-    private ArrayList<CalenderModel> data = null;
+    private List<CalenderModel> data = null;
 
     public String getStatus() {
         return status;
@@ -26,11 +26,11 @@ public class CalenderResponse extends GUIResponse {
         this.statusCode = statusCode;
     }
 
-    public ArrayList<CalenderModel> getData() {
+    public List<CalenderModel> getData() {
         return data;
     }
 
-    public void setData(ArrayList<CalenderModel> data) {
+    public void setData(List<CalenderModel> data) {
         this.data = data;
     }
 

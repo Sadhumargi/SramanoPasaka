@@ -12,7 +12,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddScocialRoleResp
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.AddressListResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BasicDetailsResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.BusinessListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CalenderResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAchievementResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.DeleteAddressResponse;
@@ -49,6 +48,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateKnowledgeRes
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdatePromiseResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.UpdateServiceResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.ViharResponse;
+import com.sramanopasaka.sipanionline.sadhumargi.model.CalenderModel;
 import com.sramanopasaka.sipanionline.sadhumargi.model.City;
 import com.sramanopasaka.sipanionline.sadhumargi.model.State;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Zone;
@@ -339,9 +339,9 @@ public interface EndPointApi {
     Call<OldKaryakarniResponse> getOldKaryakarniList(@Query("karyakarni_id") String Karyakarni_Id);
 
     @GET("api/v1/application/pachchakkhanTime/{latitude}/{longitude}/{startDate}/{endDate}")
-    Call<CalenderResponse> getCalenderList(@Path("latitude") String latitude,
-                                           @Path("longitude") String longitude, @Path("startDate")String startDate,
-                                           @Path("endDate") String endDate);
+    Call<List<CalenderModel>> getCalenderList(@Path("latitude") String latitude,
+                                              @Path("longitude") String longitude, @Path("startDate")String startDate,
+                                              @Path("endDate") String endDate);
 
 //    @POST("phpfiles/textnews.php")
 //    Call<GathividhiTextNewsResponse> getTextNewsList();

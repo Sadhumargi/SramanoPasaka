@@ -1,6 +1,10 @@
 package com.sramanopasaka.sipanionline.sadhumargi.model;
 
-public class CalenderModel {
+import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
+
+import java.util.ArrayList;
+
+public class CalenderModel extends GUIResponse {
 
     private  String Date = null;
     private  String Sunrise = null;
@@ -8,22 +12,13 @@ public class CalenderModel {
     private  String Navkarsi = null;
     private  String Porsi = null;
     private  String Sadhporsi = null;
-    private  String Purimaddha = null;
-    private  String Avadhha = null;
-    private  String Udveg = null;
-    private  String Chal = null;
-    private  String Labh = null;
-    private  String Amrit = null;
-    private  String Kaal = null;
-    private  String Shubh = null;
-    private  String Rog = null;
 
     public String getDate() {
         return Date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.Date = date;
     }
 
     public String getSunrise() {
@@ -31,7 +26,7 @@ public class CalenderModel {
     }
 
     public void setSunrise(String sunrise) {
-        Sunrise = sunrise;
+        this.Sunrise = sunrise;
     }
 
     public String getSunset() {
@@ -39,7 +34,7 @@ public class CalenderModel {
     }
 
     public void setSunset(String sunset) {
-        Sunset = sunset;
+        this.Sunset = sunset;
     }
 
     public String getNavkarsi() {
@@ -47,7 +42,7 @@ public class CalenderModel {
     }
 
     public void setNavkarsi(String navkarsi) {
-        Navkarsi = navkarsi;
+        this.Navkarsi = navkarsi;
     }
 
     public String getPorsi() {
@@ -55,7 +50,7 @@ public class CalenderModel {
     }
 
     public void setPorsi(String porsi) {
-        Porsi = porsi;
+        this.Porsi = porsi;
     }
 
     public String getSadhporsi() {
@@ -63,7 +58,7 @@ public class CalenderModel {
     }
 
     public void setSadhporsi(String sadhporsi) {
-        Sadhporsi = sadhporsi;
+        this.Sadhporsi = sadhporsi;
     }
 
     public String getPurimaddha() {
@@ -71,7 +66,7 @@ public class CalenderModel {
     }
 
     public void setPurimaddha(String purimaddha) {
-        Purimaddha = purimaddha;
+        this.Purimaddha = purimaddha;
     }
 
     public String getAvadhha() {
@@ -79,62 +74,84 @@ public class CalenderModel {
     }
 
     public void setAvadhha(String avadhha) {
-        Avadhha = avadhha;
+        this.Avadhha = avadhha;
     }
 
-    public String getUdveg() {
+    public ArrayList<String> getUdveg() {
         return Udveg;
     }
 
-    public void setUdveg(String udveg) {
-        Udveg = udveg;
+    public void setUdveg(ArrayList<String> udveg) {
+        this.Udveg = udveg;
     }
 
-    public String getChal() {
+    public ArrayList<String> getChal() {
         return Chal;
     }
 
-    public void setChal(String chal) {
-        Chal = chal;
+    public void setChal(ArrayList<String> chal) {
+        this.Chal = chal;
     }
 
-    public String getLabh() {
+    public ArrayList<String> getLabh() {
         return Labh;
     }
 
-    public void setLabh(String labh) {
-        Labh = labh;
+    public void setLabh(ArrayList<String> labh) {
+        this.Labh = labh;
     }
 
-    public String getAmrit() {
+    public ArrayList<String> getAmrit() {
         return Amrit;
     }
 
-    public void setAmrit(String amrit) {
-        Amrit = amrit;
+    public void setAmrit(ArrayList<String> amrit) {
+        this.Amrit = amrit;
     }
 
-    public String getKaal() {
+    public ArrayList<String> getKaal() {
         return Kaal;
     }
 
-    public void setKaal(String kaal) {
-        Kaal = kaal;
+    public void setKaal(ArrayList<String> kaal) {
+        this.Kaal = kaal;
     }
 
-    public String getShubh() {
+    public ArrayList<String> getShubh() {
         return Shubh;
     }
 
-    public void setShubh(String shubh) {
-        Shubh = shubh;
+    public void setShubh(ArrayList<String> shubh) {
+        this.Shubh = shubh;
     }
 
-    public String getRog() {
+    public ArrayList<String> getRog() {
         return Rog;
     }
 
-    public void setRog(String rog) {
-        Rog = rog;
+    public void setRog(ArrayList<String> rog) {
+        this.Rog = rog;
+    }
+
+    private  String Purimaddha = null;
+    private  String Avadhha = null;
+
+    ArrayList< String > Udveg = new ArrayList < String > ();
+    ArrayList < String > Chal = new ArrayList < String > ();
+    ArrayList < String > Labh = new ArrayList < String > ();
+    ArrayList < String > Amrit = new ArrayList < String > ();
+    ArrayList < String > Kaal = new ArrayList < String > ();
+    ArrayList < String > Shubh = new ArrayList < String > ();
+    ArrayList < String > Rog = new ArrayList < String > ();
+
+    @Override
+    public boolean isStatus() {
+        return false;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+
     }
 }
+
