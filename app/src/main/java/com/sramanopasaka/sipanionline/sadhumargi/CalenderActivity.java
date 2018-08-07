@@ -76,12 +76,13 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
 
         ActionBar actionbar = this.getSupportActionBar();
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
-        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Shri Jain Calender</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sadhumargi Calender</font>"));
 
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05858"));
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 
+        viewPager.setCurrentItem(1,true);
     }
     private void setupViewPager(ViewPager viewPager) {
 
@@ -92,6 +93,8 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
 
         viewPager.setAdapter(adapter);
     }
+
+
 
 //    @Override
 //    public void sendData(String message) {

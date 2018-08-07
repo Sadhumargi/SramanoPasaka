@@ -1,6 +1,5 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,19 +10,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.LoginResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.RegisterResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.response.StateListResponse;
-import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.PersonalDetailsFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.helpers.OfflineData;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
-import com.sramanopasaka.sipanionline.sadhumargi.listener.StateChangeListner;
-import com.sramanopasaka.sipanionline.sadhumargi.utils.*;
+import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 
 public class Splash extends BaseActivity implements GUICallback{
 
@@ -70,7 +61,7 @@ public class Splash extends BaseActivity implements GUICallback{
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
+            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
         }
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);

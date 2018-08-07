@@ -86,6 +86,7 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 
+        // To set icon for fragment names
 
         tabLayout.getTabAt(0).setIcon(R.drawable.pathshala_1);
         tabLayout.getTabAt(1).setIcon(R.drawable.pathshala_2);

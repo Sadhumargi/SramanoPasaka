@@ -1,9 +1,13 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.sramanopasaka.sipanionline.sadhumargi.CalenderActivity;
 import com.sramanopasaka.sipanionline.sadhumargi.ConnectivityReceiver;
 import com.sramanopasaka.sipanionline.sadhumargi.GPSTracker;
@@ -25,8 +30,10 @@ import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.CalenderModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import static com.google.android.gms.plus.PlusOneDummyView.TAG;
@@ -44,12 +51,14 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
     ScrollView scrollView;
     LinearLayoutManager LayoutManager;
     Context context;
+    public static AlertDialog.Builder alertDialog;
     TextView tv[] = new TextView[15];
     TextView dateofApiText, sunsetTxt, sunriseTxt, navTxt, porsiTxt, sadhaporsiTxt, purimadhaTxt, avadhhaTxt;
     TextView udvegTxt1, chalTxt1, labhTxt1, amritTxt1, kaalTxt1, shubhTxt1, rogTxt1,udvegTxt2, chalTxt2, labhTxt2, amritTxt2, kaalTxt2, shubhTxt2, rogTxt2;
 
     GUIResponse guiResponse;
     RequestStatus requestStatus;
+    String currentDate;
 
     public ArrayList<String> arrayListText = new ArrayList<String>(Arrays.asList("26-07-08", "Hello", "Fragment", "Activity", "HI", "This", "is"));
 
@@ -91,6 +100,19 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
         rogTxt2 = view.findViewById(R.id.rog_txt2);
         porsiTxt = view.findViewById(R.id.porsi_txt);
 
+
+        java.util.Date todayDate = Calendar.getInstance().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = formatter.format(todayDate);
+
+//        currentDate = "2018-08-06";
+
+        getlocation();
+
+        RequestProcessor processor = new RequestProcessor(DayFragment.this);
+        processor.getCalenderList(latitude, longitude, currentDate, currentDate);
+        showLoadingDialog();
+
         return view;
     }
 
@@ -106,13 +128,11 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
 
 //        dateTxt.setText(selectedDate);
 //        startDate = selectedDate;
-        getlocation();
+//        getlocation();
 
-
-        RequestProcessor processor = new RequestProcessor(DayFragment.this);
-        processor.getCalenderList(latitude, longitude, selectedDate, selectedDate);
-        showLoadingDialog();
-        //Why taking long time to  run? no idea usualyy it takes less time
+            RequestProcessor processor = new RequestProcessor(DayFragment.this);
+            processor.getCalenderList(latitude, longitude, selectedDate, selectedDate);
+            showLoadingDialog();
     }
 
     @Override
@@ -120,7 +140,7 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
 
         if (enabled == false) {
             // turnGPSOn();
-            // showSettingsAlert();
+             showSettingsAlert();
         } else if (enabled == true) {
             getlocation();
         }
@@ -207,6 +227,37 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
 
             Toast.makeText(getActivity(), "Network error", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void showSettingsAlert(){
+        alertDialog = new AlertDialog.Builder(getActivity());
+
+        // Setting Dialog Title
+        alertDialog.setTitle("GPS is settings");
+
+        // Setting Dialog Message
+        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+
+        // On pressing the Settings button.
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+
+            }
+        });
+        alertDialog.setCancelable(false);
+        // On pressing the cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface
+                                        dialog, int which) {
+                dialog.cancel();
+//                finish();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
     }
 }
 

@@ -27,7 +27,7 @@ project.ext {
     firebaseVersion = '10.2.4';
     retrofitVersion = '2.1.0';
     compileSDKVersion = 26;
-    targetSDKVersion = 23;
+    targetSDKVersion = 25;
     minSDKVersion = 18;
 }
 

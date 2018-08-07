@@ -29,14 +29,24 @@ public class MonthFragment extends BaseFragment  {
 
         final View view = inflater.inflate(R.layout.fragment_calndrmonth, container, false);
 
-        Toast.makeText(getActivity(), "Please select a date", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Please select a date in MonthView", Toast.LENGTH_SHORT).show();
 
         CalendarView calendarView = view.findViewById(R.id.calender_view);
+
+//        if(tabselectionListner != null){
+//
+//            Calendar calendar = Calendar.getInstance();
+//            String currebtDate = DateFormat.getDateInstance().format(calendar.getTime());
+//            Log.i(TAG, "CurrebtDate: "+currebtDate);
+//
+//            dayFragment.b_updateText(currebtDate);
+//
+//            tabselectionListner.onSelectTab(1);
+//        }
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
-
 
                 if ((tabselectionListner != null)) {
 
@@ -51,7 +61,7 @@ public class MonthFragment extends BaseFragment  {
                             .getSupportFragmentManager()
                             .findFragmentByTag(TabOfFragmentB);
 
-                    dayFragment.b_updateText(selectedDate);
+                        dayFragment.b_updateText(selectedDate);
 
                     tabselectionListner.onSelectTab(1);
                 }

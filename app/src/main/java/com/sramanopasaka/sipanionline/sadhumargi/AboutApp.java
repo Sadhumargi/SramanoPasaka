@@ -51,11 +51,11 @@ public class AboutApp extends AppCompatActivity  {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
+            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
         }
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>About App</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FF0000'>About App</font>"));
 
 
         WebView1.setWebViewClient(new WebViewClient());

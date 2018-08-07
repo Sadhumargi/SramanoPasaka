@@ -24,5 +24,7 @@
     <color name="update_profile">#358753</color>
     <color name="profile_status_color">#DC492A</color>
     <color name="profile_action_bar_color">#FD542F</color>
+    <color name="Red">#ff0000</color>
+    <color name="DarkRed">#ed1414</color>
 
 </resources>

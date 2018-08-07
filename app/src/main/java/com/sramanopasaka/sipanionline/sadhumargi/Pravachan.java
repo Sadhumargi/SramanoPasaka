@@ -69,7 +69,7 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
+            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
         }
         emptyView=(TextView)findViewById(R.id.emptyElement);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,7 +92,7 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
         recyclerView.setLayoutManager(mLayoutManager);
 
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='##FFFFFF'>Pravachan</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='##FF0000'>Pravachan</font>"));
 
         RequestProcessor processor=new RequestProcessor(Pravachan.this);
         processor.getPravachanList();

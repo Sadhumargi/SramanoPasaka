@@ -122,8 +122,8 @@ public class ViharActivity extends BaseActivity implements
 
         if(enabled==false)
         {
-           // turnGPSOn();
-           // showSettingsAlert();
+//            turnGPSOn();
+            showSettingsAlert();
         }
         else if(enabled==true)
         {
@@ -200,8 +200,6 @@ public class ViharActivity extends BaseActivity implements
                                 Log.e("Distance to", " kilometers " + distance);
                                 double dis = Double.parseDouble(new DecimalFormat("#####.##").format(distance));
                                 response.getData().get(i).setGuru_dis(String.valueOf(dis));
-
-
                             }
 
                             Comparator<Vihar> distanceComparator = new Comparator<Vihar>() {
@@ -469,12 +467,12 @@ public class ViharActivity extends BaseActivity implements
         // Showing Alert Message
         alertDialog.show();
     }
-    /*@Override
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
-      //  arraylist.clear();
-        //turnGPSOff();
-    }*/
+        arraylist.clear();
+//        turnGPSOff();
+    }
 
 
 }

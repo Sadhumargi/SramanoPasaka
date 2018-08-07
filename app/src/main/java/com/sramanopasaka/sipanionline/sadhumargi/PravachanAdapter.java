@@ -46,6 +46,8 @@ public class PravachanAdapter extends RecyclerView.Adapter<PravachanAdapter.View
 
         Log.e("success","Demo"+arraylist.get(0).getTitle().toString());
 
+
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
