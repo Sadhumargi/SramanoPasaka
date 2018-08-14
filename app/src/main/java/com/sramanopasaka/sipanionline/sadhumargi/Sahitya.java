@@ -65,9 +65,9 @@ public class Sahitya extends AppCompatActivity implements ConnectivityReceiver.C
         actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sahitya</font>"));
 
         //
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05957"));
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 
        // checkConnection();
     }

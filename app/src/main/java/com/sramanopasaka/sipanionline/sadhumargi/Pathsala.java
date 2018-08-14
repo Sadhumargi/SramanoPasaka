@@ -75,14 +75,14 @@ public class Pathsala extends AppCompatActivity implements ConnectivityReceiver.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.background));
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
 
         ActionBar actionbar = this.getSupportActionBar();
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Pathshala</font>"));
 
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05858"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05957"));
         tabLayout.setSelectedTabIndicatorHeight((int) (4 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 

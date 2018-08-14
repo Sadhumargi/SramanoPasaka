@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -22,6 +23,7 @@ public class SchoolFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_school, container, false); //pass the correct style name for the fragment
 
+        Toast.makeText(getActivity(), "Please wait will update it soon", Toast.LENGTH_SHORT).show();
         /*View view=inflater.inflate(R.layout.fragment_school,container,false);
         text_school=(TextView)view.findViewById(R.id.txt_schools);
         text_staff=(TextView)view.findViewById(R.id.txt_staffs);

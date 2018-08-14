@@ -69,7 +69,7 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         emptyView=(TextView)findViewById(R.id.emptyElement);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

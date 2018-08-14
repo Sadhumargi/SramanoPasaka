@@ -71,7 +71,7 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.background));
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
 
         ActionBar actionbar = this.getSupportActionBar();

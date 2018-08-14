@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             app:tabMode="fixed"
             app:tabGravity="fill"
-            android:background="@color/actionbar"
+            android:background="@color/white"
             android:touchscreenBlocksFocus="false" />
     </android.support.design.widget.AppBarLayout>
 

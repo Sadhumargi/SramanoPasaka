@@ -92,7 +92,7 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
 
         getWindow().setBackgroundDrawable(null);

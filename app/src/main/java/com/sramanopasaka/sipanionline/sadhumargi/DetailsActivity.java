@@ -80,9 +80,9 @@ public class DetailsActivity extends AppCompatActivity  {
         editor.putString("karyakarni_id1", sValue);
         editor.commit();
 
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#fd5708"));
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#f05957"));
         tabLayout.setSelectedTabIndicatorHeight((int) (3 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        tabLayout.setTabTextColors(Color.parseColor("#040303"), Color.parseColor("#040303"));
 
     }
 

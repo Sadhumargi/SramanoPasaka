@@ -3,7 +3,7 @@
 
     <!-- Round Corners -->
     <corners android:radius="30dp" />
-    <solid android:color="#da5617" />
+    <solid android:color="@color/actionbar" />
 
 
 </shape>

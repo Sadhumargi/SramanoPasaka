@@ -53,10 +53,10 @@ public class WebViewHistory extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.DarkRed));
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
         }
         ActionBar actionbar = this.getSupportActionBar();
-        actionbar.setTitle(Html.fromHtml("<font color='#ff0000'>Sangh History</font>"));
+        actionbar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Sangh History</font>"));
 
 
         WebView1.setWebViewClient(new WebViewClient());
