@@ -129,7 +129,5 @@ public class SigninActivity extends AppCompatActivity implements TabselectionLis
         public CharSequence getPageTitle(int position) {
             return mFragmenttitleList.get(position);
         }
-
-
     }
 }

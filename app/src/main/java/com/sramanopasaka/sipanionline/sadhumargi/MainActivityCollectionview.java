@@ -1,7 +1,9 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -314,6 +316,20 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
                 Intent i = new Intent(MainActivityCollectionview.this, ProfileActivity.class);
                 startActivity(i);
             }
+        } else if (id == R.id.nav_9){
+
+            if (isConnected) {
+                try{
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+getPackageName() )));
+
+                }catch (ActivityNotFoundException e){
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/stor/apps/market://details?id="+getPackageName() )));
+                }
+            } else {
+                //Toast.makeText(getBaseContext(),"No Internet",Toast.LENGTH_SHORT).show();
+                showSnack(isConnected);
+            }
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
