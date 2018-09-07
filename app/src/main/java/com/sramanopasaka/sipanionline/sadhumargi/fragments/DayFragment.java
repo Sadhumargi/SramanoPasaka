@@ -1,6 +1,5 @@
 package com.sramanopasaka.sipanionline.sadhumargi.fragments;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,8 +29,6 @@ import com.sramanopasaka.sipanionline.sadhumargi.listener.GUICallback;
 import com.sramanopasaka.sipanionline.sadhumargi.model.CalenderModel;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -40,27 +36,21 @@ import static com.google.android.gms.plus.PlusOneDummyView.TAG;
 
 public  class DayFragment extends BaseFragment implements ConnectivityReceiver.ConnectivityReceiverListener, GUICallback, GpsStatusDetector.GpsStatusDetectorCallBack {
 
-    TextView dateTxt;
-    TextView dayTxt;
+
     private GPSTracker gpsTracker;
     static String latitude, longitude;
     private List<CalenderModel> list;
-    String startDate;
     RecyclerView recyclerView;
     DayFragmentAdapter adapter;
     ScrollView scrollView;
-    LinearLayoutManager LayoutManager;
-    Context context;
     public static AlertDialog.Builder alertDialog;
     TextView tv[] = new TextView[15];
     TextView dateofApiText, sunsetTxt, sunriseTxt, navTxt, porsiTxt, sadhaporsiTxt, purimadhaTxt, avadhhaTxt;
-    TextView udvegTxt1, chalTxt1, labhTxt1, amritTxt1, kaalTxt1, shubhTxt1, rogTxt1,udvegTxt2, chalTxt2, labhTxt2, amritTxt2, kaalTxt2, shubhTxt2, rogTxt2;
+    TextView udvegTxt1, chalTxt1, labhTxt1, amritTxt1, kaalTxt1, shubhTxt1, rogTxt1, udvegTxt2, chalTxt2, labhTxt2, amritTxt2, kaalTxt2, shubhTxt2, rogTxt2;
 
     GUIResponse guiResponse;
     RequestStatus requestStatus;
-    String currentDate;
-
-    public ArrayList<String> arrayListText = new ArrayList<String>(Arrays.asList("26-07-08", "Hello", "Fragment", "Activity", "HI", "This", "is"));
+    private GpsStatusDetector mGpsStatusDetector;
 
     @Nullable
     @Override
@@ -100,18 +90,17 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
         rogTxt2 = view.findViewById(R.id.rog_txt2);
         porsiTxt = view.findViewById(R.id.porsi_txt);
 
-
-        java.util.Date todayDate = Calendar.getInstance().getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = formatter.format(todayDate);
-
 //        currentDate = "2018-08-06";
+        mGpsStatusDetector = new GpsStatusDetector(this);
+        mGpsStatusDetector.checkGpsStatus();
 
-        getlocation();
 
-        RequestProcessor processor = new RequestProcessor(DayFragment.this);
-        processor.getCalenderList(latitude, longitude, currentDate, currentDate);
-        showLoadingDialog();
+
+        try {
+            getlocation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
@@ -126,9 +115,7 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
 
     public void b_updateText(String selectedDate) {
 
-//        dateTxt.setText(selectedDate);
-//        startDate = selectedDate;
-//        getlocation();
+            getlocation();
 
             RequestProcessor processor = new RequestProcessor(DayFragment.this);
             processor.getCalenderList(latitude, longitude, selectedDate, selectedDate);
@@ -140,31 +127,40 @@ public  class DayFragment extends BaseFragment implements ConnectivityReceiver.C
 
         if (enabled == false) {
             // turnGPSOn();
-             showSettingsAlert();
-        } else if (enabled == true) {
+             gpsTracker.showSettingsAlert();
+        } else if(enabled==true)
+        {
             getlocation();
         }
     }
 
     void getlocation() {
+
         gpsTracker = new GPSTracker(getContext());
 
-        if (gpsTracker.canGetLocation() == true) {
-            if (gpsTracker.getLatitude() != 0 && gpsTracker.getLongitude() != 0) {
-                latitude = String.valueOf(gpsTracker.getLatitude());
-                longitude = String.valueOf(gpsTracker.getLongitude());
-                Log.i(TAG, "getlocation: " + latitude);
-                Log.i(TAG, "getlocation: " + longitude);
+        if(gpsTracker.canGetLocation()==true)
+        {
+            if(gpsTracker.getLatitude()!=0 && gpsTracker.getLongitude()!=0)
+            {
+                latitude = String.valueOf(gpsTracker.getLocation().getLatitude());
+                longitude = String.valueOf(gpsTracker.getLocation().getLongitude());
+                //new DownloadJSON().execute();
 
+                java.util.Date todayDate = Calendar.getInstance().getTime();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String currentDate = formatter.format(todayDate);
+
+                RequestProcessor processor = new RequestProcessor(DayFragment.this);
+                processor.getCalenderList(latitude, longitude, currentDate, currentDate);
+                showLoadingDialog();
             }
         }
-    }
+            }
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
 
     }
-
 
     @Override
     public void onRequestProcessed(GUIResponse guiResponse, RequestStatus requestStatus) {

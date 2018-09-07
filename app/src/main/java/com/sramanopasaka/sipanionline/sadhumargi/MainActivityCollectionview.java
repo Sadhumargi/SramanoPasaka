@@ -55,9 +55,9 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
 
     RecyclerView horisontalRecyclerview;
     HorizontalAdapter horizontalAdapter;
-    RecyclerView verticalRecyclerView;
+    RecyclerView horizontalRecyclerViewNews;
 
-    VerticalAdapter verticalAdapter;
+    VerticalAdapter horizontalAdapterNews;
     ArrayList<GathividhiModel> gathiVidhiList;
 
     @Override
@@ -72,14 +72,14 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
 //      gv.setAdapter(new CollectionAdapter(MainActivityCollectionview.this, iconlist, iconImages));
 
         horisontalRecyclerview = (RecyclerView) findViewById(R.id.hor_recyclerview);
-        verticalRecyclerView = (RecyclerView) findViewById(R.id.ver_recyclerview);
+        horizontalRecyclerViewNews = (RecyclerView) findViewById(R.id.ver_recyclerview);
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(MainActivityCollectionview.this, LinearLayoutManager.HORIZONTAL, false);
         horisontalRecyclerview.setLayoutManager(horizontalLayoutManager);
         horisontalRecyclerview.setAdapter(horizontalAdapter);
 
-        LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(this);
-        verticalRecyclerView.setLayoutManager(verticalLayoutManager);
+        LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        horizontalRecyclerViewNews.setLayoutManager(verticalLayoutManager);
 
         mAdView = (AdView) findViewById(R.id.adView4);
         AdRequest adRequest1 = new AdRequest.Builder()
@@ -107,7 +107,6 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         drawer.setDrawerListener(toggle);
 //        toggle.setHomeAsUpIndicator(R.drawable.menuimage);
 
-
         toggle.syncState();
 
         ActionBar actionbar = this.getSupportActionBar();
@@ -118,8 +117,6 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         checkConnection();
-
-        ///////////
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int densityDpi = (int)(metrics.density * 160f);
@@ -372,8 +369,8 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
 //                                }
 //                            });
 
-                            verticalAdapter = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
-                            verticalRecyclerView.setAdapter(verticalAdapter);
+                            horizontalAdapterNews = new VerticalAdapter(MainActivityCollectionview.this,gathiVidhiList);
+                            horizontalRecyclerViewNews.setAdapter(horizontalAdapterNews);
                         }else{
                             Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
@@ -388,7 +385,6 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
         }catch (RuntimeException e){
             Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
         }
-
         }
 }
 

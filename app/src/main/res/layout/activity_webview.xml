@@ -3,14 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.webview">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
+    <!--<ProgressBar-->
+        <!--style="?android:attr/progressBarStyle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/progressBar2" />-->
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar2" />
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/view5">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolcontact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/actionbar"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+        <!--<Button
+            android:id="@+id/toolbarbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/actionbar"
+            android:linksClickable="true"
+            android:paddingRight="10dp"
+            android:text="Download"
+            android:textColor="@color/white" />-->
+
+    </android.support.design.widget.AppBarLayout>
 
     <WebView
         android:layout_width="wrap_content"
@@ -26,35 +58,5 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"/>
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/view5">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolcontact"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/actionbar"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-
-
-        </android.support.v7.widget.Toolbar>
-
-        <!--<Button
-            android:id="@+id/toolbarbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@color/actionbar"
-            android:linksClickable="true"
-            android:paddingRight="10dp"
-            android:text="Download"
-            android:textColor="@color/white" />-->
-
-    </android.support.design.widget.AppBarLayout>
 
 </RelativeLayout>

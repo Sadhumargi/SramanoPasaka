@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +30,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sramanopasaka.sipanionline.sadhumargi.R.id.view;
-
 /**
  * Created by apple on 10/01/18.
  */
@@ -43,7 +40,6 @@ class VerticalAdapter extends RecyclerView.Adapter {
     Context context;
     private final int Text = 0, Image = 1, Video = 2;
     ImageLoader imageLoader;
-
 
     public VerticalAdapter(MainActivityCollectionview mainActivityCollectionview, ArrayList arrayList) {
         this.context = mainActivityCollectionview;

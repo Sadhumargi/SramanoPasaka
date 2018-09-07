@@ -21,17 +21,17 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ver_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/hor_recyclerview"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ver_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/hor_recyclerview"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth" />
 
     <TextView
         android:id="@+id/txt_msg"

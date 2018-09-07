@@ -95,7 +95,6 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
         viewHolder.txt_attender.setTextSize(22);
         viewHolder.txt_attender_chief.setTextSize(22);
 
-
         //  txt_gsno.setText(resultp.get(Vihar.GS_NO));
         viewHolder.txt_gsname.setText(Html.fromHtml(resultp.getGuru_name()));
         viewHolder.txt_vihar_location.setText(resultp.getGuru_location());

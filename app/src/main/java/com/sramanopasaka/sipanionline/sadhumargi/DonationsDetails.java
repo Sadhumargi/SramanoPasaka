@@ -47,7 +47,7 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donations_details);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tooldonatedetails);
+        Toolbar toolbar = findViewById(R.id.donationdetails_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionbar = this.getSupportActionBar();
@@ -118,7 +118,7 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
 //                            @Override
 //                            public void onClick(View view) {
 //
-//                                Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, "Please wait we are updating soon", Toast.LENGTH_SHORT).show();
 ////                                int s1= Integer.parseInt(txt_amount.getText().toString());
 ////                                Intent pay=new Intent(DonationsDetails.this,Payment.class);
 ////                                startActivity(pay);
@@ -278,8 +278,6 @@ public class DonationsDetails extends BaseActivity implements GUICallback {
 
                 @Override
                 public void onClick(View widget) {
-
-
 
                     if (viewMore) {
                         tv.setLayoutParams(tv.getLayoutParams());

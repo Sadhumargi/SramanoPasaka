@@ -65,7 +65,6 @@ public class SigninActivity extends AppCompatActivity implements TabselectionLis
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Sign in</font>"));
 
-
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#F05957"));
         tabLayout.setSelectedTabIndicatorHeight((int) (2 * getResources().getDisplayMetrics().density));
         tabLayout.setTabTextColors(Color.parseColor("#2D1C03"), Color.parseColor("#2D1C03"));

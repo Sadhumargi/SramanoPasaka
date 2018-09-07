@@ -1,8 +1,10 @@
 package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,12 +21,29 @@ import com.sramanopasaka.sipanionline.sadhumargi.utils.PreferenceUtils;
 public class Splash extends BaseActivity implements GUICallback{
 
 
-    private final int SPLASH_DISPLAY_LENGTH = 3000;
+    private final int SPLASH_DISPLAY_LENGTH = 6000;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+
+        mediaPlayer=MediaPlayer.create(Splash.this,R.raw.shrisadhumargijainstutimangal);
+
+        CountDownTimer cntr_aCounter = new CountDownTimer(7000, 1000) {
+            public void onTick(long millisUntilFinished) {
+
+                mediaPlayer.start();
+            }
+
+            public void onFinish() {
+                //code fire after finish
+                mediaPlayer.stop();
+            }
+        };cntr_aCounter.start();
+
 
         /*if (!com.sramanopasaka.sipanionline.sadhumargi.utils.Utils.needToCallApi(PreferenceUtils.getLastLoginTime(this), System.currentTimeMillis()) && (OfflineData.getLoginData()!=null)) {
             LoginRequest loginRequest = new LoginRequest();

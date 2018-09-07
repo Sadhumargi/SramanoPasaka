@@ -1473,7 +1473,6 @@ public class RequestProcessor {
 
     public void getSahityaListOne() {
 
-
         EndPointApi endPointApi = RetrofitClient.getEbookClient().create(EndPointApi.class);
 
         endPointApi.getSahityaListOne().enqueue(new Callback<SahithyaFragmentOneResponse>() {
@@ -1546,7 +1545,6 @@ public class RequestProcessor {
                 }else{
                     guiCallback.onRequestProcessed(null, GUICallback.RequestStatus.FAILED);
                 }
-
             }
 
             @Override
@@ -1799,8 +1797,6 @@ public class RequestProcessor {
                 guiCallback.onRequestProcessed(null,GUICallback.RequestStatus.FAILED);
             }
         });
-
-
     }
 //Go back and come again to this page from phone ok
 //    public void getGathividhiTextNewsList(){

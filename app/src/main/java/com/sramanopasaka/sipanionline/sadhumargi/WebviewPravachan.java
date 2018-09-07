@@ -45,6 +45,7 @@ public class WebviewPravachan extends BaseActivity implements GUICallback {
     ArrayList<String> arraylist;
     private ProgressDialog progressBar;
     String a1;
+    Toolbar toolbar;
 
     List<PravachanDetails> list;
 
@@ -55,7 +56,7 @@ public class WebviewPravachan extends BaseActivity implements GUICallback {
 
         WebView1 = (WebView) findViewById(R.id.webView);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolcontact);
+         toolbar = (Toolbar) findViewById(R.id.toolcontact);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
@@ -89,7 +90,6 @@ public class WebviewPravachan extends BaseActivity implements GUICallback {
         showLoadingDialog();
 
        // new Remote().execute();
-
 
     }
 

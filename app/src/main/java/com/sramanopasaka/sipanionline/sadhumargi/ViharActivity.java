@@ -116,6 +116,10 @@ public class ViharActivity extends BaseActivity implements
         mGpsStatusDetector = new GpsStatusDetector(this);
         mGpsStatusDetector.checkGpsStatus();
         getlocation();
+
+        RequestProcessor processor=new RequestProcessor(ViharActivity.this);
+        processor.getViharList();
+        showLoadingDialog();
     }
     @Override
     public void onGpsSettingStatus(boolean enabled) {
@@ -123,7 +127,8 @@ public class ViharActivity extends BaseActivity implements
         if(enabled==false)
         {
 //            turnGPSOn();
-            showSettingsAlert();
+            gps.showSettingsAlert();
+
         }
         else if(enabled==true)
         {
@@ -143,9 +148,9 @@ public class ViharActivity extends BaseActivity implements
                 longitude = gps.getLongitude();
                 //new DownloadJSON().execute();
 
-                RequestProcessor processor=new RequestProcessor(ViharActivity.this);
-                processor.getViharList();
-                showLoadingDialog();
+//                RequestProcessor processor=new RequestProcessor(ViharActivity.this);
+//                processor.getViharList();
+//                showLoadingDialog();
             }
         }
     }
@@ -450,7 +455,7 @@ public class ViharActivity extends BaseActivity implements
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
+                context.startActivity(intent);
 
             }
         });
@@ -460,7 +465,7 @@ public class ViharActivity extends BaseActivity implements
             public void onClick(DialogInterface
                                         dialog, int which) {
                 dialog.cancel();
-                finish();
+//                finish();
             }
         });
 
@@ -470,7 +475,7 @@ public class ViharActivity extends BaseActivity implements
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        arraylist.clear();
+//        arraylist.clear();
 //        turnGPSOff();
     }
 

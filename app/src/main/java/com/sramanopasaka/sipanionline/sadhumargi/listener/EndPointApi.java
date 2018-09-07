@@ -69,7 +69,6 @@ import retrofit2.http.Query;
  * Date   : 8/9/17
  * Email : pranavjaydev@gmail.com
  */
-
 public interface EndPointApi {
 
     @POST("api/auth")

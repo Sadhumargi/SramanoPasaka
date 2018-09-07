@@ -17,7 +17,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.DayFragment;
-import com.sramanopasaka.sipanionline.sadhumargi.fragments.HoroscopeFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.fragments.MonthFragment;
 import com.sramanopasaka.sipanionline.sadhumargi.listener.TabselectionListner;
 
@@ -89,7 +88,7 @@ public class CalenderActivity extends AppCompatActivity implements TabselectionL
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MonthFragment(), getResources().getString(R.string.Month));
         adapter.addFragment(new DayFragment(),getResources().getString(R.string.DayView));
-        adapter.addFragment(new HoroscopeFragment(),getResources().getString(R.string.Rashifal));
+//        adapter.addFragment(new HoroscopeFragment(),getResources().getString(R.string.Rashifal));
 
         viewPager.setAdapter(adapter);
     }
