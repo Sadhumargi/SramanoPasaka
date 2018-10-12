@@ -14,8 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.model.RamSahitya;
-import com.sramanopasaka.sipanionline.sadhumargi.model.SahityaFragmentOne;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -79,7 +79,15 @@ class TwoFragGridAdapter extends BaseAdapter {
             txtTitle.setTypeface(type);
             final String id = model.getRam_sah_id();
             String url2=model.getImg_link();
-            imageLoader.DisplayImage(url2, imageView );
+
+            if (url2 != null){
+
+                Glide.with(context).load(url2).into(imageView);
+            }else {
+
+                Glide.with(context).load(R.drawable.temp_img).into(imageView);
+            }
+//            imageLoader.DisplayImage(url2, imageView );
 
         } else {
             grid = (View) view;

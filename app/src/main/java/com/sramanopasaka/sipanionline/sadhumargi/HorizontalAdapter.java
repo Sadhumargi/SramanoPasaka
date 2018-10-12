@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
@@ -40,7 +42,10 @@ class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.MyViewHol
     @Override
     public void onBindViewHolder(HorizontalAdapter.MyViewHolder holder, final int position) {
 
-      holder.imageView.setImageResource((Integer) iconList.get(position));
+
+        Glide.with(context).load(iconList.get(position)).into(holder.imageView);
+
+//      holder.imageView.setImageResource((Integer) iconList.get(position));
         holder.textView.setText((CharSequence) nameList.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

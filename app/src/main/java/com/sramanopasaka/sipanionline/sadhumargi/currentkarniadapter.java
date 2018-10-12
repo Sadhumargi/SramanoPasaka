@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.model.CurrentKaryakarniModel;
 
 import java.util.ArrayList;
@@ -64,8 +65,15 @@ public class currentkarniadapter extends RecyclerView.Adapter<currentkarniadapte
         viewHolder.txt_kr_city.setText(resultp.getCity());
         viewHolder.txt_kr_phone.setText(resultp.getPhone());
 
-        imageLoader.DisplayImage(resultp.getImg_link(), viewHolder.image);
         // Capture ListView item click
+
+        if (resultp.getImg_link().isEmpty()){
+            Glide.with(context).load(R.drawable.temp_img).into(viewHolder.image);
+        }else {
+            Glide.with(context).load(resultp.getImg_link()).into(viewHolder.image);
+        }
+
+//        Glide.with(context).load(resultp.getImg_link()).into(viewHolder.image);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -96,9 +104,4 @@ public class currentkarniadapter extends RecyclerView.Adapter<currentkarniadapte
             image=(ImageView)vi.findViewById(R.id.kr_img);
         }
     }
-
-
-
-
-
 }

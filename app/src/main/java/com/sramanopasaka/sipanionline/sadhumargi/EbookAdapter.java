@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Ebook;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
         this.context = context;
         androidlist = arraylist;
         imageLoader = new ImageLoader(context);
-
         this.data = new ArrayList<EbookGetSetter>();
         this.data.addAll(androidlist);
 
@@ -49,10 +49,9 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
 
         this.context=context;
         this.arraylist=arraylist;
-        imageLoader = new ImageLoader(context);
+//        imageLoader = new ImageLoader(context);
 
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
@@ -71,8 +70,14 @@ public class EbookAdapter extends RecyclerView.Adapter<EbookAdapter.ViewHolder> 
         final String id = String.valueOf(model.getBook_id());
 
         String url2=model.getImg_link();
-        imageLoader.DisplayImage(url2, holder.image);
+//        imageLoader.DisplayImage(url2, holder.image);
 
+        if ((!url2.isEmpty())){
+            Glide.with(context).load(url2).into(holder.image);
+        }else {
+            Glide.with(context).load(R.drawable.temp_img).into(holder.image);
+
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

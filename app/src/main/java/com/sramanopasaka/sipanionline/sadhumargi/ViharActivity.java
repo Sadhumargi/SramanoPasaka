@@ -393,7 +393,8 @@ public class ViharActivity extends BaseActivity implements
                         final String phone = arraylist.get(i).getGuru_phone().toLowerCase();
                         final String phone2 = arraylist.get(i).getGuru_att_phone().toLowerCase();
 
-                        if (location.contains(query) || name.contains(query) || phone.contains(query) || phone2.contains(query)) {
+
+                        if (location.contains(query) || name.contains(query) || phone.contains(query) || phone2.contains(query) ) {
 
                             filteredList.add(arraylist.get(i));
 

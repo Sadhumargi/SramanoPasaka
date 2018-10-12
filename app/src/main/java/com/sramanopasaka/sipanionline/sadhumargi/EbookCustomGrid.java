@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.model.Ebook;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ class EbookCustomGrid  extends BaseAdapter{
 
         this.ebookArrayList = arraylist;
         this.context = ebooks;
-        imageLoader = new ImageLoader(context);
+//        imageLoader = new ImageLoader(context);
     }
 
     @Override
@@ -68,7 +69,14 @@ class EbookCustomGrid  extends BaseAdapter{
             txtDate.setText(ebookArrayList.get(i).getDate());
             final String id = model.getBook_id();
             String url2=model.getImg_link();
-            imageLoader.DisplayImage(url2, imageView );
+//            imageLoader.DisplayImage(url2, imageView );
+
+            if ((url2 != null)){
+                Glide.with(context).load(url2).into(imageView);
+            }else {
+                Glide.with(context).load(R.drawable.temp_img).into(imageView);
+
+            }
 
         } else {
             grid = (View) view;
@@ -97,8 +105,6 @@ class EbookCustomGrid  extends BaseAdapter{
                     textView.setTextColor(Color.RED);
                     snackbar1.show();
                 }
-
-
             }
         });
 

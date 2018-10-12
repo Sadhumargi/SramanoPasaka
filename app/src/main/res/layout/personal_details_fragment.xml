@@ -22,12 +22,12 @@
             android:padding="@dimen/dimen_22"
             app:spb_animateToCurrentProgressState="true"
             app:spb_checkStateCompleted="true"
-            app:spb_currentStateDescriptionColor="@color/background"
+            app:spb_currentStateDescriptionColor="@color/actionbar"
             app:spb_currentStateNumber="three"
             app:spb_maxStateNumber="three"
             app:spb_stateBackgroundColor="#BDBDBD"
             app:spb_stateDescriptionColor="#808080"
-            app:spb_stateForegroundColor="@color/background"
+            app:spb_stateForegroundColor="@color/actionbar"
             app:spb_stateNumberBackgroundColor="#808080"
             app:spb_stateNumberForegroundColor="#eeeeee" />
     </LinearLayout>

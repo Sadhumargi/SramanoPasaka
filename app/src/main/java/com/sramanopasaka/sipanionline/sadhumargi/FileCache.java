@@ -3,9 +3,11 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 /**
  * Created by SipaniOnline on 04-06-2016.
  */
+
 import android.content.Context;
 
 import java.io.File;
+import java.net.URLEncoder;
 
 public class FileCache {
 
@@ -25,11 +27,10 @@ public class FileCache {
     }
 
     public File getFile(String url) {
-        String filename = String.valueOf(url.hashCode());
-        // String filename = URLEncoder.encode(url);
+//        String filename = String.valueOf(url.hashCode());
+        String filename = URLEncoder.encode(url);
         File f = new File(cacheDir, filename);
         return f;
-
     }
 
     public void clear() {

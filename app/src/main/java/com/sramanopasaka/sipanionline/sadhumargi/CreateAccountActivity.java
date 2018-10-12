@@ -1,13 +1,16 @@
-package com.sramanopasaka.sipanionline.sadhumargi.fragments;
+package com.sramanopasaka.sipanionline.sadhumargi;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -24,8 +27,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mukesh.countrypicker.CountryPicker;
 import com.mukesh.countrypicker.CountryPickerListener;
-import com.sramanopasaka.sipanionline.sadhumargi.ProfileActivity;
-import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.LoginRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.request.RegisterRequest;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
@@ -50,7 +51,7 @@ import com.sramanopasaka.sipanionline.sadhumargi.utils.ZonePickerDialog;
 
 import java.util.Calendar;
 
-public class CreateAccountFragment extends BaseFragment implements GUICallback {
+public class CreateAccountActivity extends BaseActivity implements GUICallback {
 
     EditText fName;
     EditText mName;
@@ -74,40 +75,67 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
     Spinner relation;
     Spinner profileCreatedby;
     AutoCompleteTextView familyMember;
+    Context context;
+    Toolbar toolbar;
 
-
-    private View view = null;
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_account);
 
-        view = inflater.inflate(R.layout.activity_create_account_fragment, container, false);
+        fName = (EditText) findViewById(R.id.first_name);
+        mName = (EditText) findViewById(R.id.middle_name);
+        lName = (EditText) findViewById(R.id.last_name);
+        bDate = (EditText) findViewById(R.id.birth_date);
+        pNumber = (EditText) findViewById(R.id.mobile_number);
+        emailId = (EditText)findViewById(R.id.email);
+        sCountry = (EditText) findViewById(R.id.country);
+        sState = (EditText) findViewById(R.id.state);
+        sCity = (EditText) findViewById(R.id.city);
+        pinCode = (EditText) findViewById(R.id.pincode);
+        password = (EditText) findViewById(R.id.password);
+        reTypepassword = (EditText)findViewById(R.id.retype_password);
+        termsCheckBox = (CheckBox) findViewById(R.id.termsCheckBox);
+        btnCreateProfile = (Button) findViewById(R.id.create_profile);
+        countryCode = (TextView) findViewById(R.id.countryCodeTxt);
+        radiogrp = (RadioGroup) findViewById(R.id.radiogrp);
+        familyMember = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextView);
 
-
-        fName = (EditText) view.findViewById(R.id.first_name);
-        mName = (EditText) view.findViewById(R.id.middle_name);
-        lName = (EditText) view.findViewById(R.id.last_name);
-        bDate = (EditText) view.findViewById(R.id.birth_date);
-        pNumber = (EditText) view.findViewById(R.id.mobile_number);
-        emailId = (EditText) view.findViewById(R.id.email);
-        sCountry = (EditText) view.findViewById(R.id.country);
-        sState = (EditText) view.findViewById(R.id.state);
-        sCity = (EditText) view.findViewById(R.id.city);
-        pinCode = (EditText) view.findViewById(R.id.pincode);
-        password = (EditText) view.findViewById(R.id.password);
-        reTypepassword = (EditText) view.findViewById(R.id.retype_password);
-        termsCheckBox = (CheckBox) view.findViewById(R.id.termsCheckBox);
-        btnCreateProfile = (Button) view.findViewById(R.id.create_profile);
-        countryCode = (TextView) view.findViewById(R.id.countryCodeTxt);
-        radiogrp = (RadioGroup) view.findViewById(R.id.radiogrp);
-        familyMember = (AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
-
-        relation = (Spinner) view.findViewById(R.id.relation);
-        profileCreatedby = (Spinner) view.findViewById(R.id.profile_created_by);
-        anchal= (EditText) view.findViewById(R.id.Zone);
-        localSanghName= (Spinner) view.findViewById(R.id.local_sangh_name);
+        relation = (Spinner) findViewById(R.id.relation);
+        profileCreatedby = (Spinner)findViewById(R.id.profile_created_by);
+        anchal= (EditText) findViewById(R.id.Zone);
+        localSanghName= (Spinner) findViewById(R.id.local_sangh_name);
         // selectFamily= (Spinner) view.findViewById(R.id.family);
+
+        toolbar= (Toolbar) findViewById(R.id.toolCreateAccount);
+        setSupportActionBar(toolbar);
+
+//        viewPager= (ViewPager) findViewById(R.id.viewpager);
+//        tabLayout= (TabLayout) findViewById(R.id.tabs);
+//        setUpViewPage(viewPager);
+//        tabLayout.setupWithViewPager(viewPager);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.statusbarcolor));
+
+        }
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        android.support.v7.app.ActionBar actionBar=this.getSupportActionBar();
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.left_arrow_patasala);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Create An Account</font>"));
 
 
         final Calendar myCalendar = Calendar.getInstance();
@@ -129,7 +157,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(getActivity(), date, myCalendar
+                new DatePickerDialog(context, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
@@ -137,7 +165,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
         });
 
 
-        ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(getActivity(), R.array.head_of_family_relation, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> typeadapter = ArrayAdapter.createFromResource(this, R.array.head_of_family_relation, android.R.layout.simple_spinner_item);
         typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
@@ -147,9 +175,9 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 new NothingSelectedSpinnerAdapter(
                         typeadapter,
                         R.layout.head_of_family_relation_selection,
-                        getActivity()));
+                        this));
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.profile_created_by, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.profile_created_by, android.R.layout.simple_spinner_item);
         typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
@@ -159,7 +187,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 new NothingSelectedSpinnerAdapter(
                         adapter,
                         R.layout.profile_created_by_selection,
-                        getActivity()));
+                        this));
 
 
         btnCreateProfile.setOnClickListener(new View.OnClickListener() {
@@ -317,7 +345,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 }
 
                 if (callAPi && !termsCheckBox.isChecked()) {
-                    Toast.makeText(getActivity(), "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please accept the terms and condition", Toast.LENGTH_SHORT).show();
                     callAPi = false;
                 }
 
@@ -339,7 +367,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
                     int selectedId = radiogrp.getCheckedRadioButtonId();
 
-                    registerRequest.setSalution(((RadioButton) view.findViewById(selectedId)).getText().toString());
+                    registerRequest.setSalution(((RadioButton) findViewById(selectedId)).getText().toString());
 /*
                     JsonParser jsonParser = new JsonParser();
                     JsonObject gsonObject = (JsonObject) jsonParser.parse(registerRequest.getURLEncodedPostdata().toString());
@@ -374,7 +402,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
             public void onClick(View view) {
                 CityListResponse cityListResponse = OfflineData.getCityList();
                 if (cityListResponse != null) {
-                    final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), cityListResponse.getCityList());
+                    final CityPickerDialog statePickerDialog = new CityPickerDialog(context, cityListResponse.getCityList());
                     statePickerDialog.setStateChangeListner(new StateChangeListner() {
                         @Override
                         public void onStateSelected(String state) {
@@ -386,7 +414,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     statePickerDialog.show();
                 } else {
                     showLoadingDialog();
-                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    RequestProcessor processor = new RequestProcessor(CreateAccountActivity.this);
                     processor.getCityList();
                 }
             }
@@ -397,7 +425,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
 
                 StateListResponse stateListResponse = OfflineData.getStateList();
                 if (stateListResponse != null) {
-                    final StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), stateListResponse.getStateList());
+                    final StatePickerDialog statePickerDialog = new StatePickerDialog(context, stateListResponse.getStateList());
                     statePickerDialog.setStateChangeListner(new StateChangeListner() {
                         @Override
                         public void onStateSelected(String state) {
@@ -409,7 +437,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     statePickerDialog.show();
                 } else {
                     showLoadingDialog();
-                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    RequestProcessor processor = new RequestProcessor(CreateAccountActivity.this);
                     processor.getStateList();
                 }
             }
@@ -422,7 +450,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 ZoneListResponse zoneListResponse = new ZoneListResponse();
                 if (zoneListResponse != null) {
                     final ZonePickerDialog zonePickerDialog;
-                    zonePickerDialog = new ZonePickerDialog(getActivity(), zoneListResponse.getZoneList(),"");
+                    zonePickerDialog = new ZonePickerDialog(context, zoneListResponse.getZoneList(),"");
                     zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                         @Override
                         public void onZoneSelected(String name,String id) {
@@ -434,18 +462,15 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     zonePickerDialog.show();
                 } else {
                     showLoadingDialog();
-                    RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+                    RequestProcessor processor = new RequestProcessor(CreateAccountActivity.this);
                     processor.selectZoneList();
                 }
             }
         });
 
-        RequestProcessor processor = new RequestProcessor(CreateAccountFragment.this);
+        RequestProcessor processor = new RequestProcessor(CreateAccountActivity.this);
         processor.selectZoneList();
-
-        return view;
     }
-
 
     private void showCountryPicker() {
         final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
@@ -458,7 +483,8 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 picker.dismiss();
             }
         });
-        picker.show(getActivity().getSupportFragmentManager(), "COUNTRY_PICKER");
+        picker.show(this.getSupportFragmentManager(), "COUNTRY_PICKER");
+
     }
 
     private void showZonePicker() {
@@ -472,7 +498,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                 picker.dismiss();
             }
         });
-        picker.show(getActivity().getSupportFragmentManager(), "COUNTRY_PICKER");
+        picker.show(this.getSupportFragmentManager(), "COUNTRY_PICKER");
     }
 
 
@@ -486,7 +512,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     RegisterResponse loginResponse = (RegisterResponse) guiResponse;
                     if (loginResponse != null) {
                         if (!TextUtils.isEmpty(loginResponse.getStatus()) && loginResponse.getStatus().equalsIgnoreCase("success")) {
-                            PreferenceUtils.setPassword(getActivity(), password.getText().toString());
+                            PreferenceUtils.setPassword(context, password.getText().toString());
                           /*  OfflineData.saveLoginResponse(loginResponse.getData());
                             Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(getActivity(), ProfileActivity.class);
@@ -498,14 +524,14 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             showLoadingDialog();
                             JsonParser jsonParser = new JsonParser();
                             JsonObject gsonObject = (JsonObject) jsonParser.parse(loginRequest.getURLEncodedPostdata().toString());
-                            RequestProcessor requestProcessor = new RequestProcessor(CreateAccountFragment.this);
+                            RequestProcessor requestProcessor = new RequestProcessor(CreateAccountActivity.this);
                             requestProcessor.doLogin(gsonObject);
 
                         } else {
                             if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Invalid username/password", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -513,7 +539,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     StateListResponse stateListResponse = (StateListResponse) guiResponse;
                     if (stateListResponse != null) {
                         OfflineData.saveStateResponse(stateListResponse);
-                        final StatePickerDialog statePickerDialog = new StatePickerDialog(getActivity(), stateListResponse.getStateList());
+                        final StatePickerDialog statePickerDialog = new StatePickerDialog(context, stateListResponse.getStateList());
                         statePickerDialog.setStateChangeListner(new StateChangeListner() {
                             @Override
                             public void onStateSelected(String state) {
@@ -528,7 +554,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                     CityListResponse stateListResponse = (CityListResponse) guiResponse;
                     if (stateListResponse != null) {
                         OfflineData.saveCityResponse(stateListResponse);
-                        final CityPickerDialog statePickerDialog = new CityPickerDialog(getActivity(), stateListResponse.getCityList());
+                        final CityPickerDialog statePickerDialog = new CityPickerDialog(context, stateListResponse.getCityList());
                         statePickerDialog.setStateChangeListner(new StateChangeListner() {
                             @Override
                             public void onStateSelected(String state) {
@@ -548,15 +574,15 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             //"password":"5dc8e5500e207aa79ddd66a8f7e146df"
 
 
-                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getActivity(), ProfileActivity.class);
+                            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(context, ProfileActivity.class);
                             startActivity(i);
-                            getActivity().finish();
+//                            context.finish();
                         } else {
                             if (!TextUtils.isEmpty(loginResponse.getMessage())) {
-                                Toast.makeText(getActivity(), loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getActivity(), "Invalid username/password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Invalid username/password", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -573,7 +599,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             }
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                                    (getActivity(), android.R.layout.select_dialog_item, datas);
+                                    (context, android.R.layout.select_dialog_item, datas);
 
                             familyMember.setThreshold(1);//will start working from first character
                             familyMember.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
@@ -585,7 +611,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                         if (response != null && response.getZoneList() != null && response.getZoneList().size() > 0) {
 
 
-                            final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(getActivity(),response.getZoneList(),"");
+                            final ZonePickerDialog zonePickerDialog = new ZonePickerDialog(context,response.getZoneList(),"");
                             zonePickerDialog.setZoneChangeListner(new ZoneChangeListener() {
                                 @Override
                                 public void onZoneSelected(String zone,String id) {
@@ -623,7 +649,7 @@ public class CreateAccountFragment extends BaseFragment implements GUICallback {
                             }
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                                    (getActivity(), android.R.layout.simple_spinner_dropdown_item, datas);
+                                    (context, android.R.layout.simple_spinner_dropdown_item, datas);
 
                             localSanghName.setAdapter(adapter);
 

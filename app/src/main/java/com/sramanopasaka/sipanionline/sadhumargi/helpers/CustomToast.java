@@ -23,8 +23,6 @@ public class CustomToast {
 		View layout = inflater.inflate(R.layout.custom_toast,
 				(ViewGroup) view.findViewById(R.id.toast_root));
 
-
- 
 		// Get TextView id and set error
 		TextView text = (TextView) layout.findViewById(R.id.toast_error);
 		text.setText(error);

@@ -305,7 +305,6 @@ public class ViharListAdapter extends RecyclerView.Adapter<ViharListAdapter.View
                         {
                             filteredArrayVenues.add(dataVenues);
                         }
-
                     }
 
                     results.count = filteredArrayVenues.size();

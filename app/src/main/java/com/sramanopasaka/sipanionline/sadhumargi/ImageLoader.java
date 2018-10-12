@@ -58,7 +58,6 @@ public class ImageLoader {
         Bitmap b = decodeFile(f);
         if (b != null)
             return b;
-
         // Download Images from the Internet
         try {
             Bitmap bitmap = null;

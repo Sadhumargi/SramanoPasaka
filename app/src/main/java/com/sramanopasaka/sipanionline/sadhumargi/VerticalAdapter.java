@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
@@ -152,7 +153,14 @@ class VerticalAdapter extends RecyclerView.Adapter {
 
         String url1 = arrayList.get(position).getImg_link().toString();
 
-        imageLoader.DisplayImage(url1, vh2.image);
+        if(!url1.isEmpty()){
+            Glide.with(context).load(url1).into(vh2.image);
+        }else
+        {
+           Glide.with(context) .load(R.drawable.temp_img).into(vh2.image);
+        }
+
+//        imageLoader.DisplayImage(url1, vh2.image);
 
     }
 

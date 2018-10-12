@@ -7,466 +7,466 @@
     android:background="@drawable/login_background"
     tools:context="com.sramanopasaka.sipanionline.sadhumargi.fragments.CreateAccountFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:padding="@dimen/dimen_10">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:padding="@dimen/dimen_10">-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:orientation="vertical">-->
 
-            <RadioGroup
+            <!--<RadioGroup-->
 
-                android:id="@+id/radiogrp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:orientation="horizontal">
+                <!--android:id="@+id/radiogrp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:orientation="horizontal">-->
 
-                <RadioButton
-                    android:id="@+id/radio_ms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:checked="true"
-                    android:padding="10dp"
-                    android:shadowColor="@color/white"
-                    android:text="@string/MrorMs"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton"
-                    android:layout_weight="6"/>
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_ms"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="16dp"-->
+                    <!--android:checked="true"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:shadowColor="@color/white"-->
+                    <!--android:text="@string/MrorMs"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:theme="@style/MyRadioButton"-->
+                    <!--android:layout_weight="6"/>-->
 
-                <RadioButton
-                    android:id="@+id/radio_mr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/Sriman"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:theme="@style/MyRadioButton"
-                    android:layout_weight="2"
-                    />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_mr"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:text="@string/Sriman"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:theme="@style/MyRadioButton"-->
+                    <!--android:layout_weight="2"-->
+                    <!--/>-->
 
-                <RadioButton
-                    android:id="@+id/radio_mrs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/Srimati"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:layout_weight="2"
-                    android:theme="@style/MyRadioButton">
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_mrs"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:text="@string/Srimati"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:theme="@style/MyRadioButton">-->
 
-                </RadioButton>
+                <!--</RadioButton>-->
 
-            </RadioGroup>
-
-
-            <EditText
-                android:id="@+id/first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/firstname"
-                android:imeOptions="actionNext"
-                android:maxLength="50"
-                android:inputType="text|textPersonName"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+            <!--</RadioGroup>-->
 
 
-            <EditText
-                android:id="@+id/middle_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/middlename"
-                android:maxLength="50"
-                android:inputType="text|none"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+            <!--<EditText-->
+                <!--android:id="@+id/first_name"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/firstname"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:maxLength="50"-->
+                <!--android:inputType="text|textPersonName"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
 
-            <EditText
-                android:id="@+id/last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/lastname"
-                android:inputType="text|none"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            <EditText
-                android:id="@+id/Zone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/anchal"
-                android:inputType="text|none"
-                android:maxLength="50"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            <Spinner
-                android:id="@+id/local_sangh_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:paddingBottom="@dimen/dimen_10"
-              />
-
-            <EditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:hint="@string/selectcity"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:textColorHint="@color/white"
-                android:background="@drawable/edt_border"
-                android:ems="10"
-                android:textSize="@dimen/large"
-                android:hint="@string/SelectFamily"
-                android:paddingBottom="@dimen/dimen_10"
-                android:textColor="@color/white" />
+            <!--<EditText-->
+                <!--android:id="@+id/middle_name"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/middlename"-->
+                <!--android:maxLength="50"-->
+                <!--android:inputType="text|none"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border">
+            <!--<EditText-->
+                <!--android:id="@+id/last_name"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/lastname"-->
+                <!--android:inputType="text|none"-->
+                <!--android:maxLength="50"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
-                <CheckBox
-                    android:id="@+id/head_of_family"
-                    android:layout_width="wrap_content"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:theme="@style/MyCheckBox" />
+            <!--<EditText-->
+                <!--android:id="@+id/Zone"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/anchal"-->
+                <!--android:inputType="text|none"-->
+                <!--android:maxLength="50"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/radiogrp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:text="@string/HeadofFamil"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+            <!--<Spinner-->
+                <!--android:id="@+id/local_sangh_name"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+              <!--/>-->
 
-            </LinearLayout>
+            <!--<EditText-->
+                <!--android:id="@+id/city"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:drawableEnd="@drawable/downarrow"-->
+                <!--android:editable="false"-->
+                <!--android:hint="@string/selectcity"-->
+                <!--android:maxLength="40"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/spinner_style"
-                android:id="@+id/relation"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/fab_margin"/>
-
-            <EditText
-                android:id="@+id/birth_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-                android:hint="@string/birthdate"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:editable="false"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/countryCodeTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:background="@drawable/edt_border"
-                    android:paddingBottom="@dimen/fab_margin"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:paddingTop="@dimen/fab_margin"
-                    android:text="+91"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
-
-
-                <EditText
-                    android:id="@+id/mobile_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/radiogrp"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:background="@drawable/edt_border"
-                    android:hint="@string/mobile_number"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textCursorDrawable="@drawable/cursor_drawable"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
-            </LinearLayout>
+            <!--<AutoCompleteTextView-->
+                <!--android:id="@+id/autoCompleteTextView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:ems="10"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:hint="@string/SelectFamily"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:textColor="@color/white" />-->
 
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/email_id"
-                android:maxLength="100"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border">-->
 
-            <EditText
-                android:id="@+id/country"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:hint="@string/select_country"
-                android:maxLength="40"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                <!--<CheckBox-->
+                    <!--android:id="@+id/head_of_family"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="28dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:theme="@style/MyCheckBox" />-->
 
-            <EditText
-                android:id="@+id/state"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:drawableEnd="@drawable/downarrow"
-                android:editable="false"
-                android:hint="@string/select_state"
-                android:maxLength="60"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/radiogrp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:text="@string/HeadofFamil"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
 
+            <!--</LinearLayout>-->
 
+            <!--<Spinner-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--style="@style/spinner_style"-->
+                <!--android:id="@+id/relation"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_margin="@dimen/fab_margin"/>-->
 
-            <EditText
-                android:id="@+id/pincode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/edt_border"
-                android:hint="@string/pincode"
-                android:inputType="number"
-                android:maxLength="6"
-                android:paddingBottom="@dimen/dimen_10"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@drawable/cursor_drawable"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
+            <!--<EditText-->
+                <!--android:id="@+id/birth_date"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:drawableEnd="@android:drawable/ic_menu_my_calendar"-->
+                <!--android:hint="@string/birthdate"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:editable="false"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/white"
-                android:weightSum="1"
-                app:hintTextAppearance="@style/edittext"
-                app:passwordToggleTint="#FFF">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/radiogrp"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:layout_weight="9.40"
-                    android:background="@drawable/edt_border"
-                    android:hint="@string/Password"
-                    android:singleLine="true"
-                    android:inputType="textPassword"
-                    android:maxLength="12"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textCursorDrawable="@drawable/cursor_drawable"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+                <!--<TextView-->
+                    <!--android:id="@+id/countryCodeTxt"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:background="@drawable/edt_border"-->
+                    <!--android:paddingBottom="@dimen/fab_margin"-->
+                    <!--android:paddingLeft="2dp"-->
+                    <!--android:paddingRight="2dp"-->
+                    <!--android:paddingTop="@dimen/fab_margin"-->
+                    <!--android:text="+91"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
 
 
-            </android.support.design.widget.TextInputLayout>
+                <!--<EditText-->
+                    <!--android:id="@+id/mobile_number"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/radiogrp"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:background="@drawable/edt_border"-->
+                    <!--android:hint="@string/mobile_number"-->
+                    <!--android:inputType="number"-->
+                    <!--android:maxLength="10"-->
+                    <!--android:paddingBottom="@dimen/dimen_10"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textColorHint="@color/white"-->
+                    <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
+            <!--</LinearLayout>-->
 
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/white"
-                android:weightSum="1"
-                app:hintTextAppearance="@style/edittext"
-                app:passwordToggleTint="#FFF">
+            <!--<EditText-->
+                <!--android:id="@+id/email"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/email_id"-->
+                <!--android:maxLength="100"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/country"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:drawableEnd="@drawable/downarrow"-->
+                <!--android:editable="false"-->
+                <!--android:hint="@string/select_country"-->
+                <!--android:maxLength="40"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/state"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:drawableEnd="@drawable/downarrow"-->
+                <!--android:editable="false"-->
+                <!--android:hint="@string/select_state"-->
+                <!--android:maxLength="60"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
 
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/retype_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:background="@drawable/edt_border"
-                    android:singleLine="true"
-                    android:hint="@string/Retype_password"
-                    android:inputType="textPassword"
-                    android:maxLength="12"
-                    android:paddingBottom="@dimen/dimen_10"
-                    android:textColor="@color/white"
-                    android:textCursorDrawable="@drawable/cursor_drawable"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+
+            <!--<EditText-->
+                <!--android:id="@+id/pincode"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/edt_border"-->
+                <!--android:hint="@string/pincode"-->
+                <!--android:inputType="number"-->
+                <!--android:maxLength="6"-->
+                <!--android:paddingBottom="@dimen/dimen_10"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
+
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/til1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:weightSum="1"-->
+                <!--app:hintTextAppearance="@style/edittext"-->
+                <!--app:passwordToggleTint="#FFF">-->
+
+                <!--<android.support.design.widget.TextInputEditText-->
+                    <!--android:id="@+id/password"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/radiogrp"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:layout_weight="9.40"-->
+                    <!--android:background="@drawable/edt_border"-->
+                    <!--android:hint="@string/Password"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:maxLength="12"-->
+                    <!--android:paddingBottom="@dimen/dimen_10"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textColorHint="@color/white"-->
+                    <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
 
 
-            </android.support.design.widget.TextInputLayout>
+            <!--</android.support.design.widget.TextInputLayout>-->
 
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/spinner_style"
-                android:id="@+id/profile_created_by"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/fab_margin"/>
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/til2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:weightSum="1"-->
+                <!--app:hintTextAppearance="@style/edittext"-->
+                <!--app:passwordToggleTint="#FFF">-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                <!--<android.support.design.widget.TextInputEditText-->
+                    <!--android:id="@+id/retype_password"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:background="@drawable/edt_border"-->
+                    <!--android:singleLine="true"-->
+                    <!--android:hint="@string/Retype_password"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:maxLength="12"-->
+                    <!--android:paddingBottom="@dimen/dimen_10"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
 
-                <CheckBox
-                    android:id="@+id/termsCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:theme="@style/MyCheckBox" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/radiogrp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:text="@string/terms_conditions"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/large"
-                    android:textStyle="normal" />
+            <!--</android.support.design.widget.TextInputLayout>-->
 
-            </LinearLayout>
 
-            <Button
-                android:id="@+id/create_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/radiogrp"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@drawable/border_shape_createaccount_submitbutton"
-                android:text="@string/create_profile"
-                android:textColor="@color/white"
-                android:textSize="@dimen/large"
-                android:textStyle="normal" />
-        </LinearLayout>
-    </ScrollView>
+            <!--<Spinner-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--style="@style/spinner_style"-->
+                <!--android:id="@+id/profile_created_by"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_margin="@dimen/fab_margin"/>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<CheckBox-->
+                    <!--android:id="@+id/termsCheckBox"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="28dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:theme="@style/MyCheckBox" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/radiogrp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_margin="@dimen/fab_margin"-->
+                    <!--android:text="@string/terms_conditions"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/large"-->
+                    <!--android:textStyle="normal" />-->
+
+            <!--</LinearLayout>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/create_profile"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/radiogrp"-->
+                <!--android:layout_margin="@dimen/fab_margin"-->
+                <!--android:background="@drawable/border_shape_createaccount_submitbutton"-->
+                <!--android:text="@string/create_profile"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/large"-->
+                <!--android:textStyle="normal" />-->
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
 
 
 </RelativeLayout>

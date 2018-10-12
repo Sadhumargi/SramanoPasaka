@@ -19,16 +19,15 @@
             android:id="@+id/step_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:padding="@dimen/dimen_22"
             app:spb_animateToCurrentProgressState="true"
             app:spb_checkStateCompleted="true"
-            app:spb_currentStateDescriptionColor="@color/background"
+            app:spb_currentStateDescriptionColor="@color/actionbar"
             app:spb_currentStateNumber="one"
             app:spb_maxStateNumber="three"
             app:spb_stateBackgroundColor="#BDBDBD"
             app:spb_stateDescriptionColor="#808080"
-            app:spb_stateForegroundColor="@color/background"
+            app:spb_stateForegroundColor="@color/actionbar"
             app:spb_stateNumberBackgroundColor="#808080"
             app:spb_stateNumberForegroundColor="#eeeeee" />
     </LinearLayout>
@@ -38,7 +37,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/layout"
         android:padding="@dimen/dimen_10">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -298,15 +296,12 @@
                     />
             </android.support.design.widget.TextInputLayout>
 
-
-
             <!--  <Spinner
                   style="@style/spinner_style"
                   android:id="@+id/currentResidence"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_margin="@dimen/fab_margin"
-
                   />-->
 
             <com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout
@@ -328,14 +323,12 @@
                     android:background="@drawable/edt_border"
                     android:inputType="textNoSuggestions"
                     android:paddingBottom="@dimen/dimen_10"
-
                     android:textColor="@color/white"
                     android:textColorHint="@color/orange"
                     android:textCursorDrawable="@drawable/cursor_drawable"
                     android:textSize="@dimen/large"
                     android:textStyle="normal"/>
             </com.sramanopasaka.sipanionline.sadhumargi.helpers.NoChangingBackgroundTextInputLayout>
-
 
             <Button
                 android:id="@+id/goAhead"

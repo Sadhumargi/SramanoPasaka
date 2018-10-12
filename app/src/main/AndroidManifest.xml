@@ -310,6 +310,10 @@
             android:name=".AddSocialRoleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme.Base" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base" />
 
         <service android:name=".utils.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -332,6 +336,9 @@
             android:theme="@style/MyMaterialTheme.Base" />
         <activity android:name=".adapters.CalenderAdapter" />
         <activity android:name=".adapters.DayFragmentAdapter" />
+        <activity android:name=".utils.SignupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme.Base" />
 
     </application>
 

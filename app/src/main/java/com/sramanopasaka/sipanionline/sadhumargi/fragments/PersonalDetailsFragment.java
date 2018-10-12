@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.vision.text.Text;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kofigyan.stateprogressbar.StateProgressBar;
@@ -333,14 +332,6 @@ public class PersonalDetailsFragment extends BaseFragment implements GUICallback
                         textinputlayoutmobilenumber.setError(null);
                     }
                 }
-
-
-
-
-
-
-
-
 
 
                 if (gender.getText().toString().length() == 0 ) {

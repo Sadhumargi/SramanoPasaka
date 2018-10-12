@@ -101,7 +101,6 @@ public class EbookWebview extends AppCompatActivity
                         {
                             ex.printStackTrace();
                         }
-
                     }
                 });
             } catch (Exception e) {

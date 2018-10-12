@@ -52,6 +52,7 @@
     <dimen name="dimen_3">3dp</dimen>
     <dimen name="dimen_142">142dp</dimen>
     <dimen name="dimen_300">300dp</dimen>
+    <dimen name="dimen_18">18dp</dimen>
     <dimen name="profile_image_width">150dp</dimen>
 <dimen name="design_navigation_icon_size">20dp</dimen>
 

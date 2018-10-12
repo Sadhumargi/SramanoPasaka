@@ -36,11 +36,13 @@ public class MemoryCache {
         Log.i(TAG, "MemoryCache will use up to " + limit / 1024. / 1024. + "MB");
     }
 
-    public Bitmap get(String id) {
+    public Bitmap get(String url) {
+
         try {
-            if (!cache.containsKey(id))
+            if (!cache.containsKey(url))
+
                 return null;
-            return cache.get(id);
+            return cache.get(url);
         } catch (NullPointerException ex) {
             ex.printStackTrace();
             return null;

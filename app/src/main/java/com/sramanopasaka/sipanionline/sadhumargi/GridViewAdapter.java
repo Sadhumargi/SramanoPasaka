@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.model.KaryakarniList;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class GridViewAdapter extends ArrayAdapter<KaryakarniList> {
         holder.nameTextView.setTypeface(type);
         holder.cityTextView.setText(Html.fromHtml(item.getGrp_karkarni_place()));
 
-        Picasso.with(mContext).load(item.getGrp_karkarni_imglink()).into(holder.imageView);
+        Glide.with(mContext).load(item.getGrp_karkarni_imglink()).into(holder.imageView);
         return row;
     }
 

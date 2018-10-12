@@ -25,8 +25,9 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="10dp"
             android:text="fdsfdsfsdsfsfsdfds"
-            android:textSize="@dimen/dimen_22"
-            android:textStyle="bold" />
+            android:textSize="@dimen/dimen_18"
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/txt_details"
@@ -36,7 +37,7 @@
             android:layout_centerVertical="true"
             android:text="fesfsfgsgsgsg"
             android:textColor="@color/ef_grey"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txt_date"

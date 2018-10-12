@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CurrentKaryakarniResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.GUIResponse;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.task.RequestProcessor;
@@ -284,7 +285,9 @@ public class CurrentKaryakarni extends BaseFragment implements GUICallback {
                 userViewHolder.txt_kr_city.setText(resultp.getCity());
                 userViewHolder.txt_kr_phone.setText(resultp.getPhone());
 
-                imageLoader.DisplayImage(resultp.getImg_link(), userViewHolder.image);
+//                imageLoader.DisplayImage(resultp.getImg_link(), userViewHolder.image);
+
+                Glide.with(context).load(resultp.getImg_link()).into(userViewHolder.image);
                 // Capture ListView item click
                 userViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

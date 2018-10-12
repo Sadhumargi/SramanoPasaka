@@ -6,14 +6,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+
 import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.sramanopasaka.sipanionline.sadhumargi.R;
 import com.sramanopasaka.sipanionline.sadhumargi.cms.response.CityListResponse;
@@ -151,7 +148,6 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             }
         });
 
-
         ZoneListResponse zoneListResponse = OfflineData.getZoneList();
         if (zoneListResponse == null) {
             RequestProcessor processor = new RequestProcessor(GeneralDetailsFragment.this);
@@ -214,11 +210,6 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             }
         });
 
-
-
-
-
-
         CityListResponse cityListResponse = OfflineData.getCityList();
         if (cityListResponse != null) {
             sCity.setItems(cityListResponse.getCityList());
@@ -266,9 +257,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             district.clearFocus();
             textInputLayoutDistrict.setError(null);
             //district.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.edt_border));
-
         }
-
 
         if (sCity.getText().toString().length() == 0) {
             textInputLayoutCity.setError("City name is required");
@@ -338,11 +327,7 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             currentResidence.clearFocus();
         }
 
-
-
-
-
-       /* int selectedId = radiogrp.getCheckedRadioButtonId();
+        /* int selectedId = radiogrp.getCheckedRadioButtonId();
         if (selectedId == -1 && callAPi) {
             radiogrp.requestFocus();
             radiogrp.requestFocusFromTouch();
@@ -368,8 +353,6 @@ public class GeneralDetailsFragment extends BaseFragment implements GUICallback 
             fragmentTransaction.replace(R.id.signUpContainer, familyDetailsFragment);
             fragmentTransaction.addToBackStack("FamilyDetailsFragment");
             fragmentTransaction.commit();
-
-
         }
 
     }
