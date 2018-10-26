@@ -2,29 +2,49 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dimen_300"
-    android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    card_view:cardCornerRadius="5dp">
+    android:layout_height="@dimen/dimen_450"
+    android:layout_marginTop="@dimen/dimen_5dp"
+    android:layout_marginLeft="@dimen/dimen_5dp"
+    android:layout_marginRight="@dimen/dimen_5dp"
+    card_view:cardCornerRadius="@dimen/dimen_5dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/dimen_5dp"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/img_txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/dimen_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/img_txt_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <ImageView
             android:id="@+id/img_news"
             android:layout_width="match_parent"
-            android:layout_height="319dp"
+            android:layout_height="@dimen/dimen_300"
             android:layout_below="@+id/img_txt_date"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dimen_5dp"
+            android:layout_marginLeft="@dimen/dimen_2dp"
+            android:layout_marginRight="@dimen/dimen_2dp"
+            android:layout_marginTop="@dimen/margin_15"
             android:scaleType="fitXY"
             android:src="@drawable/about" />
 
@@ -39,26 +59,5 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/img_txt_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/img_txt_title"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/img_txt_title"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/name"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>

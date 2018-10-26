@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -53,7 +51,6 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
     Button reset;
     GridView gridView;
     View v;
-
     List<Ebook> list;
 
     /*  static final String[] Months = new String[] { "Jan", "Feb",
@@ -110,7 +107,6 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
 //        recyclerView.setHasFixedSize(true);
 //        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(layoutManager);
-
 //        reset=(Button)findViewById(R.id.reset);
 
         ActionBar actionbar = this.getSupportActionBar();
@@ -131,11 +127,9 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
         ts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 datedialog();
             }
         });
-
 
         // Set months
         final Spinner spinMonths = (Spinner)findViewById(R.id.edt_spin_month);
@@ -157,14 +151,10 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
         spinMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                  monthno=spinMonths.getSelectedItemPosition()+1;
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -214,7 +204,7 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
                     }
                 }
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(Ebooks.this));
+               recyclerView.setLayoutManager(new LinearLayoutManager(Ebooks.this));
                 adapter = new EbookAdapter(Ebooks.this,filteredList);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();  // data set changed
@@ -222,8 +212,6 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
 
             }
         });*/
-
-
     }
 
     @Override
@@ -291,11 +279,9 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
 
                         if(ebookResponse.getData()!=null && ebookResponse.getData().size()>0)
                         {
-
-                            arraylist=ebookResponse.getData();
+                            arraylist = ebookResponse.getData();
                             adapter = new EbookCustomGrid(Ebooks.this, arraylist);
                             gridView.setAdapter(adapter);
-
 //                         recyclerView.setAdapter(adapter);
                         }else{
                             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}

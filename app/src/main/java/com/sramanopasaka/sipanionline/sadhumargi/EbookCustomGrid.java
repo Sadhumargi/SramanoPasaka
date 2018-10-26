@@ -51,36 +51,28 @@ class EbookCustomGrid  extends BaseAdapter{
     public View getView(int i, View view, final ViewGroup viewGroup) {
 
         View grid;
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         final Ebook model = ebookArrayList.get(i);
 
-//        final ViewHolder holder =null;
-
         if (view == null) {
 
             grid = new View(context);
-
             grid = inflater.inflate(R.layout.activity_ebook_adapter, null);
 
-            TextView txtDate = (TextView) grid.findViewById(R.id.ebook_txt_date);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.ebook_image);
-            txtDate.setText(ebookArrayList.get(i).getDate());
             final String id = model.getBook_id();
-            String url2=model.getImg_link();
 //            imageLoader.DisplayImage(url2, imageView );
-
-            if ((url2 != null)){
-                Glide.with(context).load(url2).into(imageView);
-            }else {
-                Glide.with(context).load(R.drawable.temp_img).into(imageView);
-
-            }
-
         } else {
             grid = (View) view;
         }
+
+        TextView txtDate = (TextView) grid.findViewById(R.id.ebook_txt_date);
+        txtDate.setText(ebookArrayList.get(i).getDate());
+
+        ImageView imageView = (ImageView) grid.findViewById(R.id.ebook_image);
+        Glide.with(context).load(ebookArrayList.get(i).getImg_link()).into(imageView);
 
 
         final View finalGrid = grid;
@@ -110,10 +102,4 @@ class EbookCustomGrid  extends BaseAdapter{
 
         return grid;
     }
-
-    private class ViewHolder {
-        ImageView imageView;
-        TextView txtDate;
-    }
-
 }
