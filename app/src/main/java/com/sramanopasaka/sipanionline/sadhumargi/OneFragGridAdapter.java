@@ -73,19 +73,13 @@ class OneFragGridAdapter extends BaseAdapter {
             grid = inflater.inflate(R.layout.onefrag_adapter_layout, null);
 
             TextView txtTitle = (TextView) grid.findViewById(R.id.onefrag_txt_date);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.onefrag_image);
             txtTitle.setText(sahityArrayList.get(i).getTitle());
             txtTitle.setTypeface(type);
+
+            ImageView imageView = (ImageView)grid.findViewById(R.id.onefrag_image);
+            Glide.with(context).load(model.getImg_link()).into(imageView);
+
             final String id = model.getSang_book_id();
-            String url2=model.getImg_link();
-
-            if (url2 != null){
-
-                Glide.with(context).load(url2).into(imageView);
-            }else {
-
-                Glide.with(context).load(R.drawable.temp_img).into(imageView);
-            }
 //            imageLoader.DisplayImage(url2, imageView );
 
         } else {
@@ -115,7 +109,6 @@ class OneFragGridAdapter extends BaseAdapter {
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-
                 }
                 else
                 {
@@ -125,8 +118,6 @@ class OneFragGridAdapter extends BaseAdapter {
                     textView.setTextColor(Color.RED);
                     snackbar1.show();
                 }
-
-
             }
         });
         return grid;

@@ -24,6 +24,9 @@ class EbookCustomGrid  extends BaseAdapter{
      ArrayList<Ebook> ebookArrayList;
     Context context;
     ImageLoader imageLoader;
+    TextView txtDate;
+    ImageView imageView;
+
 
     public EbookCustomGrid(Ebooks ebooks, ArrayList<Ebook> arraylist) {
 
@@ -63,19 +66,20 @@ class EbookCustomGrid  extends BaseAdapter{
             grid = inflater.inflate(R.layout.activity_ebook_adapter, null);
 
             final String id = model.getBook_id();
-//            imageLoader.DisplayImage(url2, imageView );
+//          imageLoader.DisplayImage(url2, imageView );
+
+
         } else {
             grid = (View) view;
         }
 
-        TextView txtDate = (TextView) grid.findViewById(R.id.ebook_txt_date);
-        txtDate.setText(ebookArrayList.get(i).getDate());
+        txtDate = (TextView) grid.findViewById(R.id.e_txt_date);
+        txtDate.setText(model.getDate());
 
-        ImageView imageView = (ImageView) grid.findViewById(R.id.ebook_image);
-        Glide.with(context).load(ebookArrayList.get(i).getImg_link()).into(imageView);
+        imageView = (ImageView) grid.findViewById(R.id.e_image);
+        Glide.with(context).load(model.getImg_link()).into(imageView);
 
-
-        final View finalGrid = grid;
+//        final View finalGrid = grid;
 
         grid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +103,6 @@ class EbookCustomGrid  extends BaseAdapter{
                 }
             }
         });
-
         return grid;
     }
 }

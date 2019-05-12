@@ -72,6 +72,8 @@ android {
             buildConfigField 'String', 'HOST', '"http://members.sabsjs.org/app/"'
 
             // resValue 'string', 'GOOGLE_APP_ID', "507834382340"
+            //New API for ebooks is mobileapi.sadhumargi.com;
+            // Sipanionline server API for Ebook shriabsjainsangh.sipanionline.com
         }
     }
 }

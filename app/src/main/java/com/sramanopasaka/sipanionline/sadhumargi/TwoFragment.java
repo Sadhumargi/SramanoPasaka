@@ -3,7 +3,6 @@ package com.sramanopasaka.sipanionline.sadhumargi;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,7 +103,6 @@ public class TwoFragment extends BaseFragment implements GUICallback {
 
         } catch (RuntimeException e) {
             Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
-
 
         }
     }

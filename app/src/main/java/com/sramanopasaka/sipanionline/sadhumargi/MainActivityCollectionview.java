@@ -56,8 +56,8 @@ public class MainActivityCollectionview extends BaseActivity implements Navigati
     RecyclerView horisontalRecyclerview;
     HorizontalAdapter horizontalAdapter;
     RecyclerView horizontalRecyclerViewNews;
-
     VerticalAdapter horizontalAdapterNews;
+
     ArrayList<GathividhiModel> gathiVidhiList;
 
     @Override

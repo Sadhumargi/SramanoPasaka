@@ -37,8 +37,8 @@
         android:stretchMode="columnWidth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:verticalSpacing="15dp"
-        android:horizontalSpacing="15dp"
+        android:verticalSpacing="@dimen/dimen_10"
+        android:horizontalSpacing="@dimen/dimen_10"
         android:id="@+id/ebookGrid"
         android:layout_margin="10dp"
         >

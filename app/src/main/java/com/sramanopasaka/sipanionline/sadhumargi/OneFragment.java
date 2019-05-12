@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class OneFragment extends BaseFragment implements GUICallback {
 
-
     Context context;
     public static String url="http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/sangsahitya.php";
     // public static String url2= "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/EbookFilter.php";
@@ -36,7 +35,7 @@ public class OneFragment extends BaseFragment implements GUICallback {
     ListView listview;
     JSONObject jsonobject;
     private RecyclerView recyclerView;
-//    OneFragAdapter adapter;
+   // OneFragAdapter adapter;
     private TextView emptyView;
     ConnectivityReceiver.ConnectivityReceiverListener ctx;
 
@@ -100,11 +99,12 @@ public class OneFragment extends BaseFragment implements GUICallback {
 //                        recyclerView.setHasFixedSize(true);
 //                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
 //                        recyclerView.setLayoutManager(layoutManager);
-                            // Pass the results into ListViewAdapter.java
+//                        Pass the results into ListViewAdapter.java
 
                             adapter = new OneFragGridAdapter(getActivity(), arrayList);
                             // Set the adapter to the ListView
                             gridView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         } else {
                             Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
@@ -114,15 +114,12 @@ public class OneFragment extends BaseFragment implements GUICallback {
                 } else {
                     Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-
             }
         }catch(RuntimeException e){
 
             Toast.makeText(context, "Network error", Toast.LENGTH_SHORT).show();
         }
-
         }
-
     }
 
     /*class Remote extends AsyncTask<Void,Void,Void>

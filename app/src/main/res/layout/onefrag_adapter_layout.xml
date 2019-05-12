@@ -1,40 +1,40 @@
 <android.support.v7.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
+    android:layout_margin="@dimen/dimen_5dp"
     card_view:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="189dp"
+        android:layout_margin="@dimen/dimen_5dp"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:id="@+id/relativeLayout"
-        android:layout_margin="10dp"
-        android:background="#FFFFFF">
+        android:padding="5dp"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/onefrag_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:scaleType="centerCrop"
+            android:layout_height="130dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/onefrag_txt_date"
-            android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:text="fdsfdsfsdsfsfsdfds"
-            android:layout_marginLeft="0dp"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/onefrag_image" />
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@+id/ebook_image"
+            android:layout_weight="0.42"
+            android:text="fdsfdsfsdsfsfsdfds"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

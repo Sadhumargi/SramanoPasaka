@@ -282,6 +282,7 @@ public class Ebooks extends BaseActivity implements ConnectivityReceiver.Connect
                             arraylist = ebookResponse.getData();
                             adapter = new EbookCustomGrid(Ebooks.this, arraylist);
                             gridView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
 //                         recyclerView.setAdapter(adapter);
                         }else{
                             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();}

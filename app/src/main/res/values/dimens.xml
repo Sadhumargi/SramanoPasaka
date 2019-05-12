@@ -9,7 +9,6 @@
     <dimen name="margin">8dp</dimen>
     <dimen name="pagemargin">10dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-
     <dimen name="sliding_text_size">18sp</dimen>
     <dimen name="small_text">14sp</dimen>
     <dimen name="small_text_12">12sp</dimen>
@@ -54,6 +53,7 @@
     <dimen name="dimen_300">300dp</dimen>
     <dimen name="dimen_18">18dp</dimen>
     <dimen name="dimen_450">450dp</dimen>
+    <dimen name="dimen_400">430dp</dimen>
     <dimen name="profile_image_width">150dp</dimen>
     <dimen name="dimen_2dp">2dp</dimen>
 <dimen name="design_navigation_icon_size">20dp</dimen>
