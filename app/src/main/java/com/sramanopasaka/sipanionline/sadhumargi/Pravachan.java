@@ -48,8 +48,8 @@ public class Pravachan extends BaseActivity implements ConnectivityReceiver.Conn
     JSONObject jsonobject;
     JSONArray jsonarray;
     TextView emptyView;
-    ImageLoader imageLoader;
-    final String url = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/pravachan.php";
+//    ImageLoader imageLoader;
+//    final String url = "http://shriabsjainsangh.sipanionline.com/sramanopasaka/phpfiles/pravachan.php";
     private static int current_page = 1;
     private LinearLayoutManager mLayoutManager;
     private int ival = 0;

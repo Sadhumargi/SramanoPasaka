@@ -17,10 +17,10 @@
         android:stretchMode="columnWidth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:verticalSpacing="@dimen/dimen_10"
-        android:horizontalSpacing="@dimen/dimen_10"
+        android:verticalSpacing="@dimen/extra_small"
+        android:horizontalSpacing="@dimen/extra_small"
+        android:layout_margin="@dimen/extra_small"
         android:id="@+id/sanghSahityaGrid"
-        android:layout_margin="@dimen/dimen_10"
         >
 
     </GridView>
